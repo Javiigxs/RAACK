@@ -129,7 +129,7 @@
 <rect x="720" y="546" width="250" height="30" rx="7" fill="#fff4e5" stroke="#d9822b" stroke-width="1.4"/>
 <text x="730" y="565.5" font-size="12.5" fill="#1d2430">Registro EODMS y licencia</text>
 <rect x="720" y="632" width="250" height="30" rx="7" fill="#e6f4f8" stroke="#1b7f99" stroke-width="1.4"/>
-<text x="730" y="651.5" font-size="12.5" fill="#1d2430">Prueba AppEEARS Monterrey · en cola</text>
+<text x="730" y="651.5" font-size="12.5" fill="#1d2430">Prueba AppEEARS Monterrey · procesándose</text>
 <rect x="720" y="718" width="250" height="30" rx="7" fill="#f6e8f7" stroke="#8e44ad" stroke-width="1.4"/>
 <text x="730" y="737.5" font-size="12.5" fill="#1d2430">¿Usamos Giovanni?</text>
 <rect x="720" y="756" width="250" height="30" rx="7" fill="#f6e8f7" stroke="#8e44ad" stroke-width="1.4"/>

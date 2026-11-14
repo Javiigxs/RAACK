@@ -18,6 +18,7 @@ Se envió el **14 de noviembre de 2026 a las 13:57 (hora del centro de México)*
 | NDVI · MOD13A3.061 (mensual, 1 km) | `_1_km_monthly_NDVI`, `_1_km_monthly_VI_Quality`, `_1_km_monthly_pixel_reliability` |
 | Temperatura · MOD11A2.061 (8 días, 1 km) | `LST_Day_1km`, `LST_Night_1km`, `QC_Day`, `QC_Night` |
 | Estado al enviarla | Queued (en cola) |
+| Estado a las 14:13 | Procesándose, 28 % |
 
 ## Puntos
 

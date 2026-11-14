@@ -66,7 +66,7 @@ ACCESOS = [
 ]
 SOLICITUDES = [
     # id, etiqueta, fuente, nota
-    ("s_appeears", "Prueba AppEEARS Monterrey · en cola", "appeears", "docs/SOLICITUD_APPEEARS_MONTERREY.md"),
+    ("s_appeears", "Prueba AppEEARS Monterrey · procesándose", "appeears", "docs/SOLICITUD_APPEEARS_MONTERREY.md"),
 ]
 DECISIONES = [
     ("d_giovanni", "¿Usamos Giovanni?",
@@ -104,7 +104,7 @@ def datos():
         if estado != "conseguido":
             aristas.append({"de": aid, "a": CASO[0], "relacion": "se pide después de decidir"})
     for sid, etq, fuente, nota in SOLICITUDES:
-        nodos.append({"id": sid, "tipo": "solicitud", "etiqueta": etq, "estado": "en cola", "nota": nota})
+        nodos.append({"id": sid, "tipo": "solicitud", "etiqueta": etq, "estado": "procesándose (28 % a las 14:13)", "nota": nota})
         aristas.append({"de": fuente, "a": sid, "relacion": "solicitud de prueba"})
         aristas.append({"de": "a_earthdata", "a": sid, "relacion": "enviada con la cuenta"})
         aristas.append({"de": sid, "a": CASO[0], "relacion": "ayuda a decidir"})
@@ -443,7 +443,7 @@ GitHub y Obsidian dibujan este diagrama Mermaid. Las flechas continuas van a lo 
    - Comprobó la lista oficial: 13 recursos.
    - Revisó en Chrome RCM, GEO.ca, SWOT y la página de ecosistemas.
    - Escribió las fichas 08 a 11, la cobertura, la nota de solicitudes de datos y este grafo, y lo publicó todo.
-5. **La persona** creó la cuenta NASA Earthdata del equipo. Con ella, **Claude** envió una [solicitud de prueba de AppEEARS en Monterrey](SOLICITUD_APPEEARS_MONTERREY.md): NDVI y temperatura superficial de 2001 a 2025. Está en cola.
+5. **La persona** creó la cuenta NASA Earthdata del equipo. Con ella, **Claude** envió una [solicitud de prueba de AppEEARS en Monterrey](SOLICITUD_APPEEARS_MONTERREY.md): NDVI y temperatura superficial de 2001 a 2025. A las 14:13 iba al 28 %.
 6. **Claude** dejó el repo listo como bóveda de Obsidian tipo wiki:
    - Un [índice para personas e IAs](../INDICE.md).
    - Reglas para agentes en `AGENTS.md`.

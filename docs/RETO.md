@@ -9,6 +9,23 @@ estado: preparación
 
 **Reto oficial:** [Be An Earth System Trend Detective!](https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/). [Recursos oficiales](https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/?tab=resources).
 
+## Enunciado oficial
+
+> Change is always occurring in the Earth’s interconnected environmental system, and when it runs in a consistent direction – rising or falling, increasing or decreasing, thickening or thinning – measured variables reflect it. But a measured Earth science data variable can trend one way in one region and the opposite way in another, even when the same process drives both. The multitude of Earth science data variables makes it difficult to select variables that could indicate change, and to then perform an analysis on the selected variables. Your challenge is to create a tool that can select variables measured by Earth science missions or produced by Earth science models, visualize how they change over time, and determine what is changing, where it is changing, how much it is changing, and if these changes are what scientists call “significant.”
+
+**En español:** el sistema terrestre cambia siempre, y cuando el cambio va en una dirección constante, las variables medidas lo reflejan. Una misma variable puede tener tendencia en un sentido en una región y en el contrario en otra, aunque las mueva el mismo proceso. Hay tantas variables que cuesta elegir las que indican cambio y analizarlas. El reto es crear una herramienta que permita:
+
+- Seleccionar variables medidas por misiones o producidas por modelos.
+- Ver cómo cambian en el tiempo.
+- Determinar qué cambia, dónde, cuánto y si el cambio es «significativo».
+
+## Contexto del equipo
+
+- **Duración:** el hackathon dura dos días. Este enunciado se añadió el 14 de noviembre de 2026, a mediodía del primero.
+- **Tiempos de los datos:** muchos portales no entregan al instante. Qué se puede pedir en cada uno y cuánto tarda: [Funcionalidades y tiempos](FUNCIONALIDADES.md).
+- **Validación:** toda propuesta debe pasar las cuatro reglas de [Validación de la propuesta](VALIDACION.md): problema real, medible, hecha con los datos que nos dieron y con un diferenciador.
+- **Estado y mapa de notas:** [Índice](../INDICE.md).
+
 ## Qué debemos resolver
 
 Crear una herramienta que permita seleccionar variables de misiones o modelos de ciencias de la Tierra, elegir una región y visualizar su evolución temporal. Debe ayudar a responder:

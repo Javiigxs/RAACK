@@ -55,7 +55,7 @@ flowchart LR
     a_eodms["Registro EODMS y licencia"]
   end
   subgraph SOL["Solicitudes enviadas"]
-    s_appeears["Prueba AppEEARS Monterrey · en cola"]
+    s_appeears["Prueba AppEEARS Monterrey · procesándose"]
   end
   subgraph DEC["Decisiones pendientes"]
     d_giovanni{"¿Usamos Giovanni?"}
@@ -140,7 +140,7 @@ flowchart LR
    - Comprobó la lista oficial: 13 recursos.
    - Revisó en Chrome RCM, GEO.ca, SWOT y la página de ecosistemas.
    - Escribió las fichas 08 a 11, la cobertura, la nota de solicitudes de datos y este grafo, y lo publicó todo.
-5. **La persona** creó la cuenta NASA Earthdata del equipo. Con ella, **Claude** envió una [solicitud de prueba de AppEEARS en Monterrey](SOLICITUD_APPEEARS_MONTERREY.md): NDVI y temperatura superficial de 2001 a 2025. Está en cola.
+5. **La persona** creó la cuenta NASA Earthdata del equipo. Con ella, **Claude** envió una [solicitud de prueba de AppEEARS en Monterrey](SOLICITUD_APPEEARS_MONTERREY.md): NDVI y temperatura superficial de 2001 a 2025. A las 14:13 iba al 28 %.
 6. **Claude** dejó el repo listo como bóveda de Obsidian tipo wiki:
    - Un [índice para personas e IAs](../INDICE.md).
    - Reglas para agentes en `AGENTS.md`.

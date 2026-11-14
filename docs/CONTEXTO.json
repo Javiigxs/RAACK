@@ -245,8 +245,8 @@
     {
       "id": "s_appeears",
       "tipo": "solicitud",
-      "etiqueta": "Prueba AppEEARS Monterrey · en cola",
-      "estado": "en cola",
+      "etiqueta": "Prueba AppEEARS Monterrey · procesándose",
+      "estado": "procesándose (28 % a las 14:13)",
       "nota": "docs/SOLICITUD_APPEEARS_MONTERREY.md"
     },
     {
