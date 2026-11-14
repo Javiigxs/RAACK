@@ -9,9 +9,9 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 - **Hecho:**
   - Los 13 recursos oficiales revisados: 12 fichas; Giovanni sin abrir.
   - Página oficial y guías de evaluación y entrega leídas enteras.
-  - 7 archivos descargados, cobertura y grafo de contexto.
+  - Los 7 archivos iniciales y los 7 archivos de resultados AppEEARS guardados, con cobertura y grafo de contexto.
   - Cuenta NASA Earthdata del equipo creada.
-  - Solicitud de prueba de AppEEARS en Monterrey: procesándose, 28 % a las 14:13.
+  - [Solicitud de prueba AppEEARS de Monterrey recibida](docs/SOLICITUD_APPEEARS_MONTERREY.md): cinco puntos, 2001–2025; 5.745 registros LST y 1.500 de NDVI, con metadatos y calidad. Pendiente de análisis.
   - Servicios abiertos probados: el visor de hidrología entrega 26 años de Monterrey en menos de 20 segundos; NOAA y Hydrocron responden sin cuenta. Qué llega al instante y qué en cola: [docs/FUNCIONALIDADES.md](docs/FUNCIONALIDADES.md).
   - Primera señal, preliminar: en Monterrey la temperatura del aire sube de forma significativa; la humedad del suelo y la evapotranspiración, no.
   - [Ideas para la herramienta](docs/IDEAS.md) propuestas, con su paso por las cuatro reglas.
@@ -24,7 +24,7 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
   - Si se usa Giovanni.
 - **No asumir:**
   - Las ideas son propuestas de un agente; el equipo no ha elegido ninguna.
-  - Las cifras de Monterrey son preliminares: no hay ninguna serie larga guardada en el repo.
+  - Las cifras previas de GLDAS en Monterrey siguen siendo preliminares. La entrega AppEEARS ya está guardada; faltan filtros de calidad y análisis.
   - Las horas del CSV del visor no son UTC reales.
   - Giovanni no está aprobado.
   - Las fichas separan lo comprobado de lo que solo afirma cada fuente.
@@ -65,7 +65,7 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | Nota | Qué contiene | Tamaño |
 |---|---|---|
 | [recursos/COBERTURA.md](recursos/COBERTURA.md) | Los 13 recursos oficiales: hasta dónde se llegó en cada uno, qué se descargó, qué acceso piden, relevancia y por qué aparece tanto Canadá. | 7 kB |
-| [recursos/README.md](recursos/README.md) | Catálogo: los 7 archivos descargados, estado de cada recurso con enlace a su ficha y descargas que fallaron. | 10 kB |
+| [recursos/README.md](recursos/README.md) | Catálogo de recursos y descargas, con actualización fechada de los 7 resultados AppEEARS recibidos; estado, fichas y descargas que fallaron. | 13 kB |
 
 ## Fichas por recurso (una por página oficial)
 
@@ -90,7 +90,7 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 |---|---|---|
 | [docs/FUNCIONALIDADES.md](docs/FUNCIONALIDADES.md) | Qué se puede hacer y pedir en cada recurso y cuánto tarda en llegar el dato; lo comprobado por la tarde; qué no hacen las herramientas oficiales; ruta rápida para el hackathon. | 9 kB |
 | [docs/SOLICITUDES_DE_DATOS.md](docs/SOLICITUDES_DE_DATOS.md) | Qué acceso pedir en cada portal (Earthdata, NOAA, KNMI, EODMS), para qué lo usaríamos y texto para «uso previsto». | 5 kB |
-| [docs/SOLICITUD_APPEEARS_MONTERREY.md](docs/SOLICITUD_APPEEARS_MONTERREY.md) | Solicitud de prueba enviada: 5 puntos en Monterrey, NDVI y temperatura 2001–2025, ID y qué hacer al terminar. | 3 kB |
+| [docs/SOLICITUD_APPEEARS_MONTERREY.md](docs/SOLICITUD_APPEEARS_MONTERREY.md) | Solicitud recibida: 5 puntos en Monterrey, NDVI y temperatura 2001–2025; inventario, integridad, privacidad y revisión de calidad pendiente. | 6 kB |
 | [docs/REFERENCIA_CIENTIFICA.md](docs/REFERENCIA_CIENTIFICA.md) | Resumen del método del artículo SeaWiFS y metadatos de la muestra GLDAS descargada. | 3 kB |
 
 ## Historia del trabajo
@@ -111,8 +111,15 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | [recursos/archivos/csa-sar-tutorial-qgis.md](recursos/archivos/csa-sar-tutorial-qgis.md) | Guía QGIS del tutorial SAR | 7 kB | [recursos/paginas/12-sar.md](recursos/paginas/12-sar.md) |
 | [recursos/archivos/csa-sar-LICENSE.txt](recursos/archivos/csa-sar-LICENSE.txt) | Licencia del tutorial SAR | 4 kB | [recursos/paginas/12-sar.md](recursos/paginas/12-sar.md) |
 | [recursos/archivos/gldas-evapotranspiracion-muestra-2016-05.csv](recursos/archivos/gldas-evapotranspiracion-muestra-2016-05.csv) | Muestra GLDAS de una semana (53 filas) | 2 kB | [docs/REFERENCIA_CIENTIFICA.md](docs/REFERENCIA_CIENTIFICA.md) |
-| [recursos/archivos/descargas.json](recursos/archivos/descargas.json) | Manifiesto de descargas: origen, tamaño y SHA-256 | 4 kB | [recursos/README.md](recursos/README.md) |
+| [recursos/archivos/descargas.json](recursos/archivos/descargas.json) | Manifiesto de descargas: origen, tamaño, SHA-256 y transformaciones documentadas | 12 kB | [recursos/README.md](recursos/README.md) |
 | [docs/CONTEXTO.json](docs/CONTEXTO.json) | Nodos y aristas del grafo de contexto | 15 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
 | [docs/CONTEXTO.svg](docs/CONTEXTO.svg) | Imagen del grafo de contexto | 21 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
 | [docs/generar_contexto.py](docs/generar_contexto.py) | Script que genera el grafo de contexto | 27 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
 | [docs/appeears-monterrey-puntos.csv](docs/appeears-monterrey-puntos.csv) | Puntos de la solicitud de prueba de AppEEARS | 1 kB | [docs/SOLICITUD_APPEEARS_MONTERREY.md](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
+| [recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-results.csv](recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-results.csv) | AppEEARS LST día/noche y calidad; 5.745 registros recibidos | 2589 kB | [Solicitud recibida](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
+| [recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-results.csv](recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-results.csv) | AppEEARS NDVI mensual y calidad; 1.500 registros recibidos | 555 kB | [Solicitud recibida](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
+| [recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-granule-list.txt](recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-granule-list.txt) | Gránulos fuente de la extracción AppEEARS | 235 kB | [Solicitud recibida](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
+| [recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-request.json](recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-request.json) | Parámetros AppEEARS, con correo personal omitido | 3 kB | [Solicitud recibida](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
+| [recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-metadata.xml](recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-metadata.xml) | Metadatos originales del producto AppEEARS | 19 kB | [Solicitud recibida](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
+| [recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-metadata.xml](recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-metadata.xml) | Metadatos originales del producto AppEEARS | 19 kB | [Solicitud recibida](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
+| [recursos/archivos/appeears-monterrey-2001-2025/README.md](recursos/archivos/appeears-monterrey-2001-2025/README.md) | README original AppEEARS: calidad, unidades, precauciones y citas | 32 kB | [Solicitud recibida](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
