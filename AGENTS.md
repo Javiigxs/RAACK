@@ -10,6 +10,7 @@ Repositorio del equipo RAACK para el NASA Space Apps Challenge 2026, reto *Be An
 
 ## Reglas del equipo
 
+- **Validación obligatoria:** todo caso, funcionalidad o conclusión debe pasar las cuatro reglas de [docs/VALIDACION.md](docs/VALIDACION.md): el problema existe, es medible, se hace con los datos que nos dieron y tiene un diferenciador. Si una regla falla, dilo antes de seguir.
 - **Giovanni** está excluido y pendiente de decisión del equipo: no lo uses ni lo presentes como elegido.
 - Distingue lo comprobado de lo que solo afirma una fuente. No inventes revisiones, descargas ni resultados.
 - Las cuentas, inicios de sesión y verificaciones humanas los hace una persona del equipo. No escribas contraseñas.

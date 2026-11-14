@@ -9,7 +9,9 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
   - Los 13 recursos oficiales revisados: 12 fichas; Giovanni sin abrir.
   - 7 archivos descargados, cobertura y grafo de contexto.
   - Cuenta NASA Earthdata del equipo creada.
-  - Solicitud de prueba de AppEEARS en Monterrey, en cola.
+  - Solicitud de prueba de AppEEARS en Monterrey: procesándose, 28 % a las 14:13.
+- **Plazo:** el hackathon dura dos días; el 14 de noviembre a mediodía íbamos por la mitad del primero. Lo que llega al instante está en [docs/FUNCIONALIDADES.md](docs/FUNCIONALIDADES.md).
+- **Regla clave:** toda propuesta debe pasar las cuatro reglas de [docs/VALIDACION.md](docs/VALIDACION.md).
 - **Por decidir:**
   - Variable, región y periodo de la demostración.
   - Si la región está en Canadá, que decide si sirven GEO.ca y RCM.
@@ -25,6 +27,8 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 |---|---|
 | ¿Qué pide exactamente el reto? | [docs/RETO.md](docs/RETO.md) |
 | ¿Qué recursos dieron y cuáles sirven para nuestro caso? | [recursos/COBERTURA.md](recursos/COBERTURA.md) |
+| ¿Qué se puede hacer o pedir en cada recurso y cuánto tarda en llegar? | [docs/FUNCIONALIDADES.md](docs/FUNCIONALIDADES.md) |
+| ¿Cómo saber si una idea o caso es válido? | [docs/VALIDACION.md](docs/VALIDACION.md) |
 | ¿Qué dice o permite un recurso concreto? | Su ficha, en la sección «Fichas por recurso» de este índice |
 | ¿Qué hay que pedir para conseguir datos y para qué? | [docs/SOLICITUDES_DE_DATOS.md](docs/SOLICITUDES_DE_DATOS.md) |
 | ¿Cómo va la extracción de prueba de AppEEARS? | [docs/SOLICITUD_APPEEARS_MONTERREY.md](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
@@ -36,7 +40,8 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 
 | Nota | Qué contiene | Tamaño |
 |---|---|---|
-| [docs/RETO.md](docs/RETO.md) | Qué pide el reto: qué cambia, dónde, cuánto y si es significativo; métodos que sugiere la página oficial. | 2 kB |
+| [docs/RETO.md](docs/RETO.md) | Enunciado oficial (en inglés y en español), contexto del hackathon de dos días, qué debemos resolver y métodos sugeridos. | 4 kB |
+| [docs/VALIDACION.md](docs/VALIDACION.md) | Las 4 reglas que toda propuesta debe pasar (problema real, medible, con los datos que nos dieron, diferenciador) y estado del caso Monterrey. | 5 kB |
 | [docs/PENDIENTES.md](docs/PENDIENTES.md) | Decisiones y tareas abiertas del equipo: variable, región, periodo, accesos y criterios de la herramienta. | 2 kB |
 | [docs/decisiones/GIOVANNI.md](docs/decisiones/GIOVANNI.md) | Por qué Giovanni está excluido y qué falta para decidir si se usa. | 1 kB |
 | [README.md](README.md) | Portada del repositorio: requisitos de la app y enlaces principales. | 2 kB |
@@ -69,6 +74,7 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 
 | Nota | Qué contiene | Tamaño |
 |---|---|---|
+| [docs/FUNCIONALIDADES.md](docs/FUNCIONALIDADES.md) | Qué se puede hacer y pedir en cada recurso y cuánto tarda en llegar el dato; ruta rápida para el hackathon. | 5 kB |
 | [docs/SOLICITUDES_DE_DATOS.md](docs/SOLICITUDES_DE_DATOS.md) | Qué acceso pedir en cada portal (Earthdata, NOAA, KNMI, EODMS), para qué lo usaríamos y texto para «uso previsto». | 4 kB |
 | [docs/SOLICITUD_APPEEARS_MONTERREY.md](docs/SOLICITUD_APPEEARS_MONTERREY.md) | Solicitud de prueba enviada: 5 puntos en Monterrey, NDVI y temperatura 2001–2025, ID y qué hacer al terminar. | 3 kB |
 | [docs/REFERENCIA_CIENTIFICA.md](docs/REFERENCIA_CIENTIFICA.md) | Resumen del método del artículo SeaWiFS y metadatos de la muestra GLDAS descargada. | 3 kB |
