@@ -1,0 +1,85 @@
+{
+  "proyecto": "RAACK",
+  "reto": "https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/",
+  "fecha": "2026-11-14",
+  "nota": "Siete archivos obtenidos con Chrome. Este manifiesto es un registro generado localmente. Los archivos conservan sus bytes originales; los nombres se adaptaron al repositorio. Giovanni queda excluido y pendiente de decisión del equipo.",
+  "archivos": [
+    {
+      "archivo": "nasa-seawifs-series-temporales-20090042747.pdf",
+      "fuente": "https://ntrs.nasa.gov/api/citations/20090042747/downloads/20090042747.pdf",
+      "descripcion": "Artículo de NASA sobre análisis de series de clorofila",
+      "bytes": 8810247,
+      "sha256": "5209cee13b536f0b4df59b6e4fac9f631fafd1458f1e4d936d2cfab5edda0ab3",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome",
+      "paginas": 27,
+      "nombre_original": "NASA_SeaWiFS_Time_Series_20090042747.pdf"
+    },
+    {
+      "archivo": "knmi-manual-acceso-descarga.pdf",
+      "fuente": "https://climexp.knmi.nl/publications/training_climexp_Accessing-and-downloading-data.pdf",
+      "descripcion": "Manual KNMI para acceder y descargar datos",
+      "bytes": 12765397,
+      "sha256": "65ea906052f6cedccdaf67f11c76112a2ed03c6721cea576613c6f6e4bbe6c40",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome",
+      "paginas": 15,
+      "nombre_original": "training_climexp_Accessing-and-downloading-data.pdf"
+    },
+    {
+      "archivo": "noaa-gsom-documentacion.pdf",
+      "fuente": "https://www.ncei.noaa.gov/data/global-summary-of-the-month/doc/GSOM_documentation.pdf",
+      "descripcion": "Documentación de datos mensuales NOAA GSOM",
+      "bytes": 156830,
+      "sha256": "35facf144e7be52a71a557cccfe7660dd60d7b3fded91cfa2f28e854898c860c",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome",
+      "paginas": 20,
+      "nombre_original": "GSOM_documentation.pdf"
+    },
+    {
+      "archivo": "csa-sar-bc-wildfire.ipynb",
+      "fuente": "https://github.com/asc-csa/Synthetic_Aperture_Radar_Tutorial/blob/main/Option%202%20-%20Python/BC%20Wildfire%20raster%20plot.ipynb",
+      "descripcion": "Notebook original de radar SAR de la CSA",
+      "bytes": 993419,
+      "sha256": "d81a42718333b1ed3085b88e3b9232e032836272f040fe1e8370e3942cb597af",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome",
+      "paginas": null,
+      "nombre_original": "BC Wildfire raster plot.ipynb"
+    },
+    {
+      "archivo": "csa-sar-tutorial-qgis.md",
+      "fuente": "https://github.com/asc-csa/Synthetic_Aperture_Radar_Tutorial/blob/main/Option%201%20-%20QGIS/Synthetic%20Aperture%20Radar%20tutorial%20on%20QGIS.md",
+      "descripcion": "Guía original de SAR en QGIS",
+      "bytes": 6966,
+      "sha256": "de8120307e8d97c07e4c007cf603c0bef9a97eee332edb894e16369e952dbe92",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome",
+      "paginas": null,
+      "nombre_original": "Synthetic Aperture Radar tutorial on QGIS.md"
+    },
+    {
+      "archivo": "csa-sar-LICENSE.txt",
+      "fuente": "https://github.com/asc-csa/Synthetic_Aperture_Radar_Tutorial/blob/main/LICENSE",
+      "descripcion": "Licencia del tutorial SAR conservada junto a los archivos",
+      "bytes": 3555,
+      "sha256": "0c17b21d6573e738faa074752a528033e441c5e4547f6280aa2541288370da9c",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome",
+      "paginas": null,
+      "nombre_original": "SAR_LICENSE.txt"
+    },
+    {
+      "archivo": "gldas-evapotranspiracion-muestra-2016-05.csv",
+      "fuente": "https://disc.gsfc.nasa.gov/information/tools?title=Hydrology%20Time%20Series",
+      "descripcion": "Muestra real de evapotranspiración del visor NASA",
+      "bytes": 1963,
+      "sha256": "b3eb09601a0ccacb39ff57f6adfad62a29b75dacbebbf4f63d4d0e4144ecef8c",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome",
+      "paginas": null,
+      "nombre_original": "GLDAS_NOAH025_3H_2_1_Evap_tavg_36.6100_-80.2400_05_01_2016_to_05_07_2016.csv"
+    }
+  ]
+}
