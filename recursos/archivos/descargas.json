@@ -2,7 +2,7 @@
   "proyecto": "RAACK",
   "reto": "https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/",
   "fecha": "2026-11-14",
-  "nota": "Siete archivos obtenidos con Chrome. Este manifiesto es un registro generado localmente. Los archivos conservan sus bytes originales; los nombres se adaptaron al repositorio. Giovanni queda excluido y pendiente de decisión del equipo.",
+  "nota": "Los siete archivos iniciales se obtuvieron con Chrome. Las incorporaciones posteriores indican su vía de acceso. Se conservan los bytes originales salvo las transformaciones documentadas en cada entrada; los nombres pueden adaptarse al repositorio. En AppEEARS se omitió user_id del JSON por contener un correo personal. Giovanni queda excluido y pendiente de decisión del equipo.",
   "archivos": [
     {
       "archivo": "nasa-seawifs-series-temporales-20090042747.pdf",
@@ -80,6 +80,127 @@
       "via": "Chrome",
       "paginas": null,
       "nombre_original": "GLDAS_NOAH025_3H_2_1_Evap_tavg_36.6100_-80.2400_05_01_2016_to_05_07_2016.csv"
+    },
+    {
+      "archivo": "appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-results.csv",
+      "fuente": "https://appeears.earthdatacloud.nasa.gov/download/b55ae841-fc36-4385-b584-e19c67b7b156",
+      "descripcion": "Resultado de la extracción AppEEARS de cinco puntos de Monterrey, 2001–2025; RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-results.csv",
+      "bytes": 2588742,
+      "sha256": "9d85796dc963ddd91dfbb0fd2124559b0fcf3c15c279d8af233e3d9ec21f75ad",
+      "fecha_descarga": "2026-11-14",
+      "via": "ZIP aportado por la persona; extracción y comprobación de integridad asistidas por Codex",
+      "nombre_original": "RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-results.csv",
+      "zip_original": {
+        "nombre": "b55ae841-fc36-4385-b584-e19c67b7b156.zip",
+        "bytes": 126805,
+        "sha256": "841cf91fe901e43a35d82d5ca6c90c9a69974d837d6aa4eb5cd4fac264537734",
+        "publicado": false,
+        "motivo": "Contiene un correo personal en el JSON de la solicitud."
+      }
+    },
+    {
+      "archivo": "appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-results.csv",
+      "fuente": "https://appeears.earthdatacloud.nasa.gov/download/b55ae841-fc36-4385-b584-e19c67b7b156",
+      "descripcion": "Resultado de la extracción AppEEARS de cinco puntos de Monterrey, 2001–2025; RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-results.csv",
+      "bytes": 554531,
+      "sha256": "5d7b2d71dc417be6f97a4f433bd04615a39fee06e0ae5c568c6f9a3d0cb0ac7c",
+      "fecha_descarga": "2026-11-14",
+      "via": "ZIP aportado por la persona; extracción y comprobación de integridad asistidas por Codex",
+      "nombre_original": "RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-results.csv",
+      "zip_original": {
+        "nombre": "b55ae841-fc36-4385-b584-e19c67b7b156.zip",
+        "bytes": 126805,
+        "sha256": "841cf91fe901e43a35d82d5ca6c90c9a69974d837d6aa4eb5cd4fac264537734",
+        "publicado": false,
+        "motivo": "Contiene un correo personal en el JSON de la solicitud."
+      }
+    },
+    {
+      "archivo": "appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-granule-list.txt",
+      "fuente": "https://appeears.earthdatacloud.nasa.gov/download/b55ae841-fc36-4385-b584-e19c67b7b156",
+      "descripcion": "Resultado de la extracción AppEEARS de cinco puntos de Monterrey, 2001–2025; RAACK-prueba-Monterrey-NDVI-LST-2001-2025-granule-list.txt",
+      "bytes": 234738,
+      "sha256": "6d316cfd38b678211b3d9cc0dba56db73630c8f6fdc543505003cd0ac9f231c3",
+      "fecha_descarga": "2026-11-14",
+      "via": "ZIP aportado por la persona; extracción y comprobación de integridad asistidas por Codex",
+      "nombre_original": "RAACK-prueba-Monterrey-NDVI-LST-2001-2025-granule-list.txt",
+      "zip_original": {
+        "nombre": "b55ae841-fc36-4385-b584-e19c67b7b156.zip",
+        "bytes": 126805,
+        "sha256": "841cf91fe901e43a35d82d5ca6c90c9a69974d837d6aa4eb5cd4fac264537734",
+        "publicado": false,
+        "motivo": "Contiene un correo personal en el JSON de la solicitud."
+      }
+    },
+    {
+      "archivo": "appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-request.json",
+      "fuente": "https://appeears.earthdatacloud.nasa.gov/download/b55ae841-fc36-4385-b584-e19c67b7b156",
+      "descripcion": "Resultado de la extracción AppEEARS de cinco puntos de Monterrey, 2001–2025; RAACK-prueba-Monterrey-NDVI-LST-2001-2025-request.json",
+      "bytes": 2272,
+      "sha256": "38af023564ca980f5ba8fc8ce1982e380a2d0a6ca9b22c13b3104ad248dc4879",
+      "fecha_descarga": "2026-11-14",
+      "via": "ZIP aportado por la persona; extracción y comprobación de integridad asistidas por Codex",
+      "nombre_original": "RAACK-prueba-Monterrey-NDVI-LST-2001-2025-request.json",
+      "zip_original": {
+        "nombre": "b55ae841-fc36-4385-b584-e19c67b7b156.zip",
+        "bytes": 126805,
+        "sha256": "841cf91fe901e43a35d82d5ca6c90c9a69974d837d6aa4eb5cd4fac264537734",
+        "publicado": false,
+        "motivo": "Contiene un correo personal en el JSON de la solicitud."
+      },
+      "transformacion": "Se omitió únicamente user_id (correo personal); el resto del JSON conserva sus valores. Reindentado con JSON de dos espacios.",
+      "sha256_original": "b2349a7bd43cf2aa569a9490f7cfe7cd06a441c6105c9aef0504c78451fb041b"
+    },
+    {
+      "archivo": "appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-metadata.xml",
+      "fuente": "https://appeears.earthdatacloud.nasa.gov/download/b55ae841-fc36-4385-b584-e19c67b7b156",
+      "descripcion": "Resultado de la extracción AppEEARS de cinco puntos de Monterrey, 2001–2025; RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-metadata.xml",
+      "bytes": 18381,
+      "sha256": "6baab0a37ff37108fed0e2798d6fea4f77e49cba90630c1dea720af8857bec68",
+      "fecha_descarga": "2026-11-14",
+      "via": "ZIP aportado por la persona; extracción y comprobación de integridad asistidas por Codex",
+      "nombre_original": "RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-metadata.xml",
+      "zip_original": {
+        "nombre": "b55ae841-fc36-4385-b584-e19c67b7b156.zip",
+        "bytes": 126805,
+        "sha256": "841cf91fe901e43a35d82d5ca6c90c9a69974d837d6aa4eb5cd4fac264537734",
+        "publicado": false,
+        "motivo": "Contiene un correo personal en el JSON de la solicitud."
+      }
+    },
+    {
+      "archivo": "appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-metadata.xml",
+      "fuente": "https://appeears.earthdatacloud.nasa.gov/download/b55ae841-fc36-4385-b584-e19c67b7b156",
+      "descripcion": "Resultado de la extracción AppEEARS de cinco puntos de Monterrey, 2001–2025; RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-metadata.xml",
+      "bytes": 18332,
+      "sha256": "da0c6109dd7de11bc9e58ad6030004153226b327e03a9421b1d0af6d3b7a0f77",
+      "fecha_descarga": "2026-11-14",
+      "via": "ZIP aportado por la persona; extracción y comprobación de integridad asistidas por Codex",
+      "nombre_original": "RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-metadata.xml",
+      "zip_original": {
+        "nombre": "b55ae841-fc36-4385-b584-e19c67b7b156.zip",
+        "bytes": 126805,
+        "sha256": "841cf91fe901e43a35d82d5ca6c90c9a69974d837d6aa4eb5cd4fac264537734",
+        "publicado": false,
+        "motivo": "Contiene un correo personal en el JSON de la solicitud."
+      }
+    },
+    {
+      "archivo": "appeears-monterrey-2001-2025/README.md",
+      "fuente": "https://appeears.earthdatacloud.nasa.gov/download/b55ae841-fc36-4385-b584-e19c67b7b156",
+      "descripcion": "Resultado de la extracción AppEEARS de cinco puntos de Monterrey, 2001–2025; README.md",
+      "bytes": 31216,
+      "sha256": "797308f520c6724f110e0d01d75070d7e05d6be14c4beb58e32fc964ca2a2a64",
+      "fecha_descarga": "2026-11-14",
+      "via": "ZIP aportado por la persona; extracción y comprobación de integridad asistidas por Codex",
+      "nombre_original": "README.md",
+      "zip_original": {
+        "nombre": "b55ae841-fc36-4385-b584-e19c67b7b156.zip",
+        "bytes": 126805,
+        "sha256": "841cf91fe901e43a35d82d5ca6c90c9a69974d837d6aa4eb5cd4fac264537734",
+        "publicado": false,
+        "motivo": "Contiene un correo personal en el JSON de la solicitud."
+      }
     }
   ]
 }

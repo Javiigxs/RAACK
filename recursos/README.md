@@ -56,3 +56,23 @@ Qué hay que pedir en cada caso y para qué lo usaríamos: [Bases de datos que h
 ## Antes de elegir datos para la demostración
 
 Definir variable, región y periodo. Conservar fuente, versión del producto, unidades, coordenadas, frecuencia, cobertura temporal, indicadores de calidad y cita. Una muestra de un punto facilita probar la interfaz; un resultado regional requiere observaciones de la región y un tratamiento espacial definido.
+
+## Actualización · 14 de noviembre de 2026: resultado AppEEARS recibido
+
+La persona del equipo recibió y aportó el ZIP de la [solicitud de prueba de Monterrey](../docs/SOLICITUD_APPEEARS_MONTERREY.md), ID `b55ae841-fc36-4385-b584-e19c67b7b156`. Esta entrega actualiza las referencias anteriores a «en cola» y «falta recoger»: ya están disponibles los resultados de cinco puntos para el periodo solicitado de 2001–2025. Sigue siendo una prueba; la región de la demostración la decide el equipo.
+
+Se guardan estos **siete archivos**:
+
+| Archivo | Contenido |
+|---|---|
+| [MOD11A2.061 · resultados CSV](archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-results.csv) | 5.745 registros de temperatura superficial diurna y nocturna, con indicadores de calidad; producto de 8 días, 1 km. |
+| [MOD13A3.061 · resultados CSV](archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-results.csv) | 1.500 registros de NDVI mensual, con indicadores de calidad; producto mensual, 1 km. |
+| [MOD11A2.061 · metadatos XML](archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-metadata.xml) | Metadatos y citas del producto de temperatura superficial. |
+| [MOD13A3.061 · metadatos XML](archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-metadata.xml) | Metadatos y citas del producto de vegetación. |
+| [Lista de gránulos](archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-granule-list.txt) | Direcciones de los archivos fuente utilizados por AppEEARS. |
+| [Parámetros de la solicitud JSON](archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-request.json) | Solicitud reproducible; se omitió únicamente `user_id`, que contenía un correo personal. |
+| [README original de AppEEARS](archivos/appeears-monterrey-2001-2025/README.md) | Descripción de la extracción, calidad, precauciones y citas del proveedor. |
+
+Los archivos conservan sus bytes originales salvo la omisión indicada en el JSON. El ZIP original se conserva fuera del repositorio porque contiene ese correo. La procedencia, los tamaños y las sumas SHA-256 se registran en [descargas.json](archivos/descargas.json). El ZIP pasó la comprobación de integridad CRC; el número de registros describe lo recibido y no implica que todos pasen los filtros de calidad. Antes de calcular tendencias quedan pendientes la revisión de calidad, unidades y escalas descrita en la [nota de la solicitud](../docs/SOLICITUD_APPEEARS_MONTERREY.md).
+
+**Uso de IA:** Codex asistió en la revisión de integridad, el inventario y esta documentación, y en la omisión del correo del JSON destinado a publicación. No se generaron ni modificaron valores científicos.

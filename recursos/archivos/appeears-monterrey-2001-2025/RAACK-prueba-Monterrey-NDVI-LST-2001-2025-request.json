@@ -1,0 +1,104 @@
+{
+  "tier": 1,
+  "error": null,
+  "params": {
+    "dates": [
+      {
+        "endDate": "12-31-2025",
+        "recurring": false,
+        "startDate": "01-01-2001",
+        "yearRange": [
+          1950,
+          2050
+        ]
+      }
+    ],
+    "layers": [
+      {
+        "layer": "_1_km_monthly_NDVI",
+        "product": "MOD13A3.061"
+      },
+      {
+        "layer": "_1_km_monthly_pixel_reliability",
+        "product": "MOD13A3.061"
+      },
+      {
+        "layer": "_1_km_monthly_VI_Quality",
+        "product": "MOD13A3.061"
+      },
+      {
+        "layer": "LST_Day_1km",
+        "product": "MOD11A2.061"
+      },
+      {
+        "layer": "LST_Night_1km",
+        "product": "MOD11A2.061"
+      },
+      {
+        "layer": "QC_Day",
+        "product": "MOD11A2.061"
+      },
+      {
+        "layer": "QC_Night",
+        "product": "MOD11A2.061"
+      }
+    ],
+    "output": {
+      "format": {
+        "type": "geotiff"
+      }
+    },
+    "coordinates": [
+      {
+        "id": "mtycentro",
+        "category": "urbano",
+        "latitude": 25.67081,
+        "longitude": -100.30924
+      },
+      {
+        "id": "chipinque",
+        "category": "sierra",
+        "latitude": 25.59718,
+        "longitude": -100.32813
+      },
+      {
+        "id": "carreteranacional",
+        "category": "expansionurbana",
+        "latitude": 25.58191,
+        "longitude": -100.23418
+      },
+      {
+        "id": "pesqueriakia",
+        "category": "industrialreciente",
+        "latitude": 25.74464,
+        "longitude": -99.98396
+      },
+      {
+        "id": "garcia",
+        "category": "periferia",
+        "latitude": 25.81219,
+        "longitude": -100.5931
+      }
+    ]
+  },
+  "status": "processing",
+  "created": "2026-11-14T19:57:18.104931",
+  "task_id": "b55ae841-fc36-4385-b584-e19c67b7b156",
+  "updated": "2026-11-14T19:59:02.427555",
+  "estimate": {
+    "request_size": 27380,
+    "request_tier": 0,
+    "request_memory": 1
+  },
+  "retry_at": null,
+  "has_swath": false,
+  "task_name": "RAACK prueba Monterrey NDVI LST 2001-2025",
+  "task_type": "point",
+  "api_version": null,
+  "svc_version": "3.137",
+  "web_version": "3.137",
+  "has_nsidc_daac": false,
+  "expires_on": "2026-12-14T19:59:02.427555",
+  "attempts": 1,
+  "cluster_processing": true
+}
