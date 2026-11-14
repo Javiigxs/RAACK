@@ -13,6 +13,10 @@ Your app should be able to do this:
 Materiales preparados para [Be An Earth System Trend Detective!](https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/).
 
 - [Catálogo de recursos y descargas](recursos/README.md): siete archivos, fuentes y estado de acceso a los portales.
+- [Cobertura de los 13 recursos](recursos/COBERTURA.md): hasta dónde se llegó en cada página, qué se descargó y por qué aparece tanto Canadá.
+- [Fichas por página](recursos/paginas): una ficha por cada uno de los 12 recursos revisados.
+- [Bases de datos que hay que pedir](docs/SOLICITUDES_DE_DATOS.md) y para qué las usaríamos.
+- [Grafo de contexto](docs/CONTEXTO.md) de la preparación ([imagen](docs/CONTEXTO.svg), [datos](docs/CONTEXTO.json)).
 - [Reto y objetivos](docs/RETO.md).
 - [Referencia científica y muestra GLDAS](docs/REFERENCIA_CIENTIFICA.md).
 - [Pendientes del equipo](docs/PENDIENTES.md).
