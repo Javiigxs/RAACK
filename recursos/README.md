@@ -4,7 +4,7 @@ fecha: 2026-11-14
 ---
 # Recursos y descargas
 
-[Volver al reto](../docs/RETO.md) · [Página de recursos del reto](https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/?tab=resources) · [Cobertura de los 13 recursos](COBERTURA.md) · [Fichas por página](paginas/)
+[Volver al reto](../docs/RETO.md) · [Página de recursos del reto](https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/?tab=resources) · [Cobertura de los 13 recursos](COBERTURA.md) · [Índice](../INDICE.md)
 
 Revisión realizada en Chrome el **14 de noviembre de 2026**. Se distinguen archivos guardados, portales de datos y referencias enlazadas.
 
