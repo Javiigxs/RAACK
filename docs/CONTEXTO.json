@@ -1,0 +1,590 @@
+{
+  "proyecto": "RAACK",
+  "reto": "https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/",
+  "fecha": "2026-11-14",
+  "descripcion": "Contexto de la preparación de recursos: del reto a la página oficial, sus 13 recursos, lo que se obtuvo de cada uno, los accesos que hay que pedir y las decisiones pendientes.",
+  "agentes": {
+    "Codex": "Preparación inicial, 7 descargas, fichas 01–07 y 12, primera publicación.",
+    "Claude": "Relevo: fichas 08–11, cobertura, solicitudes de datos y este grafo."
+  },
+  "nodos": [
+    {
+      "id": "reto",
+      "tipo": "reto",
+      "etiqueta": "Be An Earth System Trend Detective!",
+      "enlace": "https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/"
+    },
+    {
+      "id": "pagina",
+      "tipo": "pagina",
+      "etiqueta": "Página oficial de recursos · 13",
+      "enlace": "https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/?tab=resources"
+    },
+    {
+      "id": "giovanni",
+      "tipo": "fuente",
+      "numero": "—",
+      "etiqueta": "Giovanni",
+      "grupo": "NASA · datos y recursos",
+      "estado": "no-abierto",
+      "punto_de_parada": "No se abrió: decisión pendiente",
+      "revisado_por": null,
+      "ficha": null,
+      "enlace": "https://giovanni.gsfc.nasa.gov/giovanni/"
+    },
+    {
+      "id": "hydrology",
+      "tipo": "fuente",
+      "numero": "01",
+      "etiqueta": "Hydrology Time Series",
+      "grupo": "NASA · datos y recursos",
+      "estado": "revisado",
+      "punto_de_parada": "Tabla de variables de GLDAS V2.1",
+      "revisado_por": "Codex",
+      "ficha": "recursos/paginas/01-hydrology.md",
+      "enlace": "https://disc.gsfc.nasa.gov/information/tools?title=Hydrology%20Time%20Series"
+    },
+    {
+      "id": "appeears",
+      "tipo": "fuente",
+      "numero": "02",
+      "etiqueta": "AppEEARS",
+      "grupo": "NASA · datos y recursos",
+      "estado": "requiere-acceso",
+      "punto_de_parada": "Ayuda: descarga de muestras de puntos",
+      "revisado_por": "Codex",
+      "ficha": "recursos/paginas/02-appeears.md",
+      "enlace": "https://appeears.earthdatacloud.nasa.gov/"
+    },
+    {
+      "id": "cdo",
+      "tipo": "fuente",
+      "numero": "03",
+      "etiqueta": "Climate Data Online · NOAA",
+      "grupo": "NASA · datos y recursos",
+      "estado": "revisado",
+      "punto_de_parada": "Documentación de /data del API v2",
+      "revisado_por": "Codex",
+      "ficha": "recursos/paginas/03-cdo.md",
+      "enlace": "https://www.ncei.noaa.gov/cdo-web/"
+    },
+    {
+      "id": "seawifs",
+      "tipo": "fuente",
+      "numero": "04",
+      "etiqueta": "Artículo SeaWiFS",
+      "grupo": "NASA · datos y recursos",
+      "estado": "revisado",
+      "punto_de_parada": "Metodología del PDF",
+      "revisado_por": "Codex",
+      "ficha": "recursos/paginas/04-seawifs.md",
+      "enlace": "https://ntrs.nasa.gov/citations/20090042747"
+    },
+    {
+      "id": "knmi",
+      "tipo": "fuente",
+      "numero": "05",
+      "etiqueta": "KNMI Climate Explorer",
+      "grupo": "Socios · KNMI y estadística",
+      "estado": "bloqueado",
+      "punto_de_parada": "Verificación humana en la ayuda",
+      "revisado_por": "Codex",
+      "ficha": "recursos/paginas/05-knmi.md",
+      "enlace": "https://climexp.knmi.nl/"
+    },
+    {
+      "id": "medium",
+      "tipo": "fuente",
+      "numero": "06",
+      "etiqueta": "Métodos estadísticos · Medium",
+      "grupo": "Socios · KNMI y estadística",
+      "estado": "revisado",
+      "punto_de_parada": "References y documentación de ADF",
+      "revisado_por": "Codex",
+      "ficha": "recursos/paginas/06-metodos-estadisticos.md",
+      "enlace": "https://medium.com/@snp.kriss/statistical-test-methods-to-detect-trends-in-time-series-data-b361a0ec530b"
+    },
+    {
+      "id": "statsig",
+      "tipo": "fuente",
+      "numero": "07",
+      "etiqueta": "Significación · Statsig",
+      "grupo": "Socios · KNMI y estadística",
+      "estado": "revisado",
+      "punto_de_parada": "Recomendaciones e intervalos",
+      "revisado_por": "Codex",
+      "ficha": "recursos/paginas/07-significancia.md",
+      "enlace": "https://www.statsig.com/perspectives/a-comprehensive-guide-to-statistical-significance"
+    },
+    {
+      "id": "rcm",
+      "tipo": "fuente",
+      "numero": "08",
+      "etiqueta": "RCM · Data",
+      "grupo": "CSA · Agencia Espacial Canadiense",
+      "estado": "requiere-acceso",
+      "punto_de_parada": "Escena rcm-ard del STAC de EODMS",
+      "revisado_por": "Claude",
+      "ficha": "recursos/paginas/08-rcm.md",
+      "enlace": "https://donnees-data.asc-csa.gc.ca/en/dataset/rcm"
+    },
+    {
+      "id": "geo",
+      "tipo": "fuente",
+      "numero": "09",
+      "etiqueta": "GEO.ca",
+      "grupo": "CSA · Agencia Espacial Canadiense",
+      "estado": "revisado",
+      "punto_de_parada": "Colecciones del STAC del Datacube",
+      "revisado_por": "Claude",
+      "ficha": "recursos/paginas/09-geo.md",
+      "enlace": "http://geo.ca/"
+    },
+    {
+      "id": "swot",
+      "tipo": "fuente",
+      "numero": "10",
+      "etiqueta": "SWOT · Information",
+      "grupo": "CSA · Agencia Espacial Canadiense",
+      "estado": "requiere-acceso",
+      "punto_de_parada": "Hydrocron y tutorial de la CSA",
+      "revisado_por": "Claude",
+      "ficha": "recursos/paginas/10-swot.md",
+      "enlace": "https://www.asc-csa.gc.ca/eng/satellites/swot/"
+    },
+    {
+      "id": "ecosistemas",
+      "tipo": "fuente",
+      "numero": "11",
+      "etiqueta": "Ecosistemas desde el espacio",
+      "grupo": "CSA · Agencia Espacial Canadiense",
+      "estado": "revisado",
+      "punto_de_parada": "Página de BioSpace",
+      "revisado_por": "Claude",
+      "ficha": "recursos/paginas/11-ecosistemas.md",
+      "enlace": "https://www.asc-csa.gc.ca/eng/satellites/everyday-lives/monitoring-and-protecting-our-ecosystems-from-space.asp"
+    },
+    {
+      "id": "sar",
+      "tipo": "fuente",
+      "numero": "12",
+      "etiqueta": "Tutorial SAR · Python y QGIS",
+      "grupo": "CSA · Agencia Espacial Canadiense",
+      "estado": "revisado",
+      "punto_de_parada": "Lectura de notebook, guía y licencia",
+      "revisado_por": "Codex",
+      "ficha": "recursos/paginas/12-sar.md",
+      "enlace": "https://github.com/asc-csa/Synthetic_Aperture_Radar_Tutorial"
+    },
+    {
+      "id": "f_gldas",
+      "tipo": "archivo",
+      "etiqueta": "CSV GLDAS · una semana",
+      "ruta": "recursos/archivos/gldas-evapotranspiracion-muestra-2016-05.csv"
+    },
+    {
+      "id": "f_gsom",
+      "tipo": "archivo",
+      "etiqueta": "PDF GSOM · NOAA",
+      "ruta": "recursos/archivos/noaa-gsom-documentacion.pdf"
+    },
+    {
+      "id": "f_seawifs",
+      "tipo": "archivo",
+      "etiqueta": "PDF SeaWiFS · 27 páginas",
+      "ruta": "recursos/archivos/nasa-seawifs-series-temporales-20090042747.pdf"
+    },
+    {
+      "id": "f_knmi",
+      "tipo": "archivo",
+      "etiqueta": "Manual KNMI · 15 páginas",
+      "ruta": "recursos/archivos/knmi-manual-acceso-descarga.pdf"
+    },
+    {
+      "id": "f_sar_nb",
+      "tipo": "archivo",
+      "etiqueta": "Notebook SAR",
+      "ruta": "recursos/archivos/csa-sar-bc-wildfire.ipynb"
+    },
+    {
+      "id": "f_sar_qgis",
+      "tipo": "archivo",
+      "etiqueta": "Guía QGIS SAR",
+      "ruta": "recursos/archivos/csa-sar-tutorial-qgis.md"
+    },
+    {
+      "id": "f_sar_lic",
+      "tipo": "archivo",
+      "etiqueta": "Licencia SAR",
+      "ruta": "recursos/archivos/csa-sar-LICENSE.txt"
+    },
+    {
+      "id": "a_earthdata",
+      "tipo": "acceso",
+      "etiqueta": "Cuenta NASA Earthdata",
+      "estado": "sin pedir"
+    },
+    {
+      "id": "a_noaa",
+      "tipo": "acceso",
+      "etiqueta": "Token del API de NOAA",
+      "estado": "sin pedir"
+    },
+    {
+      "id": "a_knmi",
+      "tipo": "acceso",
+      "etiqueta": "Verificación humana KNMI",
+      "estado": "sin pedir"
+    },
+    {
+      "id": "a_eodms",
+      "tipo": "acceso",
+      "etiqueta": "Registro EODMS y licencia",
+      "estado": "sin pedir"
+    },
+    {
+      "id": "d_giovanni",
+      "tipo": "decision",
+      "etiqueta": "¿Usamos Giovanni?",
+      "estado": "pendiente"
+    },
+    {
+      "id": "d_canada",
+      "tipo": "decision",
+      "etiqueta": "¿La región está en Canadá?",
+      "estado": "pendiente"
+    },
+    {
+      "id": "d_caso",
+      "tipo": "decision",
+      "etiqueta": "Elegir variable, región y periodo",
+      "estado": "pendiente"
+    },
+    {
+      "id": "github",
+      "tipo": "destino",
+      "etiqueta": "GitHub · Javiigxs/RAACK",
+      "detalle": "12 fichas, cobertura, solicitudes, grafo y 7 archivos",
+      "enlace": "https://github.com/Javiigxs/RAACK"
+    },
+    {
+      "id": "obsidian",
+      "tipo": "destino",
+      "etiqueta": "Obsidian · bóveda RAACK",
+      "detalle": "Notas iniciales y 7 archivos (Codex)",
+      "enlace": null
+    }
+  ],
+  "aristas": [
+    {
+      "de": "reto",
+      "a": "pagina",
+      "relacion": "ofrece"
+    },
+    {
+      "de": "pagina",
+      "a": "giovanni",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "hydrology",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "appeears",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "cdo",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "seawifs",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "knmi",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "medium",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "statsig",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "rcm",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "geo",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "swot",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "ecosistemas",
+      "relacion": "lista"
+    },
+    {
+      "de": "pagina",
+      "a": "sar",
+      "relacion": "lista"
+    },
+    {
+      "de": "hydrology",
+      "a": "f_gldas",
+      "relacion": "se descargó"
+    },
+    {
+      "de": "f_gldas",
+      "a": "github",
+      "relacion": "publicado"
+    },
+    {
+      "de": "f_gldas",
+      "a": "obsidian",
+      "relacion": "copiado"
+    },
+    {
+      "de": "cdo",
+      "a": "f_gsom",
+      "relacion": "se descargó"
+    },
+    {
+      "de": "f_gsom",
+      "a": "github",
+      "relacion": "publicado"
+    },
+    {
+      "de": "f_gsom",
+      "a": "obsidian",
+      "relacion": "copiado"
+    },
+    {
+      "de": "seawifs",
+      "a": "f_seawifs",
+      "relacion": "se descargó"
+    },
+    {
+      "de": "f_seawifs",
+      "a": "github",
+      "relacion": "publicado"
+    },
+    {
+      "de": "f_seawifs",
+      "a": "obsidian",
+      "relacion": "copiado"
+    },
+    {
+      "de": "knmi",
+      "a": "f_knmi",
+      "relacion": "se descargó"
+    },
+    {
+      "de": "f_knmi",
+      "a": "github",
+      "relacion": "publicado"
+    },
+    {
+      "de": "f_knmi",
+      "a": "obsidian",
+      "relacion": "copiado"
+    },
+    {
+      "de": "sar",
+      "a": "f_sar_nb",
+      "relacion": "se descargó"
+    },
+    {
+      "de": "f_sar_nb",
+      "a": "github",
+      "relacion": "publicado"
+    },
+    {
+      "de": "f_sar_nb",
+      "a": "obsidian",
+      "relacion": "copiado"
+    },
+    {
+      "de": "sar",
+      "a": "f_sar_qgis",
+      "relacion": "se descargó"
+    },
+    {
+      "de": "f_sar_qgis",
+      "a": "github",
+      "relacion": "publicado"
+    },
+    {
+      "de": "f_sar_qgis",
+      "a": "obsidian",
+      "relacion": "copiado"
+    },
+    {
+      "de": "sar",
+      "a": "f_sar_lic",
+      "relacion": "se descargó"
+    },
+    {
+      "de": "f_sar_lic",
+      "a": "github",
+      "relacion": "publicado"
+    },
+    {
+      "de": "f_sar_lic",
+      "a": "obsidian",
+      "relacion": "copiado"
+    },
+    {
+      "de": "appeears",
+      "a": "a_earthdata",
+      "relacion": "requiere: cuenta y extracción"
+    },
+    {
+      "de": "swot",
+      "a": "a_earthdata",
+      "relacion": "requiere: descargar granulos"
+    },
+    {
+      "de": "a_earthdata",
+      "a": "d_caso",
+      "relacion": "se pide después de decidir"
+    },
+    {
+      "de": "cdo",
+      "a": "a_noaa",
+      "relacion": "requiere: solo para el API"
+    },
+    {
+      "de": "a_noaa",
+      "a": "d_caso",
+      "relacion": "se pide después de decidir"
+    },
+    {
+      "de": "knmi",
+      "a": "a_knmi",
+      "relacion": "requiere: bloquea las herramientas"
+    },
+    {
+      "de": "a_knmi",
+      "a": "d_caso",
+      "relacion": "se pide después de decidir"
+    },
+    {
+      "de": "rcm",
+      "a": "a_eodms",
+      "relacion": "requiere: para descargar"
+    },
+    {
+      "de": "a_eodms",
+      "a": "d_caso",
+      "relacion": "se pide después de decidir"
+    },
+    {
+      "de": "giovanni",
+      "a": "d_giovanni",
+      "relacion": "pendiente"
+    },
+    {
+      "de": "hydrology",
+      "a": "d_giovanni",
+      "relacion": "su API enlaza Giovanni"
+    },
+    {
+      "de": "seawifs",
+      "a": "d_giovanni",
+      "relacion": "lo usa como antecedente"
+    },
+    {
+      "de": "rcm",
+      "a": "d_canada",
+      "relacion": "acceso público solo en Canadá"
+    },
+    {
+      "de": "geo",
+      "a": "d_canada",
+      "relacion": "datos de Canadá"
+    },
+    {
+      "de": "d_canada",
+      "a": "d_caso",
+      "relacion": "forma parte de"
+    },
+    {
+      "de": "hydrology",
+      "a": "github",
+      "relacion": "ficha publicada"
+    },
+    {
+      "de": "appeears",
+      "a": "github",
+      "relacion": "ficha publicada"
+    },
+    {
+      "de": "cdo",
+      "a": "github",
+      "relacion": "ficha publicada"
+    },
+    {
+      "de": "seawifs",
+      "a": "github",
+      "relacion": "ficha publicada"
+    },
+    {
+      "de": "knmi",
+      "a": "github",
+      "relacion": "ficha publicada"
+    },
+    {
+      "de": "medium",
+      "a": "github",
+      "relacion": "ficha publicada"
+    },
+    {
+      "de": "statsig",
+      "a": "github",
+      "relacion": "ficha publicada"
+    },
+    {
+      "de": "rcm",
+      "a": "github",
+      "relacion": "ficha publicada"
+    },
+    {
+      "de": "geo",
+      "a": "github",
+      "relacion": "ficha publicada"
+    },
+    {
+      "de": "swot",
+      "a": "github",
+      "relacion": "ficha publicada"
+    },
+    {
+      "de": "ecosistemas",
+      "a": "github",
+      "relacion": "ficha publicada"
+    },
+    {
+      "de": "sar",
+      "a": "github",
+      "relacion": "ficha publicada"
+    }
+  ]
+}

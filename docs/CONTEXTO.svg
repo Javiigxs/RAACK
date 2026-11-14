@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="918" viewBox="0 0 1400 918" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>RAACK · grafo de contexto</title>
+<defs><marker id="f-2f6fb5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f6fb5"/></marker><marker id="f-3d4650" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3d4650"/></marker><marker id="f-8e44ad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker><marker id="f-9aa5b1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9aa5b1"/></marker><marker id="f-d9822b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d9822b"/></marker></defs>
+<rect width="1400" height="918" fill="#ffffff"/>
+<text x="24" y="36" font-size="19" font-weight="700" fill="#1d2430">RAACK · contexto de la preparación de recursos</text><text x="24" y="60" font-size="12" fill="#4a5563">14 de noviembre de 2026 · del reto a sus 13 recursos: qué se revisó, hasta dónde, qué se descargó y qué falta pedir o decidir</text>
+<rect x="280" y="86" width="360" height="270" rx="10" fill="#f7f8fa" stroke="#d5dbe2"/>
+<text x="290" y="104" font-size="11.5" font-weight="700" fill="#3d4650" letter-spacing="0.4">NASA · DATOS Y RECURSOS</text>
+<rect x="280" y="370" width="360" height="174" rx="10" fill="#f7f8fa" stroke="#d5dbe2"/>
+<text x="290" y="388" font-size="11.5" font-weight="700" fill="#3d4650" letter-spacing="0.4">SOCIOS · KNMI Y ESTADÍSTICA</text>
+<rect x="280" y="558" width="360" height="270" rx="10" fill="#f7f8fa" stroke="#d5dbe2"/>
+<text x="290" y="576" font-size="11.5" font-weight="700" fill="#3d4650" letter-spacing="0.4">CSA · AGENCIA ESPACIAL CANADIENSE</text>
+<rect x="710" y="86" width="270" height="296" rx="10" fill="#f7f8fa" stroke="#d5dbe2"/>
+<text x="720" y="104" font-size="11.5" font-weight="700" fill="#3d4650" letter-spacing="0.4">ARCHIVOS DESCARGADOS · 7</text>
+<rect x="710" y="400" width="270" height="182" rx="10" fill="#f7f8fa" stroke="#d5dbe2"/>
+<text x="720" y="418" font-size="11.5" font-weight="700" fill="#3d4650" letter-spacing="0.4">ACCESOS QUE HAY QUE PEDIR · 4</text>
+<rect x="710" y="600" width="270" height="106" rx="10" fill="#f7f8fa" stroke="#d5dbe2"/>
+<text x="720" y="618" font-size="11.5" font-weight="700" fill="#3d4650" letter-spacing="0.4">DECISIONES PENDIENTES</text>
+<path d="M129.0,444.0 L129.0,478.0" stroke="#3d4650" stroke-width="1.4" marker-end="url(#f-3d4650)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,138.0 288.0,138.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,186.0 288.0,186.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,234.0 288.0,234.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,282.0 288.0,282.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,330.0 288.0,330.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,422.0 288.0,422.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,470.0 288.0,470.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,518.0 288.0,518.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,610.0 288.0,610.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,658.0 288.0,658.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,706.0 288.0,706.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,754.0 288.0,754.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M234.0,502.0 C274.0,502.0 248.0,802.0 288.0,802.0" fill="none" stroke="#9aa5b1" stroke-width="1.0" opacity="0.85" marker-end="url(#f-9aa5b1)"/>
+<path d="M630.0,186.0 C674.0,186.0 674.0,133.0 718.0,133.0" fill="none" stroke="#2f6fb5" stroke-width="1.3" opacity="0.85" marker-end="url(#f-2f6fb5)"/>
+<path d="M630.0,282.0 C674.0,282.0 674.0,171.0 718.0,171.0" fill="none" stroke="#2f6fb5" stroke-width="1.3" opacity="0.85" marker-end="url(#f-2f6fb5)"/>
+<path d="M630.0,330.0 C674.0,330.0 674.0,209.0 718.0,209.0" fill="none" stroke="#2f6fb5" stroke-width="1.3" opacity="0.85" marker-end="url(#f-2f6fb5)"/>
+<path d="M630.0,422.0 C674.0,422.0 674.0,247.0 718.0,247.0" fill="none" stroke="#2f6fb5" stroke-width="1.3" opacity="0.85" marker-end="url(#f-2f6fb5)"/>
+<path d="M630.0,802.0 C674.0,802.0 674.0,285.0 718.0,285.0" fill="none" stroke="#2f6fb5" stroke-width="1.3" opacity="0.85" marker-end="url(#f-2f6fb5)"/>
+<path d="M630.0,802.0 C674.0,802.0 674.0,323.0 718.0,323.0" fill="none" stroke="#2f6fb5" stroke-width="1.3" opacity="0.85" marker-end="url(#f-2f6fb5)"/>
+<path d="M630.0,802.0 C674.0,802.0 674.0,361.0 718.0,361.0" fill="none" stroke="#2f6fb5" stroke-width="1.3" opacity="0.85" marker-end="url(#f-2f6fb5)"/>
+<path d="M630.0,234.0 C674.0,234.0 674.0,447.0 718.0,447.0" fill="none" stroke="#d9822b" stroke-width="1.3" opacity="0.85" marker-end="url(#f-d9822b)"/>
+<path d="M630.0,706.0 C674.0,706.0 674.0,447.0 718.0,447.0" fill="none" stroke="#d9822b" stroke-width="1.3" opacity="0.85" marker-end="url(#f-d9822b)"/>
+<path d="M630.0,282.0 C674.0,282.0 674.0,485.0 718.0,485.0" fill="none" stroke="#d9822b" stroke-width="1.3" opacity="0.85" marker-end="url(#f-d9822b)"/>
+<path d="M630.0,422.0 C674.0,422.0 674.0,523.0 718.0,523.0" fill="none" stroke="#d9822b" stroke-width="1.3" opacity="0.85" marker-end="url(#f-d9822b)"/>
+<path d="M630.0,610.0 C674.0,610.0 674.0,561.0 718.0,561.0" fill="none" stroke="#d9822b" stroke-width="1.3" opacity="0.85" marker-end="url(#f-d9822b)"/>
+<path d="M630.0,138.0 C674.0,138.0 674.0,647.0 718.0,647.0" fill="none" stroke="#8e44ad" stroke-width="1.3" opacity="0.85" stroke-dasharray="5 4" marker-end="url(#f-8e44ad)"/>
+<path d="M630.0,186.0 C674.0,186.0 674.0,647.0 718.0,647.0" fill="none" stroke="#8e44ad" stroke-width="1.3" opacity="0.85" stroke-dasharray="5 4" marker-end="url(#f-8e44ad)"/>
+<path d="M630.0,330.0 C674.0,330.0 674.0,647.0 718.0,647.0" fill="none" stroke="#8e44ad" stroke-width="1.3" opacity="0.85" stroke-dasharray="5 4" marker-end="url(#f-8e44ad)"/>
+<path d="M630.0,610.0 C674.0,610.0 674.0,685.0 718.0,685.0" fill="none" stroke="#8e44ad" stroke-width="1.3" opacity="0.85" stroke-dasharray="5 4" marker-end="url(#f-8e44ad)"/>
+<path d="M630.0,658.0 C674.0,658.0 674.0,685.0 718.0,685.0" fill="none" stroke="#8e44ad" stroke-width="1.3" opacity="0.85" stroke-dasharray="5 4" marker-end="url(#f-8e44ad)"/>
+<path d="M980.0,234.0 C1020.0,234.0 1018.0,198.0 1058.0,198.0" fill="none" stroke="#3d4650" stroke-width="1.6" opacity="0.85" marker-end="url(#f-3d4650)"/>
+<path d="M980.0,234.0 C1020.0,234.0 1018.0,266.0 1058.0,266.0" fill="none" stroke="#3d4650" stroke-width="1.6" opacity="0.85" marker-end="url(#f-3d4650)"/>
+<path d="M980.0,491.0 C1020.0,491.0 1018.0,553.0 1058.0,553.0" fill="none" stroke="#8e44ad" stroke-width="1.6" opacity="0.85" stroke-dasharray="5 4" marker-end="url(#f-8e44ad)"/>
+<path d="M970.0,685.0 C1014.0,685.0 1014.0,561.0 1058.0,561.0" fill="none" stroke="#8e44ad" stroke-width="1.3" opacity="0.85" stroke-dasharray="5 4" marker-end="url(#f-8e44ad)"/>
+<rect x="290" y="118" width="340" height="40" rx="7" fill="#f2f2f2" stroke="#8a8a8a" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="300" y="135" font-size="12.5" font-weight="600" fill="#1d2430">Giovanni</text>
+<text x="300" y="150" font-size="10.5" fill="#4a5563">Hasta: No se abrió: decisión pendiente</text>
+<rect x="290" y="166" width="340" height="40" rx="7" fill="#e7f5ec" stroke="#2e7d4f" stroke-width="1.4"/>
+<text x="300" y="183" font-size="12.5" font-weight="600" fill="#1d2430">01 · Hydrology Time Series</text>
+<text x="300" y="198" font-size="10.5" fill="#4a5563">Hasta: Tabla de variables de GLDAS V2.1</text>
+<rect x="576" y="173" width="46" height="16" rx="8" fill="#e2e8f0"/><text x="599.0" y="185" font-size="10" text-anchor="middle" fill="#334155">Codex</text>
+<rect x="290" y="214" width="340" height="40" rx="7" fill="#fff4e5" stroke="#d9822b" stroke-width="1.4"/>
+<text x="300" y="231" font-size="12.5" font-weight="600" fill="#1d2430">02 · AppEEARS</text>
+<text x="300" y="246" font-size="10.5" fill="#4a5563">Hasta: Ayuda: descarga de muestras de puntos</text>
+<rect x="576" y="221" width="46" height="16" rx="8" fill="#e2e8f0"/><text x="599.0" y="233" font-size="10" text-anchor="middle" fill="#334155">Codex</text>
+<rect x="290" y="262" width="340" height="40" rx="7" fill="#e7f5ec" stroke="#2e7d4f" stroke-width="1.4"/>
+<text x="300" y="279" font-size="12.5" font-weight="600" fill="#1d2430">03 · Climate Data Online · NOAA</text>
+<text x="300" y="294" font-size="10.5" fill="#4a5563">Hasta: Documentación de /data del API v2</text>
+<rect x="576" y="269" width="46" height="16" rx="8" fill="#e2e8f0"/><text x="599.0" y="281" font-size="10" text-anchor="middle" fill="#334155">Codex</text>
+<rect x="290" y="310" width="340" height="40" rx="7" fill="#e7f5ec" stroke="#2e7d4f" stroke-width="1.4"/>
+<text x="300" y="327" font-size="12.5" font-weight="600" fill="#1d2430">04 · Artículo SeaWiFS</text>
+<text x="300" y="342" font-size="10.5" fill="#4a5563">Hasta: Metodología del PDF</text>
+<rect x="576" y="317" width="46" height="16" rx="8" fill="#e2e8f0"/><text x="599.0" y="329" font-size="10" text-anchor="middle" fill="#334155">Codex</text>
+<rect x="290" y="402" width="340" height="40" rx="7" fill="#fdecea" stroke="#c0392b" stroke-width="1.4"/>
+<text x="300" y="419" font-size="12.5" font-weight="600" fill="#1d2430">05 · KNMI Climate Explorer</text>
+<text x="300" y="434" font-size="10.5" fill="#4a5563">Hasta: Verificación humana en la ayuda</text>
+<rect x="576" y="409" width="46" height="16" rx="8" fill="#e2e8f0"/><text x="599.0" y="421" font-size="10" text-anchor="middle" fill="#334155">Codex</text>
+<rect x="290" y="450" width="340" height="40" rx="7" fill="#e7f5ec" stroke="#2e7d4f" stroke-width="1.4"/>
+<text x="300" y="467" font-size="12.5" font-weight="600" fill="#1d2430">06 · Métodos estadísticos · Medium</text>
+<text x="300" y="482" font-size="10.5" fill="#4a5563">Hasta: References y documentación de ADF</text>
+<rect x="576" y="457" width="46" height="16" rx="8" fill="#e2e8f0"/><text x="599.0" y="469" font-size="10" text-anchor="middle" fill="#334155">Codex</text>
+<rect x="290" y="498" width="340" height="40" rx="7" fill="#e7f5ec" stroke="#2e7d4f" stroke-width="1.4"/>
+<text x="300" y="515" font-size="12.5" font-weight="600" fill="#1d2430">07 · Significación · Statsig</text>
+<text x="300" y="530" font-size="10.5" fill="#4a5563">Hasta: Recomendaciones e intervalos</text>
+<rect x="576" y="505" width="46" height="16" rx="8" fill="#e2e8f0"/><text x="599.0" y="517" font-size="10" text-anchor="middle" fill="#334155">Codex</text>
+<rect x="290" y="590" width="340" height="40" rx="7" fill="#fff4e5" stroke="#d9822b" stroke-width="1.4"/>
+<text x="300" y="607" font-size="12.5" font-weight="600" fill="#1d2430">08 · RCM · Data</text>
+<text x="300" y="622" font-size="10.5" fill="#4a5563">Hasta: Escena rcm-ard del STAC de EODMS</text>
+<rect x="574" y="597" width="48" height="16" rx="8" fill="#efe7fb"/><text x="598.0" y="609" font-size="10" text-anchor="middle" fill="#5b21b6">Claude</text>
+<rect x="290" y="638" width="340" height="40" rx="7" fill="#e7f5ec" stroke="#2e7d4f" stroke-width="1.4"/>
+<text x="300" y="655" font-size="12.5" font-weight="600" fill="#1d2430">09 · GEO.ca</text>
+<text x="300" y="670" font-size="10.5" fill="#4a5563">Hasta: Colecciones del STAC del Datacube</text>
+<rect x="574" y="645" width="48" height="16" rx="8" fill="#efe7fb"/><text x="598.0" y="657" font-size="10" text-anchor="middle" fill="#5b21b6">Claude</text>
+<rect x="290" y="686" width="340" height="40" rx="7" fill="#fff4e5" stroke="#d9822b" stroke-width="1.4"/>
+<text x="300" y="703" font-size="12.5" font-weight="600" fill="#1d2430">10 · SWOT · Information</text>
+<text x="300" y="718" font-size="10.5" fill="#4a5563">Hasta: Hydrocron y tutorial de la CSA</text>
+<rect x="574" y="693" width="48" height="16" rx="8" fill="#efe7fb"/><text x="598.0" y="705" font-size="10" text-anchor="middle" fill="#5b21b6">Claude</text>
+<rect x="290" y="734" width="340" height="40" rx="7" fill="#e7f5ec" stroke="#2e7d4f" stroke-width="1.4"/>
+<text x="300" y="751" font-size="12.5" font-weight="600" fill="#1d2430">11 · Ecosistemas desde el espacio</text>
+<text x="300" y="766" font-size="10.5" fill="#4a5563">Hasta: Página de BioSpace</text>
+<rect x="574" y="741" width="48" height="16" rx="8" fill="#efe7fb"/><text x="598.0" y="753" font-size="10" text-anchor="middle" fill="#5b21b6">Claude</text>
+<rect x="290" y="782" width="340" height="40" rx="7" fill="#e7f5ec" stroke="#2e7d4f" stroke-width="1.4"/>
+<text x="300" y="799" font-size="12.5" font-weight="600" fill="#1d2430">12 · Tutorial SAR · Python y QGIS</text>
+<text x="300" y="814" font-size="10.5" fill="#4a5563">Hasta: Lectura de notebook, guía y licencia</text>
+<rect x="576" y="789" width="46" height="16" rx="8" fill="#e2e8f0"/><text x="599.0" y="801" font-size="10" text-anchor="middle" fill="#334155">Codex</text>
+<rect x="24" y="400.0" width="210" height="44" rx="8" fill="#1f2a44"/><text x="34" y="418.0" font-size="10.5" fill="#c9d3e6">RETO · NASA SPACE APPS 2026</text><text x="34" y="434.0" font-size="12" font-weight="600" fill="#ffffff">Earth System Trend Detective</text>
+<rect x="24" y="480.0" width="210" height="44" rx="8" fill="#33415c"/><text x="34" y="498.0" font-size="10.5" fill="#c9d3e6">PÁGINA OFICIAL ?tab=resources</text><text x="34" y="514.0" font-size="12" font-weight="600" fill="#ffffff">13 recursos · 12 fichas</text>
+<rect x="720" y="118" width="250" height="30" rx="7" fill="#e8f1fb" stroke="#2f6fb5" stroke-width="1.4"/>
+<text x="730" y="137.5" font-size="12.5" fill="#1d2430">CSV GLDAS · una semana</text>
+<rect x="720" y="156" width="250" height="30" rx="7" fill="#e8f1fb" stroke="#2f6fb5" stroke-width="1.4"/>
+<text x="730" y="175.5" font-size="12.5" fill="#1d2430">PDF GSOM · NOAA</text>
+<rect x="720" y="194" width="250" height="30" rx="7" fill="#e8f1fb" stroke="#2f6fb5" stroke-width="1.4"/>
+<text x="730" y="213.5" font-size="12.5" fill="#1d2430">PDF SeaWiFS · 27 páginas</text>
+<rect x="720" y="232" width="250" height="30" rx="7" fill="#e8f1fb" stroke="#2f6fb5" stroke-width="1.4"/>
+<text x="730" y="251.5" font-size="12.5" fill="#1d2430">Manual KNMI · 15 páginas</text>
+<rect x="720" y="270" width="250" height="30" rx="7" fill="#e8f1fb" stroke="#2f6fb5" stroke-width="1.4"/>
+<text x="730" y="289.5" font-size="12.5" fill="#1d2430">Notebook SAR</text>
+<rect x="720" y="308" width="250" height="30" rx="7" fill="#e8f1fb" stroke="#2f6fb5" stroke-width="1.4"/>
+<text x="730" y="327.5" font-size="12.5" fill="#1d2430">Guía QGIS SAR</text>
+<rect x="720" y="346" width="250" height="30" rx="7" fill="#e8f1fb" stroke="#2f6fb5" stroke-width="1.4"/>
+<text x="730" y="365.5" font-size="12.5" fill="#1d2430">Licencia SAR</text>
+<rect x="720" y="432" width="250" height="30" rx="7" fill="#fff4e5" stroke="#d9822b" stroke-width="1.4"/>
+<text x="730" y="451.5" font-size="12.5" fill="#1d2430">Cuenta NASA Earthdata</text>
+<rect x="720" y="470" width="250" height="30" rx="7" fill="#fff4e5" stroke="#d9822b" stroke-width="1.4"/>
+<text x="730" y="489.5" font-size="12.5" fill="#1d2430">Token del API de NOAA</text>
+<rect x="720" y="508" width="250" height="30" rx="7" fill="#fff4e5" stroke="#d9822b" stroke-width="1.4"/>
+<text x="730" y="527.5" font-size="12.5" fill="#1d2430">Verificación humana KNMI</text>
+<rect x="720" y="546" width="250" height="30" rx="7" fill="#fff4e5" stroke="#d9822b" stroke-width="1.4"/>
+<text x="730" y="565.5" font-size="12.5" fill="#1d2430">Registro EODMS y licencia</text>
+<rect x="720" y="632" width="250" height="30" rx="7" fill="#f6e8f7" stroke="#8e44ad" stroke-width="1.4"/>
+<text x="730" y="651.5" font-size="12.5" fill="#1d2430">¿Usamos Giovanni?</text>
+<rect x="720" y="670" width="250" height="30" rx="7" fill="#f6e8f7" stroke="#8e44ad" stroke-width="1.4"/>
+<text x="730" y="689.5" font-size="12.5" fill="#1d2430">¿La región está en Canadá?</text>
+<rect x="1060" y="176.0" width="316" height="44" rx="7" fill="#eef0f2" stroke="#3d4650" stroke-width="1.4"/>
+<text x="1070" y="193.0" font-size="12.5" font-weight="600" fill="#1d2430">GitHub · Javiigxs/RAACK</text>
+<text x="1070" y="208.0" font-size="10.5" fill="#4a5563">12 fichas, cobertura, solicitudes, grafo y 7 archivos</text>
+<rect x="1060" y="244.0" width="316" height="44" rx="7" fill="#eef0f2" stroke="#3d4650" stroke-width="1.4"/>
+<text x="1070" y="261.0" font-size="12.5" font-weight="600" fill="#1d2430">Obsidian · bóveda RAACK</text>
+<text x="1070" y="276.0" font-size="10.5" fill="#4a5563">Notas iniciales y 7 archivos (Codex)</text>
+<rect x="1060" y="531.0" width="316" height="44" rx="7" fill="#f6e8f7" stroke="#8e44ad" stroke-width="1.4"/>
+<text x="1070" y="548.0" font-size="12.5" font-weight="600" fill="#1d2430">Elegir variable, región y periodo</text>
+<text x="1070" y="563.0" font-size="10.5" fill="#4a5563">Primero esto; después se piden los accesos</text>
+<rect x="24" y="872" width="18" height="12" rx="3" fill="#e7f5ec" stroke="#2e7d4f"/>
+<text x="48" y="882.5" font-size="11" fill="#3d4650">Revisado</text>
+<rect x="109.2" y="872" width="18" height="12" rx="3" fill="#fff4e5" stroke="#d9822b"/>
+<text x="133.2" y="882.5" font-size="11" fill="#3d4650">Revisado; requiere pedir acceso</text>
+<rect x="341.6" y="872" width="18" height="12" rx="3" fill="#fdecea" stroke="#c0392b"/>
+<text x="365.6" y="882.5" font-size="11" fill="#3d4650">Bloqueado por verificación</text>
+<rect x="542.0" y="872" width="18" height="12" rx="3" fill="#f2f2f2" stroke="#8a8a8a" stroke-dasharray="5 4"/>
+<text x="566.0" y="882.5" font-size="11" fill="#3d4650">No abierto (decisión pendiente)</text>
+<rect x="774.4" y="872" width="18" height="12" rx="3" fill="#e8f1fb" stroke="#2f6fb5"/>
+<text x="798.4" y="882.5" font-size="11" fill="#3d4650">Archivo descargado</text>
+<rect x="923.5999999999999" y="872" width="18" height="12" rx="3" fill="#f6e8f7" stroke="#8e44ad"/>
+<text x="947.5999999999999" y="882.5" font-size="11" fill="#3d4650">Decisión pendiente</text>
+<rect x="1072.8" y="872" width="40" height="16" rx="8" fill="#e2e8f0"/><text x="1092.8" y="884" font-size="10" text-anchor="middle" fill="#334155">Codex</text>
+<rect x="1118.8" y="872" width="44" height="16" rx="8" fill="#efe7fb"/><text x="1140.8" y="884" font-size="10" text-anchor="middle" fill="#5b21b6">Claude</text>
+<text x="1170.8" y="884" font-size="11" fill="#3d4650">quién revisó la página</text>
+<text x="24" y="904" font-size="10.5" fill="#6b7480">Cada fuente revisada tiene su ficha en recursos/paginas/. Datos completos en CONTEXTO.json; vista con etiquetas en CONTEXTO.md.</text>
+</svg>

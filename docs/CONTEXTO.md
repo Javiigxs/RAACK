@@ -1,0 +1,138 @@
+---
+tags: [raack, contexto, grafo]
+fecha: 2026-11-14
+---
+# Grafo de contexto de la preparación
+
+[Cobertura de los 13 recursos](../recursos/COBERTURA.md) · [Bases de datos que hay que pedir](SOLICITUDES_DE_DATOS.md) · [Datos del grafo en JSON](CONTEXTO.json)
+
+El grafo resume el trabajo hecho para el reto. Parte de la página oficial y sus 13 recursos y muestra, para cada uno, hasta dónde se llegó, qué archivos se descargaron, qué acceso hay que pedir y qué decisiones siguen pendientes. Los colores indican el estado y la etiqueta, quién revisó cada página.
+
+![Grafo de contexto de RAACK](CONTEXTO.svg)
+
+## Versión con etiquetas
+
+GitHub y Obsidian dibujan este diagrama Mermaid. Las flechas continuas van a lo que se obtuvo o hay que pedir; las punteadas, a decisiones pendientes. El punto de parada de cada recurso está en la tabla siguiente.
+
+```mermaid
+flowchart LR
+  reto["Reto · Be An Earth System Trend Detective!"] --> pagina["Página oficial de recursos · 13"]
+  subgraph NASA["NASA · datos y recursos"]
+    giovanni["Giovanni"]
+    hydrology["01 · Hydrology Time Series"]
+    appeears["02 · AppEEARS"]
+    cdo["03 · Climate Data Online · NOAA"]
+    seawifs["04 · Artículo SeaWiFS"]
+  end
+  subgraph Socios["Socios · KNMI y estadística"]
+    knmi["05 · KNMI Climate Explorer"]
+    medium["06 · Métodos estadísticos · Medium"]
+    statsig["07 · Significación · Statsig"]
+  end
+  subgraph CSA["CSA · Agencia Espacial Canadiense"]
+    rcm["08 · RCM · Data"]
+    geo["09 · GEO.ca"]
+    swot["10 · SWOT · Information"]
+    ecosistemas["11 · Ecosistemas desde el espacio"]
+    sar["12 · Tutorial SAR · Python y QGIS"]
+  end
+  pagina --> giovanni & hydrology & appeears & cdo & seawifs
+  pagina --> knmi & medium & statsig
+  pagina --> rcm & geo & swot & ecosistemas & sar
+  subgraph ARCH["Archivos descargados · 7"]
+    f_gldas["CSV GLDAS · una semana"]
+    f_gsom["PDF GSOM · NOAA"]
+    f_seawifs["PDF SeaWiFS · 27 páginas"]
+    f_knmi["Manual KNMI · 15 páginas"]
+    f_sar_nb["Notebook SAR"]
+    f_sar_qgis["Guía QGIS SAR"]
+    f_sar_lic["Licencia SAR"]
+  end
+  subgraph ACC["Accesos que hay que pedir"]
+    a_earthdata["Cuenta NASA Earthdata"]
+    a_noaa["Token del API de NOAA"]
+    a_knmi["Verificación humana KNMI"]
+    a_eodms["Registro EODMS y licencia"]
+  end
+  subgraph DEC["Decisiones pendientes"]
+    d_giovanni{"¿Usamos Giovanni?"}
+    d_canada{"¿La región está en Canadá?"}
+    d_caso{"Elegir variable, región y periodo"}
+  end
+  hydrology --> f_gldas
+  cdo --> f_gsom
+  seawifs --> f_seawifs
+  knmi --> f_knmi
+  sar --> f_sar_nb
+  sar --> f_sar_qgis
+  sar --> f_sar_lic
+  appeears -->|cuenta y extracción| a_earthdata
+  swot -->|descargar granulos| a_earthdata
+  a_earthdata -.-> d_caso
+  cdo -->|solo para el API| a_noaa
+  a_noaa -.-> d_caso
+  knmi -->|bloquea las herramientas| a_knmi
+  a_knmi -.-> d_caso
+  rcm -->|para descargar| a_eodms
+  a_eodms -.-> d_caso
+  giovanni -.->|pendiente| d_giovanni
+  hydrology -.->|su API enlaza Giovanni| d_giovanni
+  seawifs -.->|lo usa como antecedente| d_giovanni
+  rcm -.->|acceso público solo en Canadá| d_canada
+  geo -.->|datos de Canadá| d_canada
+  d_canada -.-> d_caso
+  ARCH --> github["GitHub · Javiigxs/RAACK<br/>12 fichas, cobertura, solicitudes, grafo y 7 archivos"]
+  ARCH --> obsidian["Obsidian · bóveda RAACK<br/>notas iniciales y 7 archivos (Codex)"]
+  classDef revisado fill:#e7f5ec,stroke:#2e7d4f,color:#1d2430
+  classDef requiere fill:#fff4e5,stroke:#d9822b,color:#1d2430
+  classDef bloqueado fill:#fdecea,stroke:#c0392b,color:#1d2430
+  classDef noabierto fill:#f2f2f2,stroke:#8a8a8a,stroke-dasharray:5 4,color:#1d2430
+  classDef archivo fill:#e8f1fb,stroke:#2f6fb5,color:#1d2430
+  classDef acceso fill:#fff4e5,stroke:#d9822b,color:#1d2430
+  classDef decision fill:#f6e8f7,stroke:#8e44ad,color:#1d2430
+  classDef destino fill:#eef0f2,stroke:#3d4650,color:#1d2430
+  classDef inicio fill:#1f2a44,stroke:#1f2a44,color:#ffffff
+  class hydrology,cdo,seawifs,medium,statsig,geo,ecosistemas,sar revisado
+  class appeears,rcm,swot requiere
+  class knmi bloqueado
+  class giovanni noabierto
+  class f_gldas,f_gsom,f_seawifs,f_knmi,f_sar_nb,f_sar_qgis,f_sar_lic archivo
+  class a_earthdata,a_noaa,a_knmi,a_eodms acceso
+  class d_giovanni,d_canada,d_caso decision
+  class github,obsidian destino
+  class reto,pagina inicio
+```
+
+## Punto de parada por recurso
+
+| # | Recurso | Bloque oficial | Hasta dónde se llegó | Revisó |
+|---|---|---|---|---|
+| — | Giovanni | NASA · datos y recursos | No se abrió: decisión pendiente | — |
+| 01 | [Hydrology Time Series](../recursos/paginas/01-hydrology.md) | NASA · datos y recursos | Tabla de variables de GLDAS V2.1 | Codex |
+| 02 | [AppEEARS](../recursos/paginas/02-appeears.md) | NASA · datos y recursos | Ayuda: descarga de muestras de puntos | Codex |
+| 03 | [Climate Data Online · NOAA](../recursos/paginas/03-cdo.md) | NASA · datos y recursos | Documentación de /data del API v2 | Codex |
+| 04 | [Artículo SeaWiFS](../recursos/paginas/04-seawifs.md) | NASA · datos y recursos | Metodología del PDF | Codex |
+| 05 | [KNMI Climate Explorer](../recursos/paginas/05-knmi.md) | Socios · KNMI y estadística | Verificación humana en la ayuda | Codex |
+| 06 | [Métodos estadísticos · Medium](../recursos/paginas/06-metodos-estadisticos.md) | Socios · KNMI y estadística | References y documentación de ADF | Codex |
+| 07 | [Significación · Statsig](../recursos/paginas/07-significancia.md) | Socios · KNMI y estadística | Recomendaciones e intervalos | Codex |
+| 08 | [RCM · Data](../recursos/paginas/08-rcm.md) | CSA · Agencia Espacial Canadiense | Escena rcm-ard del STAC de EODMS | Claude |
+| 09 | [GEO.ca](../recursos/paginas/09-geo.md) | CSA · Agencia Espacial Canadiense | Colecciones del STAC del Datacube | Claude |
+| 10 | [SWOT · Information](../recursos/paginas/10-swot.md) | CSA · Agencia Espacial Canadiense | Hydrocron y tutorial de la CSA | Claude |
+| 11 | [Ecosistemas desde el espacio](../recursos/paginas/11-ecosistemas.md) | CSA · Agencia Espacial Canadiense | Página de BioSpace | Claude |
+| 12 | [Tutorial SAR · Python y QGIS](../recursos/paginas/12-sar.md) | CSA · Agencia Espacial Canadiense | Lectura de notebook, guía y licencia | Codex |
+
+## Cronología del 14 de noviembre de 2026
+
+1. **Codex (GPT):**
+   - Revisó los recursos en Chrome, descargó 7 archivos y creó la bóveda de Obsidian.
+   - Dejó Giovanni excluido y pendiente de decisión del equipo.
+2. **Codex:** publicó en RAACK los 7 archivos, las notas y el catálogo (commit `d24ff79`).
+3. **Codex:** empezó una ficha por página. Escribió las fichas 01 a 07 y la 12, pero se quedó sin uso antes de publicarlas.
+4. **Claude (cuenta 2):** tomó el relevo de esas tareas.
+   - Comprobó la lista oficial: 13 recursos.
+   - Revisó en Chrome RCM, GEO.ca, SWOT y la página de ecosistemas.
+   - Escribió las fichas 08 a 11, la cobertura, la nota de solicitudes de datos y este grafo, y lo publicó todo.
+
+## Cómo actualizarlo
+
+`CONTEXTO.json` guarda los nodos y aristas: tipo, estado, punto de parada, quién lo revisó y enlaces. El SVG y el Mermaid salen de esos mismos datos. Si cambia el estado de un recurso, por ejemplo al conseguir un acceso, hay que cambiarlo en los tres para que sigan coincidiendo.
