@@ -1,13 +1,13 @@
 ---
 id: swot
 revision: 2026-11-14
-estado: pagina-csa-podaac-y-tutorial-revisados-sin-descargas
+estado: pagina-csa-podaac-y-tutorial-revisados-hydrocron-probado
 ---
 # 10 · SWOT Mission · Information · CSA
 
 [Catálogo](../README.md) · [Cobertura de las 13 páginas](../COBERTURA.md) · [Fuente principal](https://www.asc-csa.gc.ca/eng/satellites/swot/)
 
-**Revisión:** 14 de noviembre de 2026 en Chrome. **Alcance alcanzado:** página completa de la CSA, registro SWOT del portal de datos abiertos de la CSA, página de datos de PO.DAAC, portada de la documentación de Hydrocron y README del tutorial SWOT de la CSA. No se descargaron datos ni se consultó ningún API.
+**Revisión:** 14 de noviembre de 2026 en Chrome. **Alcance alcanzado:** página completa de la CSA, registro SWOT del portal de datos abiertos de la CSA, página de datos de PO.DAAC, portada de la documentación de Hydrocron y README del tutorial SWOT de la CSA. No se descargaron datos. En esa revisión no se consultó ningún API; el 14 de noviembre de 2026 por la tarde se probó Hydrocron, ver «Ampliación» al final.
 
 ## Información que ofrece
 
@@ -31,7 +31,7 @@ La [página SWOT de PO.DAAC](https://podaac.jpl.nasa.gov/SWOT) describe los prod
 
 Datos útiles para planificar: SWOT observa ríos de más de 100 m de anchura y lagos de al menos 250 m × 250 m. El ciclo de repetición dura unos 21 días (20,86). Los datos de alta resolución solo existen dentro de su máscara HR. Hay dos versiones de productos: la C, distribuida en colecciones «Version 2.0», y la D.
 
-**Hydrocron.** La [documentación de Hydrocron](https://podaac.github.io/hydrocron/) lo presenta como un API que reorganiza `RiverSP` y `LakeSP` (versión D por defecto, también 2.0) y los caudales L4 *SWORD of Science* en **series temporales con una sola llamada** por tramo o lago. Evita abrir miles de shapefiles fechados. No se comprobó si exige autenticación.
+**Hydrocron.** La [documentación de Hydrocron](https://podaac.github.io/hydrocron/) lo presenta como un API que reorganiza `RiverSP` y `LakeSP` (versión D por defecto, también 2.0) y los caudales L4 *SWORD of Science* en **series temporales con una sola llamada** por tramo o lago. Evita abrir miles de shapefiles fechados. Después se comprobó que no exige autenticación.
 
 ## Tutorial SWOT de la CSA
 
@@ -63,3 +63,16 @@ Es el recurso de la sección CSA que sirve **en cualquier región** con ríos o 
 4. Decidir cómo presentar una serie corta sin sobreinterpretar su significación.
 
 **Punto de parada exacto:** portada de la documentación de Hydrocron y README del tutorial de la CSA. No hubo bloqueo: falta elegir región y masa de agua.
+
+## Ampliación del 14 de noviembre de 2026 por la tarde
+
+Hecha por Claude con una sola petición al API público de Hydrocron. No se guardó ningún archivo en el repo.
+
+- **Funciona sin cuenta y al instante.** La llamada de ejemplo de su documentación respondió en 0,7 segundos:
+
+  `https://soto.podaac.earthdatacloud.nasa.gov/hydrocron/v1/timeseries?feature=Reach&feature_id=63470800171&start_time=2024-02-01T00:00:00Z&end_time=2024-10-30T00:00:00Z&output=csv&fields=reach_id,time_str,wse,width,reach_q`
+
+- **Qué devolvió:** 25 observaciones de un tramo de río entre febrero y octubre de 2024, con elevación del agua (`wse`, en metros), anchura (`width`, en metros), bandera de calidad (`reach_q`) y una columna de unidades por variable.
+- **La calidad importa:** en esas 25 filas la anchura va de 3,8 m a 1525 m. Hay que filtrar por `reach_q` antes de dibujar.
+- **Qué hace falta para un caso propio:** el identificador del tramo (`reach_id`, de la base SWORD) o del lago (`lake_id`, de la base de lagos previa de SWOT). No se buscaron los de la zona de Monterrey ni se comprobó que SWOT observe sus embalses.
+- **Límite que no cambia:** la serie empieza en 2023. Sirve para enseñar un caso con «datos insuficientes para hablar de tendencia», no una tendencia larga.
