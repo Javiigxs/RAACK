@@ -15,7 +15,7 @@ Materiales preparados para [Be An Earth System Trend Detective!](https://www.spa
 - [Índice para personas e IAs](INDICE.md): estado del proyecto y mapa de todas las notas. Empieza aquí.
 - [Catálogo de recursos y descargas](recursos/README.md): siete archivos, fuentes y estado de acceso a los portales.
 - [Cobertura de los 13 recursos](recursos/COBERTURA.md): hasta dónde se llegó en cada página, qué se descargó y por qué aparece tanto Canadá.
-- [Fichas por página](recursos/paginas): una ficha por cada uno de los 12 recursos revisados.
+- Fichas por página: una por cada uno de los 12 recursos revisados, enlazadas desde la [cobertura](recursos/COBERTURA.md) y el [índice](INDICE.md).
 - [Bases de datos que hay que pedir](docs/SOLICITUDES_DE_DATOS.md) y para qué las usaríamos.
 - [Grafo de contexto](docs/CONTEXTO.md) de la preparación ([imagen](docs/CONTEXTO.svg), [datos](docs/CONTEXTO.json)).
 - [Reto y objetivos](docs/RETO.md).
@@ -25,7 +25,7 @@ Materiales preparados para [Be An Earth System Trend Detective!](https://www.spa
 
 El repositorio es también una bóveda de Obsidian: en Obsidian, usa «Abrir carpeta como bóveda» sobre esta carpeta. Los enlaces funcionan en GitHub y en Obsidian. Los agentes de IA tienen sus reglas en [AGENTS.md](AGENTS.md).
 
-La carpeta [recursos/archivos](recursos/archivos) contiene tres PDF, un notebook SAR, una guía QGIS, su licencia y un CSV GLDAS. El [manifiesto](recursos/archivos/descargas.json) registra procedencia, tamaño y SHA-256.
+La carpeta `recursos/archivos/`, descrita en el [catálogo](recursos/README.md), contiene tres PDF, un notebook SAR, una guía QGIS, su licencia y un CSV GLDAS. El [manifiesto](recursos/archivos/descargas.json) registra procedencia, tamaño y SHA-256.
 
 **Giovanni queda excluido de la preparación actual y pendiente de nuestra decisión.**
 
