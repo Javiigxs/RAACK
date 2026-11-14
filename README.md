@@ -13,6 +13,9 @@ Your app should be able to do this:
 Materiales preparados para [Be An Earth System Trend Detective!](https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/).
 
 - [Índice para personas e IAs](INDICE.md): estado del proyecto y mapa de todas las notas. Empieza aquí.
+- [Reglas oficiales](docs/REGLAS_OFICIALES.md): cómo puntúan los jueces y qué exige la entrega del domingo 15 de noviembre de 2026.
+- [Ideas para la herramienta](docs/IDEAS.md): propuestas por validar, con una primera señal en los datos de Monterrey.
+- [Qué se puede hacer con cada recurso y cuánto tarda](docs/FUNCIONALIDADES.md), y las [cuatro reglas de validación](docs/VALIDACION.md) del equipo.
 - [Catálogo de recursos y descargas](recursos/README.md): siete archivos, fuentes y estado de acceso a los portales.
 - [Cobertura de los 13 recursos](recursos/COBERTURA.md): hasta dónde se llegó en cada página, qué se descargó y por qué aparece tanto Canadá.
 - Fichas por página: una por cada uno de los 12 recursos revisados, enlazadas desde la [cobertura](recursos/COBERTURA.md) y el [índice](INDICE.md).
@@ -29,4 +32,4 @@ La carpeta `recursos/archivos/`, descrita en el [catálogo](recursos/README.md),
 
 **Giovanni queda excluido de la preparación actual y pendiente de nuestra decisión.**
 
-El CSV GLDAS es una muestra corta de 53 observaciones para probar importación y gráficas. El análisis de tendencias todavía requiere elegir variable, región y una serie suficientemente larga.
+El CSV GLDAS es una muestra corta de 53 observaciones para probar importación y gráficas. El visor de NASA ya entregó una serie de 26 años de Monterrey, que todavía no está guardada en el repositorio. El análisis de tendencias requiere guardarla y elegir variable, región y periodo.
