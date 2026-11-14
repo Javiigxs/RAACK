@@ -37,6 +37,7 @@ Los puntos están en [appeears-monterrey-puntos.csv](appeears-monterrey-puntos.c
 1. AppEEARS avisa por correo a la cuenta. Los resultados se descargan en **Explore**, con sesión iniciada.
 2. Según la ayuda de AppEEARS, una muestra de puntos entrega archivos CSV, archivos de apoyo y un archivo de sumas SHA-256. Guardarlos en el repo y registrarlos en [descargas.json](../recursos/archivos/descargas.json).
 3. Antes de calcular tendencias:
-   - Filtrar por calidad: `pixel_reliability` y `VI_Quality` para NDVI; `QC_Day` y `QC_Night` para temperatura.
-   - Comprobar unidades y factores de escala en los metadatos que acompañan a los CSV.
+   - Filtrar por calidad: `pixel_reliability` y `VI_Quality` para NDVI; `QC_Day` y `QC_Night` para temperatura. En `pixel_reliability`, 0 es dato bueno, 1 marginal, 2 nieve o hielo y 3 nublado.
+   - Comprobar unidades y factores de escala en los metadatos que acompañan a los CSV. Según el catálogo: NDVI con escala 0,0001 y relleno −3000; temperatura en Kelvin con escala 0,02 y relleno 0. Falta ver si los CSV ya vienen escalados.
+   - El significado de cada valor de calidad se consulta sin cuenta; ver la [ficha de AppEEARS](../recursos/paginas/02-appeears.md).
 4. Usar las series para probar la herramienta: gráfica, pendiente y significación por punto. Para mapear «dónde cambia» hará falta una solicitud de área cuando el equipo elija la región.

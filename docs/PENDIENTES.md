@@ -7,6 +7,8 @@ fecha: 2026-11-14
 ## Decisiones del equipo
 
 - [ ] **Giovanni: pendiente de nuestra decisión.** Ver [Giovanni - decisión pendiente](decisiones/GIOVANNI.md).
+- [ ] Elegir la idea de la herramienta entre las [propuestas](IDEAS.md) y escribir la frase diferenciadora con palabras del equipo. La guía oficial pide que la idea sea del equipo, no de una IA.
+- [ ] Decidir el formato de la demo: vídeo de 30 segundos o 7 diapositivas ([Reglas oficiales](REGLAS_OFICIALES.md)).
 - [ ] Elegir una o dos variables para la primera demostración.
 - [ ] Definir región o puntos comparables, periodo y frecuencia temporal.
 - [ ] Decidir si la región está en Canadá: de eso depende usar GEO.ca y RCM. Ver [Cobertura de los 13 recursos](../recursos/COBERTURA.md).
@@ -18,9 +20,15 @@ fecha: 2026-11-14
 - [ ] Descargar una serie suficientemente larga para analizar tendencias; el CSV GLDAS actual es una muestra corta.
 - [ ] Confirmar unidades, versión, calidad, cobertura y cita del producto seleccionado.
 - [x] Crear la cuenta NASA Earthdata del equipo (14 de noviembre de 2026).
-- [ ] Mientras llega AppEEARS, sacar de Hydrology Time Series una serie instantánea de Monterrey para empezar la herramienta. Ver [Funcionalidades y tiempos](FUNCIONALIDADES.md).
+- [x] Probar que Hydrology Time Series entrega una serie larga de Monterrey: 26 años en menos de 20 segundos (14 de noviembre de 2026). Ver [Funcionalidades y tiempos](FUNCIONALIDADES.md).
+- [ ] Guardar en el repo ese CSV de Monterrey (GLDAS 2.1, 2000–2026) y registrarlo en `descargas.json`, para empezar la herramienta.
+- [ ] Repetir con el CSV el cálculo preliminar de tendencias de [Ideas](IDEAS.md), desde marzo de 2001.
+- [ ] Buscar una fuente independiente sobre el cambio en Monterrey, como pide la regla 1 de [Validación](VALIDACION.md).
+- [ ] Verificar en el artículo original la fórmula de «años que faltan» antes de usarla ([Ideas](IDEAS.md), idea 6).
+- [ ] Si se quiere SWOT: localizar el identificador de un embalse o río de la zona ([ficha 10](../recursos/paginas/10-swot.md)).
 - [ ] Revisar el resultado de la [solicitud de prueba AppEEARS en Monterrey](SOLICITUD_APPEEARS_MONTERREY.md) (NDVI y temperatura 2001–2025) y probar con ella la importación y el cálculo de tendencias.
-- [ ] Pedir los demás accesos que hagan falta una vez elegidos variable, región y periodo: token de NOAA, verificación de KNMI o registro en EODMS. Qué pedir y para qué: [Bases de datos que hay que pedir](SOLICITUDES_DE_DATOS.md).
+- [ ] Pedir los demás accesos que hagan falta una vez elegidos variable, región y periodo: verificación de KNMI o registro en EODMS. El token de NOAA ya no hace falta. Qué pedir y para qué: [Bases de datos que hay que pedir](SOLICITUDES_DE_DATOS.md).
+- [ ] Si se quiere un mapa de «dónde cambia», enviar el 14 de noviembre la solicitud de área en AppEEARS: tarda más que la de puntos.
 - [ ] Si se necesitan, resolver las descargas bloqueadas del ZIP SAR y las muestras NOAA; ver [Recursos y descargas](../recursos/README.md).
 - [ ] Si se usa el notebook SAR, adaptar rutas y reunir sus datos externos. La guía QGIS conserva imágenes remotas.
 
@@ -31,3 +39,15 @@ fecha: 2026-11-14
 - [ ] Dirección y tasa de cambio.
 - [ ] Prueba o intervalo de confianza con límites explicados.
 - [ ] Procedencia de los datos y posibilidad de reproducir el resultado.
+- [ ] Definiciones sencillas de las variables y un par de ejemplos de demostración, como sugiere la página oficial ([Reto](RETO.md)).
+
+## Entrega oficial · domingo 15 de noviembre de 2026, 23:59 hora local
+
+Detalle en [Reglas oficiales](REGLAS_OFICIALES.md).
+
+- [ ] Pasar a inglés lo que se vaya a enlazar: portada del repositorio, textos de la herramienta y demo.
+- [ ] Preparar la demo sin pasarse del límite: 30 segundos de vídeo o 7 diapositivas.
+- [ ] Escribir la declaración de uso de IA y marcar lo generado con IA.
+- [ ] Reunir las referencias: datos de NASA, datos de agencias socias, bibliotecas, imágenes y textos.
+- [ ] Probar los enlaces públicos en una ventana privada.
+- [ ] Completar todos los campos de la página del proyecto y pulsar **Submit for Judging** con margen.

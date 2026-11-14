@@ -19,8 +19,38 @@ estado: preparación
 - Ver cómo cambian en el tiempo.
 - Determinar qué cambia, dónde, cuánto y si el cambio es «significativo».
 
+## Lo que añade la página oficial
+
+La pestaña *Details* tiene tres secciones más, leídas el 14 de noviembre de 2026. Aquí van resumidas; no son obligatorias, pero dicen qué espera quien escribió el reto. Dificultad declarada: avanzada.
+
+**Antecedentes (*Background*)**
+
+- El problema tiene dos partes: encontrar variables con tendencia, de las simples (temperatura, lluvia) a las complejas (evaporación, caudal), y analizarlas en regiones concretas de la tierra, el océano o la atmósfera.
+- Cita como fuentes los instrumentos MODIS, OMI, AIRS y GPM, y los modelos MERRA-2 y GLDAS.
+
+**Objetivos (*Objectives*)**
+
+1. Identificar variables de interés que puedan tener tendencia.
+2. Conseguir sus datos para una región concreta, porque la mayoría de las tendencias no son globales.
+3. Generar y dibujar la serie durante un periodo suficientemente largo.
+4. Hacer un análisis estadístico básico: ritmo de cambio y prueba de significación con prueba t, Mann–Kendall o intervalos de confianza.
+
+Hacer la visualización y el análisis cubre el alcance completo del reto.
+
+**Consideraciones (*Potential Considerations*)**
+
+- **Público:** estudiantes de bachillerato y universidad, y personas con algo de formación científica. Ayudan mucho unas definiciones sencillas de las variables. La idea es que el usuario se vuelva «detective de datos».
+- **Enfoque:** el usuario podría responder unas pocas preguntas sobre qué o dónde quiere investigar, y con eso buscar variables relacionadas. Serían muy útiles un par de ejemplos de demostración que se puedan ver.
+- **IA:** no es obligatoria, pero podría servir para identificar datos con posibles tendencias a partir de noticias, artículos o del tipo de región: un desierto, una selva, un estuario o la atmósfera sobre una gran ciudad.
+- **Datos:** los diarios y mensuales son los más fáciles de procesar.
+- **Tendencias no significativas:** también interesan. A veces solo falta un periodo más largo para que lo sean.
+- **Herramientas externas:** sugiere mirar las de organizaciones como CUAHSI para dibujar datos hidrológicos. CUAHSI no está en la lista de [13 recursos](../recursos/COBERTURA.md).
+- **Complejidad:** las tendencias pueden no ser lineales y algunas no se ven sin quitar ciclos regulares, como el estacional. Los análisis complejos quedan fuera del alcance: con tendencias lineales basta para empezar.
+
 ## Contexto del equipo
 
+- **Reglas de la organización:** cinco criterios de evaluación, plazo, formato de la demo, idioma y uso de IA, en [Reglas oficiales](REGLAS_OFICIALES.md).
+- **Ideas por validar:** [Ideas para la herramienta](IDEAS.md).
 - **Duración:** el hackathon dura dos días. Este enunciado se añadió el 14 de noviembre de 2026, a mediodía del primero.
 - **Tiempos de los datos:** muchos portales no entregan al instante. Qué se puede pedir en cada uno y cuánto tarda: [Funcionalidades y tiempos](FUNCIONALIDADES.md).
 - **Validación:** toda propuesta debe pasar las cuatro reglas de [Validación de la propuesta](VALIDACION.md): problema real, medible, hecha con los datos que nos dieron y con un diferenciador.
@@ -39,6 +69,8 @@ La página oficial pide una serie suficientemente larga para el análisis. Menci
 
 ## Material preparado
 
+- [Reglas oficiales](REGLAS_OFICIALES.md): cómo se evalúa y qué exige la entrega.
+- [Ideas para la herramienta](IDEAS.md): propuestas por validar y una primera señal en los datos de Monterrey.
 - [Recursos y descargas](../recursos/README.md): catálogo de los 12 recursos distintos de Giovanni, archivos locales y estado de acceso.
 - [Referencia científica y muestra GLDAS](REFERENCIA_CIENTIFICA.md): métodos del artículo NASA y metadatos de la muestra descargada.
 - [Pendientes](PENDIENTES.md): decisiones sobre variable, región, periodo y acceso a datos.

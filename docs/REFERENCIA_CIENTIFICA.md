@@ -21,13 +21,15 @@ Archivo: [GLDAS_NOAH025_3H_2_1_Evap_tavg_36.6100_-80.2400_05_01_2016_to_05_07_20
 | Producto mostrado | GLDAS_NOAH025_3H_2.1 |
 | Variable | Evap_tavg · evapotranspiración |
 | Punto del visor | Latitud 36.6100, longitud −80.2400 |
-| Primera observación | 2016-05-01 11:00 UTC |
-| Última observación | 2016-05-07 23:00 UTC |
+| Primera observación | Etiqueta `2016-05-01T11:00Z` en el CSV; hora real más probable: 06:00 UTC |
+| Última observación | Etiqueta `2016-05-07T23:00Z` en el CSV; hora real más probable: 18:00 UTC |
 | Frecuencia verificada | Cada 3 horas |
 | Filas de datos | 53 |
 | Columnas originales | x, y |
 | Unidades | kg m⁻² s⁻¹, según metadatos oficiales de GLDAS; no están escritas dentro del CSV |
 | Uso inmediato | Probar importación, fechas, selección de variable y gráficas |
+
+**Aviso sobre las horas.** El visor desplaza las horas según el huso horario del navegador con el que se exporta: aquí 5 horas, por el horario de verano de Monterrey en mayo de 2016. La evidencia está en la [ficha 01](../recursos/paginas/01-hydrology.md). Para medias mensuales no importa; para análisis por horas, sí.
 
 [Descripción oficial de las variables y unidades GLDAS](https://ldas.gsfc.nasa.gov/gldas/model-output).
 
@@ -35,4 +37,4 @@ El archivo no contiene un mapa ni una serie larga. No permite concluir tendencia
 
 ## Documentación mensual NOAA
 
-[GSOM_documentation.pdf](../recursos/archivos/noaa-gsom-documentacion.pdf) describe los campos de los resúmenes mensuales. [Directorio oficial con documentación y muestras](https://www.ncei.noaa.gov/data/global-summary-of-the-month/doc/). La documentación se guardó; las muestras de ese directorio quedaron pendientes por problemas de descarga en Chrome.
+[GSOM_documentation.pdf](../recursos/archivos/noaa-gsom-documentacion.pdf) describe los campos de los resúmenes mensuales. [Directorio oficial con documentación y muestras](https://www.ncei.noaa.gov/data/global-summary-of-the-month/doc/). La documentación se guardó; las muestras de ese directorio quedaron pendientes por problemas de descarga en Chrome. Los datos reales de cada estación se obtienen sin token, como explica la [ficha 03](../recursos/paginas/03-cdo.md).

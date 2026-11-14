@@ -15,11 +15,11 @@ FUENTES = [
     # id, num, etiqueta, grupo, estado, punto de parada, revisó, ficha, url
     ("giovanni", "—", "Giovanni", "NASA", "no-abierto", "No se abrió: decisión pendiente", None, None,
      "https://giovanni.gsfc.nasa.gov/giovanni/"),
-    ("hydrology", "01", "Hydrology Time Series", "NASA", "revisado", "Tabla de variables de GLDAS V2.1", "Codex",
+    ("hydrology", "01", "Hydrology Time Series", "NASA", "revisado", "Visor probado: Monterrey, 26 años", "Codex",
      "01-hydrology.md", "https://disc.gsfc.nasa.gov/information/tools?title=Hydrology%20Time%20Series"),
-    ("appeears", "02", "AppEEARS", "NASA", "requiere-acceso", "Ayuda: descarga de muestras de puntos", "Codex",
+    ("appeears", "02", "AppEEARS", "NASA", "requiere-acceso", "Solicitud de prueba en cola", "Codex",
      "02-appeears.md", "https://appeears.earthdatacloud.nasa.gov/"),
-    ("cdo", "03", "Climate Data Online · NOAA", "NASA", "revisado", "Documentación de /data del API v2", "Codex",
+    ("cdo", "03", "Climate Data Online · NOAA", "NASA", "revisado", "Servicio de datos sin token probado", "Codex",
      "03-cdo.md", "https://www.ncei.noaa.gov/cdo-web/"),
     ("seawifs", "04", "Artículo SeaWiFS", "NASA", "revisado", "Metodología del PDF", "Codex",
      "04-seawifs.md", "https://ntrs.nasa.gov/citations/20090042747"),
@@ -34,7 +34,7 @@ FUENTES = [
      "08-rcm.md", "https://donnees-data.asc-csa.gc.ca/en/dataset/rcm"),
     ("geo", "09", "GEO.ca", "CSA", "revisado", "Colecciones del STAC del Datacube", "Claude",
      "09-geo.md", "http://geo.ca/"),
-    ("swot", "10", "SWOT · Information", "CSA", "requiere-acceso", "Hydrocron y tutorial de la CSA", "Claude",
+    ("swot", "10", "SWOT · Information", "CSA", "requiere-acceso", "Hydrocron probado con su ejemplo", "Claude",
      "10-swot.md", "https://www.asc-csa.gc.ca/eng/satellites/swot/"),
     ("ecosistemas", "11", "Ecosistemas desde el espacio", "CSA", "revisado", "Página de BioSpace", "Claude",
      "11-ecosistemas.md",
@@ -412,7 +412,7 @@ fecha: {FECHA}
 ---
 # Grafo de contexto de la preparación
 
-[Índice](../INDICE.md) · [Cobertura de los 13 recursos](../recursos/COBERTURA.md) · [Bases de datos que hay que pedir](SOLICITUDES_DE_DATOS.md) · [Datos del grafo en JSON](CONTEXTO.json)
+[Índice](../INDICE.md) · [Cobertura de los 13 recursos](../recursos/COBERTURA.md) · [Bases de datos que hay que pedir](SOLICITUDES_DE_DATOS.md) · [Funcionalidades y tiempos](FUNCIONALIDADES.md) · [Datos del grafo en JSON](CONTEXTO.json)
 
 El grafo resume el trabajo hecho para el reto. Parte de la página oficial y sus 13 recursos y muestra, para cada uno, hasta dónde se llegó, qué archivos se descargaron, qué acceso hay que pedir y qué decisiones siguen pendientes. Los colores indican el estado y la etiqueta, quién revisó cada página.
 
@@ -448,6 +448,13 @@ GitHub y Obsidian dibujan este diagrama Mermaid. Las flechas continuas van a lo 
    - Un [índice para personas e IAs](../INDICE.md).
    - Reglas para agentes en `AGENTS.md`.
    - Enlaces relativos que funcionan en GitHub y en Obsidian.
+7. **Claude (cuenta 1)**, por la tarde:
+   - Leyó la página oficial completa y las guías de evaluación y entrega: [Reglas oficiales](REGLAS_OFICIALES.md).
+   - Probó los servicios abiertos: visor de hidrología con Monterrey (26 años al instante), catálogo de AppEEARS, datos de NOAA sin token y Hydrocron. Lo comprobado está en [Funcionalidades y tiempos](FUNCIONALIDADES.md) y en las fichas 01, 02, 03 y 10.
+   - Escribió [Ideas para la herramienta](IDEAS.md), propuestas que el equipo debe decidir.
+   - No descargó archivos de datos. No abrió Giovanni ni llamó a su API: usó solo el visor.
+
+En la tabla, «Revisó» es quien hizo la primera revisión de la página. Las ampliaciones posteriores están fechadas al final de cada ficha.
 
 ## Cómo actualizarlo
 

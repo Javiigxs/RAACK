@@ -39,7 +39,7 @@
       "etiqueta": "Hydrology Time Series",
       "grupo": "NASA · datos y recursos",
       "estado": "revisado",
-      "punto_de_parada": "Tabla de variables de GLDAS V2.1",
+      "punto_de_parada": "Visor probado: Monterrey, 26 años",
       "revisado_por": "Codex",
       "ficha": "recursos/paginas/01-hydrology.md",
       "enlace": "https://disc.gsfc.nasa.gov/information/tools?title=Hydrology%20Time%20Series"
@@ -51,7 +51,7 @@
       "etiqueta": "AppEEARS",
       "grupo": "NASA · datos y recursos",
       "estado": "requiere-acceso",
-      "punto_de_parada": "Ayuda: descarga de muestras de puntos",
+      "punto_de_parada": "Solicitud de prueba en cola",
       "revisado_por": "Codex",
       "ficha": "recursos/paginas/02-appeears.md",
       "enlace": "https://appeears.earthdatacloud.nasa.gov/"
@@ -63,7 +63,7 @@
       "etiqueta": "Climate Data Online · NOAA",
       "grupo": "NASA · datos y recursos",
       "estado": "revisado",
-      "punto_de_parada": "Documentación de /data del API v2",
+      "punto_de_parada": "Servicio de datos sin token probado",
       "revisado_por": "Codex",
       "ficha": "recursos/paginas/03-cdo.md",
       "enlace": "https://www.ncei.noaa.gov/cdo-web/"
@@ -147,7 +147,7 @@
       "etiqueta": "SWOT · Information",
       "grupo": "CSA · Agencia Espacial Canadiense",
       "estado": "requiere-acceso",
-      "punto_de_parada": "Hydrocron y tutorial de la CSA",
+      "punto_de_parada": "Hydrocron probado con su ejemplo",
       "revisado_por": "Claude",
       "ficha": "recursos/paginas/10-swot.md",
       "enlace": "https://www.asc-csa.gc.ca/eng/satellites/swot/"

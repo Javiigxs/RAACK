@@ -4,9 +4,9 @@ fecha: 2026-11-14
 ---
 # Validación de la propuesta · reglas que hay que pasar
 
-[Índice](../INDICE.md) · [Reto](RETO.md) · [Funcionalidades y tiempos](FUNCIONALIDADES.md) · [Pendientes](PENDIENTES.md)
+[Índice](../INDICE.md) · [Reto](RETO.md) · [Reglas oficiales](REGLAS_OFICIALES.md) · [Ideas](IDEAS.md) · [Funcionalidades y tiempos](FUNCIONALIDADES.md) · [Pendientes](PENDIENTES.md)
 
-Ningún caso de demostración, funcionalidad o conclusión se construye ni se presenta sin pasar estas **cuatro reglas**. Valen para el equipo y para los agentes de IA. Si una regla no se cumple, se cambia la idea, no la regla.
+Ningún caso de demostración, funcionalidad o conclusión se construye ni se presenta sin pasar estas **cuatro reglas**. Valen para el equipo y para los agentes de IA. Si una regla no se cumple, se cambia la idea, no la regla. Son reglas del equipo; los criterios con los que puntúan los jueces están en [Reglas oficiales](REGLAS_OFICIALES.md).
 
 ## 1. El problema existe de verdad
 
@@ -50,7 +50,7 @@ Ya hay herramientas que hacen partes del reto:
 
 **Regla:** escribir en una frase qué hace RAACK que estas no hacen y que pide el reto: «A diferencia de X, RAACK…». El diferenciador debe verse en la demostración.
 
-Ideas por validar, no decididas:
+Ideas por validar, no decididas. Están desarrolladas, con su paso por las cuatro reglas, en [Ideas para la herramienta](IDEAS.md):
 
 - **Ayudar a elegir la variable:** el enunciado dice que elegir entre tantas variables es difícil. Por ejemplo, de una pregunta pasar a las variables que indican ese cambio.
 - **Comparar regiones con tendencias opuestas lado a lado**, como menciona el enunciado.
@@ -59,9 +59,11 @@ Ideas por validar, no decididas:
 
 ## Estado del caso de prueba · Monterrey, 14 de noviembre de 2026
 
+Actualizado por la tarde, tras probar el visor de hidrología con el punto de Monterrey.
+
 | Regla | Estado | Qué falta |
 |---|---|---|
-| 1. El problema existe | Pendiente | Una fuente independiente sobre el cambio en Monterrey, como crecimiento urbano o calor, y contrastarla con los datos |
-| 2. Es medible | En curso | Llega NDVI mensual y temperatura superficial cada 8 días, 2001–2025, con calidad ([solicitud](SOLICITUD_APPEEARS_MONTERREY.md)). Falta filtrar y medir cuántos meses son válidos |
-| 3. Datos que nos dieron | Sí, en principio | AppEEARS y Hydrology Time Series son oficiales y globales. NOAA tiene huecos en Monterrey. GEO.ca y RCM no aplican |
-| 4. Diferenciador | Pendiente | Elegir una idea y escribir la frase «A diferencia de…» |
+| 1. El problema existe | **Problema del reto: comprobado.** El visor de NASA dibuja una variable por gráfico, no se le vio ninguna función de tendencia ni de significación y ofrece 172 variables con nombres técnicos ([Funcionalidades](FUNCIONALIDADES.md)). **Cambio de nuestro caso: pendiente** | Una fuente independiente sobre el cambio en Monterrey, como calor o crecimiento urbano, y contrastarla con los datos |
+| 2. Es medible | En curso. GLDAS 2.1 en el punto 25,67, −100,31 da 319 meses válidos de 319, de enero de 2000 a julio de 2026. Cálculo preliminar: temperatura del aire +0,39 K por década, significativa; humedad del suelo y evapotranspiración, sin pruebas de tendencia ([Ideas](IDEAS.md)) | Guardar el CSV en el repo y repetir el cálculo desde marzo de 2001. Filtrar y medir los meses válidos de NDVI y temperatura superficial cuando llegue [AppEEARS](SOLICITUD_APPEEARS_MONTERREY.md) |
+| 3. Datos que nos dieron | **Sí, probado.** El visor entregó la serie de 26 años en menos de 20 segundos. AppEEARS es oficial y global. NOAA sirve hasta 2011–2012: casi todas las estaciones cercanas terminan ahí. GEO.ca y RCM no aplican | Decidir la región definitiva |
+| 4. Diferenciador | Pendiente | Elegir una idea de [Ideas](IDEAS.md) y escribir la frase «A diferencia de…» con palabras del equipo |

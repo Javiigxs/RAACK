@@ -4,7 +4,7 @@ fecha: 2026-11-14
 ---
 # Grafo de contexto de la preparación
 
-[Índice](../INDICE.md) · [Cobertura de los 13 recursos](../recursos/COBERTURA.md) · [Bases de datos que hay que pedir](SOLICITUDES_DE_DATOS.md) · [Datos del grafo en JSON](CONTEXTO.json)
+[Índice](../INDICE.md) · [Cobertura de los 13 recursos](../recursos/COBERTURA.md) · [Bases de datos que hay que pedir](SOLICITUDES_DE_DATOS.md) · [Funcionalidades y tiempos](FUNCIONALIDADES.md) · [Datos del grafo en JSON](CONTEXTO.json)
 
 El grafo resume el trabajo hecho para el reto. Parte de la página oficial y sus 13 recursos y muestra, para cada uno, hasta dónde se llegó, qué archivos se descargaron, qué acceso hay que pedir y qué decisiones siguen pendientes. Los colores indican el estado y la etiqueta, quién revisó cada página.
 
@@ -116,16 +116,16 @@ flowchart LR
 | # | Recurso | Bloque oficial | Hasta dónde se llegó | Revisó |
 |---|---|---|---|---|
 | — | Giovanni | NASA · datos y recursos | No se abrió: decisión pendiente | — |
-| 01 | [Hydrology Time Series](../recursos/paginas/01-hydrology.md) | NASA · datos y recursos | Tabla de variables de GLDAS V2.1 | Codex |
-| 02 | [AppEEARS](../recursos/paginas/02-appeears.md) | NASA · datos y recursos | Ayuda: descarga de muestras de puntos | Codex |
-| 03 | [Climate Data Online · NOAA](../recursos/paginas/03-cdo.md) | NASA · datos y recursos | Documentación de /data del API v2 | Codex |
+| 01 | [Hydrology Time Series](../recursos/paginas/01-hydrology.md) | NASA · datos y recursos | Visor probado: Monterrey, 26 años | Codex |
+| 02 | [AppEEARS](../recursos/paginas/02-appeears.md) | NASA · datos y recursos | Solicitud de prueba en cola | Codex |
+| 03 | [Climate Data Online · NOAA](../recursos/paginas/03-cdo.md) | NASA · datos y recursos | Servicio de datos sin token probado | Codex |
 | 04 | [Artículo SeaWiFS](../recursos/paginas/04-seawifs.md) | NASA · datos y recursos | Metodología del PDF | Codex |
 | 05 | [KNMI Climate Explorer](../recursos/paginas/05-knmi.md) | Socios · KNMI y estadística | Verificación humana en la ayuda | Codex |
 | 06 | [Métodos estadísticos · Medium](../recursos/paginas/06-metodos-estadisticos.md) | Socios · KNMI y estadística | References y documentación de ADF | Codex |
 | 07 | [Significación · Statsig](../recursos/paginas/07-significancia.md) | Socios · KNMI y estadística | Recomendaciones e intervalos | Codex |
 | 08 | [RCM · Data](../recursos/paginas/08-rcm.md) | CSA · Agencia Espacial Canadiense | Escena rcm-ard del STAC de EODMS | Claude |
 | 09 | [GEO.ca](../recursos/paginas/09-geo.md) | CSA · Agencia Espacial Canadiense | Colecciones del STAC del Datacube | Claude |
-| 10 | [SWOT · Information](../recursos/paginas/10-swot.md) | CSA · Agencia Espacial Canadiense | Hydrocron y tutorial de la CSA | Claude |
+| 10 | [SWOT · Information](../recursos/paginas/10-swot.md) | CSA · Agencia Espacial Canadiense | Hydrocron probado con su ejemplo | Claude |
 | 11 | [Ecosistemas desde el espacio](../recursos/paginas/11-ecosistemas.md) | CSA · Agencia Espacial Canadiense | Página de BioSpace | Claude |
 | 12 | [Tutorial SAR · Python y QGIS](../recursos/paginas/12-sar.md) | CSA · Agencia Espacial Canadiense | Lectura de notebook, guía y licencia | Codex |
 
@@ -145,6 +145,13 @@ flowchart LR
    - Un [índice para personas e IAs](../INDICE.md).
    - Reglas para agentes en `AGENTS.md`.
    - Enlaces relativos que funcionan en GitHub y en Obsidian.
+7. **Claude (cuenta 1)**, por la tarde:
+   - Leyó la página oficial completa y las guías de evaluación y entrega: [Reglas oficiales](REGLAS_OFICIALES.md).
+   - Probó los servicios abiertos: visor de hidrología con Monterrey (26 años al instante), catálogo de AppEEARS, datos de NOAA sin token y Hydrocron. Lo comprobado está en [Funcionalidades y tiempos](FUNCIONALIDADES.md) y en las fichas 01, 02, 03 y 10.
+   - Escribió [Ideas para la herramienta](IDEAS.md), propuestas que el equipo debe decidir.
+   - No descargó archivos de datos. No abrió Giovanni ni llamó a su API: usó solo el visor.
+
+En la tabla, «Revisó» es quien hizo la primera revisión de la página. Las ampliaciones posteriores están fechadas al final de cada ficha.
 
 ## Cómo actualizarlo
 
