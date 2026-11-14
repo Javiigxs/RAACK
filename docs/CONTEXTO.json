@@ -2,10 +2,10 @@
   "proyecto": "RAACK",
   "reto": "https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/",
   "fecha": "2026-11-14",
-  "descripcion": "Contexto de la preparación de recursos: del reto a la página oficial, sus 13 recursos, lo que se obtuvo de cada uno, los accesos que hay que pedir y las decisiones pendientes.",
+  "descripcion": "Contexto de la preparación de recursos: del reto a la página oficial, sus 13 recursos, lo que se obtuvo de cada uno, los accesos, las solicitudes enviadas y las decisiones pendientes.",
   "agentes": {
     "Codex": "Preparación inicial, 7 descargas, fichas 01–07 y 12, primera publicación.",
-    "Claude": "Relevo: fichas 08–11, cobertura, solicitudes de datos y este grafo."
+    "Claude": "Relevo: fichas 08–11, cobertura, solicitudes de datos, este grafo, la solicitud de prueba de AppEEARS y el índice para IAs."
   },
   "nodos": [
     {
@@ -221,8 +221,8 @@
     {
       "id": "a_earthdata",
       "tipo": "acceso",
-      "etiqueta": "Cuenta NASA Earthdata",
-      "estado": "sin pedir"
+      "etiqueta": "Cuenta NASA Earthdata · creada",
+      "estado": "conseguido"
     },
     {
       "id": "a_noaa",
@@ -241,6 +241,13 @@
       "tipo": "acceso",
       "etiqueta": "Registro EODMS y licencia",
       "estado": "sin pedir"
+    },
+    {
+      "id": "s_appeears",
+      "tipo": "solicitud",
+      "etiqueta": "Prueba AppEEARS Monterrey · en cola",
+      "estado": "en cola",
+      "nota": "docs/SOLICITUD_APPEEARS_MONTERREY.md"
     },
     {
       "id": "d_giovanni",
@@ -264,14 +271,14 @@
       "id": "github",
       "tipo": "destino",
       "etiqueta": "GitHub · Javiigxs/RAACK",
-      "detalle": "12 fichas, cobertura, solicitudes, grafo y 7 archivos",
+      "detalle": "Fichas, cobertura, solicitudes, grafo, índice y archivos",
       "enlace": "https://github.com/Javiigxs/RAACK"
     },
     {
       "id": "obsidian",
       "tipo": "destino",
       "etiqueta": "Obsidian · bóveda RAACK",
-      "detalle": "Notas iniciales y 7 archivos (Codex)",
+      "detalle": "Clon local del repo; se empieza por INDICE.md",
       "enlace": null
     }
   ],
@@ -462,11 +469,6 @@
       "relacion": "requiere: descargar granulos"
     },
     {
-      "de": "a_earthdata",
-      "a": "d_caso",
-      "relacion": "se pide después de decidir"
-    },
-    {
       "de": "cdo",
       "a": "a_noaa",
       "relacion": "requiere: solo para el API"
@@ -497,6 +499,21 @@
       "relacion": "se pide después de decidir"
     },
     {
+      "de": "appeears",
+      "a": "s_appeears",
+      "relacion": "solicitud de prueba"
+    },
+    {
+      "de": "a_earthdata",
+      "a": "s_appeears",
+      "relacion": "enviada con la cuenta"
+    },
+    {
+      "de": "s_appeears",
+      "a": "d_caso",
+      "relacion": "ayuda a decidir"
+    },
+    {
       "de": "giovanni",
       "a": "d_giovanni",
       "relacion": "pendiente"
@@ -525,6 +542,11 @@
       "de": "d_canada",
       "a": "d_caso",
       "relacion": "forma parte de"
+    },
+    {
+      "de": "github",
+      "a": "obsidian",
+      "relacion": "clon local"
     },
     {
       "de": "hydrology",

@@ -16,7 +16,9 @@ fecha: 2026-11-14
 
 - [ ] Descargar una serie suficientemente larga para analizar tendencias; el CSV GLDAS actual es una muestra corta.
 - [ ] Confirmar unidades, versión, calidad, cobertura y cita del producto seleccionado.
-- [ ] Pedir los accesos que hagan falta una vez elegidos variable, región y periodo: Earthdata para AppEEARS y SWOT, token de NOAA, verificación de KNMI o registro en EODMS. Qué pedir y para qué: [Bases de datos que hay que pedir](SOLICITUDES_DE_DATOS.md).
+- [x] Crear la cuenta NASA Earthdata del equipo (14 de noviembre de 2026).
+- [ ] Revisar el resultado de la [solicitud de prueba AppEEARS en Monterrey](SOLICITUD_APPEEARS_MONTERREY.md) (NDVI y temperatura 2001–2025) y probar con ella la importación y el cálculo de tendencias.
+- [ ] Pedir los demás accesos que hagan falta una vez elegidos variable, región y periodo: token de NOAA, verificación de KNMI o registro en EODMS. Qué pedir y para qué: [Bases de datos que hay que pedir](SOLICITUDES_DE_DATOS.md).
 - [ ] Si se necesitan, resolver las descargas bloqueadas del ZIP SAR y las muestras NOAA; ver [Recursos y descargas](../recursos/README.md).
 - [ ] Si se usa el notebook SAR, adaptar rutas y reunir sus datos externos. La guía QGIS conserva imágenes remotas.
 

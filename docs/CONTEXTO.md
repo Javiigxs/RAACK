@@ -4,7 +4,7 @@ fecha: 2026-11-14
 ---
 # Grafo de contexto de la preparación
 
-[Cobertura de los 13 recursos](../recursos/COBERTURA.md) · [Bases de datos que hay que pedir](SOLICITUDES_DE_DATOS.md) · [Datos del grafo en JSON](CONTEXTO.json)
+[Índice](../INDICE.md) · [Cobertura de los 13 recursos](../recursos/COBERTURA.md) · [Bases de datos que hay que pedir](SOLICITUDES_DE_DATOS.md) · [Datos del grafo en JSON](CONTEXTO.json)
 
 El grafo resume el trabajo hecho para el reto. Parte de la página oficial y sus 13 recursos y muestra, para cada uno, hasta dónde se llegó, qué archivos se descargaron, qué acceso hay que pedir y qué decisiones siguen pendientes. Los colores indican el estado y la etiqueta, quién revisó cada página.
 
@@ -48,11 +48,14 @@ flowchart LR
     f_sar_qgis["Guía QGIS SAR"]
     f_sar_lic["Licencia SAR"]
   end
-  subgraph ACC["Accesos que hay que pedir"]
-    a_earthdata["Cuenta NASA Earthdata"]
+  subgraph ACC["Accesos"]
+    a_earthdata["Cuenta NASA Earthdata · creada"]
     a_noaa["Token del API de NOAA"]
     a_knmi["Verificación humana KNMI"]
     a_eodms["Registro EODMS y licencia"]
+  end
+  subgraph SOL["Solicitudes enviadas"]
+    s_appeears["Prueba AppEEARS Monterrey · en cola"]
   end
   subgraph DEC["Decisiones pendientes"]
     d_giovanni{"¿Usamos Giovanni?"}
@@ -68,21 +71,23 @@ flowchart LR
   sar --> f_sar_lic
   appeears -->|cuenta y extracción| a_earthdata
   swot -->|descargar granulos| a_earthdata
-  a_earthdata -.-> d_caso
   cdo -->|solo para el API| a_noaa
   a_noaa -.-> d_caso
   knmi -->|bloquea las herramientas| a_knmi
   a_knmi -.-> d_caso
   rcm -->|para descargar| a_eodms
   a_eodms -.-> d_caso
+  appeears -->|prueba| s_appeears
+  a_earthdata --> s_appeears
+  s_appeears -.->|ayuda a decidir| d_caso
   giovanni -.->|pendiente| d_giovanni
   hydrology -.->|su API enlaza Giovanni| d_giovanni
   seawifs -.->|lo usa como antecedente| d_giovanni
   rcm -.->|acceso público solo en Canadá| d_canada
   geo -.->|datos de Canadá| d_canada
   d_canada -.-> d_caso
-  ARCH --> github["GitHub · Javiigxs/RAACK<br/>12 fichas, cobertura, solicitudes, grafo y 7 archivos"]
-  ARCH --> obsidian["Obsidian · bóveda RAACK<br/>notas iniciales y 7 archivos (Codex)"]
+  ARCH --> github["GitHub · Javiigxs/RAACK<br/>fichas, cobertura, solicitudes, grafo, índice y archivos"]
+  github -->|clon local| obsidian["Obsidian · bóveda RAACK<br/>se empieza por INDICE.md"]
   classDef revisado fill:#e7f5ec,stroke:#2e7d4f,color:#1d2430
   classDef requiere fill:#fff4e5,stroke:#d9822b,color:#1d2430
   classDef bloqueado fill:#fdecea,stroke:#c0392b,color:#1d2430
@@ -91,13 +96,16 @@ flowchart LR
   classDef acceso fill:#fff4e5,stroke:#d9822b,color:#1d2430
   classDef decision fill:#f6e8f7,stroke:#8e44ad,color:#1d2430
   classDef destino fill:#eef0f2,stroke:#3d4650,color:#1d2430
+  classDef solicitud fill:#e6f4f8,stroke:#1b7f99,color:#1d2430
   classDef inicio fill:#1f2a44,stroke:#1f2a44,color:#ffffff
   class hydrology,cdo,seawifs,medium,statsig,geo,ecosistemas,sar revisado
   class appeears,rcm,swot requiere
   class knmi bloqueado
   class giovanni noabierto
   class f_gldas,f_gsom,f_seawifs,f_knmi,f_sar_nb,f_sar_qgis,f_sar_lic archivo
-  class a_earthdata,a_noaa,a_knmi,a_eodms acceso
+  class a_noaa,a_knmi,a_eodms acceso
+  class a_earthdata revisado
+  class s_appeears solicitud
   class d_giovanni,d_canada,d_caso decision
   class github,obsidian destino
   class reto,pagina inicio
@@ -132,7 +140,12 @@ flowchart LR
    - Comprobó la lista oficial: 13 recursos.
    - Revisó en Chrome RCM, GEO.ca, SWOT y la página de ecosistemas.
    - Escribió las fichas 08 a 11, la cobertura, la nota de solicitudes de datos y este grafo, y lo publicó todo.
+5. **La persona** creó la cuenta NASA Earthdata del equipo. Con ella, **Claude** envió una [solicitud de prueba de AppEEARS en Monterrey](SOLICITUD_APPEEARS_MONTERREY.md): NDVI y temperatura superficial de 2001 a 2025. Está en cola.
+6. **Claude** dejó el repo listo como bóveda de Obsidian tipo wiki:
+   - Un [índice para personas e IAs](../INDICE.md).
+   - Reglas para agentes en `AGENTS.md`.
+   - Enlaces relativos que funcionan en GitHub y en Obsidian.
 
 ## Cómo actualizarlo
 
-`CONTEXTO.json` guarda los nodos y aristas: tipo, estado, punto de parada, quién lo revisó y enlaces. El SVG y el Mermaid salen de esos mismos datos. Si cambia el estado de un recurso, por ejemplo al conseguir un acceso, hay que cambiarlo en los tres para que sigan coincidiendo.
+`CONTEXTO.json`, `CONTEXTO.svg` y esta nota se generan con [generar_contexto.py](generar_contexto.py) a partir de los mismos datos: tipo, estado, punto de parada, quién lo revisó y enlaces. Si cambia algo, por ejemplo al conseguir un acceso o enviar una solicitud, edita las listas del principio del script y ejecuta `python3 docs/generar_contexto.py docs` desde la raíz del repo.
