@@ -4,7 +4,7 @@ fecha: 2026-11-14
 ---
 # Recursos y descargas
 
-[Volver al reto](../docs/RETO.md) · [Página de recursos del reto](https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/?tab=resources)
+[Volver al reto](../docs/RETO.md) · [Página de recursos del reto](https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/?tab=resources) · [Cobertura de los 13 recursos](COBERTURA.md) · [Fichas por página](paginas/)
 
 Revisión realizada en Chrome el **14 de noviembre de 2026**. Se distinguen archivos guardados, portales de datos y referencias enlazadas.
 
@@ -26,18 +26,18 @@ Registro de procedencia, tamaños y SHA-256: [descargas.json](archivos/descargas
 
 | Recurso | Para qué nos sirve | Estado y siguiente paso |
 |---|---|---|
-| [Hydrology Time Series · NASA GES DISC](https://disc.gsfc.nasa.gov/information/tools?title=Hydrology%20Time%20Series) | Seleccionar variables hidrológicas y exportar series. | CSV de evapotranspiración guardado. Elegir después ubicación, variable y periodo del equipo. |
-| [AppEEARS](https://appeears.earthdatacloud.nasa.gov/) | Extraer datos por puntos o áreas, fechas y capas, junto con calidad. | Portal y [ayuda](https://appeears.earthdatacloud.nasa.gov/help) revisados. Requiere cuenta NASA Earthdata para usar el sitio y la API. Sin extracción solicitada. |
-| [Climate Data Online · NOAA](https://www.ncei.noaa.gov/cdo-web/) | Temperatura, precipitación y otras observaciones históricas por estación. | Documentación mensual GSOM descargada. Muestras CSV/PDF no guardadas por los bloqueos y fallos de descarga descritos abajo. |
-| [Artículo SeaWiFS · NASA NTRS](https://ntrs.nasa.gov/citations/20090042747) | Ejemplo real de series regionales, regresión y significación. | PDF de 27 páginas guardado; ver [Referencia científica y muestra GLDAS](../docs/REFERENCIA_CIENTIFICA.md). |
-| [KNMI Climate Explorer](https://climexp.knmi.nl/) | Explorar observaciones, reanálisis, modelos y tendencias. | Manual de acceso y descarga guardado. El análisis interactivo muestra una verificación humana pendiente. |
-| [Statistical test methods to detect trends in time series data](https://medium.com/@snp.kriss/statistical-test-methods-to-detect-trends-in-time-series-data-b361a0ec530b) | Lectura complementaria sobre métodos estadísticos. | Artículo de Medium abierto; referencia enlazada, sin copia íntegra descargada. |
-| [A Comprehensive Guide to Statistical Significance](https://www.statsig.com/perspectives/a-comprehensive-guide-to-statistical-significance) | Lectura introductoria sobre hipótesis, p y significación. | Página revisada; referencia enlazada, sin archivo descargable guardado. |
-| [RADARSAT Constellation Mission · CSA](https://donnees-data.asc-csa.gc.ca/en/dataset/rcm) | Imágenes SAR para cambios en tierra, ecosistemas y costas. | Catálogo revisado. Acceso a imágenes por EODMS y recursos CSA; elegir escenas y revisar su licencia antes de descargar. Tutorial guardado por separado. |
-| [GEO.ca](https://geo.ca/home/) | Descubrir información geoespacial y capas de contexto de Canadá. | Portal revisado; aún no se ha elegido una capa concreta. |
-| [SWOT Mission · CSA](https://www.asc-csa.gc.ca/eng/satellites/swot/) | Explorar cambios en elevación del agua en lagos, ríos, embalses y océanos. | Página informativa revisada; sin producto de datos ni región seleccionados. |
-| [Monitoring and protecting our ecosystems from space · CSA](https://www.asc-csa.gc.ca/eng/satellites/everyday-lives/monitoring-and-protecting-our-ecosystems-from-space.asp) | Contexto para casos sobre bosques, biodiversidad y ecosistemas. | Referencia enlazada. Parte del texto conserva menciones antiguas al desarrollo de SWOT; usar la página específica de la misión para su situación. |
-| [Synthetic Aperture Radar Tutorial · CSA](https://github.com/asc-csa/Synthetic_Aperture_Radar_Tutorial) | Ejemplos de visualización geoespacial en Python y QGIS. | Notebook, guía Markdown y licencia guardados individualmente. No es el repositorio RAACK. |
+| [Hydrology Time Series · NASA GES DISC](https://disc.gsfc.nasa.gov/information/tools?title=Hydrology%20Time%20Series) | Seleccionar variables hidrológicas y exportar series. | CSV de evapotranspiración guardado. Elegir después ubicación, variable y periodo del equipo. [Ficha 01](paginas/01-hydrology.md). |
+| [AppEEARS](https://appeears.earthdatacloud.nasa.gov/) | Extraer datos por puntos o áreas, fechas y capas, junto con calidad. | Portal y [ayuda](https://appeears.earthdatacloud.nasa.gov/help) revisados. Requiere cuenta NASA Earthdata para usar el sitio y la API. Sin extracción solicitada. [Ficha 02](paginas/02-appeears.md). |
+| [Climate Data Online · NOAA](https://www.ncei.noaa.gov/cdo-web/) | Temperatura, precipitación y otras observaciones históricas por estación. | Documentación mensual GSOM descargada. Muestras CSV/PDF no guardadas por los bloqueos y fallos de descarga descritos abajo. [Ficha 03](paginas/03-cdo.md). |
+| [Artículo SeaWiFS · NASA NTRS](https://ntrs.nasa.gov/citations/20090042747) | Ejemplo real de series regionales, regresión y significación. | PDF de 27 páginas guardado; ver [Referencia científica y muestra GLDAS](../docs/REFERENCIA_CIENTIFICA.md). [Ficha 04](paginas/04-seawifs.md). |
+| [KNMI Climate Explorer](https://climexp.knmi.nl/) | Explorar observaciones, reanálisis, modelos y tendencias. | Manual de acceso y descarga guardado. El análisis interactivo muestra una verificación humana pendiente. [Ficha 05](paginas/05-knmi.md). |
+| [Statistical test methods to detect trends in time series data](https://medium.com/@snp.kriss/statistical-test-methods-to-detect-trends-in-time-series-data-b361a0ec530b) | Lectura complementaria sobre métodos estadísticos. | Artículo de Medium abierto; referencia enlazada, sin copia íntegra descargada. [Ficha 06](paginas/06-metodos-estadisticos.md). |
+| [A Comprehensive Guide to Statistical Significance](https://www.statsig.com/perspectives/a-comprehensive-guide-to-statistical-significance) | Lectura introductoria sobre hipótesis, p y significación. | Página revisada; referencia enlazada, sin archivo descargable guardado. [Ficha 07](paginas/07-significancia.md). |
+| [RADARSAT Constellation Mission · CSA](https://donnees-data.asc-csa.gc.ca/en/dataset/rcm) | Imágenes SAR para cambios en tierra, ecosistemas y costas. | Carpeta pública, EODMS y su catálogo STAC revisados. Las muestras abiertas son de una sola fecha; para series, la colección RCM ARD cubre Canadá cada 12 días. Descargar exige registro en EODMS y aceptar la licencia. [Ficha 08](paginas/08-rcm.md). |
+| [GEO.ca](https://geo.ca/home/) | Descubrir información geoespacial y capas de contexto de Canadá. | Galería y API STAC del Datacube revisados: series abiertas de Canadá (agua superficial 1984–2023, evapotranspiración mensual, nieve y hielo). Útil solo si la región está en Canadá. [Ficha 09](paginas/09-geo.md). |
+| [SWOT Mission · CSA](https://www.asc-csa.gc.ca/eng/satellites/swot/) | Explorar cambios en elevación del agua en lagos, ríos, embalses y océanos. | Página de la CSA, PO.DAAC, Hydrocron y tutorial revisados. Datos globales desde 2023; descargar requiere cuenta NASA Earthdata. [Ficha 10](paginas/10-swot.md). |
+| [Monitoring and protecting our ecosystems from space · CSA](https://www.asc-csa.gc.ca/eng/satellites/everyday-lives/monitoring-and-protecting-our-ecosystems-from-space.asp) | Contexto para casos sobre bosques, biodiversidad y ecosistemas. | Página completa y BioSpace revisados. Contexto sin datos descargables; la página es de 2022 y aún llama a SWOT «en desarrollo». [Ficha 11](paginas/11-ecosistemas.md). |
+| [Synthetic Aperture Radar Tutorial · CSA](https://github.com/asc-csa/Synthetic_Aperture_Radar_Tutorial) | Ejemplos de visualización geoespacial en Python y QGIS. | Notebook, guía Markdown y licencia guardados individualmente. No es el repositorio RAACK. [Ficha 12](paginas/12-sar.md). |
 
 **Giovanni:** [pendiente de nuestra decisión](../docs/decisiones/GIOVANNI.md). No se abrió ni se descargó material desde ese servicio.
 
@@ -48,6 +48,10 @@ Registro de procedencia, tamaños y SHA-256: [descargas.json](archivos/descargas
 - **NOAA:** [muestra GSOM CSV](https://www.ncei.noaa.gov/data/global-summary-of-the-month/doc/gsom_sample_csv.csv) bloqueada por Chrome con `ERR_BLOCKED_BY_CLIENT`. La [muestra PDF](https://www.ncei.noaa.gov/data/global-summary-of-the-month/doc/gsom_sample_pdf.pdf) tampoco terminó de descargarse. La documentación mensual sí está guardada.
 - **SAR:** Chrome bloqueó el ZIP completo de `codeload.github.com`. Se guardaron los archivos individuales accesibles. Las imágenes del tutorial QGIS usan enlaces remotos y no se descargaron; el notebook contiene rutas de Windows que habrá que adaptar y requiere archivos raster/vectoriales externos. No se ejecutó.
 - **Manual KNMI de temperatura:** el enlace de ese manual adicional no terminó de descargarse. El manual principal de acceso y descarga está disponible localmente.
+- **RCM:** descargar exige registro en EODMS y aceptar la licencia de cada producto; ver [ficha 08](paginas/08-rcm.md).
+- **SWOT:** descargar granulos exige cuenta NASA Earthdata; ver [ficha 10](paginas/10-swot.md).
+
+Qué hay que pedir en cada caso y para qué lo usaríamos: [Bases de datos que hay que pedir](../docs/SOLICITUDES_DE_DATOS.md).
 
 ## Antes de elegir datos para la demostración
 
