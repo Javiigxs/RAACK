@@ -186,11 +186,14 @@ function abrirTunel() {
     ["-o", "StrictHostKeyChecking=accept-new", "-o", "PubkeyAuthentication=no", "-o", "IdentitiesOnly=yes", "-o", "ServerAliveInterval=30", "-o", "ServerAliveCountMax=3", "-o", "ExitOnForwardFailure=yes", "-R", `80:localhost:${PUERTO}`, "nokey@localhost.run"],
     { stdio: ["ignore", "pipe", "pipe"] }
   );
-  let visto = "";
+  let resto = "";
   const leer = (trozo) => {
-    visto = (visto + trozo).slice(-4000);
-    // El servicio escribe la dirección al abrir el túnel y cada vez que se la cambia.
-    const todas = visto.match(/https:\/\/[a-z0-9.-]+\.lhr\.life/g);
+    // El servicio escribe la dirección al abrir el túnel y cada vez que se la cambia, seguida de un
+    // código QR de miles de caracteres: se busca en todo lo recibido y se guarda solo el final, por
+    // si una dirección llega partida entre dos trozos.
+    const texto = resto + trozo;
+    resto = texto.slice(-200);
+    const todas = texto.match(/https:\/\/[a-z0-9.-]+\.lhr\.life/g);
     if (todas) void alCambiar(todas[todas.length - 1]);
   };
   t.stdout.on("data", leer);

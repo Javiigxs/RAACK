@@ -23,6 +23,7 @@ El panel se abre a la derecha (a pantalla completa en el teléfono), sin mover l
 | `paises.json` | Base de datos por país: los 243 países y territorios del globo, con sus diez capas de datos (lista o no, y por qué) y el primer vistazo a su agua almacenada (GRACE) en 189 de ellos; además, los dos casos de la página. Sale de `exportar_series.mjs`. |
 | `exportar_series.mjs` | Regenera las dos bases desde los datos de la página (`app/public/data/water.json` y `world.json`): las mismas cifras que se ven en ella. |
 | `catalogo.md` | Catálogo de opciones con fuentes. **Borrador: el equipo debe revisarlo y aprobarlo.** |
+| `publico.mjs`, `publico.json` | Enciende y apaga DE-T para la página pública (`npm run dete:publico`), y dónde están esa página y su interruptor. |
 | `herramientas.test.mjs` | Pruebas: los datos de DE-T coinciden con la página, las herramientas, los bloques `<PAGINA>` y `<LUGAR>` y el verificador. |
 | `pruebas/` | `kimi-falso.mjs`, un Kimi simulado que falla como dice la documentación de Kimi que falla el real, y `prueba-servidor.mjs`, que arranca los dos y hace 40 comprobaciones por HTTP (`npm run dete:prueba`, sin clave). `prueba-real.mjs` hace las ocho pruebas rápidas con Kimi real (`npm run dete:real`; **gasta saldo**, unos centavos por pregunta) y `resultado-kimi-real-2026-11-15.txt` guarda lo que salió ese día. |
 | `.env.example` | Plantilla de configuración. |
@@ -67,6 +68,32 @@ Para darle una base nueva hacen falta tres cosas: exportarla a un JSON en esta c
 **El modelo.** El diseño del equipo usaba `kimi-k2.6`. Según la documentación de Kimi consultada el 15 de noviembre de 2026, ese modelo ya no se da a las cuentas registradas desde el 1 de noviembre y se retira a finales de diciembre de 2026. Con la clave del equipo, Kimi respondió ese día que la cuenta solo tiene `kimi-k3.1-pro` y `kimi-k3`. Por eso el servidor usa ahora `kimi-k3.1-pro`, el de tarifa más baja de los dos, con el razonamiento en `low` (`KIMI_REASONING_EFFORT`): razona siempre, y lo que razona se cobra como salida. Si la terminal dice que la cuenta no tiene el modelo, cambia `KIMI_MODEL` en `.env`. **Que el equipo confirme el modelo.**
 
 En desarrollo (`npm run dev`), Vite pasa `/api` al servidor de DE-T en el puerto 8000: enciende también `npm run dete` en otra terminal. Si DE-T está apagado, la página de desarrollo lo dice bajo el selector de país y explica cómo encenderlo; la página publicada no muestra nada.
+
+## DE-T en la página pública: encenderlo y apagarlo
+
+GitHub Pages solo sirve archivos: no puede correr el servidor de DE-T ni guardar la clave de Kimi. Para que DE-T se vea en la página pública solo cuando el equipo quiera, hay un **interruptor**: un archivo en la rama `dete-publico` del repositorio que la página pública lee al abrirse. Si nombra una dirección, la página pregunta allí por DE-T y muestra sus botones; si dice `null`, no muestra nada. Pedido de Fran el 15 de noviembre de 2026.
+
+**Encender**, desde `app/`, en el equipo que tiene la clave:
+
+```bash
+npm run dete:publico
+```
+
+El comando arranca un servidor de DE-T aparte (puerto 8010; no toca el del 8000), abre un túnel por ssh (localhost.run, sin instalar nada) que le da una dirección de internet y escribe esa dirección en el interruptor. GitHub tarda hasta 5 minutos en reflejarlo; la terminal avisa cuando la página pública ya ve a DE-T. El equipo tiene que seguir encendido y con esa terminal abierta.
+
+**Apagar:** Ctrl+C en esa terminal. Apaga el interruptor y cierra el túnel y el servidor: desde ese momento nadie puede preguntar. Durante unos 5 minutos la página aún lee la dirección vieja; como ya no responde, DE-T no aparece, pero en la consola del navegador queda un error de esa petición.
+
+| Opción | Qué hace |
+|---|---|
+| `npm run dete:publico -- --tope 0.25` | Tope de gasto de la sesión en dólares (por defecto 0,50, según la estimación del servidor). Al llegar, DE-T deja de responder y se apaga. |
+| `npm run dete:publico -- --preguntas 20` | Tope de preguntas (por defecto 40). |
+| `npm run dete:publico -- --minutos 60` | Se apaga solo pasado ese tiempo (por defecto 120). |
+| `npm run dete:publico -- --simulado` | Ensayo con el Kimi simulado: no usa la clave ni gasta. Las respuestas son plantillas, no las de Kimi. |
+| `npm run dete:publico -- apagar` | Solo apaga el interruptor, por si el equipo se cerró de golpe. |
+
+**Qué cuida el saldo.** El tope de la sesión; el apagado automático; que desde un navegador solo puede preguntar la página pública (`DETE_ORIGENES`: una pregunta lanzada desde otra página se rechaza sin llegar a Kimi), y que la clave no sale del equipo. **Qué no cuida:** mientras está encendido, la dirección del túnel se puede leer en el interruptor, y quien la copie puede preguntar sin pasar por la página hasta agotar el tope. La terminal dice lo que gasta cada pregunta.
+
+**Cómo se probó** (15 de noviembre de 2026): con `--simulado`, en la página pública real. La página leyó el interruptor, mostró «Ask DE-T», y una pregunta hecha desde la tarjeta de un número fue y volvió por el túnel con las cifras verificadas; al apagar, el interruptor volvió a `null` y la dirección dejó de responder. **No se ha probado con Kimi real por este camino**, para no gastar saldo sin que Fran lo decida. La dirección del túnel la da un servicio gratuito y puede cambiar sola: el comando vuelve a escribirla en el interruptor.
 
 ## Cómo evita inventar
 

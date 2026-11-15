@@ -3,7 +3,7 @@
 Web tool built for the NASA Space Apps Challenge 2026, challenge *Be An Earth System Trend Detective!*
 It answers the questions the challenge asks (what is changing, where, how much, and is it significant) and adds the one the existing tools leave open: **why**.
 
-Status on 15 November 2026: working, tested locally (189 automated tests, desktop and phone, light and dark, English and Spanish). Not published yet; the team still has to review the wording. DE-T, the case assistant, was tested end to end with a simulated Kimi and, on the same day, with the real model (Kimi K3.1 Pro) through its server: its eight quick questions were answered with every figure checked against the data. It has not yet been watched in the page served with the real model.
+Status on 15 November 2026: working, tested locally (194 automated tests, desktop and phone, light and dark, English and Spanish). Not published yet; the team still has to review the wording. DE-T, the case assistant, was tested end to end with a simulated Kimi and, on the same day, with the real model (Kimi K3.1 Pro) through its server: its eight quick questions were answered with every figure checked against the data. It has not yet been watched in the page served with the real model.
 
 ## What it does
 
@@ -19,7 +19,8 @@ DE-T answers questions about the water case of Nuevo León, and about what the t
 - **Where the country is chosen** (step 9): a line to write a question about the place the globe shows, with three questions to start from. The page sends only the identifier of the place; what DE-T knows about it comes from the server's own data. For a country that is two things: which of the ten data layers are ready, and a first look at stored water (one GRACE mascon under the reference point of the country, not a verdict), and DE-T has to say so.
 - **In the verdict**, an invitation to ask about it; **in the header** (on a narrow screen, a round button in the corner), the panel with three example questions.
 - DE-T's figures are the page's: `dete/exportar_series.mjs` copies the yearly values and the reference trends of `public/data/water.json` into `dete/series_nl.json`, and the countries of `public/data/world.json` into `dete/paises.json`. `dete/herramientas.test.mjs` checks that both are up to date, and `src/lib/dete/countries.test.ts` compares every country with what the page's own code computes.
-- The panel appears only when the page is served by the DE-T server and it has an API key. A static copy of the site (such as GitHub Pages) shows no DE-T button and sends no request.
+- The panel appears only when the page is served by the DE-T server and it has an API key. A static copy of the site shows no DE-T button and sends no request.
+- **On the public page, DE-T has a switch.** GitHub Pages can only serve files, so the public copy reads a small file kept on GitHub (branch `dete-publico`). While a team member runs `npm run dete:publico`, that file names the address of a DE-T server running on their computer, reached through an ssh tunnel, and the public page shows DE-T; when they stop it (Ctrl+C), DE-T disappears. That server answers only the public page, stops at a spending cap, and the Kimi key never leaves the computer.
 
 ### Case 001 · Where did the water go?
 
@@ -101,7 +102,7 @@ Requires Node.js 20 or later.
 ```bash
 npm install
 npm run dev      # development server at http://127.0.0.1:5173
-npm test         # 189 automated tests
+npm test         # 194 automated tests
 npm run check    # type check of every component
 npm run build    # writes the static site to dist/
 npm run site     # builds and copies the site to ../site, the folder to publish
@@ -109,6 +110,7 @@ npm run dete     # serves dist/ with DE-T at http://localhost:8000 (needs the Ki
 npm run dete:data  # rebuilds DE-T's data (dete/series_nl.json, dete/paises.json) from public/data/
 npm run dete:prueba  # end-to-end test of the DE-T server against a simulated Kimi (no key needed)
 npm run dete:real    # the eight quick questions against the real Kimi (needs the key; spends a few cents)
+npm run dete:publico # turns DE-T on for the public page until Ctrl+C (needs the key; spends as visitors ask)
 ```
 
 DE-T needs a Kimi API key in `dete/.env` (copy `dete/.env.example`; the file is ignored by git and must never be published). During `npm run dev`, Vite passes `/api` to the DE-T server on port 8000. How to run it, costs and limits: [`dete/README.md`](dete/README.md), in Spanish.
