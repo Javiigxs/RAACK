@@ -1,0 +1,53 @@
+{
+  "consultado_en": "2026-11-14T19:48:07.238469-06:00",
+  "fecha_local_de_trabajo": "2026-11-14",
+  "archivos_descargados": [
+    {
+      "archivo": "imerg-v07-colecciones-cmr-2026-11-14.json",
+      "fuente": "https://cmr.earthdata.nasa.gov/search/collections.json?keyword=GPM_3IMERGM&page_size=100",
+      "tamano_bytes": 39163,
+      "sha256": "602e61a6aa23107a55adafda6527c486d18062bccf8beeb8fe8761ccbce2960f",
+      "tipo": "respuesta_original"
+    },
+    {
+      "archivo": "imerg-v07-oct-dic2025-granulos-cmr.json",
+      "fuente": "https://cmr.earthdata.nasa.gov/search/granules.json?short_name=GPM_3IMERGM&version=07&temporal=2025-10-01T00%3A00%3A00Z%2C2025-12-31T23%3A59%3A59Z&page_size=100",
+      "tamano_bytes": 262,
+      "sha256": "598dee75dca386a5795e823a84cbace463c5286af5c1b3b1e2a97d3f30131e6c",
+      "tipo": "respuesta_original"
+    },
+    {
+      "archivo": "nasa-imerg-v08-transition-schedule-2026-04-28.html",
+      "fuente": "https://gpm.nasa.gov/data/news/imerg-v08-transition-schedule",
+      "tamano_bytes": 36653,
+      "sha256": "784ce4edf90203a7e570de412da972d7ec581a0d1dfc5168185971320160b736",
+      "tipo": "respuesta_original"
+    },
+    {
+      "archivo": "nasa-imerg-v08-transition-update-2026-08-06.html",
+      "fuente": "https://gpm.nasa.gov/data/news/update-imerg-v08-transition-schedule-aug-2026",
+      "tamano_bytes": 36964,
+      "sha256": "8f4998b8013a8e4f0770606b6ee4841f831ab7e9513bd2c15fd6c52f320686bf",
+      "tipo": "respuesta_original"
+    }
+  ],
+  "comprobado": {
+    "colecciones_encontradas": 1,
+    "versiones_encontradas": [
+      "07"
+    ],
+    "fin_coleccion_v07": "2025-09-30T23:59:59.999Z",
+    "granulos_octubre_diciembre_2025": 0,
+    "serie_existente": {
+      "meses": 333,
+      "registros": 447552,
+      "latitudes": 48,
+      "longitudes": 28,
+      "faltantes": 0,
+      "primer_mes": "1998-01-01T00:00:00Z",
+      "ultimo_mes": "2025-09-01T00:00:00Z"
+    }
+  },
+  "conclusion": "El producto Final V07 termina en septiembre de 2025 según la NASA y el catálogo CMR consultado. No se localizaron meses de octubre a diciembre de 2025 ni otra versión mensual en esa consulta. No se sustituyen por Early/Late ni se mezclan versiones.",
+  "uso_ia": "Codex (IA) descargó y verificó metadatos, comprobó integridad y cobertura del CSV existente y redactó esta procedencia; no generó valores científicos."
+}
