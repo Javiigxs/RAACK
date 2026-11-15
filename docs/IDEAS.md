@@ -180,3 +180,12 @@ Para que el equipo la reescriba con sus palabras, como pide la regla 4:
 - **Cuota del visor:** avisa de un límite mensual con peticiones grandes; una petición horaria de 26 años falló.
 - **Idioma:** la página del proyecto y lo enlazado deben estar en inglés.
 - **Giovanni** sigue [excluido y pendiente de decisión](decisiones/GIOVANNI.md).
+
+## Propuestas de Fran · 14 de noviembre de 2026
+
+Fran planteó dos preguntas para el detective en los mensajes de las 16:12. El equipo aún debe decidir cuáles llevará a la demo.
+
+1. **¿Qué cambios desaparecen al mirar un año entero?** Dos años pueden recibir casi la misma lluvia y diferir en cuántos días llueve, cuánta agua cae de golpe y cuánto dura la racha seca más larga. Fran propone alternar entre una vista anual y lo que ocurrió dentro del año, y explorar el mismo principio con calor y sequías.
+2. **¿Se adelantan, se retrasan o se acortan los ciclos naturales?** Fran propone investigar cambios en el calendario. Para ponerlo a prueba se pueden seguir, año a año, las fechas en que se acumula cierta parte de la lluvia o el mes de máximo verdor. Cada indicador necesita una definición y suficiente cobertura en la época que se compara.
+
+El [mapa de datos para estas propuestas](MAPA_DE_DATOS.md) reúne las series por variable, un ejemplo para la demo, las reglas de calidad y el estado de validación. La propuesta de Fran y la pregunta del equipo sobre la fiabilidad de los datos se complementan: después de descubrir un patrón, se puede comprobar si también aparece en la estación cercana. Codex organizó los datos y redactó esta actualización a partir de los mensajes del equipo.
