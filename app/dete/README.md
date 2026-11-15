@@ -2,7 +2,7 @@
 
 DE-T responde preguntas sobre el caso del agua de Nuevo León **solo con los datos de la herramienta**. El servidor calcula las cifras con sus herramientas (la IA no calcula) y un verificador comprueba que cada cifra de la respuesta exista en los datos antes de mostrarla. La persona elige su sector (ciudadano, gobierno, periodista, investigador o industria) y DE-T adapta el lenguaje.
 
-El diseño es el del zip `hydrodetective-asistente.zip` que entregó Fran el 15 de noviembre de 2026 (SHA-256 `447688766a4f0097100da3e43be4d3698d4b0b1cbcee9466a417082e4772f0e6`). Esta carpeta lo integra en la página.
+El diseño es el del zip `hydrodetective-asistente.zip` que entregó Fran el 15 de noviembre de 2026 (SHA-256 `447688766a4f0097100da3e43be4d3698d4b0b1cbcee9466a417082e4772f0e6`). Esta carpeta lo integra en la página. Qué se hizo y por qué, nota por nota: [DE-T](../../docs/de-t/DE-T.md).
 
 ## Dónde aparece en la página
 
