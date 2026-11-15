@@ -2,7 +2,7 @@
   "proyecto": "RAACK",
   "reto": "https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/",
   "fecha": "2026-11-14",
-  "nota": "Los siete archivos iniciales se obtuvieron con Chrome. Las incorporaciones posteriores indican su vía de acceso. Se conservan los bytes originales salvo las transformaciones documentadas en cada entrada; los nombres pueden adaptarse al repositorio. En AppEEARS se omitió user_id del JSON por contener un correo personal. Giovanni queda excluido y pendiente de decisión del equipo.",
+  "nota": "Los siete archivos iniciales se obtuvieron con Chrome. Las incorporaciones posteriores indican su vía de acceso. Se conservan los bytes originales salvo las transformaciones documentadas en cada entrada; los nombres pueden adaptarse al repositorio. En AppEEARS se omitió user_id del JSON por contener un correo personal. El 14 de noviembre de 2026 la persona autorizó el servicio de Giovanni únicamente para descargar las siete variables GLDAS; su selección como herramienta de la solución sigue pendiente.",
   "archivos": [
     {
       "archivo": "nasa-seawifs-series-temporales-20090042747.pdf",
@@ -281,8 +281,8 @@
     },
     {
       "archivo": "nuevo-leon/imerg/README.md",
-      "bytes": 1371,
-      "sha256": "74eb365c33f9040c093db64caa8e1f1588333f790efa7ff547a22a55a41715f6",
+      "bytes": 3113,
+      "sha256": "7722a36c26aa41ac189f68e36b2c38795917063d7fe080add195d81fe719cb4b",
       "via": "Extracción y documentación asistidas por Codex",
       "tipo": "support",
       "fuente": "https://erddap.marine.usf.edu/erddap/griddap/IMERG_monthly_global_precip.html",
@@ -303,7 +303,8 @@
         "registros": 447552,
         "latitudes": 48,
         "longitudes": 28
-      }
+      },
+      "actualizacion_2026_11_14": "Documentación ampliada con la verificación y el alcance de acceso de esta sesión; no se alteraron CSV científicos originales."
     },
     {
       "archivo": "nuevo-leon/chirps/nuevo-leon-chirps-mensual-1998-2025-02-paso5.das",
@@ -2520,6 +2521,391 @@
       "fecha_descarga": "2026-11-14",
       "via": "Adjunto de la persona; incorporación y registro asistidos por Codex",
       "nombre_original": "RAACK_descarga_datos_Nuevo_Leon.docx"
+    },
+    {
+      "archivo": "nuevo-leon/gldas/monterrey-Rainf_tavg-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_Rainf_tavg%26location%3D%255B25.67%252C-100.31%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; Rainf_tavg; celda 25.625, -100.375; marzo 2001–julio 2026",
+      "bytes": 1557086,
+      "sha256": "1371b76068a41857d50dc5e24ff790f404ec7d9c6044b34a8dc7fa5bd67980bf",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/monterrey-Evap_tavg-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_Evap_tavg%26location%3D%255B25.67%252C-100.31%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; Evap_tavg; celda 25.625, -100.375; marzo 2001–julio 2026",
+      "bytes": 2148693,
+      "sha256": "56aae0d59a21cb71750ee9f1bb13b76f932044a9a18748c3cfed3170563b1d66",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/monterrey-PotEvap_tavg-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_PotEvap_tavg%26location%3D%255B25.67%252C-100.31%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; PotEvap_tavg; celda 25.625, -100.375; marzo 2001–julio 2026",
+      "bytes": 1848792,
+      "sha256": "dfbadcb1342e4b48b78174c1a573ead88053244a304d363ca032b20ba98011ce",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/monterrey-RootMoist_inst-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_RootMoist_inst%26location%3D%255B25.67%252C-100.31%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; RootMoist_inst; celda 25.625, -100.375; marzo 2001–julio 2026",
+      "bytes": 1829847,
+      "sha256": "297028703cf706fe6edcdb855cb2c446f22e0850be6e66e49b579eac6c776a33",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/monterrey-Qs_acc-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_Qs_acc%26location%3D%255B25.67%252C-100.31%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; Qs_acc; celda 25.625, -100.375; marzo 2001–julio 2026",
+      "bytes": 1494019,
+      "sha256": "5d711b2cf295c3515da60f2b77e4fda42e407610b825fa956097b47f3b185331",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/monterrey-Qsb_acc-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_Qsb_acc%26location%3D%255B25.67%252C-100.31%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; Qsb_acc; celda 25.625, -100.375; marzo 2001–julio 2026",
+      "bytes": 1859229,
+      "sha256": "f67caa1d7874140fcff876b38efb62af37042d0141e700c80b6b13615aa2dc50",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/monterrey-Tair_f_inst-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_Tair_f_inst%26location%3D%255B25.67%252C-100.31%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; Tair_f_inst; celda 25.625, -100.375; marzo 2001–julio 2026",
+      "bytes": 1849303,
+      "sha256": "1fbeed90ecb23ab5ce8616c0439abc2d3455d59f4db03e73fc9e9ce059f42d27",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/galeana-Rainf_tavg-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_Rainf_tavg%26location%3D%255B24.83%252C-100.08%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; Rainf_tavg; celda 24.875, -100.125; marzo 2001–julio 2026",
+      "bytes": 1569185,
+      "sha256": "8f0ab013abbcd20ebf44b271d2b5829f4805e0191bdeed31e601ec436d7363ce",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/galeana-Evap_tavg-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_Evap_tavg%26location%3D%255B24.83%252C-100.08%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; Evap_tavg; celda 24.875, -100.125; marzo 2001–julio 2026",
+      "bytes": 2153653,
+      "sha256": "69179c768e383af6df9a7a66abe3b3294336abec11a7cf7057e89589f283de5c",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/galeana-PotEvap_tavg-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_PotEvap_tavg%26location%3D%255B24.83%252C-100.08%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; PotEvap_tavg; celda 24.875, -100.125; marzo 2001–julio 2026",
+      "bytes": 1856749,
+      "sha256": "d46c0637e7036efe8c8989ff8c7535edca53211ab6e20f8b31779d8a047c4798",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/galeana-RootMoist_inst-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_RootMoist_inst%26location%3D%255B24.83%252C-100.08%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; RootMoist_inst; celda 24.875, -100.125; marzo 2001–julio 2026",
+      "bytes": 1848876,
+      "sha256": "927006aa15ac533f76e692c7fdfcb4404ce5349e3421680c7877565beb636faa",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/galeana-Qs_acc-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_Qs_acc%26location%3D%255B24.83%252C-100.08%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; Qs_acc; celda 24.875, -100.125; marzo 2001–julio 2026",
+      "bytes": 1509268,
+      "sha256": "ce5e21e888f9fe1c99685a579d1ae793d7edcda1fd76e4fcf3aafee825cbee67",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/galeana-Qsb_acc-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_Qsb_acc%26location%3D%255B24.83%252C-100.08%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; Qsb_acc; celda 24.875, -100.125; marzo 2001–julio 2026",
+      "bytes": 1870585,
+      "sha256": "adc1c7c54285196d1a30c918390b01076b2210f1edcc00fcf0423d954d4f630d",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/galeana-Tair_f_inst-3h-2001-03-2026-07.csv",
+      "fuente": "https://lpo4uv7f0h.execute-api.us-east-1.amazonaws.com/default/harmony-link-proxy?url=https%3A%2F%2Fapi.giovanni.earthdata.nasa.gov%2Ftimeseries%3Fdata%3DGLDAS_NOAH025_3H_2_1_Tair_f_inst%26location%3D%255B24.83%252C-100.08%255D%26time%3D2001-03-01T00%253A00%253A00%252F2026-07-31T21%253A00%253A00",
+      "descripcion": "GLDAS 2.1 cada tres horas; Tair_f_inst; celda 24.875, -100.125; marzo 2001–julio 2026",
+      "bytes": 1849249,
+      "sha256": "31ab7df44c5ccdd2fbc15edee45f8ab1fb767a60cbdff117c2c8265d1116447d",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública Hydrology Time Series / Giovanni autorizada para estas siete variables",
+      "filas": 74272,
+      "transformaciones": "Ninguna; bytes CSV originales con metadatos y tiempos UTC."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/gldas-siete-variables-catalogo.json",
+      "fuente": "https://sjldutoe6c.execute-api.us-east-1.amazonaws.com/default/harmony-proxy/giovanni.gsfc.nasa.gov/giovanni/daac-bin/catalogServices.pl?version=2.2&wt=json&rows=7&q=%28dataFieldId%3A%22GLDAS_NOAH025_3H_2_1_Rainf_tavg%22+OR+dataFieldId%3A%22GLDAS_NOAH025_3H_2_1_Evap_tavg%22+OR+dataFieldId%3A%22GLDAS_NOAH025_3H_2_1_PotEvap_tavg%22+OR+dataFieldId%3A%22GLDAS_NOAH025_3H_2_1_RootMoist_inst%22+OR+dataFieldId%3A%22GLDAS_NOAH025_3H_2_1_Qs_acc%22+OR+dataFieldId%3A%22GLDAS_NOAH025_3H_2_1_Qsb_acc%22+OR+dataFieldId%3A%22GLDAS_NOAH025_3H_2_1_Tair_f_inst%22%29+AND+dataFieldActive%3Atrue",
+      "descripcion": "Metadatos oficiales GLDAS: catálogo de siete variables y capacidades del servicio, sin observaciones científicas.",
+      "bytes": 36780,
+      "sha256": "6b03263b77d13f763c4a5a5104f0030d711978116fd8e41e7fcc372d46ff3805",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública NASA",
+      "transformaciones": "Ninguna."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/gldas-capacidades-harmony.json",
+      "fuente": "https://sjldutoe6c.execute-api.us-east-1.amazonaws.com/default/harmony-proxy/capabilities?collectionId=C1342986035-GES_DISC&version=3",
+      "descripcion": "Metadatos oficiales GLDAS: catálogo de siete variables y capacidades del servicio, sin observaciones científicas.",
+      "bytes": 10079,
+      "sha256": "e0dae7eab777c56761e4dfb77acd6c37d10445d8626f045171f275df01969846",
+      "fecha_descarga": "2026-11-14",
+      "via": "API pública NASA",
+      "transformaciones": "Ninguna."
+    },
+    {
+      "archivo": "nuevo-leon/gldas/gldas-dos-puntos-mensual-2001-03-2026-07.csv",
+      "fuente": "Derivado de los 14 CSV originales GLDAS de dos puntos documentados en nuevo-leon/gldas/procedencia-gldas-dos-puntos.json",
+      "descripcion": "Agregados mensuales de siete variables para Monterrey y Galeana; 305 meses por serie con conteos y cobertura.",
+      "bytes": 584993,
+      "sha256": "262147cbb8ac7addf7d913aa0a8fe2b1fc28eb005a754e3e049b875a7a22ef6e",
+      "fecha_descarga": "2026-11-14",
+      "via": "Transformación local con script generado por Codex",
+      "filas": 4270,
+      "transformaciones": "GLDAS tavg/acc values describe the preceding 3-hour interval (README section 3.3). Assign them to the month containing timestamp minus one microsecond; drop the first interval, which belongs to February 2001. Instantaneous variables use their timestamp month. Arithmetic mean of uniformly spaced 3-hour values. Preserve missing values and report valid counts. Rainf/Evap integral is sum(value * 10800 seconds), Qs/Qsb monthly total is sum of 3-hour accumulations; totals emitted only for complete months. July 2026 tavg/acc lacks its final 3-hour interval (would require August 1 00:00 UTC), so no full-month total is emitted. 1 kg/m2 water = 1 mm. Potential evaporation remains W/m2."
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part001",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 8388608,
+      "sha256": "716baf444595a001f40c0fbe7eeed896db5f0e8be937f30287584afe8dbc71fe",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part002",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 8388608,
+      "sha256": "a735bf3fd2aaa72e589d086b132cce10f9a3f6fa1296ce56cc9fa62a109d3bca",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part003",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 8388608,
+      "sha256": "75d503bedd992f8aff2e10c227c1058cffc35d2dbee4806ea34fd2e1835416d3",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/grace/nuevo-leon-grace-jpl-rl06.3-v04-2002-2026-09.nc",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Recorte rectangular sin promediar de todas las variables JPL GRACE",
+      "bytes": 105391,
+      "sha256": "5287ec4e4f18dede67a4522f29713a84c08cdcb898ed8820fbc81d2272164807",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "Selección de centros en recuadro 23.1–27.8 N, -101.2–-98.4 E; sin promediar ni aplicar scale_factor; longitude convertido a -180..180 solo en CSV"
+    },
+    {
+      "archivo": "nuevo-leon/grace/nuevo-leon-grace-jpl-rl06.3-v04-2002-2026-09.csv",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "CSV largo de las 261 soluciones originales JPL GRACE en 50 centros de celda",
+      "bytes": 1486626,
+      "sha256": "75898c6a1946a2b6291382826eda6e2bb3209d530a89478eb63c115fccc24b0a",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "Selección de centros en recuadro 23.1–27.8 N, -101.2–-98.4 E; sin promediar ni aplicar scale_factor; longitude convertido a -180..180 solo en CSV"
+    },
+    {
+      "archivo": "nuevo-leon/grace/reconstruir_grace.py",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Código de reconstrucción o extracción y documentación, asistidos por Codex",
+      "bytes": 3398,
+      "sha256": "566e00ff8f49f9f9ce9eb9e07706de21e89bb9ca0263c78b229fdc03f6b69e76",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "Archivo de apoyo generado con IA; no contiene valores científicos inventados"
+    },
+    {
+      "archivo": "nuevo-leon/grace/extraer_grace.py",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Código de reconstrucción o extracción y documentación, asistidos por Codex",
+      "bytes": 4841,
+      "sha256": "effeae885f684040d4dde1fb1e0faa5ff24ff13fbd1ed5838b567f127dd312ab",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "Archivo de apoyo generado con IA; no contiene valores científicos inventados"
+    },
+    {
+      "archivo": "nuevo-leon/grace/README.md",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Código de reconstrucción o extracción y documentación, asistidos por Codex",
+      "bytes": 5939,
+      "sha256": "329924d9a471a19dfcb9090d45c24d4f5e49c4f7f70b80a606372646e56213d6",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "Archivo de apoyo generado con IA; no contiene valores científicos inventados"
+    },
+    {
+      "archivo": "nuevo-leon/imerg/imerg-v07-colecciones-cmr-2026-11-14.json",
+      "fuente": "https://cmr.earthdata.nasa.gov/search/collections.json?keyword=GPM_3IMERGM&page_size=100",
+      "descripcion": "Evidencia oficial de cobertura y transición IMERG Final V07/V08",
+      "bytes": 39163,
+      "sha256": "602e61a6aa23107a55adafda6527c486d18062bccf8beeb8fe8761ccbce2960f",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; respuesta original conservada",
+      "tipo": "metadatos y documentación; no serie científica"
+    },
+    {
+      "archivo": "nuevo-leon/imerg/imerg-v07-oct-dic2025-granulos-cmr.json",
+      "fuente": "https://cmr.earthdata.nasa.gov/search/granules.json?short_name=GPM_3IMERGM&version=07&temporal=2025-10-01T00%3A00%3A00Z%2C2025-12-31T23%3A59%3A59Z&page_size=100",
+      "descripcion": "Evidencia oficial de cobertura y transición IMERG Final V07/V08",
+      "bytes": 262,
+      "sha256": "598dee75dca386a5795e823a84cbace463c5286af5c1b3b1e2a97d3f30131e6c",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; respuesta original conservada",
+      "tipo": "metadatos y documentación; no serie científica"
+    },
+    {
+      "archivo": "nuevo-leon/imerg/nasa-imerg-v08-transition-schedule-2026-04-28.html",
+      "fuente": "https://gpm.nasa.gov/data/news/imerg-v08-transition-schedule",
+      "descripcion": "Evidencia oficial de cobertura y transición IMERG Final V07/V08",
+      "bytes": 36653,
+      "sha256": "784ce4edf90203a7e570de412da972d7ec581a0d1dfc5168185971320160b736",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; respuesta original conservada",
+      "tipo": "metadatos y documentación; no serie científica"
+    },
+    {
+      "archivo": "nuevo-leon/imerg/nasa-imerg-v08-transition-update-2026-08-06.html",
+      "fuente": "https://gpm.nasa.gov/data/news/update-imerg-v08-transition-schedule-aug-2026",
+      "descripcion": "Evidencia oficial de cobertura y transición IMERG Final V07/V08",
+      "bytes": 36964,
+      "sha256": "8f4998b8013a8e4f0770606b6ee4841f831ab7e9513bd2c15fd6c52f320686bf",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; respuesta original conservada",
+      "tipo": "metadatos y documentación; no serie científica"
+    },
+    {
+      "archivo": "nuevo-leon/imerg/procedencia-verificacion-imerg-2026-11-14.json",
+      "fuente": "Fuentes originales detalladas en nuevo-leon/imerg/README.md y su procedencia",
+      "descripcion": "Código, documentación o procedencia preparados con asistencia de Codex (IA); sin valores científicos inventados",
+      "fecha_descarga": "2026-11-14",
+      "via": "Generación local con asistencia de Codex",
+      "tipo": "soporte reproducible generado",
+      "bytes": 2378,
+      "sha256": "a8d668c642cc17a7ce3375d4f1cbc037b3fed923f61dfa9021d79e7e7bd2729e"
+    },
+    {
+      "archivo": "nuevo-leon/gldas/README.md",
+      "fuente": "Fuentes originales detalladas en nuevo-leon/gldas/README.md y su procedencia",
+      "descripcion": "Código, documentación o procedencia preparados con asistencia de Codex (IA); sin valores científicos inventados",
+      "fecha_descarga": "2026-11-14",
+      "via": "Generación local con asistencia de Codex",
+      "tipo": "soporte reproducible generado",
+      "bytes": 4816,
+      "sha256": "b8bc6dc9b0c078fcc4e4e5296c2e9ee31faa3309070c38fd6643b78277044dab"
+    },
+    {
+      "archivo": "nuevo-leon/gldas/descargar_gldas.py",
+      "fuente": "Fuentes originales detalladas en nuevo-leon/gldas/README.md y su procedencia",
+      "descripcion": "Código, documentación o procedencia preparados con asistencia de Codex (IA); sin valores científicos inventados",
+      "fecha_descarga": "2026-11-14",
+      "via": "Generación local con asistencia de Codex",
+      "tipo": "soporte reproducible generado",
+      "bytes": 9494,
+      "sha256": "40a654b0e60f51279cebf61f1c2d2378a277528bfcdaaa005246b26efb603a7b"
+    },
+    {
+      "archivo": "nuevo-leon/gldas/procedencia-gldas-dos-puntos.json",
+      "fuente": "Fuentes originales detalladas en nuevo-leon/gldas/README.md y su procedencia",
+      "descripcion": "Código, documentación o procedencia preparados con asistencia de Codex (IA); sin valores científicos inventados",
+      "fecha_descarga": "2026-11-14",
+      "via": "Generación local con asistencia de Codex",
+      "tipo": "soporte reproducible generado",
+      "bytes": 20278,
+      "sha256": "4768c25e13187a34d60059f19bd23b5fad1c5d72bf3961d02793968c7c7f3d95"
+    },
+    {
+      "archivo": "nuevo-leon/grace/provenance.json",
+      "fuente": "Fuentes originales detalladas en nuevo-leon/grace/README.md y su procedencia",
+      "descripcion": "Código, documentación o procedencia preparados con asistencia de Codex (IA); sin valores científicos inventados",
+      "fecha_descarga": "2026-11-14",
+      "via": "Generación local con asistencia de Codex",
+      "tipo": "soporte reproducible generado",
+      "bytes": 9705,
+      "sha256": "67e6b19cbd90c0e6f24339cd50d106a731c4a597531731cbc9f25fa42f8f6e43"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part004",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 8388608,
+      "sha256": "0351adedbdd554c3c49a82a2d9b162033ce418f333b4a0efe1a6174d29970963",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part005",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 8388608,
+      "sha256": "f67c61f3369c103e3fb0cf8a4c98652c6266982285a8248960f4c6c2c280b0cb",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part006",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 4422131,
+      "sha256": "1ed1658eed7c3dd7fb23dc4fea94a6b1222d6397e9346c76d332eea199bb419f",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
     }
   ]
 }
