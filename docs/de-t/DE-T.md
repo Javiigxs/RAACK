@@ -29,4 +29,16 @@ Esa misma noche, mientras se revisaba la página, también se centraron los cuad
 
 La clave de Kimi y la prueba con el modelo real, aprobar el catálogo de opciones, declarar Kimi en el formulario de uso de IA y decidir cómo lo verán los jueces. La lista está en los [Pendientes](../PENDIENTES.md).
 
+## Actualización del 15 de noviembre de 2026, por la mañana
+
+Fran pidió que DE-T pesara más en la página y que se le pudiera preguntar donde se elige el país. Lo hizo Claude ese mismo día y está sin commit:
+
+1. **Una franja para preguntar bajo el selector de país** del paso 9. Ver [Dónde aparece y por qué](DE-T_DONDE_APARECE.md), al final.
+2. **Una base de datos por país** para que DE-T conteste con los datos del globo. Ver [Cómo evita inventar](DE-T_COMO_EVITA_INVENTAR.md), al final.
+3. **La petición a Kimi**, que dejaba 900 tokens para una respuesta que ahora incluye el razonamiento del modelo. Ver [Cómo se enciende](../../app/dete/README.md).
+
+Sigue sin probarse con Kimi real. Lo que queda está en los [Pendientes](../PENDIENTES.md).
+
+**Prueba con Kimi real, el mismo 15 de noviembre de 2026.** Fran puso su clave y Claude lanzó las ocho pruebas rápidas contra el servidor. Kimi aceptó la clave, pero la cuenta no tiene `kimi-k2.6`, el modelo del diseño: solo `kimi-k3.1-pro` y `kimi-k3`. Con `kimi-k3.1-pro` y el razonamiento en `low`, las ocho preguntas se respondieron y todas las cifras pasaron el verificador; cada una tardó entre 11 y 40 segundos y costó entre 0,4 y 3,0 centavos de dólar según la estimación del servidor. La frase de arriba, «sigue sin probarse con Kimi real», ya no vale para el servidor; sí para la página, que falta verla con DE-T real. Lo que salió: [resultado de la prueba](../../app/dete/pruebas/resultado-kimi-real-2026-11-15.txt).
+
 Nota redactada con ayuda de IA (Claude) para el equipo RAACK.

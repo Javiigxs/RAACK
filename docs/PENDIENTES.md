@@ -81,12 +81,36 @@ Fran propuso que la página cuente, país por país, cuántas capas de datos del
 
 Fran entregó el diseño del asistente (zip `hydrodetective-asistente`: servidor con Kimi, cuatro herramientas que calculan las cifras y un verificador) y pidió meterlo en la página. Está integrado en local: al pulsar un número, la explicación termina con «¿No quedó claro? Pregúntale al DE-T»; también se abre desde el veredicto y desde la cabecera. Cómo se enciende y qué cambió respecto al zip: [app/dete/README.md](../app/dete/README.md). Qué se hizo y por qué, nota por nota: [DE-T](de-t/DE-T.md). Lo que queda:
 
-- [ ] **Clave de Kimi.** Una persona del equipo crea la API key en platform.kimi.ai y la pone en `app/dete/.env` (copia de `.env.example`). Nunca se sube al repositorio.
-- [ ] **Probar DE-T con Kimi real.** El circuito completo se probó con un Kimi simulado en local; falta repetir las cinco pruebas rápidas del README con el modelo real.
+- [x] **Clave de Kimi.** Fran la puso en `app/dete/.env` el 15 de noviembre de 2026. Está solo en su equipo: nunca se sube al repositorio.
+- [x] **Probar DE-T con Kimi real.** Hecho el 15 de noviembre de 2026 por HTTP contra el servidor: ocho de ocho pruebas rápidas, con todas las cifras verificadas. Detalle en el apartado siguiente. Falta verlo en la página.
 - [ ] **Aprobar el catálogo de opciones** (`app/dete/catalogo.md`). Es un borrador preparado con ayuda de IA; DE-T lo cita como «📚 Del catálogo».
 - [ ] **Declarar Kimi (Moonshot AI)** en el formulario de uso de IA de la entrega, además de Claude y Codex.
 - [ ] **Decidir cómo lo verán los jueces.** La copia en GitHub Pages es estática y no muestra a DE-T; se ve con `npm run dete` en un equipo con la clave. Si entra en la demo, grabarlo desde ese servidor.
 - [ ] Cuenta Tier0 de Kimi: cabe más o menos una pregunta por minuto. Si varias personas lo van a usar a la vez, recargar hasta Tier1.
 - [x] **Subir a GitHub DE-T y los cuadros de la portada.** Subidos el 15 de noviembre de 2026: GitHub `main` está en `16e50a1`, igual que el clon. La bóveda de Obsidian de Fran también se actualizó.
-- [ ] **Regenerar el sitio publicado.** `site/` se generó antes de estos cambios. Hay que ejecutar `npm run site` desde `app/` y subirlo para que la copia publicada tenga los cuadros centrados y el selector de año. DE-T no aparece en la copia estática.
+- [x] **Regenerar el sitio publicado.** `site/` se regeneró el 15 de noviembre de 2026 con la página actual (rediseño, cuadros y paso 9). DE-T no aparece en la copia estática. Falta subirlo y activar GitHub Pages.
 - [x] Las cifras de DE-T coinciden con las de la página. El zip daba −8,53 cm por década en GRACE (pendiente por paso de la serie); ahora DE-T usa −7,135, la cifra de la página, y lo comprueba una prueba automática.
+
+### DE-T donde se elige el país (15 de noviembre de 2026, por la mañana)
+
+Fran pidió que DE-T pesara más en la página y propuso preguntarle donde se elige el país. Está hecho en local y **sin commit** (tarea #241 del tablero): una franja «Ask DE-T about …» bajo el selector de país del paso 9, una base de datos por país para el agente (`app/dete/paises.json`, 243 países, sacada de los datos del globo) y la petición a Kimi corregida. Detalle: [app/dete/README.md](../app/dete/README.md) y [Dónde aparece DE-T](de-t/DE-T_DONDE_APARECE.md). Hecho con ayuda de IA (Claude). Lo que queda:
+
+- [ ] **Confirmar el modelo de Kimi.** La cuenta del equipo no tiene `kimi-k2.6`, el del diseño: Kimi respondió el 15 de noviembre de 2026 que solo tiene `kimi-k3.1-pro` y `kimi-k3`. El servidor usa ahora `kimi-k3.1-pro`, el de tarifa más baja de los dos, con el razonamiento en `low`. Lo eligió Claude para poder probar: falta que el equipo lo confirme.
+- [x] **Probarlo con Kimi real**, con las ocho pruebas rápidas del README. Hecho el 15 de noviembre de 2026 con la clave de Fran (`npm run dete:real` desde `app/`): ocho de ocho respondidas y verificadas, entre 11 y 40 segundos cada una. Salida guardada en `app/dete/pruebas/resultado-kimi-real-2026-11-15.txt`.
+- [ ] **Ver a DE-T real en la página.** La prueba real fue por HTTP contra el servidor. Falta abrir http://localhost:8000 con `npm run dete` y repetir alguna pregunta desde la franja del paso 9.
+- [ ] **Comparar el costo con el saldo de Kimi.** El servidor estimó entre 0,4 y 3,0 centavos de dólar por pregunta (1,7 de media, unos 15 centavos toda la prueba), con una tarifa de `kimi-k3.1-pro` que no se pudo leer en la tabla oficial. Falta mirar en la consola de Kimi cuánto bajó el saldo de 5 dólares.
+- [ ] **Revisar el aviso del hielo.** DE-T dice que GRACE mide también nieve y hielo en los países más allá de 60° de latitud y en el ranking de países. Sale del título oficial del producto, no de un análisis del equipo.
+- [ ] **Revisar los textos nuevos**, en inglés y en español (`dete.place.*` en `app/src/lib/i18n-dete.ts`): el título de la franja y sus tres preguntas de inicio.
+- [ ] **Cuidar la clave de Kimi.** Está solo en `app/dete/.env`, en el equipo de Fran. Git ignora ese archivo y cualquier otro `.env` (reglas en `.gitignore`, `app/.gitignore` y `app/dete/.gitignore`), y tres pruebas fallan si la plantilla trae una clave, si se quitan esas reglas o si algún archivo de `app/dete/` lleva una escrita. **No subir la carpeta `app/dete/` arrastrándola a la web de GitHub:** esa vía no respeta `.gitignore` y se llevaría `.env`. Se sube con `git push`. Si la clave se llegara a publicar, hay que borrarla en platform.kimi.ai y crear otra.
+- [ ] **DE-T no está en el enlace público.** GitHub Pages solo sirve la página estática. Para que los jueces usen a DE-T hace falta un servidor con la clave guardada como secreto, o grabarlo en la demo desde el equipo de Fran.
+
+## Actualización del 15 de noviembre de 2026 · rediseño visual de la página
+
+Fran pidió que la página «se vea diseñada, no generada», con menos información a la vista y sin perder funciones, tomando reglas de Apple, Google y Palantir. Está hecho en local sobre `app/` (tarea #239 del tablero) y **sin commit**. No cambian cifras, datos ni lógica: solo la presentación. Las reglas del sistema visual están escritas al inicio de `app/src/app.css` y resumidas en la [guía de la página](../app/README.md). Hecho con ayuda de IA (Claude). Lo que queda:
+
+- [ ] **Que el equipo lo vea y lo apruebe.** Vista previa `raack-app-5177` de `.claude/launch.json`, o `npm run dev` desde `app/`. Si no convence, `git checkout -- app` devuelve la página anterior.
+- [ ] **Revisar lo que ahora empieza plegado:** los sospechosos con coartada firme (una línea que se abre al pulsar), los acuíferos sin déficit (botón bajo la tabla), la tabla de las diez capas cuando el caso está completo y los doce pasos del método. Todo sigue a un clic.
+- [ ] **Revisar dos textos nuevos**, en inglés y en español: el botón «Show the 10 aquifers with water available» y su contrario (`w.ev.showRest`, `w.ev.hideRest`).
+- [ ] **Citar la tipografía** en las referencias de la entrega: Hanken Grotesk, licencia SIL Open Font License 1.1. Viaja dentro del sitio, con su licencia en `app/public/licenses/`.
+- [ ] Hacer commit, regenerar `site/` con `npm run site` desde `app/` y subirlo.
+- [ ] Añadir a [INDICE.md](../INDICE.md) el cambio de estado cuando quede libre (lo tiene reservado la tarea #225).

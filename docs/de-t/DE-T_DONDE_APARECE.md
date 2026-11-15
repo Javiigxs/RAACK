@@ -24,4 +24,23 @@ DE-T aparece cuando la página la sirve su propio servidor (`app/dete/server.mjs
 
 Usa los colores, el modo oscuro y la regla de movimiento reducido de la página, como el resto de las piezas. Los textos están en inglés y español (`app/src/lib/i18n-dete.ts`), y las pruebas exigen las mismas frases en los dos idiomas.
 
+## Actualización del 15 de noviembre de 2026, por la mañana · donde se elige el país
+
+Fran pidió que DE-T pesara más en la página, porque la herramienta son el agente y las bases de datos, y propuso que se le pudiera preguntar donde se elige el país.
+
+| Lugar | Qué hace | Por qué ahí |
+|---|---|---|
+| Paso 9, bajo los países de inicio | Enlace «Ask DE-T about Italy ↓» («Pregúntale al DE-T por Italia ↓»). Lleva a la línea de la pregunta y deja el cursor en ella. | Es donde se elige el país. Un enlace no baja el resultado «7 / 10», que es la cifra de esa sección. |
+| Paso 9, bajo el globo y su resultado | Una franja a todo el ancho: a la izquierda, quién responde; a la derecha, la línea para escribir la pregunta y tres preguntas de inicio sobre el lugar elegido. | Primero se ve lo que hay del país y después se pregunta. Usa las dos columnas del globo y su resultado, sin caja, como el resto de la página. |
+| El panel | Cada pregunta hecha desde la franja dice «About Italy». Las que se escriben después siguen siendo sobre ese lugar hasta pulsar «New conversation», abrir DE-T desde el veredicto o preguntar por un número de otra sección. | Para que se vea de qué lugar se habla sin añadir un control más. |
+| Un número del globo | «Not clear? Ask DE-T» manda también el lugar del globo. | Antes llegaba el número sin el país y DE-T no podía comprobarlo. |
+
+Las tres preguntas de inicio de un país: si pierde agua almacenada, qué falta para abrir el caso allí y cómo se compara con Nuevo León. Con Nuevo León elegido son las tres del panel.
+
+Se probó añadir «Ask DE-T» a la cabecera del caso, junto a «Start the investigation», y se quitó: a ese ancho ya está el botón de la cabecera o el redondo de la esquina, y el enlace quedaba suelto en una segunda línea.
+
+En desarrollo (`npm run dev`), si DE-T está apagado, en el sitio de la franja se lee por qué y cómo encenderlo. La página publicada no lo muestra.
+
+**Cómo se comprobó:** en el navegador, con el estado de DE-T encendido a mano y las respuestas simuladas, en inglés y español, a 1024 y 375 px, en tema claro y oscuro. Se revisó lo que la página manda al servidor: el identificador del lugar y nada más.
+
 Nota redactada con ayuda de IA (Claude) para el equipo RAACK.
