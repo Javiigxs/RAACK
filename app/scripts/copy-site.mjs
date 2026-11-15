@@ -25,6 +25,10 @@ writeFileSync(
   ].join('\n')
 );
 
+// GitHub Pages passes a site through Jekyll unless it finds this file. The built site needs no
+// processing, and with the file the folder can also be published on its own (a gh-pages branch).
+writeFileSync(join(site, '.nojekyll'), '');
+
 const files = [];
 (function walk(dir) {
   for (const name of readdirSync(dir)) {
