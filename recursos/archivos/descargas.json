@@ -82,6 +82,33 @@
       "nombre_original": "GLDAS_NOAH025_3H_2_1_Evap_tavg_36.6100_-80.2400_05_01_2016_to_05_07_2016.csv"
     },
     {
+      "archivo": "monterrey-lluvia-nasa-power.csv",
+      "fuente": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=IMERG_PRECTOT&community=AG&latitude=25.6708&longitude=-100.3092&start=20020101&end=20241231&format=CSV&time-standard=UTC",
+      "descripcion": "IMERG, precipitación diaria para el punto de Monterrey, 2002–2024",
+      "bytes": 119066,
+      "sha256": "71cf37ab651652f8dfe1f7c2ded90110ce6ff961e31861a5fe89364ad9ccc20e",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS; consulta asistida por Codex"
+    },
+    {
+      "archivo": "monterrey-humedad-nasa-power.csv",
+      "fuente": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=GWETROOT&community=AG&latitude=25.6708&longitude=-100.3092&start=2002&end=2024&format=CSV",
+      "descripcion": "MERRA-2, humedad relativa mensual de la zona de raíces para Monterrey, 2002–2024",
+      "bytes": 2323,
+      "sha256": "c8164e4ce660973bf6c6cc89379231cee539decf8fb5383757bc25f3785fb507",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS; consulta asistida por Codex"
+    },
+    {
+      "archivo": "smn-monterrey-19052.txt",
+      "fuente": "https://smn.conagua.gob.mx/tools/RESOURCES/Normales_Climatologicas/Diarios/nl/dia19052.txt",
+      "descripcion": "SMN/Conagua, observaciones diarias de la estación 19052, Monterrey (Obs), San Nicolás de los Garza; contraste terrestre",
+      "bytes": 672975,
+      "sha256": "26abd9aaba1407b1d56636327974832d13084844f1c2ddc99ab71ca8be406807",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS; consulta asistida por Codex"
+    },
+    {
       "archivo": "appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-results.csv",
       "fuente": "https://appeears.earthdatacloud.nasa.gov/download/b55ae841-fc36-4385-b584-e19c67b7b156",
       "descripcion": "Resultado de la extracción AppEEARS de cinco puntos de Monterrey, 2001–2025; RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-results.csv",
