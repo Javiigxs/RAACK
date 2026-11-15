@@ -1,0 +1,8 @@
+# Claves y configuración local: nunca se suben al repositorio. La plantilla (.env.example) sí.
+# La clave de Kimi de DE-T va en app/dete/.env y solo existe en el equipo de quien la creó.
+.env
+.env.*
+!.env.example
+
+# Configuración local de las herramientas de IA
+.claude/
