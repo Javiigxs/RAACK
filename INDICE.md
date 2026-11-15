@@ -17,6 +17,7 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
   - [Lluvia en Monterrey, 2002–2024](docs/LLUVIA_MONTERREY.md): 8.401 días de IMERG, 276 meses de humedad MERRA-2 y un registro del SMN guardados en el repositorio. Casos reproducibles de sequedad, aguaceros y concentración de la lluvia.
   - [Ideas para la herramienta](docs/IDEAS.md) propuestas, con su paso por las cuatro reglas.
   - Fran propuso explorar lo que oculta el resumen anual y los cambios de calendario. El [mapa de datos](docs/MAPA_DE_DATOS.md) separa las cinco variables y enlaza la comparación anual de la lluvia.
+  - [Datos regionales solicitados para Nuevo León](docs/REQUISITOS_DATOS_NUEVO_LEON.md): CHIRPS completo1998–2025, IMERG hasta septiembre2025, cuencas y presas descargados; GLDAS y el netCDF GRACE siguen pendientes de acceso.
 - **Regla clave:** toda propuesta debe pasar las cuatro reglas de [docs/VALIDACION.md](docs/VALIDACION.md).
 - **Por decidir:**
   - Qué idea se construye y cuál es el diferenciador.
@@ -39,6 +40,7 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | ¿Cómo puntúan los jueces y qué exige la entrega? | [docs/REGLAS_OFICIALES.md](docs/REGLAS_OFICIALES.md) |
 | ¿Qué ideas hay para la herramienta y cuál podría ser el diferenciador? | [docs/IDEAS.md](docs/IDEAS.md) |
 | ¿Qué datos puedo usar para comparar el resumen anual con el calendario de lluvia, calor o verdor? | [docs/MAPA_DE_DATOS.md](docs/MAPA_DE_DATOS.md) |
+| ¿Qué se descargó de la lista regional de Nuevo León y qué falta? | [docs/REQUISITOS_DATOS_NUEVO_LEON.md](docs/REQUISITOS_DATOS_NUEVO_LEON.md) |
 | ¿Qué recursos dieron y cuáles sirven para nuestro caso? | [recursos/COBERTURA.md](recursos/COBERTURA.md) |
 | ¿Qué se puede hacer o pedir en cada recurso y cuánto tarda en llegar? | [docs/FUNCIONALIDADES.md](docs/FUNCIONALIDADES.md) |
 | ¿Cómo saber si una idea o caso es válido? | [docs/VALIDACION.md](docs/VALIDACION.md) |
@@ -59,6 +61,7 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | [docs/REGLAS_OFICIALES.md](docs/REGLAS_OFICIALES.md) | Reglas de la organización: 5 criterios de evaluación, plazo, demo, idioma, uso de IA, campos de la página del proyecto y premios. | 8 kB |
 | [docs/IDEAS.md](docs/IDEAS.md) | 13 propuestas iniciales, dos propuestas de Fran, primera señal preliminar en Monterrey y borrador del diferenciador. | 17 kB |
 | [docs/MAPA_DE_DATOS.md](docs/MAPA_DE_DATOS.md) | Propuestas de Fran, cinco series por variable, indicadores por año y fuente, cobertura y límites para interpretar ciclos. | 8 kB |
+| [docs/REQUISITOS_DATOS_NUEVO_LEON.md](docs/REQUISITOS_DATOS_NUEVO_LEON.md) | Requisitos del Word, archivos regionales descargados, cobertura, unidades, límites y accesos pendientes. | 10 kB |
 | [docs/VALIDACION.md](docs/VALIDACION.md) | Las 4 reglas que toda propuesta debe pasar (problema real, medible, con los datos que nos dieron, diferenciador) y estado del caso Monterrey. | 6 kB |
 | [docs/PENDIENTES.md](docs/PENDIENTES.md) | Decisiones y tareas abiertas del equipo: idea, variable, región, periodo, accesos, criterios de la herramienta y lista de la entrega oficial. | 4 kB |
 | [docs/decisiones/GIOVANNI.md](docs/decisiones/GIOVANNI.md) | Por qué Giovanni está excluido y qué falta para decidir si se usa. | 1 kB |
