@@ -1,0 +1,154 @@
+{
+  "producto": "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4",
+  "fecha": "2026-11-14",
+  "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+  "original": {
+    "nombre": "GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+    "bytes": 46365171,
+    "sha256": "3522dd579cc10326339efdecece550ba01f41b9bee599d0ed915fc35f9eafb64",
+    "md5": "1567b9401ec2a704aab16598fcce5e70",
+    "md5_oficial_verificado": true
+  },
+  "seleccion": {
+    "criterio": "centros dentro del recuadro, inclusivo",
+    "latitud": [
+      23.1,
+      27.8
+    ],
+    "longitud": [
+      -101.2,
+      -98.4
+    ],
+    "latitudes_seleccionadas": 10,
+    "longitudes_seleccionadas": 5,
+    "tiempos_originales": 261,
+    "filas_csv": 13050,
+    "promedio": false,
+    "interpolacion": false,
+    "scale_factor_aplicado": false,
+    "convencion_longitud_netcdf": "0..360 original",
+    "convencion_longitud_csv": "-180..180",
+    "unidades_lwe_thickness": "cm",
+    "unidades_uncertainty": "cm, 1 sigma del mascon",
+    "referencia_anomalias": "2004.000 to 2009.999"
+  },
+  "verificacion": {
+    "reconstruccion_sha256": true,
+    "reconstruccion_md5_oficial": true,
+    "variables_netcdf_iguales_al_recorte_original": 12,
+    "todas_filas_csv_comparadas_con_original": 13050
+  },
+  "uso_ia": "Codex asistió empaquetado, verificación, código y documentación; valores científicos originales de NASA/JPL, no generados con IA.",
+  "manifest_entries": [
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part001",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 8388608,
+      "sha256": "716baf444595a001f40c0fbe7eeed896db5f0e8be937f30287584afe8dbc71fe",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part002",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 8388608,
+      "sha256": "a735bf3fd2aaa72e589d086b132cce10f9a3f6fa1296ce56cc9fa62a109d3bca",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part003",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 8388608,
+      "sha256": "75d503bedd992f8aff2e10c227c1058cffc35d2dbee4806ea34fd2e1835416d3",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part004",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 8388608,
+      "sha256": "0351adedbdd554c3c49a82a2d9b162033ce418f333b4a0efe1a6174d29970963",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part005",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 8388608,
+      "sha256": "f67c61f3369c103e3fb0cf8a4c98652c6266982285a8248960f4c6c2c280b0cb",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.part006",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Parte consecutiva sin alterar del netCDF mundial oficial JPL GRACE; reconstruir con reconstruir_grace.py",
+      "bytes": 4422131,
+      "sha256": "1ed1658eed7c3dd7fb23dc4fea94a6b1222d6397e9346c76d332eea199bb419f",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/grace/nuevo-leon-grace-jpl-rl06.3-v04-2002-2026-09.nc",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Recorte rectangular sin promediar de todas las variables JPL GRACE",
+      "bytes": 105391,
+      "sha256": "5287ec4e4f18dede67a4522f29713a84c08cdcb898ed8820fbc81d2272164807",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "Selección de centros en recuadro 23.1–27.8 N, -101.2–-98.4 E; sin promediar ni aplicar scale_factor; longitude convertido a -180..180 solo en CSV"
+    },
+    {
+      "archivo": "nuevo-leon/grace/nuevo-leon-grace-jpl-rl06.3-v04-2002-2026-09.csv",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "CSV largo de las 261 soluciones originales JPL GRACE en 50 centros de celda",
+      "bytes": 1486626,
+      "sha256": "75898c6a1946a2b6291382826eda6e2bb3209d530a89478eb63c115fccc24b0a",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "Selección de centros en recuadro 23.1–27.8 N, -101.2–-98.4 E; sin promediar ni aplicar scale_factor; longitude convertido a -180..180 solo en CSV"
+    },
+    {
+      "archivo": "nuevo-leon/grace/reconstruir_grace.py",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Código de reconstrucción o extracción y documentación, asistidos por Codex",
+      "bytes": 3398,
+      "sha256": "566e00ff8f49f9f9ce9eb9e07706de21e89bb9ca0263c78b229fdc03f6b69e76",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "Archivo de apoyo generado con IA; no contiene valores científicos inventados"
+    },
+    {
+      "archivo": "nuevo-leon/grace/extraer_grace.py",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Código de reconstrucción o extracción y documentación, asistidos por Codex",
+      "bytes": 4841,
+      "sha256": "effeae885f684040d4dde1fb1e0faa5ff24ff13fbd1ed5838b567f127dd312ab",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "Archivo de apoyo generado con IA; no contiene valores científicos inventados"
+    },
+    {
+      "archivo": "nuevo-leon/grace/README.md",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc",
+      "descripcion": "Código de reconstrucción o extracción y documentación, asistidos por Codex",
+      "bytes": 5939,
+      "sha256": "329924d9a471a19dfcb9090d45c24d4f5e49c4f7f70b80a606372646e56213d6",
+      "fecha_descarga": "2026-11-14",
+      "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
+      "transformacion": "Archivo de apoyo generado con IA; no contiene valores científicos inventados"
+    }
+  ]
+}
