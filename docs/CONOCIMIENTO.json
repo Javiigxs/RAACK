@@ -1358,8 +1358,8 @@
       "id": "t_subir",
       "tipo": "pendiente",
       "grupo": "pendientes",
-      "etiqueta": "Subir a GitHub DE-T y los cuadros",
-      "texto": "La integración de DE-T y los cuadros centrados están en commits locales de main, sin subir. El sitio publicado (site/) no los tendrá hasta ejecutar npm run site y subirlo.",
+      "etiqueta": "Regenerar el sitio publicado",
+      "texto": "DE-T y los cuadros ya están en GitHub (main en 16e50a1, 15 de noviembre de 2026). El sitio estático (site/) se generó antes: hay que ejecutar npm run site y subirlo para que la copia publicada tenga los cuadros centrados y el selector de año. DE-T no aparece en la copia estática.",
       "estado": "pendiente",
       "fuentes": [
         {
@@ -2670,15 +2670,9 @@
       "pendiente": false
     },
     {
-      "origen": "p_dete",
-      "destino": "t_subir",
-      "relacion": "falta subir",
-      "pendiente": true
-    },
-    {
       "origen": "p_cuadros",
       "destino": "t_subir",
-      "relacion": "falta subir",
+      "relacion": "falta en el sitio publicado",
       "pendiente": true
     }
   ],
@@ -2884,8 +2878,7 @@
         "l_dete_estatico",
         "p_dete",
         "p_pagina",
-        "t_dete",
-        "t_subir"
+        "t_dete"
       ]
     }
   ]

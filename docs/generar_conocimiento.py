@@ -365,9 +365,10 @@ N("t_dete", "pendiente", "pendientes", "Clave de Kimi y catálogo de DE-T",
   "DE-T se probó con un Kimi simulado. Falta la clave del equipo, probarlo con el modelo real, aprobar el "
   "catálogo de opciones y declarar Kimi en el formulario de uso de IA.",
   "pendiente", ("Pendientes", "docs/PENDIENTES.md"))
-N("t_subir", "pendiente", "pendientes", "Subir a GitHub DE-T y los cuadros",
-  "La integración de DE-T y los cuadros centrados están en commits locales de main, sin subir. El sitio publicado "
-  "(site/) no los tendrá hasta ejecutar npm run site y subirlo.",
+N("t_subir", "pendiente", "pendientes", "Regenerar el sitio publicado",
+  "DE-T y los cuadros ya están en GitHub (main en 16e50a1, 15 de noviembre de 2026). El sitio estático (site/) se "
+  "generó antes: hay que ejecutar npm run site y subirlo para que la copia publicada tenga los cuadros centrados y el "
+  "selector de año. DE-T no aparece en la copia estática.",
   "pendiente", ("Pendientes", "docs/PENDIENTES.md"))
 N("t_demo", "pendiente", "pendientes", "Demo y textos en inglés",
   "Vídeo de 30 segundos o 7 diapositivas, y los campos de la página del proyecto.",
@@ -577,8 +578,7 @@ ARISTAS = [
     ("h_dete_paso", "h_almacen", "habría contradicho", False),
     ("l_dete", "p_dete", "matiza", False),
     ("l_dete_estatico", "p_dete", "limita dónde aparece", False),
-    ("p_dete", "t_subir", "falta subir", True),
-    ("p_cuadros", "t_subir", "falta subir", True),
+    ("p_cuadros", "t_subir", "falta en el sitio publicado", True),
 ]
 
 GRUPOS = {
@@ -641,7 +641,7 @@ VISTAS = [
                "saca sus cifras, cómo evita inventarlas, dónde aparece y qué falta.",
          nodos=["q_dete", "p_numeros", "m_dete_contexto", "d_dete", "m_agua", "d_acuiferos", "h_dete_paso",
                 "h_almacen", "m_dete_herr", "m_dete_verif", "l_dete", "l_dete_estatico", "p_dete", "p_pagina",
-                "t_dete", "t_subir"]),
+                "t_dete"]),
 ]
 
 ESENCIAL = [

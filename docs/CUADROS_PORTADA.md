@@ -20,6 +20,6 @@ fecha: 2026-11-15
 - **Por qué independiente del de lluvia:** la temperatura cubre 2001–2025 y la lluvia 2002–2024. Si los dos selectores fueran juntos, algunos años dejarían una tarjeta vacía.
 - **Detalle:** el título de la tarjeta se parte en dos líneas para que el selector quede arriba a la derecha, igual que en la de lluvia.
 
-Código en `app/src/lib/sections/Squares.svelte` y `app/src/lib/charts/HeatGrid.svelte`; textos en inglés y español en `app/src/lib/i18n-design.ts`. Commit local `50800e9`, sin subir a GitHub.
+Código en `app/src/lib/sections/Squares.svelte` y `app/src/lib/charts/HeatGrid.svelte`; textos en inglés y español en `app/src/lib/i18n-design.ts`. Commit `50800e9`, subido a GitHub el 15 de noviembre de 2026. El sitio publicado (`site/`) aún no lo tiene: falta `npm run site`.
 
 Nota redactada con ayuda de IA (Claude) para el equipo RAACK.

@@ -87,5 +87,6 @@ Fran entregó el diseño del asistente (zip `hydrodetective-asistente`: servidor
 - [ ] **Declarar Kimi (Moonshot AI)** en el formulario de uso de IA de la entrega, además de Claude y Codex.
 - [ ] **Decidir cómo lo verán los jueces.** La copia en GitHub Pages es estática y no muestra a DE-T; se ve con `npm run dete` en un equipo con la clave. Si entra en la demo, grabarlo desde ese servidor.
 - [ ] Cuenta Tier0 de Kimi: cabe más o menos una pregunta por minuto. Si varias personas lo van a usar a la vez, recargar hasta Tier1.
-- [ ] **Subir a GitHub DE-T y los cuadros de la portada.** La integración de DE-T, los cuadros centrados con el selector de año de temperatura y la vista de DE-T del [grafo de conocimiento](CONOCIMIENTO.md) están en commits locales de `main`, sin subir. El sitio publicado (`site/`) no los tendrá hasta ejecutar `npm run site` y subirlo.
+- [x] **Subir a GitHub DE-T y los cuadros de la portada.** Subidos el 15 de noviembre de 2026: GitHub `main` está en `16e50a1`, igual que el clon. La bóveda de Obsidian de Fran también se actualizó.
+- [ ] **Regenerar el sitio publicado.** `site/` se generó antes de estos cambios. Hay que ejecutar `npm run site` desde `app/` y subirlo para que la copia publicada tenga los cuadros centrados y el selector de año. DE-T no aparece en la copia estática.
 - [x] Las cifras de DE-T coinciden con las de la página. El zip daba −8,53 cm por década en GRACE (pendiente por paso de la serie); ahora DE-T usa −7,135, la cifra de la página, y lo comprueba una prueba automática.

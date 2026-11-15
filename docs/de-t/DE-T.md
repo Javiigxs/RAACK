@@ -23,10 +23,10 @@ Esa misma noche, mientras se revisaba la página, también se centraron los cuad
 
 - 164 pruebas automáticas: las 139 que había y 25 nuevas de DE-T. `svelte-check` sin errores.
 - El recorrido completo (página → servidor → herramientas → verificador) con un **Kimi simulado** en local, en inglés y español, en escritorio y teléfono. **No se ha probado con Kimi real**: falta la clave.
-- Commits locales en `main`: `77a5d3b` (la página), `59bb5a1` (grafo y pendientes) y `50800e9` (cuadros). No están subidos a GitHub.
+- Commits en `main`: `77a5d3b` (la página), `59bb5a1` (grafo y pendientes), `50800e9` (cuadros), `8fdcbed` y `16e50a1` (estas notas). Subidos a GitHub el 15 de noviembre de 2026.
 
 ## Lo que falta
 
-La clave de Kimi y la prueba con el modelo real, aprobar el catálogo de opciones, declarar Kimi en el formulario de uso de IA, decidir cómo lo verán los jueces y subirlo a GitHub. La lista está en los [Pendientes](../PENDIENTES.md).
+La clave de Kimi y la prueba con el modelo real, aprobar el catálogo de opciones, declarar Kimi en el formulario de uso de IA y decidir cómo lo verán los jueces. La lista está en los [Pendientes](../PENDIENTES.md).
 
 Nota redactada con ayuda de IA (Claude) para el equipo RAACK.

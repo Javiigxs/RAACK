@@ -8,7 +8,7 @@ fecha: 2026-11-15
 
 El equipo investiga qué explica la pérdida de agua en Nuevo León y qué ocultan los promedios anuales en Monterrey. Este grafo conecta las preguntas con los datos, el método, los hallazgos y las pruebas que aún faltan. Cada vista abre una parte del grafo. El [contexto](CONTEXTO.md) conserva la historia del trabajo.
 
-Actualizado el 15 de noviembre de 2026. Contiene 104 nodos y 161 relaciones. Las etiquetas «fijado por prueba» y «calculado por la página» remiten al motor del caso correspondiente.
+Actualizado el 15 de noviembre de 2026. Contiene 104 nodos y 160 relaciones. Las etiquetas «fijado por prueba» y «calculado por la página» remiten al motor del caso correspondiente.
 
 ## Lo esencial en un minuto
 
@@ -602,7 +602,7 @@ flowchart LR
     t_textos["Revisar los textos de la demo"]
     t_texturas["Permiso de las texturas"]
     t_dete["Clave de Kimi y catálogo de DE-T"]
-    t_subir["Subir a GitHub DE-T y los cuadros"]
+    t_subir["Regenerar el sitio publicado"]
   end
   p_agua -->|forma parte de| p_pagina
   p_agua -->|se amplía con| p_mundo
@@ -631,8 +631,7 @@ flowchart LR
   p_cuadros -->|abre| p_pagina
   p_pagina -->|contiene| p_numeros
   p_numeros -->|termina con «¿No quedó claro?»| p_dete
-  p_dete -.->|falta subir| t_subir
-  p_cuadros -.->|falta subir| t_subir
+  p_cuadros -.->|falta en el sitio publicado| t_subir
   classDef hallazgo fill:#e7f5ec,stroke:#2e7d4f,color:#1d2430
   class h_vacio,h_gemelos,h_lluvia,h_noches,h_lugares,h_verdor,h_aire hallazgo
   classDef metodo fill:#f2f2f2,stroke:#8a8a8a,color:#1d2430
@@ -660,7 +659,7 @@ flowchart LR
 - [ ] **Registrar la entrega del reto.** El sitio generado está en GitHub. Queda habilitar la demo pública, verificar el enlace e incluirlo en la entrega oficial. [Pendientes](PENDIENTES.md)
 - [ ] **Permiso de las texturas.** Fran eligió conservar el globo actual en GitHub después de una comparación local con mapas de la NASA. Queda obtener permiso para usar las texturas actuales en la entrega. [Decisión y procedencia](PENDIENTES.md)
 - [ ] **Clave de Kimi y catálogo de DE-T.** DE-T se probó con un Kimi simulado. Falta la clave del equipo, probarlo con el modelo real, aprobar el catálogo de opciones y declarar Kimi en el formulario de uso de IA. [Pendientes](PENDIENTES.md)
-- [ ] **Subir a GitHub DE-T y los cuadros.** La integración de DE-T y los cuadros centrados están en commits locales de main, sin subir. El sitio publicado (site/) no los tendrá hasta ejecutar npm run site y subirlo. [Pendientes](PENDIENTES.md)
+- [ ] **Regenerar el sitio publicado.** DE-T y los cuadros ya están en GitHub (main en 16e50a1, 15 de noviembre de 2026). El sitio estático (site/) se generó antes: hay que ejecutar npm run site y subirlo para que la copia publicada tenga los cuadros centrados y el selector de año. DE-T no aparece en la copia estática. [Pendientes](PENDIENTES.md)
 - [ ] **Demo y textos en inglés.** Vídeo de 30 segundos o 7 diapositivas, y los campos de la página del proyecto. [Reglas oficiales](REGLAS_OFICIALES.md)
 - [ ] **Revisar los textos de la demo.** El equipo eligió el caso del agua. Falta que revise los borradores en inglés y explique el diferenciador con sus palabras. [Pendientes](PENDIENTES.md)
 - [ ] **Completar la lluvia del Valle Central.** Los datos regionales de IMERG y CHIRPS para California faltan en el repositorio. El caso allí dispone de GRACE. [Diagnóstico](DIAGNOSTICO_AGUA.md)
@@ -696,7 +695,6 @@ flowchart LR
   end
   subgraph sg_dete_pendientes["Pendientes"]
     t_dete["Clave de Kimi y catálogo de DE-T"]
-    t_subir["Subir a GitHub DE-T y los cuadros"]
   end
   m_agua -->|calcula la tendencia| h_almacen
   p_dete -->|forma parte de| p_pagina
@@ -715,7 +713,6 @@ flowchart LR
   h_dete_paso -->|habría contradicho| h_almacen
   l_dete -->|matiza| p_dete
   l_dete_estatico -->|limita dónde aparece| p_dete
-  p_dete -.->|falta subir| t_subir
   classDef pregunta fill:#f6e8f7,stroke:#8e44ad,color:#1d2430
   class q_dete pregunta
   classDef pagina fill:#dbe7ff,stroke:#2a4fb5,color:#1d2430
@@ -729,7 +726,7 @@ flowchart LR
   classDef limite fill:#fdecea,stroke:#c0392b,color:#1d2430
   class l_dete,l_dete_estatico limite
   classDef pendiente fill:#ffffff,stroke:#8a8a8a,stroke-dasharray:5 4,color:#1d2430
-  class t_dete,t_subir pendiente
+  class t_dete pendiente
 ```
 
 | Pieza | Qué es y por qué | Estado | Fuente |
