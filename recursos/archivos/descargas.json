@@ -2906,6 +2906,28 @@
       "fecha_descarga": "2026-11-14",
       "via": "Chrome/Earthdata humano; empaquetado o extracción local Python",
       "transformacion": "División consecutiva del original en bloques de 8 MiB; bytes sin alterar"
+    },
+    {
+      "archivo": "nuevo-leon/acuiferos/acuiferos_nuevo_leon_DOF_2023-11-09.csv",
+      "fuente": "https://sidof.segob.gob.mx/notas/docFuente/5708074",
+      "descripcion": "Los 23 acuíferos de Nuevo León del Acuerdo que actualiza la disponibilidad media anual de agua subterránea (DOF, 9 de noviembre de 2023; fecha de corte 30 de diciembre de 2022): recarga, descarga natural comprometida, volumen concesionado y disponibilidad, en hm³ al año",
+      "bytes": 1115,
+      "sha256": "ee5415300608002df9fff165c7b857ced95f266b11e68e1306bb7950d68779e9",
+      "fecha_descarga": "2026-11-14",
+      "via": "Tabla reunida por el equipo a partir del acuerdo publicado; no es una descarga directa",
+      "transformacion": "Cuatro columnas del acuerdo redondeadas a un decimal. No incluye VEALA, VAPTYR ni VAPRH, que también restan en la disponibilidad",
+      "verificacion": "Los 23 renglones se contrastaron con la página del acuerdo el 14 de noviembre de 2026 (Claude, navegador): coinciden. Ver docs/DIAGNOSTICO_AGUA.md"
+    },
+    {
+      "archivo": "mundo/countries-mledoze-mintsources-2.4.3.json",
+      "fuente": "Paquete mintsources 2.4.3 de Linux Mint (https://github.com/linuxmint/mintsources), archivo /usr/lib/linuxmint/mintSources/countries.json; su estructura coincide con el conjunto abierto «countries» de Mohammed Le Doze (https://github.com/mledoze/countries)",
+      "descripcion": "Lista de 248 países y territorios: nombres en inglés y en español, códigos ISO 3166-1, punto de referencia (latitud y longitud) y superficie en km². La usa app/scripts/build_world.py para el paso «Lleva el caso a cualquier país» de la página",
+      "bytes": 449647,
+      "sha256": "e5d170af313db045379e99db99c6129d9eab9d1d08d0ccabb28d85125ed14d79",
+      "fecha_descarga": "2026-11-15",
+      "via": "Copia local del archivo ya instalado en el equipo (Claude, 15 de noviembre de 2026). No es una descarga de internet",
+      "transformacion": "Ninguna: bytes idénticos al archivo instalado. build_world.py omite las cuatro entradas sin región (Antártida y tres territorios subantárticos) y la que no tiene punto de referencia",
+      "verificacion": "Licencia por confirmar antes de citarla: el proyecto de origen se publica como ODbL 1.0 y el paquete de Linux Mint como GPL-3+. El punto de referencia es aproximado. Ver docs/ESCALABILIDAD.md"
     }
   ]
 }
