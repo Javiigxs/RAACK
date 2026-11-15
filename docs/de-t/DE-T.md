@@ -31,7 +31,7 @@ La clave de Kimi y la prueba con el modelo real, aprobar el catálogo de opcione
 
 ## Actualización del 15 de noviembre de 2026, por la mañana
 
-Fran pidió que DE-T pesara más en la página y que se le pudiera preguntar donde se elige el país. Lo hizo Claude ese mismo día y está sin commit:
+Fran pidió que DE-T pesara más en la página y que se le pudiera preguntar donde se elige el país. Lo hizo Claude ese mismo día. Está en el commit `f053941` de `main`, a falta de subirlo a GitHub:
 
 1. **Una franja para preguntar bajo el selector de país** del paso 9. Ver [Dónde aparece y por qué](DE-T_DONDE_APARECE.md), al final.
 2. **Una base de datos por país** para que DE-T conteste con los datos del globo. Ver [Cómo evita inventar](DE-T_COMO_EVITA_INVENTAR.md), al final.
