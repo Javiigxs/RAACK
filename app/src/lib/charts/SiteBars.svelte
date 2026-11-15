@@ -83,18 +83,18 @@
     align-items: center;
     gap: 10px;
     padding: 5px 8px;
-    border-radius: 9px;
+    border-radius: 8px;
   }
   .row.sel {
-    background: var(--accent-wash);
+    background: color-mix(in srgb, var(--ink) 7%, transparent);
   }
   .name {
     border: 0;
     background: none;
     padding: 0;
     text-align: left;
-    font-weight: 650;
-    font-size: 14.5px;
+    font-weight: 500;
+    font-size: var(--fs-small);
     cursor: pointer;
     color: var(--ink);
   }
@@ -150,12 +150,12 @@
   .val {
     text-align: right;
     font-variant-numeric: tabular-nums;
-    font-weight: 650;
-    font-size: 14.5px;
+    font-weight: 500;
+    font-size: var(--fs-small);
   }
   .axis {
     padding-top: 0;
-    font-size: 11.5px;
+    font-size: 12px;
     color: var(--muted);
   }
   .scale {

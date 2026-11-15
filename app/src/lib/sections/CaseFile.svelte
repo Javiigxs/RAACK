@@ -88,13 +88,13 @@
 </script>
 
 <section id="file" class="file">
-  <header>
+  <header class="sec-head">
     <p class="kicker">{t('cf.kicker')}</p>
     <h2>{t('cf.title')}</h2>
     <p class="lead">{t('cf.lead')}</p>
   </header>
 
-  <div class="panel">
+  <div class="summary">
     <h3>{t('cf.summary')}</h3>
     {#if ui.revealed}
       <div class="scroll-x">
@@ -123,6 +123,7 @@
     {/if}
   </div>
 
+  <div class="blocks">
   <details class="block" open>
     <summary>{t('cf.sources')}</summary>
     <h4>{t('cf.nasa')}</h4>
@@ -137,7 +138,7 @@
         <li><a href={s.url} target="_blank" rel="noopener">{t(`src.${s.key}.name`)}</a> — {t(`src.${s.key}.desc`)}</li>
       {/each}
     </ul>
-    <p class="small muted">{t('cf.generated', { date: data.generated.slice(0, 10) })}</p>
+    <p class="small">{t('cf.generated', { date: data.generated.slice(0, 10) })}</p>
   </details>
 
   <details class="block">
@@ -170,81 +171,37 @@
     <p>{t('ai.p2')}</p>
     <p>{t('ai.p3')}</p>
   </details>
+  </div>
 </section>
 
 <style>
   .file {
-    padding-top: 64px;
+    display: grid;
+    gap: var(--gap-block);
+  }
+  .summary {
     display: grid;
     gap: 16px;
-  }
-  header {
-    display: grid;
-    gap: 8px;
-    border-top: 2px solid var(--ink);
-    padding-top: 26px;
-    margin-bottom: 6px;
-  }
-  header h2 {
-    font-size: clamp(26px, 3.8vw, 38px);
-  }
-  .panel {
-    display: grid;
-    gap: 12px;
     justify-items: start;
   }
-  .panel .scroll-x {
+  .summary h3 {
+    font-size: 20px;
+  }
+  .summary .scroll-x {
     width: 100%;
   }
-  .panel td:first-child {
+  .summary td:first-child {
     color: var(--ink-2);
     width: 34%;
     white-space: nowrap;
   }
-  .panel td:last-child {
+  .summary td:last-child {
     text-align: left;
   }
-  details.block {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--surface);
-    padding: 14px 20px;
-  }
-  details.block summary {
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 17px;
-  }
-  details.block h4 {
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    margin: 16px 0 6px;
-  }
-  details.block ul,
-  details.block ol {
-    margin: 8px 0 0;
-    padding-left: 22px;
-    display: grid;
-    gap: 7px;
-    font-size: 15px;
-  }
-  details.block p {
-    margin-top: 10px;
-    max-width: 78ch;
-  }
-  .refs {
-    font-size: 13.5px !important;
-    color: var(--ink-2);
-  }
   @media (max-width: 620px) {
-    .panel td:first-child {
+    .summary td:first-child {
       white-space: normal;
       width: 40%;
-    }
-    details.block {
-      padding: 12px 14px;
     }
   }
 </style>

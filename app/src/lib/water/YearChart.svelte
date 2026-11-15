@@ -32,7 +32,8 @@
     marks = [],
     gap = null,
     gapLabel = '',
-    domain = null
+    domain = null,
+    legend = true
   }: {
     lines: ChartLine[];
     y0: number;
@@ -52,6 +53,8 @@
     gapLabel?: string;
     /** Fixed value axis, to compare two charts honestly. */
     domain?: [number, number] | null;
+    /** False when the caller draws the legend itself (the suspects merge it with their switches). */
+    legend?: boolean;
   } = $props();
 
   let width = $state(640);
@@ -168,7 +171,7 @@
   };
 </script>
 
-{#if lines.length > 1 || hasTrend || background}
+{#if legend && (lines.length > 1 || hasTrend || background)}
   <div class="legend" aria-hidden="true">
     {#each lines as l (l.id)}
       <span class="item"><span class="key-line" style="border-color: {l.color}"></span>{l.label}</span>
@@ -200,7 +203,7 @@
     <line class="axisline" x1={m.left} x2={width - m.right} y1={height - m.bottom} y2={height - m.bottom} />
 
     {#if gap && gap[0] >= y0 && gap[1] <= y1}
-      <rect x={x(gap[0] - 0.5)} y={m.top} width={x(gap[1] + 0.5) - x(gap[0] - 0.5)} height={height - m.bottom - m.top} fill="var(--surface-2)" />
+      <rect x={x(gap[0] - 0.5)} y={m.top} width={x(gap[1] + 0.5) - x(gap[0] - 0.5)} height={height - m.bottom - m.top} class="gapband" />
       {#if !narrow}
         <text x={(x(gap[0] - 0.5) + x(gap[1] + 0.5)) / 2} y={m.top + 14} text-anchor="middle" class="gaplabel">{gapLabel}</text>
       {/if}
@@ -224,18 +227,18 @@
       {#if d.line.main}
         <path d={d.d} fill="none" stroke={d.line.color} stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
         {#if hasTrend}
-          <line x1={x(ta)} y1={trendAt(ta)} x2={x(tb)} y2={trendAt(tb)} stroke="var(--ink)" stroke-width="3" stroke-linecap="round" />
+          <line x1={x(ta)} y1={trendAt(ta)} x2={x(tb)} y2={trendAt(tb)} stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" />
           {#if !narrow}
             <text x={x(tb) + 7} y={trendAt(tb)} dy="0.32em" class="direct">{t('chart.trend')}</text>
           {/if}
         {/if}
         {#each d.pts as p (p.year)}
           {#if marks.includes(p.year)}
-            <circle cx={x(p.year)} cy={y(p.v)} r="8.5" fill="var(--surface)" stroke="var(--ink)" stroke-width="2" />
-            <circle cx={x(p.year)} cy={y(p.v)} r="4.5" fill={d.line.color} />
+            <circle cx={x(p.year)} cy={y(p.v)} r="8" fill="var(--page)" stroke="var(--ink)" stroke-width="1.5" />
+            <circle cx={x(p.year)} cy={y(p.v)} r="4" fill={d.line.color} />
             <text x={Math.max(m.left + 18, Math.min(width - m.right - 18, x(p.year)))} y={y(p.v) + 25} text-anchor="middle" class="direct">{p.year}</text>
           {:else}
-            <circle cx={x(p.year)} cy={y(p.v)} r="4" fill={d.line.color} stroke="var(--surface)" stroke-width="2" />
+            <circle cx={x(p.year)} cy={y(p.v)} r="3.5" fill={d.line.color} stroke="var(--page)" stroke-width="1.5" />
           {/if}
         {/each}
       {/if}
@@ -292,20 +295,23 @@
 
 <style>
   .unit {
-    font-size: 11.5px;
+    font-size: 12px;
     fill: var(--muted);
   }
   .direct {
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 600;
     fill: var(--ink);
     paint-order: stroke;
-    stroke: var(--surface);
+    stroke: var(--page);
     stroke-width: 4px;
     stroke-linejoin: round;
   }
+  .gapband {
+    fill: color-mix(in srgb, var(--ink) 5%, transparent);
+  }
   .gaplabel {
-    font-size: 11px;
+    font-size: 12px;
     fill: var(--muted);
   }
   .trow {

@@ -94,7 +94,7 @@
         stroke-dasharray={c.enough ? undefined : '2 2'}
       />
       {#if c.significant}
-        <circle cx={x(c.start) + cell / 2} cy={y(c.end) + cell / 2} r={Math.max(1.8, cell * 0.11)} fill="var(--ink)" stroke="var(--surface)" stroke-width="1" />
+        <circle cx={x(c.start) + cell / 2} cy={y(c.end) + cell / 2} r={Math.max(1.8, cell * 0.11)} fill="var(--ink)" stroke="var(--page)" stroke-width="1" />
       {/if}
     {/each}
     {#if selected}
@@ -138,7 +138,7 @@
     font-variant-numeric: tabular-nums;
   }
   .cap {
-    font-size: 11.5px;
+    font-size: 12px;
     fill: var(--ink-2);
     font-weight: 600;
   }
@@ -147,7 +147,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 8px 10px;
-    font-size: 12.5px;
+    font-size: 12px;
     color: var(--ink-2);
     margin-top: 6px;
     font-variant-numeric: tabular-nums;
@@ -155,7 +155,7 @@
   .ramp {
     width: 140px;
     height: 10px;
-    border-radius: 5px;
+    border-radius: var(--r-mark);
     background: linear-gradient(to right, var(--down), var(--neutral-mid), var(--up));
   }
   .item {

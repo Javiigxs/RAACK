@@ -3,7 +3,7 @@
   // questioned with the same two tests, and fixed rules turn the answers into a verdict.
   // The idea and the rules are the team's; code written with AI assistance (Claude).
   import { fmt } from '../catalog';
-  import { dete, openDete } from '../dete/dete.svelte';
+  import { dete, openDete, setPlace } from '../dete/dete.svelte';
   import { t } from '../i18n';
   import { setConcern, setRegion, setView, setWaterPeriod, ui } from '../state.svelte';
   import { toCases } from '../ui/scroll';
@@ -208,7 +208,19 @@
   );
 
   const sortedAquifers = $derived([...region.aquifers].sort((a, b) => a.availability - b.availability));
+
+  // The title of the case is two sentences: the question in ink, the answer in grey.
+  const title = $derived.by(() => {
+    const full = t('w.hero.title');
+    const cut = full.indexOf('? ');
+    return cut < 0 ? { ask: full, say: '' } : { ask: full.slice(0, cut + 1), say: full.slice(cut + 2) };
+  });
   const maxAbs = $derived(Math.max(1, ...region.aquifers.map((a) => Math.abs(a.availability))));
+  // The table opens on the aquifers in deficit, which are the evidence; the rest are a click away.
+  let allAquifers = $state(false);
+  const inDeficit = $derived(sortedAquifers.filter((a) => a.availability < 0));
+  const foldable = $derived(inDeficit.length > 0 && inDeficit.length < sortedAquifers.length);
+  const shownAquifers = $derived(foldable && !allAquifers ? inDeficit : sortedAquifers);
 </script>
 
 {#snippet head(id: string, n: string, key: string)}
@@ -222,8 +234,14 @@
 <section class="hero" id="top">
   <div class="wrap hero-in">
     <p class="kicker">{t('hero.kicker')}</p>
-    <h2 class="case-title">{t('w.hero.title')}</h2>
-    <p class="lead">{t('w.hero.lead')}</p>
+    <h2 class="case-title">{title.ask}{#if title.say}{' '}<span class="say">{title.say}</span>{/if}</h2>
+    <div class="hero-side">
+      <p class="lead">{t('w.hero.lead')}</p>
+      <div class="cta">
+        <a class="btn primary" href="#w-select">{t('w.hero.cta')} <span aria-hidden="true">↓</span></a>
+        <a class="textlink" href="#w-verdict">{t('w.hero.cta2')}</a>
+      </div>
+    </div>
     <p class="equation" aria-label={t('w.hero.eqAria')}>
       <span class="eq-store">{t('w.hero.eq.store')}</span>
       <span class="op">=</span>
@@ -235,15 +253,11 @@
       <span class="op">−</span>
       <span class="eq-out q">{t('w.hero.eq.human')}</span>
     </p>
-    <div class="cta">
-      <a class="btn primary" href="#w-select">{t('w.hero.cta')} <span aria-hidden="true">↓</span></a>
-      <a class="btn" href="#w-verdict">{t('w.hero.cta2')}</a>
-    </div>
-    <dl class="stats">
-      <div><dt>{nSeries}</dt><dd>{t('w.hero.stat1')}</dd></div>
-      <div><dt>7</dt><dd>{t('w.hero.stat2')}</dd></div>
-      <div><dt>2</dt><dd>{t('w.hero.stat3')}</dd></div>
-      <div><dt>{nAquifers}</dt><dd>{t('w.hero.stat4')}</dd></div>
+    <dl class="statrow stats">
+      <div><dt class="v">{nSeries}</dt><dd class="d">{t('w.hero.stat1')}</dd></div>
+      <div><dt class="v">7</dt><dd class="d">{t('w.hero.stat2')}</dd></div>
+      <div><dt class="v">2</dt><dd class="d">{t('w.hero.stat3')}</dd></div>
+      <div><dt class="v">{nAquifers}</dt><dd class="d">{t('w.hero.stat4')}</dd></div>
     </dl>
   </div>
 </section>
@@ -251,7 +265,7 @@
 <div class="wrap water">
   <!-- 1 · Selector: one row above everything it scopes -->
   {@render head('w-select', '1', 'w.sel')}
-  <div class="selector panel">
+  <div class="selector">
     <div class="group">
       <h3>{t('w.sel.region')}</h3>
       <div class="chips" role="group" aria-label={t('w.sel.region')}>
@@ -260,8 +274,8 @@
         {/each}
       </div>
       <p class="small">{t(`w.region.${ui.region}.desc`)}</p>
-      <p class="small muted">{t('w.sel.loaded', { n: Object.keys(region.series).length, list: loaded.join(', ') })}</p>
-      <p class="small muted">{t('w.sel.more')} <a href="#w-world">{t('wr.sel.link')} <span aria-hidden="true">↓</span></a></p>
+      <p class="small">{t('w.sel.loaded', { n: Object.keys(region.series).length, list: loaded.join(', ') })}</p>
+      <p class="small">{t('w.sel.more')} <a href="#w-world">{t('wr.sel.link')} <span aria-hidden="true">↓</span></a></p>
     </div>
     <div class="group">
       <h3>{t('w.sel.period')}</h3>
@@ -273,10 +287,10 @@
       </div>
       <div class="chips">
         {#each presets as p (p.key)}
-          <button class="btn small-btn" aria-pressed={ui.wy0 === p.a && ui.wy1 === p.b} onclick={() => setWaterPeriod(p.a, p.b)}>{t(`w.sel.preset.${p.key}`, { y0: p.a, y1: p.b })}</button>
+          <button class="chipbtn" aria-pressed={ui.wy0 === p.a && ui.wy1 === p.b} onclick={() => setWaterPeriod(p.a, p.b)}>{t(`w.sel.preset.${p.key}`, { y0: p.a, y1: p.b })}</button>
         {/each}
       </div>
-      <p class="small muted">{t('w.sel.periodHelp', { min: WATER_RULES.minSpan })}</p>
+      <p class="small">{t('w.sel.periodHelp', { min: WATER_RULES.minSpan })}</p>
     </div>
     <div class="group">
       <h3>{t('w.sel.concern')}</h3>
@@ -285,52 +299,59 @@
           <button class="chipbtn" aria-pressed={ui.concern === id} onclick={() => setConcern(id)}>{t(`w.concern.${id}`)}</button>
         {/each}
       </div>
-      <p class="small muted">{t('w.sel.concernHelp')}</p>
+      <p class="small">{t('w.sel.concernHelp')}</p>
     </div>
   </div>
 
   <!-- 2 · Case file: the verdict -->
   {@render head('w-verdict', '2', 'w.vsec')}
-  <div class="verdict card" aria-live="polite">
+  <div class="verdict" aria-live="polite">
     <p class="kicker">{t('w.v.kicker', { region: t(`w.region.${ui.region}.name`), y0: c.y0, y1: c.y1 })}</p>
     <p class="vhead">{headline}</p>
-    <div class="badges">
-      <CertaintyChip label={v.certainty} text={badgeText} />
-      {#if v.missing.length}
-        <CertaintyChip label="nodata" text={t('w.v.badge.missing', { missing: missingText })} />
-      {/if}
+    <div class="vbody">
+      <div class="vmain">
+        <div class="badges">
+          <CertaintyChip label={v.certainty} text={badgeText} />
+          {#if v.missing.length}
+            <CertaintyChip label="nodata" text={t('w.v.badge.missing', { missing: missingText })} />
+          {/if}
+        </div>
+        <p class="vsub">{explain}</p>
+      </div>
+      <div class="vside">
+        {#if v.notSupply || v.notDemand}
+          <ul class="ruled">
+            {#if v.notSupply && c.rain}
+              <li><span class="x" aria-hidden="true">✕</span><span>{t('w.v.notSupply', { rate: rateW(c.rain.def, c.rain.perDecade), ci: ciW(c.rain.def, c.rain.ci) })}</span></li>
+            {/if}
+            {#if v.notDemand && c.demand}
+              <li>
+                <span class="x" aria-hidden="true">✕</span><span
+                  >{t(c.demand.trend.label === 'confirmed' && c.demand.trend.dir < 0 ? 'w.v.notDemand.falling' : 'w.v.notDemand', {
+                    rate: rateW(c.demand.def, c.demand.perDecade)
+                  })}</span
+                >
+              </li>
+            {/if}
+          </ul>
+        {/if}
+        <p class="answer"><strong>{t(`w.concern.${ui.concern}`)}.</strong> {concernAnswer}</p>
+      </div>
     </div>
-    <p class="vsub">{explain}</p>
-    {#if v.notSupply || v.notDemand}
-      <ul class="ruled">
-        {#if v.notSupply && c.rain}
-          <li><span class="x" aria-hidden="true">✕</span>{t('w.v.notSupply', { rate: rateW(c.rain.def, c.rain.perDecade), ci: ciW(c.rain.def, c.rain.ci) })}</li>
-        {/if}
-        {#if v.notDemand && c.demand}
-          <li>
-            <span class="x" aria-hidden="true">✕</span>{t(c.demand.trend.label === 'confirmed' && c.demand.trend.dir < 0 ? 'w.v.notDemand.falling' : 'w.v.notDemand', {
-              rate: rateW(c.demand.def, c.demand.perDecade)
-            })}
-          </li>
-        {/if}
-      </ul>
-    {/if}
 
-    <div class="exhibits">
+    <div class="statrow exhibits">
       {#each exhibits as e (e.key)}
         <div class="exhibit">
-          <span class="small">{t(`w.ex.${e.key}`)}</span>
-          <strong>{e.value}</strong>
+          <span class="k">{t(`w.ex.${e.key}`)}</span>
+          <strong class="ev">{e.value}</strong>
           <CertaintyChip label={e.label} dir={e.dir} text={e.text ?? ''} compact />
-          <span class="small muted">{e.note}</span>
+          <span class="d">{e.note}</span>
         </div>
       {/each}
     </div>
 
-    <p class="answer"><strong>{t(`w.concern.${ui.concern}`)}.</strong> {concernAnswer}</p>
-
     <details class="rules">
-      <summary>{t('w.rule.summary')}</summary>
+      <summary class="more">{t('w.rule.summary')}</summary>
       <div class="scroll-x">
         <table class="data rtable">
           <thead>
@@ -354,7 +375,7 @@
     {#if dete.status === 'on'}
       <div class="dete-cta">
         <p>{t('dete.verdict.text')}</p>
-        <button class="btn small-btn" onclick={() => openDete()}>{t('dete.open')} <span aria-hidden="true">→</span></button>
+        <button class="btn small-btn" onclick={() => { setPlace(null); openDete(); }}>{t('dete.open')} <span aria-hidden="true">→</span></button>
       </div>
     {/if}
   </div>
@@ -363,8 +384,10 @@
   {@render head('w-suspects', '3', 'w.ssec')}
   <p class="small order-note">{t('w.ssec.order', { concern: t(`w.concern.${ui.concern}`).toLowerCase() })}</p>
   <div class="suspects">
-    {#each ordered as s (s.id)}
-      <SuspectCard {s} {c} {region} />
+    {#each ordered as s, i (s.id)}
+      <!-- The first one questioned and every suspect the case points at open by default; a suspect
+           whose alibi holds waits in one line, a click away. -->
+      <SuspectCard {s} {c} {region} open={i === 0 || s.status !== 'cleared'} />
     {/each}
   </div>
 
@@ -381,9 +404,11 @@
     </div>
   {/if}
   {#if twoPlaces.length}
-    <div class="panel places">
-      <h3>{t('w.where.title')}</h3>
-      <p class="small">{t('w.where.lead')}</p>
+    <div class="places">
+      <div class="block-head">
+        <h3>{t('w.where.title')}</h3>
+        <p class="small">{t('w.where.lead')}</p>
+      </div>
       <div class="scroll-x">
         <table class="data ptable">
           <thead>
@@ -404,7 +429,7 @@
           </tbody>
         </table>
       </div>
-      <p class="note">{t(opposite.length ? 'w.where.differ' : 'w.where.same', { n: opposite.length, total: twoPlaces.length })}</p>
+      <p class="takeaway">{t(opposite.length ? 'w.where.differ' : 'w.where.same', { n: opposite.length, total: twoPlaces.length })}</p>
     </div>
   {:else}
     <p class="note">{t('w.bsec.missing')}</p>
@@ -417,7 +442,7 @@
   {:else if crisis === null}
     <p class="note">{t('w.crisis.none', { pct: Math.abs(DROUGHT_YEAR_PCT) })}</p>
   {:else}
-    <div class="crisis card">
+    <div class="crisis">
       <div class="crisis-top">
         <div class="years" role="group" aria-label={t('w.crisis.pick')}>
           <span class="small">{t('w.crisis.pick')}</span>
@@ -425,26 +450,26 @@
             <button class="chipbtn" aria-pressed={crisis === yr} onclick={() => (pickedYear = yr)}>{yr}</button>
           {/each}
         </div>
-        <p class="small muted">{t('w.crisis.rule', { pct: Math.abs(DROUGHT_YEAR_PCT) })}</p>
+        <p class="small">{t('w.crisis.rule', { pct: Math.abs(DROUGHT_YEAR_PCT) })}</p>
       </div>
-      <div class="tiles">
+      <div class="statrow tiles">
         <div class="tile">
-          <span class="small">{t('w.crisis.rainMain', { source: lineName(c.rain) })}</span>
-          <strong>{pctW(anomalyAt(crisis), 1)}</strong>
-          <span class="small muted">{t('w.crisis.vsMean', { value: valueW(c.rain.def, valueAt(c.rain.full, crisis)), mean: valueW(c.rain.def, c.rain.full.values.reduce((q, x) => q + x, 0) / c.rain.full.values.length) })}</span>
+          <span class="k">{t('w.crisis.rainMain', { source: lineName(c.rain) })}</span>
+          <strong class="v">{pctW(anomalyAt(crisis), 1)}</strong>
+          <span class="d">{t('w.crisis.vsMean', { value: valueW(c.rain.def, valueAt(c.rain.full, crisis)), mean: valueW(c.rain.def, c.rain.full.values.reduce((q, x) => q + x, 0) / c.rain.full.values.length) })}</span>
         </div>
         {#if c.rainWitness && witnessAt(crisis) !== null}
           <div class="tile">
-            <span class="small">{t('w.crisis.rainMain', { source: lineName(c.rainWitness) })}</span>
-            <strong>{pctW(witnessAt(crisis), 1)}</strong>
-            <span class="small muted">{t('w.crisis.witness')}</span>
+            <span class="k">{t('w.crisis.rainMain', { source: lineName(c.rainWitness) })}</span>
+            <strong class="v">{pctW(witnessAt(crisis), 1)}</strong>
+            <span class="d">{t('w.crisis.witness')}</span>
           </div>
         {/if}
         {#each resAt as x (x.r.line.id)}
           <div class="tile">
-            <span class="small">{t('w.crisis.reservoir', { name: t(`w.place.${x.r.place}`) })}</span>
-            <strong>{pctW(x.share - 100, 0)}</strong>
-            <span class="small muted">{t('w.crisis.vsMean', { value: valueW(x.r.line.def, x.value, false, 1), mean: valueW(x.r.line.def, x.r.mean, false, 1) })}</span>
+            <span class="k">{t('w.crisis.reservoir', { name: t(`w.place.${x.r.place}`) })}</span>
+            <strong class="v">{pctW(x.share - 100, 0)}</strong>
+            <span class="d">{t('w.crisis.vsMean', { value: valueW(x.r.line.def, x.value, false, 1), mean: valueW(x.r.line.def, x.r.mean, false, 1) })}</span>
           </div>
         {/each}
       </div>
@@ -469,17 +494,17 @@
                   <div class="rval"><strong>{pctW(x.share, 0, false)}</strong> {t('w.crisis.ofUsual')}</div>
                 </div>
               {/each}
-              <p class="small muted">{t('w.crisis.resLegend')}</p>
+              <p class="small">{t('w.crisis.resLegend')}</p>
             </div>
             <p class="small">{t('w.crisis.resNote')}</p>
           </div>
         {/if}
       </div>
-      <p class="caption">{t(v.oneOff ? 'w.crisis.caption' : 'w.crisis.captionTrend', { years: v.droughtYears.join(', ') })}</p>
+      <p class="takeaway">{t(v.oneOff ? 'w.crisis.caption' : 'w.crisis.captionTrend', { years: v.droughtYears.join(', ') })}</p>
     </div>
   {/if}
 
-  <aside class="bridge panel">
+  <aside class="bridge">
     <div>
       <h3>{t('w.bridge.title')}</h3>
       <p>{t('w.bridge.text')}</p>
@@ -491,26 +516,28 @@
   {@render head('w-evidence', '6', 'w.esec')}
   {#if c.aquifers}
     <div class="evidence">
-      <div class="tiles">
+      <div class="statrow tiles">
         <div class="tile">
-          <span class="small">{t('w.ev.deficitCount')}</span>
-          <strong>{c.aquifers.negative} / {c.aquifers.total}</strong>
-          <span class="small muted">{t('w.ev.deficitCountNote')}</span>
+          <span class="k">{t('w.ev.deficitCount')}</span>
+          <strong class="v">{c.aquifers.negative} / {c.aquifers.total}</strong>
+          <span class="d">{t('w.ev.deficitCountNote')}</span>
         </div>
         <div class="tile">
-          <span class="small">{t('w.ev.deficitSum')}</span>
-          <strong>{signed(c.aquifers.deficit, 1)}</strong>
-          <span class="small muted">{t('w.ev.hm3')}</span>
+          <span class="k">{t('w.ev.deficitSum')}</span>
+          <strong class="v">{signed(c.aquifers.deficit, 1)}</strong>
+          <span class="d">{t('w.ev.hm3')}</span>
         </div>
         <div class="tile">
-          <span class="small">{t('w.ev.mty')}</span>
-          <strong>{c.aquifers.monterrey.filter((a) => a.availability < 0).length} / {c.aquifers.monterrey.length}</strong>
-          <span class="small muted">{t('w.ev.mtyNote')}</span>
+          <span class="k">{t('w.ev.mty')}</span>
+          <strong class="v">{c.aquifers.monterrey.filter((a) => a.availability < 0).length} / {c.aquifers.monterrey.length}</strong>
+          <span class="d">{t('w.ev.mtyNote')}</span>
         </div>
       </div>
-      <div class="panel">
-        <h3>{t('w.ev.tableTitle')}</h3>
-        <p class="small">{t('w.ev.tableLead')}</p>
+      <div class="exhibit-table">
+        <div class="block-head">
+          <h3>{t('w.ev.tableTitle')}</h3>
+          <p class="small">{t('w.ev.tableLead')}</p>
+        </div>
         <div class="scroll-x">
           <table class="data atable">
             <thead>
@@ -523,8 +550,8 @@
               </tr>
             </thead>
             <tbody>
-              {#each sortedAquifers as a (a.id)}
-                <tr class:mty={a.monterrey}>
+              {#each shownAquifers as a (a.id)}
+                <tr class:mty={a.monterrey} class:neg={a.availability < 0}>
                   <td>
                     <strong>{a.name}</strong>
                     {#if a.monterrey}<span class="tag">{t('w.ev.suppliesMty')}</span>{/if}
@@ -542,10 +569,16 @@
             </tbody>
           </table>
         </div>
-        <p class="small muted">{t('w.ev.tableNote')}</p>
+        {#if foldable}
+          <button class="textlink rest" aria-expanded={allAquifers} onclick={() => (allAquifers = !allAquifers)}>
+            {t(allAquifers ? 'w.ev.hideRest' : 'w.ev.showRest', { n: sortedAquifers.length - inDeficit.length })}
+            <span aria-hidden="true">{allAquifers ? '↑' : '↓'}</span>
+          </button>
+        {/if}
+        <p class="note">{t('w.ev.tableNote')}</p>
       </div>
       {#if c.lossHm3 !== null && c.storage}
-        <p class="note">
+        <p class="takeaway">
           {t('w.ev.magnitude', {
             rate: num(Math.abs(c.storage.trend.sen), 2),
             area: num(def.areaKm2, 0),
@@ -555,8 +588,10 @@
         </p>
       {/if}
       {#if c.reservoirs.length}
-        <div class="panel">
-          <h3>{t('w.ev.resTitle')}</h3>
+        <div class="exhibit-table">
+          <div class="block-head">
+            <h3>{t('w.ev.resTitle')}</h3>
+          </div>
           <div class="scroll-x">
             <table class="data rtable2">
               <thead>
@@ -575,14 +610,16 @@
               </tbody>
             </table>
           </div>
-          <p class="small muted">{t('w.ev.resNote')}</p>
+          <p class="note">{t('w.ev.resNote')}</p>
         </div>
       {/if}
     </div>
   {:else}
-    <div class="panel">
-      <h3>{t('w.ev.none')}</h3>
-      <p>{t('w.ev.noneText')}</p>
+    <div class="exhibit-table">
+      <div class="block-head">
+        <h3>{t('w.ev.none')}</h3>
+        <p>{t('w.ev.noneText')}</p>
+      </div>
     </div>
   {/if}
 
@@ -601,310 +638,298 @@
 </div>
 
 <style>
+  /* ---------- the opening of the case ---------- */
   .hero {
-    padding: clamp(36px, 7vw, 76px) 0 clamp(24px, 4vw, 40px);
+    padding: clamp(48px, 8vw, 112px) 0 0;
   }
   .hero-in {
     display: grid;
-    gap: 18px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px 56px;
+    align-items: end;
   }
   .case-title {
-    font-size: clamp(34px, 6vw, 62px);
-    max-width: 18ch;
-    letter-spacing: -0.03em;
-    line-height: 1.02;
+    font-size: var(--fs-display);
+    letter-spacing: -0.042em;
+    line-height: 0.98;
+    max-width: 13ch;
   }
-  .hero .lead {
-    font-size: clamp(17px, 2vw, 20px);
+  .say {
+    color: var(--muted);
   }
-  .equation {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 10px;
-    font-weight: 650;
-    font-size: clamp(14px, 1.6vw, 16.5px);
-  }
-  .equation span:not(.op) {
-    padding: 6px 12px;
-    border-radius: 9px;
-    border: 1.5px solid var(--border-strong);
-    background: var(--surface);
-  }
-  .equation .eq-store {
-    border-color: var(--ink);
-  }
-  .equation .q {
-    border-style: dashed;
-  }
-  .op {
-    color: var(--ink-2);
-    font-size: 1.2em;
+  .hero-side {
+    display: grid;
+    gap: 24px;
+    justify-items: start;
   }
   .cta {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    align-items: center;
+    gap: 14px 22px;
+  }
+  /* The budget, written as a sentence: no boxes, the signs in grey, the unknown underlined. */
+  .equation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px 0.42em;
+    margin-top: clamp(28px, 5vw, 64px);
+    font-size: clamp(19px, 2.35vw, 30px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+  .op {
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .equation .q {
+    text-decoration: underline dashed;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 6px;
   }
   .stats {
-    display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    margin: 14px 0 0;
-    border-top: 1px solid var(--grid);
+    margin-top: 4px;
   }
-  .stats div {
-    padding: 16px 18px 4px 0;
+  .stats .d {
+    max-width: 26ch;
   }
-  .stats div + div {
-    padding-left: 18px;
-    border-left: 1px solid var(--grid);
+  @media (min-width: 900px) {
+    .hero-in {
+      grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+    }
+    .hero-in > .kicker,
+    .equation,
+    .stats {
+      grid-column: 1 / -1;
+    }
+    .hero-side {
+      padding-bottom: 0.6em;
+    }
   }
-  .stats dt {
-    font-size: clamp(26px, 3.4vw, 36px);
-    font-weight: 750;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-  .stats dd {
-    margin: 4px 0 0;
-    font-size: 13.5px;
-    color: var(--ink-2);
-    line-height: 1.35;
-    max-width: 24ch;
-  }
+
   .water {
     display: grid;
-    gap: 18px;
+    gap: var(--gap-block);
     padding-bottom: 8px;
   }
   .water > :global(*) {
     min-width: 0;
   }
-  .sec-head {
+  .block-head {
     display: grid;
-    gap: 8px;
-    border-top: 2px solid var(--ink);
-    padding-top: 24px;
-    margin-top: 38px;
+    gap: 6px;
+    margin-bottom: 18px;
   }
-  .sec-head h2 {
-    font-size: clamp(26px, 3.8vw, 40px);
-    letter-spacing: -0.022em;
+  .block-head .small {
+    max-width: 82ch;
   }
+  /* What a block leaves you with: one sentence, larger than the notes around it. */
+  .takeaway {
+    font-size: var(--fs-lead);
+    line-height: 1.42;
+    letter-spacing: -0.008em;
+    max-width: 64ch;
+  }
+
+  /* ---------- 1 · selector ---------- */
   .selector {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px 28px;
+    gap: 32px 48px;
   }
   .group {
     display: grid;
-    gap: 10px;
+    gap: 12px;
     align-content: start;
-  }
-  .group + .group {
-    border-left: 1px solid var(--grid);
-    padding-left: 28px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
   }
   .group h3 {
-    font-size: 13px;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    margin: 0;
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.4;
+    margin-bottom: 2px;
   }
   .chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
-  }
-  .chipbtn {
-    padding: 7px 13px;
-    border-radius: 999px;
-    border: 1px solid var(--border-strong);
-    background: var(--surface);
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-    text-align: left;
-  }
-  .chipbtn[aria-pressed='true'] {
-    background: var(--ink);
-    color: var(--page);
-    border-color: var(--ink);
-  }
-  .btn[aria-pressed='true'] {
-    border-color: var(--ink);
-    box-shadow: 0 0 0 1px var(--ink);
+    gap: 8px;
   }
   .sliders {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 6px 14px;
+    gap: 8px 16px;
     align-items: center;
   }
   .sliders label {
-    font-weight: 600;
-    font-size: 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
     white-space: nowrap;
   }
   .sliders output {
     display: inline-block;
-    min-width: 3em;
-    font-size: 18px;
-    font-weight: 750;
+    min-width: 2.6em;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     color: var(--ink);
     font-variant-numeric: tabular-nums;
-    margin-left: 4px;
   }
+
+  /* ---------- 2 · the verdict: the largest sentence of the page ---------- */
   .verdict {
-    padding: clamp(18px, 3vw, 32px);
     display: grid;
-    gap: 14px;
-    justify-items: start;
+    gap: 0;
   }
   .vhead {
-    font-size: clamp(26px, 4.2vw, 44px);
-    font-weight: 760;
-    letter-spacing: -0.025em;
-    line-height: 1.08;
-    max-width: 24ch;
+    font-size: clamp(32px, 5.2vw, 68px);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    max-width: 28ch;
+    margin: 14px 0 clamp(28px, 4vw, 48px);
     text-wrap: balance;
+  }
+  .vbody {
+    display: grid;
+    grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+    gap: 28px 56px;
+    align-items: start;
+  }
+  .vmain,
+  .vside {
+    display: grid;
+    gap: 16px;
+    align-content: start;
   }
   .badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 8px 22px;
   }
   .badges :global(.cchip) {
     white-space: normal;
+    font-size: var(--fs-body);
   }
   .vsub {
-    font-size: clamp(17px, 2vw, 20px);
+    font-size: var(--fs-lead);
     line-height: 1.42;
-    max-width: 62ch;
+    letter-spacing: -0.008em;
+    max-width: 54ch;
   }
   .ruled {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    gap: 6px;
     color: var(--ink-2);
-    font-size: 15.5px;
+    font-size: var(--fs-body);
   }
   .ruled li {
-    display: flex;
-    gap: 9px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
     align-items: baseline;
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+  }
+  .ruled li:last-child {
+    border-bottom: 1px solid var(--border);
   }
   .x {
-    font-weight: 800;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .answer {
+    max-width: 60ch;
+    color: var(--ink-2);
+  }
+  .answer strong {
     color: var(--ink);
   }
   .exhibits {
-    width: 100%;
-    display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
+    margin-top: clamp(32px, 4.5vw, 56px);
   }
-  .exhibit,
-  .tile {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--surface-2);
-    padding: 13px 15px;
-    display: grid;
-    gap: 6px;
-    justify-items: start;
-    align-content: start;
-    min-width: 0;
-  }
-  .exhibit strong {
-    font-size: 19px;
+  .ev {
+    font-size: clamp(19px, 1.9vw, 24px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
     line-height: 1.15;
     font-variant-numeric: tabular-nums;
   }
-  .tile strong {
-    font-size: clamp(26px, 3.4vw, 34px);
-    font-weight: 760;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-  }
-  .answer {
-    border-left: 3px solid var(--ink);
-    padding: 4px 0 4px 14px;
-    max-width: 74ch;
-    font-size: 16px;
+  .exhibit .d {
+    max-width: 30ch;
   }
   details.rules {
-    width: 100%;
-    border-top: 1px solid var(--grid);
-    padding-top: 12px;
+    margin-top: 4px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
   }
   .dete-cta {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 10px 16px;
-    padding: 12px 14px;
-    border-radius: 12px;
-    background: var(--accent-wash);
-    font-size: 14.5px;
+    gap: 10px 20px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: var(--fs-small);
     color: var(--ink-2);
   }
   .dete-cta p {
     max-width: 64ch;
   }
-  details.rules summary {
-    cursor: pointer;
-    font-weight: 650;
-    color: var(--accent-ink);
-    width: fit-content;
-  }
   .rtable {
-    margin: 10px 0;
+    margin: 18px 0 12px;
   }
   .rtable td,
   .rtable th {
     text-align: left;
   }
+  /* The answer to a rule, and the state of an aquifer: a word, heavier when it weighs on the case. */
   .state {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 6px;
-    border: 1px solid var(--border-strong);
+    font-size: var(--fs-small);
     color: var(--ink-2);
     white-space: nowrap;
   }
   .state.yes {
-    background: var(--ink);
-    color: var(--page);
-    border-color: var(--ink);
+    color: var(--ink);
+    font-weight: 600;
   }
   .state.unknown {
-    border-style: dashed;
+    font-style: italic;
   }
+
+  /* ---------- 3 · suspects ---------- */
   .order-note {
-    margin-top: -6px;
+    margin-top: calc(var(--gap-block) * -0.4);
   }
   .suspects {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-    align-items: start;
   }
+
+  /* ---------- 4 · balance ---------- */
   .balances {
     display: grid;
-    gap: 16px;
+    gap: var(--gap-block);
   }
   .places {
     display: grid;
-    gap: 10px;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 22px;
+  }
+  .places .takeaway {
+    margin-top: 22px;
   }
   .ptable td,
   .ptable th {
@@ -915,189 +940,207 @@
   }
   .ptable .rate {
     display: inline-block;
-    min-width: 13ch;
+    min-width: 13.5ch;
     font-variant-numeric: tabular-nums;
     margin-right: 6px;
   }
-  .ptable tr.diff td:first-child {
-    font-weight: 700;
+  .ptable td:first-child {
+    color: var(--ink-2);
   }
+  .ptable tr.diff td:first-child {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ---------- 5 · the crisis year ---------- */
   .crisis {
-    padding: clamp(16px, 2.6vw, 26px);
     display: grid;
-    gap: 16px;
+    gap: var(--gap-block);
   }
   .crisis-top {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 8px 18px;
+    gap: 10px 24px;
+    margin-bottom: calc(var(--gap-block) * -0.5);
   }
   .years {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 7px;
+    gap: 8px;
   }
-  .tiles {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 12px;
+  .years .small {
+    margin-right: 6px;
   }
   .crisis-charts {
     display: grid;
     grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-    gap: 24px 32px;
+    gap: 32px 56px;
     align-items: start;
   }
   .crisis-charts h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    margin-bottom: 16px;
   }
   .resbars {
     display: grid;
-    gap: 14px;
+    gap: 16px;
+    margin-bottom: 12px;
   }
   .resrow {
     display: grid;
     grid-template-columns: minmax(84px, auto) 1fr minmax(100px, auto);
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
   .rname {
-    font-weight: 650;
-    font-size: 14.5px;
+    font-weight: 500;
+    font-size: var(--fs-small);
   }
   .rtrack {
     position: relative;
-    height: 20px;
-    background: var(--surface-2);
-    border-radius: 0 4px 4px 0;
+    height: 14px;
+    background: color-mix(in srgb, var(--ink) 7%, transparent);
+    border-radius: 0 var(--r-mark) var(--r-mark) 0;
   }
   .rbar {
-    height: 20px;
+    height: 14px;
     background: var(--series-1);
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 var(--r-mark) var(--r-mark) 0;
   }
   .rmark {
     position: absolute;
-    top: -4px;
-    bottom: -4px;
-    width: 3px;
-    border-radius: 2px;
+    top: -5px;
+    bottom: -5px;
+    width: 2px;
     background: var(--ink);
-    transform: translateX(-1.5px);
+    transform: translateX(-1px);
   }
   .rval {
-    font-size: 13.5px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
     font-variant-numeric: tabular-nums;
   }
   .rval strong {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     color: var(--ink);
   }
-  .caption {
-    font-size: 17px;
-    max-width: 72ch;
-  }
-  .evidence {
-    display: grid;
-    gap: 16px;
-  }
+
+  /* The way to the second case: a quiet row between two lines. */
   .bridge {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 14px 28px;
-    border-style: dashed;
-    border-color: var(--axis);
+    gap: 16px 40px;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
   }
   .bridge > div {
     flex: 1 1 420px;
+    display: grid;
+    gap: 6px;
+  }
+  .bridge h3 {
+    font-size: 20px;
   }
   .bridge p {
     color: var(--ink-2);
-    font-size: 15px;
+    font-size: var(--fs-small);
     max-width: 78ch;
+  }
+
+  /* ---------- 6 · independent evidence ---------- */
+  .evidence {
+    display: grid;
+    gap: var(--gap-block);
+  }
+  .exhibit-table {
+    display: grid;
+    gap: 0;
+  }
+  .exhibit-table .note {
+    margin-top: 16px;
+    max-width: 96ch;
+  }
+  .rest {
+    justify-self: start;
+    margin-top: 16px;
   }
   .atable td,
   .rtable2 td {
     vertical-align: middle;
   }
   .atable td:first-child strong {
-    font-weight: 600;
+    font-weight: 400;
   }
   .atable tr.mty td:first-child strong {
-    font-weight: 750;
+    font-weight: 600;
+  }
+  .atable tr:not(.neg) td {
+    color: var(--ink-2);
   }
   .atable .tag {
-    margin-left: 8px;
-    font-size: 11px;
-    padding: 1px 7px;
+    margin-left: 10px;
+  }
+  .atable td strong {
+    font-weight: 500;
+  }
+  .atable .state {
+    display: inline-block;
+    min-width: 5.2em;
+    margin-left: 6px;
+    font-size: var(--fs-micro);
+    text-align: left;
   }
   .barcol {
-    width: 150px;
+    width: 168px;
   }
   .abar {
     position: relative;
     display: block;
     height: 12px;
-    border-left: 0;
-    background: linear-gradient(to right, transparent calc(50% - 0.75px), var(--axis) calc(50% - 0.75px), var(--axis) calc(50% + 0.75px), transparent calc(50% + 0.75px));
+    background: linear-gradient(to right, transparent calc(50% - 0.5px), var(--axis) calc(50% - 0.5px), var(--axis) calc(50% + 0.5px), transparent calc(50% + 0.5px));
   }
   .afill {
     position: absolute;
-    top: 1px;
-    height: 10px;
+    top: 2px;
+    height: 8px;
     background: var(--down);
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 var(--r-mark) var(--r-mark) 0;
     opacity: 0.45;
   }
   .afill.neg {
     background: var(--up);
-    border-radius: 3px 0 0 3px;
+    border-radius: var(--r-mark) 0 0 var(--r-mark);
     opacity: 1;
   }
+
   @media (max-width: 980px) {
-    .suspects {
-      grid-template-columns: 1fr;
-    }
     .exhibits {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
   @media (max-width: 860px) {
-    .selector {
-      grid-template-columns: 1fr;
-    }
-    .group + .group {
-      border-left: 0;
-      padding-left: 0;
-      border-top: 1px solid var(--grid);
-      padding-top: 18px;
-    }
+    .selector,
+    .vbody,
     .crisis-charts {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
   @media (max-width: 720px) {
     .stats {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .stats div:nth-child(3) {
-      padding-left: 0;
-      border-left: 0;
-    }
-    .stats div:nth-child(n + 3) {
-      border-top: 1px solid var(--grid);
-    }
   }
   @media (max-width: 640px) {
     .exhibits {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .atable thead,
     .rtable2 thead,
@@ -1112,8 +1155,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2px 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--grid);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
     }
     .rtable tr {
       grid-template-columns: 1fr;
@@ -1141,7 +1184,7 @@
     td[data-label]::before {
       content: attr(data-label) ': ';
       color: var(--muted);
-      font-size: 12px;
+      font-size: var(--fs-micro);
     }
     .ptable td[data-label]::before {
       display: block;

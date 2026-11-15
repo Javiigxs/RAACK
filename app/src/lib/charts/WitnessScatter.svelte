@@ -72,7 +72,7 @@
     {/each}
     <line class="axisline" x1={x(0)} y1={y(0)} x2={x(x.domain()[1])} y2={y(x.domain()[1])} stroke-width="1.5" />
     {#each w.pairs as p, i (i)}
-      <circle cx={x(p.gauge)} cy={y(p.sat)} r="4" fill="var(--series-1)" fill-opacity="0.55" stroke="var(--surface)" stroke-width="1" />
+      <circle cx={x(p.gauge)} cy={y(p.sat)} r="4" fill="var(--series-1)" fill-opacity="0.55" stroke="var(--page)" stroke-width="1" />
     {/each}
     {#if hp}
       <circle cx={x(hp.gauge)} cy={y(hp.sat)} r="6" fill="var(--series-1)" stroke="var(--ink)" stroke-width="2" pointer-events="none" />

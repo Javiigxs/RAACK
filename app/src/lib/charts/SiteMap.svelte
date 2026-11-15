@@ -167,7 +167,7 @@
   }
   .lbl {
     font-size: 30px;
-    font-weight: 650;
+    font-weight: 600;
     fill: #fff;
     paint-order: stroke;
     stroke: rgba(0, 0, 0, 0.78);

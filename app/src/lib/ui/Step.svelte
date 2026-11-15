@@ -26,48 +26,43 @@
 </section>
 
 <style>
+  /* A step of the investigation: a thin line, its number in grey and the title beside it. */
   .step {
-    padding: 44px 0 8px;
+    margin-top: clamp(56px, 7vw, 96px);
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
   }
   header {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 16px;
+    grid-template-columns: 3.2rem minmax(0, 1fr);
+    gap: 0;
     align-items: start;
-    margin-bottom: 20px;
+    margin-bottom: var(--gap-block);
   }
   .num {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1.5px solid var(--ink);
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-    font-size: 17px;
+    font-size: clamp(24px, 2.6vw, 32px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    color: var(--muted);
     font-variant-numeric: tabular-nums;
-    background: var(--surface);
+    padding-top: calc(var(--fs-small) * 1.4 + 10px);
   }
   .head {
     display: grid;
-    gap: 6px;
+    gap: 10px;
   }
   h2 {
-    font-size: clamp(24px, 3.2vw, 32px);
+    font-size: clamp(24px, 2.6vw, 32px);
+    letter-spacing: -0.03em;
   }
   .body {
     display: grid;
-    gap: 20px;
+    gap: var(--gap-block);
   }
   @media (max-width: 560px) {
     header {
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    .num {
-      width: 36px;
-      height: 36px;
-      font-size: 15px;
+      grid-template-columns: 2.4rem minmax(0, 1fr);
     }
   }
 </style>

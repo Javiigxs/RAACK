@@ -96,7 +96,7 @@
         </table>
       </div>
       <p class="result">{t(agreement(a, rainOther))}</p>
-      <p class="small muted">{t('wi.rain.caveat', { km: fmt(distance, 0, ui.lang) })}</p>
+      <p class="small">{t('wi.rain.caveat', { km: fmt(distance, 0, ui.lang) })}</p>
     </div>
   </div>
 {:else if pair && mine && theirs && common}
@@ -114,7 +114,7 @@
       </table>
     </div>
     <p class="headline">{t(agreement(mine, theirs))}</p>
-    <p class="small muted">
+    <p class="small">
       {t('wi.temp.caveat', { km: fmt(distance, 0, ui.lang) })}
       {#if mine.trend.ok && theirs.trend.ok}
         {t('wi.temp.diff', { d: fmtSigned(mine.perDecade - theirs.perDecade, 2, ui.lang) })}
@@ -129,33 +129,30 @@
   .wit {
     display: grid;
     grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
-    gap: 26px;
+    gap: var(--gap-block) 56px;
     align-items: start;
   }
   .text {
     display: grid;
-    gap: 12px;
+    gap: 16px;
   }
   .headline {
-    font-size: clamp(18px, 2.1vw, 21px);
-    font-weight: 500;
-    line-height: 1.4;
+    font-size: var(--fs-lead);
+    line-height: 1.42;
+    letter-spacing: -0.008em;
     max-width: 62ch;
   }
-  .result {
-    font-size: 16px;
-    font-weight: 500;
-  }
   td:first-child {
-    font-weight: 650;
+    font-weight: 500;
   }
   td:first-child .muted {
     font-weight: 400;
-    font-size: 12.5px;
+    font-size: var(--fs-micro);
+    color: var(--ink-2);
   }
   @media (max-width: 820px) {
     .wit {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
   @media (max-width: 620px) {
@@ -167,7 +164,7 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 6px 14px;
       padding: 12px 0;
-      border-bottom: 1px solid var(--grid);
+      border-bottom: 1px solid var(--border);
     }
     .wtable td {
       display: block;
@@ -182,10 +179,7 @@
     .wtable td[data-label]::before {
       content: attr(data-label);
       display: block;
-      font-size: 11px;
-      font-weight: 650;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      font-size: var(--fs-micro);
       color: var(--muted);
     }
   }

@@ -47,7 +47,7 @@
   const range = (lo: number, hi: number) => t('fmt.range', { lo: fmtSigned(lo, 0, ui.lang), hi: fmtSigned(hi, 0, ui.lang) });
 </script>
 
-<div class="balance panel">
+<div class="balance">
   <div class="head">
     <h3>{title}</h3>
     <span class="small">{unit}</span>
@@ -102,13 +102,15 @@
     <span class="item"><span class="key-box" style="background: var(--down); opacity: 0.3"></span>{t('w.bal.pale')}</span>
     <span class="item"><span class="key-line" style="border-color: var(--ink)"></span>{t('w.bal.interval')}</span>
   </div>
-  {#if note}<p class="small muted">{note}</p>{/if}
+  {#if note}<p class="note">{note}</p>{/if}
 </div>
 
 <style>
   .balance {
     display: grid;
-    gap: 12px;
+    gap: 14px;
+    border-top: 1px solid var(--border);
+    padding-top: 22px;
   }
   .head {
     display: flex;
@@ -116,26 +118,33 @@
     align-items: baseline;
     justify-content: space-between;
     gap: 4px 16px;
+    margin-bottom: 4px;
   }
   .head h3 {
+    font-size: 20px;
     margin: 0;
   }
   .rows {
     display: grid;
-    gap: 8px;
+    gap: 10px;
   }
   .frow {
     display: grid;
-    grid-template-columns: minmax(150px, 0.9fr) minmax(0, 2fr) minmax(150px, auto);
+    grid-template-columns: minmax(150px, 0.9fr) minmax(0, 2.2fr) minmax(150px, auto);
     align-items: center;
-    gap: 12px;
+    gap: 16px;
   }
   .flabel {
     display: grid;
-    line-height: 1.25;
+    line-height: 1.3;
   }
   .flabel strong {
-    font-size: 14.5px;
+    font-size: var(--fs-small);
+    font-weight: 500;
+  }
+  .flabel .small {
+    font-size: var(--fs-micro);
+    color: var(--ink-2);
   }
   .fplot {
     position: relative;
@@ -143,20 +152,19 @@
   }
   .grid {
     position: absolute;
-    top: -4px;
-    bottom: -4px;
+    top: -5px;
+    bottom: -5px;
     width: 1px;
     background: var(--grid);
   }
   .grid.zero {
     background: var(--axis);
-    width: 1.5px;
   }
   .bar {
     position: absolute;
-    top: 6px;
-    height: 14px;
-    border-radius: 0 4px 4px 0;
+    top: 7px;
+    height: 12px;
+    border-radius: 0 var(--r-mark) var(--r-mark) 0;
     background: var(--deemph);
   }
   .bar.up {
@@ -164,27 +172,25 @@
   }
   .bar.down {
     background: var(--down);
-    border-radius: 4px 0 0 4px;
+    border-radius: var(--r-mark) 0 0 var(--r-mark);
   }
   .bar.pale {
     opacity: 0.3;
   }
   .whisk {
     position: absolute;
-    top: 12px;
-    height: 2px;
+    top: 12.25px;
+    height: 1.5px;
     background: var(--ink);
-    border-radius: 2px;
   }
   .whisk::before,
   .whisk::after {
     content: '';
     position: absolute;
     top: -4px;
-    width: 2px;
-    height: 10px;
+    width: 1.5px;
+    height: 9.5px;
     background: var(--ink);
-    border-radius: 2px;
   }
   .whisk::before {
     left: 0;
@@ -193,15 +199,16 @@
     right: 0;
   }
   .fval {
-    display: flex;
+    display: grid;
+    grid-template-columns: 4.5ch minmax(0, 1fr);
     align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
+    gap: 12px;
     font-variant-numeric: tabular-nums;
   }
   .v {
-    font-weight: 700;
-    font-size: 15px;
+    font-weight: 500;
+    font-size: var(--fs-body);
+    text-align: right;
   }
   .axis .fplot {
     height: 16px;
@@ -209,10 +216,13 @@
   .tk {
     position: absolute;
     transform: translateX(-50%);
-    font-size: 11.5px;
+    font-size: var(--fs-micro);
     color: var(--muted);
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
+  }
+  .legend {
+    margin: 4px 0 0;
   }
   @media (max-width: 720px) {
     .frow {

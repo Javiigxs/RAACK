@@ -5,7 +5,7 @@
   // (see sequence.ts). Code written with AI assistance (Claude) for team RAACK.
   import { onMount } from 'svelte';
   import { t } from '../i18n';
-  import { isStill, motion as motionChoice } from '../ui/motion.svelte';
+  import { isStill, motion as motionChoice, setMotion } from '../ui/motion.svelte';
   import { EARTH, approach, clamp01, phaseEnds, progressAt, shotAt, spinForLon, stillShotAt } from './sequence';
   import { createSoftwareEarth } from './software';
   import { createWebglEarth, type EarthMaps, type EarthRenderer } from './webgl';
@@ -196,6 +196,14 @@
       <a class="btn primary" href="#start">{t('intro.cta')} <span aria-hidden="true">↓</span></a>
     </div>
     <p class="hint" bind:this={hintEl} aria-hidden="true"><span class="mouse"></span>{t('intro.hint')}</p>
+    <!-- The system asks for less motion, so the opening holds still: one press plays it, and the
+         choice is kept for this site. Where the scroll hint sits when the sequence is on. -->
+    {#if still && motionChoice.system}
+      <button class="play" onclick={() => setMotion('full')}>
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" /></svg>
+        {t('wr.motion.on')}
+      </button>
+    {/if}
   </div>
 </section>
 
@@ -242,10 +250,10 @@
     overflow: hidden;
   }
   .copy {
-    width: min(980px, 100% - 40px);
-    margin-top: clamp(88px, 15svh, 170px);
+    width: min(1080px, 100% - 40px);
+    margin-top: clamp(84px, 11.5svh, 132px);
     display: grid;
-    gap: 16px;
+    gap: 18px;
     justify-items: center;
     align-content: start;
     text-align: center;
@@ -253,15 +261,15 @@
     will-change: opacity, transform;
   }
   h1 {
-    font-size: clamp(38px, 7vw, 86px);
-    font-weight: 760;
-    letter-spacing: -0.04em;
-    line-height: 0.98;
-    max-width: 16ch;
+    font-size: clamp(42px, 7.2vw, 96px);
+    font-weight: 500;
+    letter-spacing: -0.048em;
+    line-height: 0.94;
+    max-width: 13ch;
   }
   .lead {
-    font-size: clamp(16.5px, 1.75vw, 19.5px);
-    max-width: 54ch;
+    font-size: var(--fs-lead);
+    max-width: 50ch;
     color: var(--ink-2);
     /* The glow of the horizon can reach the last line: a halo of the page colour keeps it readable. */
     text-shadow:
@@ -269,9 +277,9 @@
       0 0 4px var(--page);
   }
   .btn {
-    margin-top: 6px;
-    padding: 12px 20px;
-    font-size: 15.5px;
+    margin-top: 8px;
+    padding: 13px 22px;
+    font-size: var(--fs-body);
   }
   .hint {
     display: inline-flex;
@@ -279,12 +287,10 @@
     gap: 9px;
     margin-bottom: clamp(14px, 3svh, 28px);
     padding: 6px 13px 6px 9px;
-    border-radius: 999px;
+    border-radius: var(--r-pill);
     background: color-mix(in srgb, var(--page) 72%, transparent);
-    font-size: 12px;
-    font-weight: 650;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
+    font-size: var(--fs-micro);
+    font-weight: 500;
     color: var(--ink-2);
   }
   .mouse {
@@ -319,6 +325,32 @@
   }
   .track.still .hint {
     display: none;
+  }
+  /* Still, the first screen ends under the soft edge of the sheet that follows: lifted above it,
+     the button stays as legible as the rest of the screen. */
+  .track.still .stage {
+    z-index: 1;
+  }
+  /* The same pill as the scroll hint, but a button: it turns the opening sequence on. */
+  .play {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: clamp(14px, 3svh, 28px);
+    padding: 8px 15px 8px 11px;
+    border: 0;
+    border-radius: var(--r-pill);
+    background: color-mix(in srgb, var(--page) 78%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: var(--fs-small);
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background-color 0.15s;
+  }
+  .play:hover {
+    background: var(--page);
   }
   @media (max-width: 600px) {
     .copy {

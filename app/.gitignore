@@ -3,3 +3,7 @@ dist/
 .vite/
 *.log
 .claude/
+# Claves: la de Kimi va en dete/.env y nunca se sube. La plantilla sí.
+.env
+.env.*
+!.env.example

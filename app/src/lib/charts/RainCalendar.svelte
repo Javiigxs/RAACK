@@ -92,7 +92,7 @@
           rx="4"
           fill="none"
           stroke="var(--ink)"
-          stroke-width="2"
+          stroke-width="1.5"
         />
       {/each}
     {/if}

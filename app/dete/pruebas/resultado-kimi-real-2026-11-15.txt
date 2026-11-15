@@ -1,0 +1,201 @@
+DE-T · Prueba con Kimi real del 15 de noviembre de 2026
+=========================================================
+
+Salida de `npm run dete:real` (app/dete/pruebas/prueba-real.mjs), tal como salió en la terminal (solo se
+abrevió la ruta de la carpeta que sirve). Son las
+ocho pruebas rápidas de app/dete/README.md, hechas por HTTP contra el servidor de DE-T con la clave del
+equipo (la de Fran, en app/dete/.env, fuera del repositorio) y el modelo kimi-k3.1-pro con
+reasoning_effort = low. La prueba la lanzó Claude (IA) a petición de Fran.
+
+Las respuestas las escribió Kimi (IA, Moonshot AI) a partir de los datos de la herramienta: pueden
+equivocarse. «verificado: true» quiere decir que el servidor encontró cada cifra de la respuesta en sus
+datos, no que la frase que la rodea sea correcta.
+
+El costo es una estimación del servidor: tokens que Kimi dice haber cobrado por una tarifa de
+kimi-k3.1-pro (2 dólares por millón de tokens de entrada, 0.2 con caché y 10 de salida) que sale de
+páginas que citan a Kimi, no de su tabla oficial. No incluye la escritura en caché. Suma de las tres
+tandas: unos 15 centavos de dólar. El saldo real se ve en la consola de Kimi.
+
+Resultado: 8 de 8 preguntas respondidas, todas con las cifras verificadas, entre 11 y 40 segundos cada
+una. En la segunda tanda, la prueba 3 empezó en español («La herramienta no tiene ese dato») una
+respuesta en inglés; se corrigió la regla 2 de las instrucciones y se repitió (tercera tanda).
+
+Lo que esta prueba no cubre: la página servida con DE-T real en un navegador. El recorrido de la página
+se comprobó aparte con respuestas simuladas.
+
+
+Primera tanda · prueba 1 (variables de entorno: KIMI_MODEL=kimi-k3.1-pro, KIMI_REASONING_EFFORT=low)
+-----------------------------------------------------------------------------------------------------
+
+— arranque
+  DE-T · HydroDetective en http://127.0.0.1:8805  (carpeta: app/dist)
+  Cada pregunta dirá aquí lo que gastó, con la tarifa de kimi-k3.1-pro: 2 dólares por millón de tokens de entrada (0.2 con caché) y 10 de salida. Es una estimación.
+  Kimi aceptó la clave y la cuenta tiene el modelo kimi-k3.1-pro.
+
+— prueba 1 · País elegido en el globo: Italia · sector civil · lugar IT
+  pregunta: Is Italy losing stored water?
+  estado 200 en 17 s · verificado: true
+  [servidor] Pregunta 1: 2 peticiones a Kimi en 17 s · 18 315 tokens de entrada (8 448 de caché) y 486 de salida · unos 2.6 centavos de dólar; en esta sesión, 2.6 centavos de dólar
+  respuesta:
+    **Yes.** Near Italy’s reference point, total stored water is decreasing by **6.7 cm of water per decade** during **2003–2026**. The estimated decline ranges from **3.9 to 7.9 cm per decade** (95% interval), with **p < 0.001**, so the downward trend is **confirmed**.
+    
+    **Source:** NASA GRACE/GRACE-FO. This water includes moisture in the soil, groundwater and surface water such as reservoirs.
+    
+    This is only a **first look**: it comes from one GRACE measurement area about **330 km wide** beneath the country’s reference point, **not an average for all of Italy**, and it does not explain the cause. The tool has **7 of 10 data layers** ready but lacks Italy’s local weather-station, reservoir and groundwater-balance records, so it cannot yet determine why the water is declining.
+  ok    dice −6.7
+  ok    avisa de que es un primer vistazo
+
+Última línea de gasto: Pregunta 1: 2 peticiones a Kimi en 17 s · 18 315 tokens de entrada (8 448 de caché) y 486 de salida · unos 2.6 centavos de dólar; en esta sesión, 2.6 centavos de dólar
+
+Terminó sin fallos.
+
+
+Segunda tanda · pruebas 2 a 8 (mismas variables)
+-------------------------------------------------
+
+— arranque
+  DE-T · HydroDetective en http://127.0.0.1:8805  (carpeta: app/dist)
+  Cada pregunta dirá aquí lo que gastó, con la tarifa de kimi-k3.1-pro: 2 dólares por millón de tokens de entrada (0.2 con caché) y 10 de salida. Es una estimación.
+  Kimi aceptó la clave y la cuenta tiene el modelo kimi-k3.1-pro.
+
+— prueba 2 · Qué falta en Italia · sector civil · lugar IT
+  pregunta: What is still missing to open the case in Italy?
+  estado 200 en 30 s · verificado: true
+  [servidor] Pregunta 1: 2 peticiones a Kimi en 29 s (1 espera por el límite de la cuenta) · 18 390 tokens de entrada (16 896 de caché) y 548 de salida · unos 1.2 centavos de dólar; en esta sesión, 1.2 centavos de dólar
+  respuesta:
+    Italy has **7 of the 10 data layers ready**. To open the full case, it still needs **three local, ground-based records**:
+    
+    1. **A long-term weather station record:** daily rainfall, temperature, and pan evaporation, requested from the national weather service. Any NOAA station records used would need their start and end dates checked.
+    2. **Reservoir storage:** daily records for the main reservoirs, requested from the national water agency. NASA’s SWOT only covers the period since 2023—too short to establish a trend.
+    3. **Official groundwater balances:** recharge versus allocated water for each aquifer, from the water authority. Without this, the diagnosis cannot go beyond **“possible human footprint.”**
+    
+    For context, the **GRACE first look** shows stored water declining by **6.7 cm per decade** (95% interval: −7.9 to −3.9; p < 0.001; **confirmed decline**). But this is **one roughly 330-km-wide GRACE measurement area beneath Italy’s reference point**, not a national average, and it does not identify the cause. Vatican City shares the same measurement, so it is not independent evidence.
+  ok    nombra la estación en tierra
+  ok    nombra las presas
+  ok    nombra el balance oficial
+
+— prueba 3 · Trampa con Italia elegida · sector civil · lugar IT
+  pregunta: How much did it rain in Italy last year?
+  estado 200 en 11 s · verificado: true
+  [servidor] Pregunta 2: 1 petición a Kimi en 11 s · 8 494 tokens de entrada (8 448 de caché) y 224 de salida · unos 0.4 centavos de dólar; en esta sesión, 1.6 centavos de dólar
+  respuesta:
+    La herramienta no tiene ese dato — it has no rainfall series for Italy. It can show Italy’s data coverage and a first look at stored water from NASA GRACE, but not how much it rained last year.
+  ok    dice que no tiene ese dato
+  ok    no da una cifra de lluvia
+
+— prueba 4 · Ciudadano, Cerro Prieto · sector civil
+  pregunta: ¿Por qué se secó Cerro Prieto en 2022?
+  estado 200 en 37 s · verificado: true
+  [servidor] Pregunta 3: 3 peticiones a Kimi en 37 s · 28 487 tokens de entrada (26 112 de caché) y 1 260 de salida · unos 2.3 centavos de dólar; en esta sesión, 3.8 centavos de dólar
+  respuesta:
+    Cerro Prieto llegó a 2022 muy vacía, sobre todo después de **dos años con poca lluvia**, no por una evaporación excepcional.
+    
+    Según los registros de **CONAGUA**:
+    
+    - **Volumen medio en 2022:** 27.48 millones de m³, **86.9 % menos** que su promedio de 2000–2025.
+    - **Lluvia en 2021:** 551.61 mm, **29 % menos** de lo normal.
+    - **Lluvia en 2022:** 594.91 mm, **23.4 % menos** de lo normal.
+    - **Evaporación en 2022:** fue **19.7 % menor** que su promedio, así que ese año no explica el vaciado.
+    
+    Además, la lluvia de un año se relaciona con el agua almacenada al año siguiente: **r = 0.577, p = 0.0025, n = 25**; la relación sigue siendo significativa sin tendencia (**r = 0.595, p = 0.0017**). Esto respalda la importancia de la falta de lluvia acumulada, pero **correlación no es causalidad** y las series anuales pueden dar p-valores optimistas.
+    
+    La herramienta no tiene datos de entradas, extracciones o liberaciones de agua, por lo que no puede cuantificar su contribución.
+  ok    habla de Cerro Prieto en 2022
+
+— prueba 5 · Gobierno, recomendaciones · sector gobierno
+  pregunta: ¿Qué recomiendan hacer?
+  estado 200 en 40 s · verificado: true
+  [servidor] Pregunta 4: 2 peticiones a Kimi en 39 s (1 espera por el límite de la cuenta) · 19 299 tokens de entrada (10 496 de caché) y 1 023 de salida · unos 3.0 centavos de dólar; en esta sesión, 6.8 centavos de dólar
+  respuesta:
+    **Prioridades para la autoridad del agua:**
+    
+    1. 📚 Del catálogo (**A1**): **Medir y publicar la extracción real de agua subterránea**, no solo comparar volúmenes concesionados. — Fuente: **LAN, art. 29; Reglamento de la LAN, art. 52; reglas generales de medición de CONAGUA**.
+    
+    2. 📚 Del catálogo (**A2**): **No otorgar nuevos volúmenes y revisar concesiones en acuíferos con déficit**. El **DOF 2023** registra **13 de 23 acuíferos con disponibilidad negativa** (**certeza confirmada, dato oficial**). — Fuente: **LAN, art. 22; Acuerdo de disponibilidad, DOF 9-nov-2023**.
+    
+    3. 📚 Del catálogo (**A3–A4**): **Evaluar recarga artificial con agua residual tratada e infiltración pluvial**, con autorización de CONAGUA, especialmente en los acuíferos metropolitanos en déficit. — Fuentes: **NOM-014-CONAGUA-2003 y NOM-015-CONAGUA-2007**. La NOM-015 no autoriza extraer el agua recargada.
+    
+    4. 📚 Del catálogo (**B1**): **Activar y actualizar el PMPMS del Consejo de Cuenca Río Bravo** para años extremos como 2011 y 2022. — Fuente: **CONAGUA, PRONACOSE 2022**.
+    
+    5. 📚 Del catálogo (**A5**): **Vigilar subsidencia con InSAR**, como complemento de GRACE. — Fuente: **NASA/JPL, experiencia del Valle Central y productos ARIA**.
+    
+    6. 📚 Del catálogo (**C1**): **Impulsar el reúso de agua residual tratada** para industria, riego y servicios. — Fuente: **ONU, World Water Development Report 2017**.
+    
+    **Advertencia del catálogo:** evitar más pozos o pozos más profundos sin control de extracción y nuevas concesiones en acuíferos con déficit.
+    
+    *Son opciones derivadas del diagnóstico, no recomendaciones oficiales; las decisiones corresponden a las autoridades y requieren datos locales que los satélites no pueden ver.*
+  ok    da opciones del catálogo (📚)
+
+— prueba 6 · Investigador, correlación con rezago · sector investigador
+  pregunta: ¿La lluvia se relaciona con el agua almacenada? Prueba con rezago de 1 año.
+  estado 200 en 21 s · verificado: true
+  [servidor] Pregunta 5: 2 peticiones a Kimi en 21 s (1 espera por el límite de la cuenta) · 17 171 tokens de entrada (10 496 de caché) y 442 de salida · unos 2.0 centavos de dólar; en esta sesión, 8.8 centavos de dólar
+  respuesta:
+    Con **rezago de 1 año** —lluvia del año *t* frente a agua almacenada en *t+1*— la relación es **positiva, pero no significativa**:
+    
+    - **Pearson:** r = **0.346**, p = **0.1351**, **n = 20** pares de años.
+    - **Spearman:** ρ = **0.274**, p = **0.243**.
+    - **Pearson sin tendencia:** r = **0.377**, p = **0.1016**; tampoco es significativa.
+    
+    Fuentes: **NASA GPM IMERG Final V07** para lluvia y **NASA GRACE/GRACE-FO JPL Mascon RL06.3 v04** para agua almacenada.
+    
+    Así, no hay evidencia estadística suficiente de que una lluvia mayor se traduzca sistemáticamente en más agua almacenada al año siguiente. **Correlación no es causalidad**; además, con series anuales cortas y autocorrelacionadas, el p-valor puede ser optimista.
+  ok    da r y p
+  ok    recuerda que no es causalidad
+
+— prueba 7 · Trampa, Madrid · sector civil
+  pregunta: ¿Cuánto llovió en Madrid?
+  estado 200 en 11 s · verificado: true
+  [servidor] Pregunta 6: 1 petición a Kimi en 11 s · 8 369 tokens de entrada (8 192 de caché) y 253 de salida · unos 0.5 centavos de dólar; en esta sesión, 9.3 centavos de dólar
+  respuesta:
+    La herramienta no tiene ese dato de lluvia en Madrid. Para España solo puede consultar un primer vistazo del agua almacenada con GRACE, no su lluvia.
+    
+    Sí puedo decirte cuánto llovió en **Nuevo León o Monterrey** en un año entre **1998 y 2025**, según la serie disponible.
+  ok    dice que no tiene ese dato
+  ok    no da una cifra de lluvia
+
+— prueba 8 · Número pulsado en el veredicto · sector civil
+  pregunta: What does −7.1 cm per decade mean here?
+  estado 200 en 31 s · verificado: true
+  [servidor] Pregunta 7: 2 peticiones a Kimi en 30 s (1 espera por el límite de la cuenta) · 17 792 tokens de entrada (16 640 de caché) y 611 de salida · unos 1.2 centavos de dólar; en esta sesión, 10.5 centavos de dólar
+  respuesta:
+    **−7.1 cm per decade means Nuevo León’s total water reserve is shrinking.**
+    
+    Imagine taking all the water lost and spreading it evenly across the entire region: every ten years, the loss equals a layer of water about **7.1 cm deep**.
+    
+    This is the **overall trend**, calculated across all the years—not a promise that exactly 7.1 cm disappears every decade. Some years improve, but the long-term direction is downward.
+    
+    It measures water stored in the **soil, underground aquifers and reservoirs together**. It does **not** mean each reservoir’s water level falls by 7.1 cm.
+    
+    - **Source:** NASA GRACE/GRACE-FO  
+    - **Period measured:** 2003–2026, with gaps in 2015, 2017 and 2018  
+    - **Certainty:** **Confirmed** downward trend
+    
+    For daily life, it means the region’s combined water reserve is becoming smaller over time.
+  ok    explica el −7.1
+
+Última línea de gasto: Pregunta 7: 2 peticiones a Kimi en 30 s (1 espera por el límite de la cuenta) · 17 792 tokens de entrada (16 640 de caché) y 611 de salida · unos 1.2 centavos de dólar; en esta sesión, 10.5 centavos de dólar
+
+Terminó sin fallos.
+
+
+Tercera tanda · prueba 3 repetida tras corregir la regla 2 (ajustes de app/dete/.env, sin variables)
+-----------------------------------------------------------------------------------------------------
+
+— arranque
+  DE-T · HydroDetective en http://127.0.0.1:8805  (carpeta: app/dist)
+  Cada pregunta dirá aquí lo que gastó, con la tarifa de kimi-k3.1-pro: 2 dólares por millón de tokens de entrada (0.2 con caché) y 10 de salida. Es una estimación.
+  Kimi aceptó la clave y la cuenta tiene el modelo kimi-k3.1-pro.
+
+— prueba 3 · Trampa con Italia elegida · sector civil · lugar IT
+  pregunta: How much did it rain in Italy last year?
+  estado 200 en 12 s · verificado: true
+  [servidor] Pregunta 1: 1 petición a Kimi en 11 s · 8 520 tokens de entrada (1 024 de caché) y 242 de salida · unos 1.8 centavos de dólar; en esta sesión, 1.8 centavos de dólar
+  respuesta:
+    The tool does not have that data. For Italy, I can report which data layers are available or provide the first-look GRACE estimate of stored water, but not annual rainfall.
+  ok    dice que no tiene ese dato
+  ok    no da una cifra de lluvia
+
+Última línea de gasto: Pregunta 1: 1 petición a Kimi en 11 s · 8 520 tokens de entrada (1 024 de caché) y 242 de salida · unos 1.8 centavos de dólar; en esta sesión, 1.8 centavos de dólar
+
+Terminó sin fallos.

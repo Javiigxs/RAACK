@@ -47,7 +47,7 @@
   </li>
 {/snippet}
 
-<div class="verdict card">
+<div class="verdict">
   <div class="main">
     <p class="kicker">{t('vd.kicker', { y0: a.y0, y1: a.y1 })}</p>
     <div class="headline" class:quiet={!decided}>
@@ -112,56 +112,57 @@
 <style>
   .verdict {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    gap: 28px;
-    padding: clamp(18px, 3vw, 30px);
+    grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+    gap: 32px 64px;
   }
   .main {
     display: grid;
-    gap: 12px;
+    gap: 14px;
     justify-items: start;
     align-content: start;
   }
   .headline {
     display: flex;
     align-items: flex-end;
-    gap: 12px;
+    gap: 14px;
+    margin-top: 6px;
   }
   .num {
-    font-size: clamp(48px, 8vw, 84px);
-    font-weight: 780;
-    letter-spacing: -0.04em;
-    line-height: 0.95;
+    font-size: clamp(56px, 8vw, 104px);
+    font-weight: 500;
+    letter-spacing: -0.055em;
+    line-height: 0.88;
+    font-variant-numeric: tabular-nums;
   }
   .headline.quiet .num {
     color: var(--muted);
   }
   .unit {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: var(--fs-body);
     color: var(--ink-2);
     line-height: 1.25;
     padding-bottom: 6px;
   }
   .ci {
     color: var(--ink-2);
-    font-size: 15px;
+    font-size: var(--fs-small);
   }
   .ci strong {
     color: var(--ink);
+    font-weight: 500;
     font-variant-numeric: tabular-nums;
   }
   .plain {
-    font-size: clamp(18px, 2.1vw, 21px);
-    line-height: 1.4;
-    font-weight: 500;
+    font-size: var(--fs-lead);
+    line-height: 1.42;
+    letter-spacing: -0.008em;
     max-width: 46ch;
   }
   .guess {
     display: flex;
-    gap: 9px;
+    gap: 10px;
     align-items: baseline;
-    font-size: 14.5px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
   }
   .swatch {
@@ -172,27 +173,22 @@
     transform: translateY(-4px);
   }
   .jury {
-    border-left: 1px solid var(--grid);
-    padding-left: 28px;
     display: grid;
-    gap: 8px;
+    gap: 6px;
     align-content: start;
   }
   .jury h3 {
-    font-size: 18px;
+    font-size: 20px;
   }
   .jury ul {
     list-style: none;
     padding: 0;
-    margin: 6px 0 0;
+    margin: 12px 0 0;
     display: grid;
-    gap: 10px;
   }
   .jury li {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px 14px;
-    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+    padding: 14px 0;
     display: grid;
     gap: 4px;
   }
@@ -203,28 +199,37 @@
     gap: 10px;
     flex-wrap: wrap;
   }
+  .jhead strong {
+    font-weight: 600;
+  }
+  /* The vote of a test: a word, in ink when it sees the change. */
   .vote {
-    font-size: 12px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 6px;
-    border: 1px solid var(--border-strong);
+    font-size: var(--fs-small);
     color: var(--ink-2);
     white-space: nowrap;
   }
   .vote.yes {
-    background: var(--ink);
-    color: var(--page);
-    border-color: var(--ink);
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .vote.yes::before {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    transform: translateY(-1px);
   }
   .how {
-    font-size: 13.5px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
-    line-height: 1.4;
+    line-height: 1.45;
   }
   .res {
-    font-size: 14.5px;
-    font-weight: 650;
+    font-size: var(--fs-small);
+    font-weight: 500;
     font-variant-numeric: tabular-nums;
   }
   .notes {
@@ -233,28 +238,24 @@
     margin: 0;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px 24px;
-    font-size: 14.5px;
+    gap: 0 48px;
+    font-size: var(--fs-small);
+    line-height: 1.5;
     color: var(--ink-2);
   }
   .notes li {
-    border-left: 3px solid var(--axis);
-    padding-left: 12px;
+    border-top: 1px solid var(--border);
+    padding: 16px 0 20px;
   }
   .notes strong {
     color: var(--ink);
     display: block;
+    margin-bottom: 4px;
   }
   @media (max-width: 820px) {
     .verdict,
     .notes {
-      grid-template-columns: 1fr;
-    }
-    .jury {
-      border-left: 0;
-      padding-left: 0;
-      border-top: 1px solid var(--grid);
-      padding-top: 18px;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

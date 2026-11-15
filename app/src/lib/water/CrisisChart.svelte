@@ -31,7 +31,7 @@
     const x0 = cx(i) - barW / 2;
     const top = y(values[i]);
     const h = base - top;
-    const r = Math.min(4, h, barW / 2);
+    const r = Math.min(3, h, barW / 2);
     return `M${x0},${base} V${top + r} Q${x0},${top} ${x0 + r},${top} H${x0 + barW - r} Q${x0 + barW},${top} ${x0 + barW},${top + r} V${base} Z`;
   }
 </script>
@@ -58,7 +58,7 @@
       {#if v > 0}
         <path d={bar(i)} fill="var(--series-1)" opacity={hover === null || hover === i ? 1 : 0.55} />
       {/if}
-      <line x1={cx(i) - slot * 0.36} x2={cx(i) + slot * 0.36} y1={y(usual[i])} y2={y(usual[i])} stroke="var(--ink)" stroke-width="3" stroke-linecap="round" />
+      <line x1={cx(i) - slot * 0.36} x2={cx(i) + slot * 0.36} y1={y(usual[i])} y2={y(usual[i])} stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" />
       <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
       <rect
         x={cx(i) - slot / 2}
@@ -100,7 +100,7 @@
 
 <style>
   .unit {
-    font-size: 11.5px;
+    font-size: 12px;
     fill: var(--muted);
   }
   rect:focus-visible {

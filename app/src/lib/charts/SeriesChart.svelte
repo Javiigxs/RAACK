@@ -201,7 +201,7 @@
     <path d={annualPath} fill="none" stroke="var(--series-1)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
     {#each a.annual as d (d.year)}
       {#if d.value !== null}
-        <circle cx={x(d.year + 0.5)} cy={y(d.value)} r="4" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2" />
+        <circle cx={x(d.year + 0.5)} cy={y(d.value)} r="4" fill="var(--series-1)" stroke="var(--page)" stroke-width="2" />
       {/if}
     {/each}
 
@@ -242,7 +242,7 @@
     {#if hoverInfo}
       <line class="axisline" x1={hoverInfo.x} x2={hoverInfo.x} y1={m.top} y2={height - m.bottom} pointer-events="none" />
       {#if hoverInfo.v !== null}
-        <circle cx={hoverInfo.x} cy={hoverInfo.y} r="4.5" fill="var(--ink)" stroke="var(--surface)" stroke-width="2" pointer-events="none" />
+        <circle cx={hoverInfo.x} cy={hoverInfo.y} r="4.5" fill="var(--ink)" stroke="var(--page)" stroke-width="2" pointer-events="none" />
       {/if}
     {/if}
 
@@ -263,7 +263,7 @@
         onkeydown={onKey}
       >
         <circle cx={guessLine.x2} cy={guessLine.y2} r="22" fill="transparent" />
-        <circle cx={guessLine.x2} cy={guessLine.y2} r="9" fill="var(--series-2)" stroke="var(--surface)" stroke-width="2.5" />
+        <circle cx={guessLine.x2} cy={guessLine.y2} r="9" fill="var(--series-2)" stroke="var(--page)" stroke-width="2.5" />
         <path
           d="M{guessLine.x2 - 3.5},{guessLine.y2 - 1.5} L{guessLine.x2},{guessLine.y2 - 5} L{guessLine.x2 + 3.5},{guessLine.y2 - 1.5} M{guessLine.x2 -
             3.5},{guessLine.y2 + 1.5} L{guessLine.x2},{guessLine.y2 + 5} L{guessLine.x2 + 3.5},{guessLine.y2 + 1.5}"
@@ -320,11 +320,11 @@
 
 <style>
   .unit {
-    font-size: 11.5px;
+    font-size: 12px;
     fill: var(--muted);
   }
   .direct {
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 600;
     fill: var(--ink);
   }

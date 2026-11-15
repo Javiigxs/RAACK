@@ -3,7 +3,7 @@
 Web tool built for the NASA Space Apps Challenge 2026, challenge *Be An Earth System Trend Detective!*
 It answers the questions the challenge asks (what is changing, where, how much, and is it significant) and adds the one the existing tools leave open: **why**.
 
-Status on 15 November 2026: working, tested locally (164 automated tests, desktop and phone, light and dark, English and Spanish). Not published yet; the team still has to review the wording. DE-T, the case assistant, was tested end to end with a simulated Kimi; it still needs the team's API key and a test with the real model.
+Status on 15 November 2026: working, tested locally (189 automated tests, desktop and phone, light and dark, English and Spanish). Not published yet; the team still has to review the wording. DE-T, the case assistant, was tested end to end with a simulated Kimi and, on the same day, with the real model (Kimi K3.1 Pro) through its server: its eight quick questions were answered with every figure checked against the data. It has not yet been watched in the page served with the real model.
 
 ## What it does
 
@@ -13,11 +13,12 @@ The page opens with the Earth, drawn by the site's own WebGL code: the camera pu
 
 ### DE-T, the case assistant
 
-DE-T answers questions about the water case of Nuevo León with the data of this tool only. It is the team's design: a small server (`dete/`) gives the language model (Kimi, by Moonshot AI) four tools that compute every figure (a series, the anomaly of a year, a correlation with and without trends, the official aquifer table), and a checker compares every figure of the answer with the data before it is shown; a figure it cannot find is flagged with ⚠️. The model has no web access, gives options only when asked (📚 from the team's catalogue with its source, 🤖 its own suggestion, not verified), remembers only the last two messages and adapts its words to who is asking: a citizen, an official, a journalist, a researcher or a business.
+DE-T answers questions about the water case of Nuevo León, and about what the tool holds for each of the 243 countries of the globe, with the data of this tool only. It is the team's design: a small server (`dete/`) gives the language model (Kimi, by Moonshot AI) six tools that compute or look up every figure (a series, the anomaly of a year, a correlation with and without trends, the official aquifer table, the data layers and first look at stored water of a country, and a ranking of countries), and a checker compares every figure of the answer with the data before it is shown; a figure it cannot find is flagged with ⚠️. The model has no web access, gives options only when asked (📚 from the team's catalogue with its source, 🤖 its own suggestion, not verified), remembers only the last two messages and adapts its words to who is asking: a citizen, an official, a journalist, a researcher or a business.
 
 - **Under every explained number:** *Not clear? Ask DE-T* opens the panel and asks what that number means. DE-T is told the number, what the page calls it, the explanation the reader just saw, the section and the region, period and worry chosen on the page.
+- **Where the country is chosen** (step 9): a line to write a question about the place the globe shows, with three questions to start from. The page sends only the identifier of the place; what DE-T knows about it comes from the server's own data. For a country that is two things: which of the ten data layers are ready, and a first look at stored water (one GRACE mascon under the reference point of the country, not a verdict), and DE-T has to say so.
 - **In the verdict**, an invitation to ask about it; **in the header** (on a narrow screen, a round button in the corner), the panel with three example questions.
-- DE-T's figures are the page's: `dete/exportar_series.mjs` copies the yearly values and the reference trends of `public/data/water.json` into `dete/series_nl.json`, and `dete/herramientas.test.mjs` checks that they match.
+- DE-T's figures are the page's: `dete/exportar_series.mjs` copies the yearly values and the reference trends of `public/data/water.json` into `dete/series_nl.json`, and the countries of `public/data/world.json` into `dete/paises.json`. `dete/herramientas.test.mjs` checks that both are up to date, and `src/lib/dete/countries.test.ts` compares every country with what the page's own code computes.
 - The panel appears only when the page is served by the DE-T server and it has an API key. A static copy of the site (such as GitHub Pages) shows no DE-T button and sends no request.
 
 ### Case 001 · Where did the water go?
@@ -100,12 +101,14 @@ Requires Node.js 20 or later.
 ```bash
 npm install
 npm run dev      # development server at http://127.0.0.1:5173
-npm test         # 139 automated tests
+npm test         # 189 automated tests
 npm run check    # type check of every component
 npm run build    # writes the static site to dist/
 npm run site     # builds and copies the site to ../site, the folder to publish
 npm run dete     # serves dist/ with DE-T at http://localhost:8000 (needs the Kimi key in dete/.env)
-npm run dete:data  # rebuilds DE-T's data (dete/series_nl.json) from public/data/water.json
+npm run dete:data  # rebuilds DE-T's data (dete/series_nl.json, dete/paises.json) from public/data/
+npm run dete:prueba  # end-to-end test of the DE-T server against a simulated Kimi (no key needed)
+npm run dete:real    # the eight quick questions against the real Kimi (needs the key; spends a few cents)
 ```
 
 DE-T needs a Kimi API key in `dete/.env` (copy `dete/.env.example`; the file is ignored by git and must never be published). During `npm run dev`, Vite passes `/api` to the DE-T server on port 8000. How to run it, costs and limits: [`dete/README.md`](dete/README.md), in Spanish.
@@ -157,13 +160,15 @@ Theil–Sen slope with Sen's interval; a t-test on the least-squares slope, Mann
 | `src/lib/world/view.ts`, `src/lib/world/Globe.svelte`, `src/lib/world/WorldReach.svelte` | The globe that turns to a country, and step 9 around it |
 | `src/lib/earth/` | The Earth: the opening sequence, the geometry and light of the planet, and its two renderers (WebGL 2 and a 2D fallback) |
 | `src/lib/explain/` | The explanation that opens when a number is pressed |
-| `dete/` | DE-T's server, its four tools, the figure checker, its data and the team's catalogue of options |
-| `src/lib/dete/`, `src/lib/i18n-dete.ts` | DE-T's panel, its buttons and its text in English and Spanish |
+| `dete/` | DE-T's server, its six tools, the figure checker, its data (Nuevo León and the countries) and the team's catalogue of options |
+| `src/lib/dete/`, `src/lib/i18n-dete.ts` | DE-T's panel, the question line under the country finder, its buttons and its text in English and Spanish |
 | `src/lib/ui/motion.svelte.ts` | Motion on or off for the whole site |
 | `src/lib/stats/`, `src/lib/analysis.ts`, `src/lib/sections/`, `src/lib/charts/` | Case 002 |
 | `src/lib/i18n.ts`, `src/lib/i18n-lab.ts`, `src/lib/i18n-water.ts`, `src/lib/i18n-world.ts`, `src/lib/i18n-design.ts` | Interface text in English and Spanish |
 
 Built with Svelte 5, Vite and the d3-scale, d3-shape and d3-array modules. Charts are SVG drawn from the data; no chart library and no external request at run time.
+
+The typeface is Hanken Grotesk (The Hanken Grotesk Project Authors, SIL Open Font License 1.1), installed from `@fontsource-variable/hanken-grotesk` and served from the site itself; its licence travels with the site in `public/licenses/hanken-grotesk-OFL.txt`. The rules of the visual system (one type family and three weights, a short scale of sizes and spaces, thin lines instead of boxes, colour kept for the data) are written at the top of `src/app.css`.
 
 ## Use of AI
 
@@ -179,6 +184,6 @@ DE-T, the case assistant, uses AI inside the product: its answers are generated 
 
 GRACE weighs areas about 300 km across and cannot separate groundwater from reservoirs or soil. GLDAS is a model, read here at two cells. The official aquifer deficit is administrative, not a measurement of pumping. "Human footprint" is an indication, not proof. A significant trend is not a cause. Step 9 checks the published coverage of each product at one point per country: it is not a download test, the team looked for ground records only in Mexico, and its first look reads one GRACE mascon, not the average of a country. In Case 002 each satellite series is a single 1 km pixel, surface temperature is not air temperature, and the Terra satellite has drifted since 2020.
 
-DE-T can be wrong: a language model writes its answers. The checker only confirms that each figure exists in the data, not that the sentence around it is right, and DE-T's series cover the full record of Nuevo León, not the period or region chosen on the page.
+DE-T can be wrong: a language model writes its answers. The checker only confirms that each figure exists in the data, not that the sentence around it is right, and DE-T's series cover the full record of Nuevo León, not the period or region chosen on the page. For any other country DE-T has only the count of data layers and a first look at stored water: no rain, no reservoirs, no aquifers, no cause and no verdict.
 
 This is not an official NASA product.

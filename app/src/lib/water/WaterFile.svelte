@@ -106,7 +106,10 @@
     <p class="lead">{t('w.msec.lead')}</p>
   </header>
 
-  <details class="block" open>
+  <div class="blocks">
+  <!-- The twelve steps of the method open with a click, as in Case 002; sources, use of AI and
+       credits stay in view. -->
+  <details class="block">
     <summary>{t('w.msec.methods')}</summary>
     <ol>
       {#each methods as k (k)}
@@ -151,8 +154,8 @@
         <li><a href={s.url} target="_blank" rel="noopener">{t(`w.src.${s.key}.name`)}</a> — {t(`w.src.${s.key}.desc`)}</li>
       {/each}
     </ul>
-    <p class="small muted">{t('w.msec.generated', { date: data.generated.slice(0, 10), n: Object.keys(data.inputs).length })}</p>
-    <p class="small muted">{software}</p>
+    <p class="small">{t('w.msec.generated', { date: data.generated.slice(0, 10), n: Object.keys(data.inputs).length })}</p>
+    <p class="small">{software}</p>
     <button class="btn" onclick={download}>{t('w.msec.download')} <span aria-hidden="true">↓</span></button>
   </details>
 
@@ -167,89 +170,38 @@
   <details class="block" open>
     <summary>{t('w.credits.title')}</summary>
     <p>{t('w.credits.team')}</p>
-    <p class="small muted">{t('w.credits.thanks')}</p>
+    <p class="small">{t('w.credits.thanks')}</p>
   </details>
+  </div>
 </section>
 
 <style>
   .file {
     display: grid;
-    gap: 16px;
+    gap: var(--gap-block);
   }
-  .sec-head {
-    display: grid;
-    gap: 8px;
-    border-top: 2px solid var(--ink);
-    padding-top: 24px;
-    margin-top: 38px;
-  }
-  .sec-head h2 {
-    font-size: clamp(26px, 3.8vw, 40px);
-    letter-spacing: -0.022em;
-  }
+  /* What the page cannot claim: a ruled grid, one limit per cell. */
   .limits {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 0 48px;
   }
   .limits li {
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--ink);
-    border-radius: 4px 12px 12px 4px;
-    background: var(--surface);
-    padding: 13px 16px;
-    font-size: 15px;
+    border-top: 1px solid var(--border);
+    padding: 18px 0 26px;
+    font-size: var(--fs-small);
+    line-height: 1.5;
     color: var(--ink-2);
   }
   .limits strong {
     display: block;
     color: var(--ink);
-    font-size: 16px;
-    margin-bottom: 2px;
-  }
-  details.block {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--surface);
-    padding: 14px 20px;
-  }
-  details.block summary {
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 17px;
-  }
-  details.block h4 {
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    margin: 16px 0 6px;
-  }
-  details.block ul,
-  details.block ol {
-    margin: 8px 0 0;
-    padding-left: 22px;
-    display: grid;
-    gap: 7px;
-    font-size: 15px;
-  }
-  details.block p {
-    margin-top: 10px;
-    max-width: 80ch;
-  }
-  details.block .btn {
-    margin-top: 12px;
-  }
-  .refs {
-    font-size: 13.5px !important;
-    color: var(--ink-2);
-  }
-  @media (max-width: 620px) {
-    details.block {
-      padding: 12px 14px;
-    }
+    font-size: var(--fs-body);
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    margin-bottom: 6px;
   }
 </style>

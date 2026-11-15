@@ -88,7 +88,7 @@
     <p class="card waiting" aria-live="polite">{t('sq.loading')}</p>
   {:else}
     <div class="pair">
-      <article class="card box rain">
+      <article class="box rain">
         <div class="box-head">
           <h3><span class="swatch" aria-hidden="true"></span>{t('sq.rain.title')}</h3>
           <div class="stepper" role="group" aria-label={t('sq.rain.year')}>
@@ -117,10 +117,10 @@
             share: ui.lang === 'es' ? `${fmt(year.top5Share, 1, ui.lang)} %` : `${fmt(year.top5Share, 1, ui.lang)}%`
           })}
         </p>
-        <button class="btn" onclick={() => open('case')}>{t('sq.rain.cta')} <span aria-hidden="true">→</span></button>
+        <button class="textlink" onclick={() => open('case')}>{t('sq.rain.cta')} <span aria-hidden="true">→</span></button>
       </article>
 
-      <article class="card box heat">
+      <article class="box heat">
         <div class="box-head">
           <h3><span class="swatch" aria-hidden="true"></span>{t('sq.heat.title')}</h3>
           {#if heatYear !== null}
@@ -147,7 +147,7 @@
           <p class="caption" aria-live="polite">{heatYearCaption}</p>
           <p class="caption">{heatCaption}</p>
         </HeatGrid>
-        <button class="btn" onclick={() => open('step-look')}>{t('sq.heat.cta')} <span aria-hidden="true">→</span></button>
+        <button class="textlink" onclick={() => open('step-look')}>{t('sq.heat.cta')} <span aria-hidden="true">→</span></button>
       </article>
     </div>
   {/if}
@@ -158,43 +158,46 @@
 <style>
   .squares {
     display: grid;
-    gap: 20px;
-    padding: clamp(28px, 5vw, 56px) 0 clamp(26px, 4vw, 44px);
+    gap: var(--gap-block);
+    padding: clamp(40px, 7vw, 96px) 0 0;
   }
   .head {
     display: grid;
-    gap: 10px;
+    gap: 14px;
   }
   .head h2 {
-    font-size: clamp(30px, 5vw, 54px);
-    letter-spacing: -0.03em;
-    line-height: 1.02;
+    font-size: clamp(32px, 5vw, 64px);
+    letter-spacing: -0.042em;
+    line-height: 1;
   }
   .pair {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    gap: var(--gap-block) 64px;
     align-items: start;
   }
+  /* Each picture sits on the page itself, under a thin line: no card around it. */
   .box {
-    padding: clamp(16px, 2.4vw, 24px);
     display: grid;
-    /* One column that never grows past the card: without it, the open table of temperatures widened
-       the card and pushed it out of the page on the right (playbook pb157). */
+    /* One column that never grows past its half of the page: without it, the open table of
+       temperatures widened the column and pushed it out of the page on the right (playbook pb157). */
     grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+    gap: 14px;
     justify-items: start;
     min-width: 0;
+    border-top: 1px solid var(--border-strong);
+    padding-top: 20px;
   }
-  /* The verdict chip of the temperature card keeps its own width. */
+  /* The verdict chip of the temperature column keeps its own width. */
   .box > :global(.chip) {
     width: auto;
   }
   .box > :global(*) {
     width: 100%;
   }
-  .box > .btn {
+  .box > .textlink {
     width: auto;
+    margin-top: 4px;
   }
   .box-head {
     display: flex;
@@ -207,16 +210,17 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: clamp(18px, 2.1vw, 21px);
+    font-size: clamp(20px, 2vw, 24px);
+    letter-spacing: -0.022em;
     /* A long title breaks onto two lines before the year selector leaves the top right corner. */
     flex: 1 1 0;
     min-width: 13ch;
   }
   .swatch {
     flex: none;
-    width: 14px;
-    height: 14px;
-    border-radius: 3px;
+    width: 11px;
+    height: 11px;
+    border-radius: var(--r-mark);
   }
   .rain .swatch {
     background: var(--seq-2);
@@ -227,30 +231,35 @@
   .stepper {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 2px;
   }
   .stepper select {
-    padding: 6px 10px;
+    padding: 6px 8px;
     font-variant-numeric: tabular-nums;
   }
   .round {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    border: 1px solid var(--border-strong);
-    background: var(--surface);
+    border: 0;
+    background: transparent;
     cursor: pointer;
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1;
+    color: var(--ink-2);
     display: grid;
     place-items: center;
     padding: 0 0 2px;
+    transition:
+      background-color 0.15s,
+      color 0.15s;
   }
   .round:hover:not(:disabled) {
-    background: var(--surface-2);
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+    color: var(--ink);
   }
   .round:disabled {
-    opacity: 0.35;
+    opacity: 0.3;
     cursor: default;
   }
   .legend {
@@ -258,13 +267,13 @@
   }
   .key-box.ring {
     background: transparent;
-    outline: 2px solid var(--ink);
+    outline: 1.5px solid var(--ink);
     outline-offset: -1px;
   }
   .caption {
-    font-size: 16.5px;
-    line-height: 1.45;
-    max-width: 62ch;
+    font-size: var(--fs-body);
+    line-height: 1.5;
+    max-width: 56ch;
   }
   .waiting {
     padding: 28px;
@@ -273,7 +282,7 @@
   }
   @media (max-width: 900px) {
     .pair {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

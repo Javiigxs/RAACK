@@ -131,13 +131,13 @@
           </tbody>
         </table>
         <p class="result">{t(driftKey, { rate: rateText(a.varId, pre.perDecade) })}</p>
-        <button class="btn small-btn use" onclick={() => setPeriod(a.y0, DRIFT_YEAR, true)}>{t('al.drift.use', { y0: a.y0, y1: DRIFT_YEAR })}</button>
+        <button class="textlink use" onclick={() => setPeriod(a.y0, DRIFT_YEAR, true)}>{t('al.drift.use', { y0: a.y0, y1: DRIFT_YEAR })}</button>
       {:else if a.y1 <= DRIFT_YEAR}
         <p class="result">{t('al.drift.clean')}</p>
       {:else}
         <p class="result">{t('al.drift.short', { min: RULES.minYears })}</p>
       {/if}
-      <p class="small muted">{t('al.drift.src')}</p>
+      <p class="small">{t('al.drift.src')}</p>
     </article>
   {/if}
 
@@ -182,13 +182,16 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    gap: var(--gap-block) 64px;
   }
   .panel {
     display: grid;
-    gap: 10px;
+    gap: 12px;
     align-content: start;
     min-width: 0;
+  }
+  .panel h3 {
+    margin-bottom: 0;
   }
   .wide,
   .panel:last-child:nth-child(odd) {
@@ -199,7 +202,7 @@
     grid-template-areas:
       'head head'
       'chart text';
-    column-gap: 28px;
+    column-gap: 56px;
   }
   .p-head {
     grid-area: head;
@@ -221,29 +224,31 @@
     justify-self: start;
   }
   .result {
-    font-size: 16px;
-    font-weight: 500;
-    max-width: 78ch;
+    max-width: 70ch;
   }
   .result .muted {
     display: block;
-    font-size: 13.5px;
-    font-weight: 400;
-    margin-top: 2px;
+    font-size: var(--fs-small);
+    color: var(--ink-2);
+    margin-top: 4px;
   }
   table.mini td {
-    padding: 8px 8px 8px 0;
+    padding: 10px 12px 10px 0;
     vertical-align: middle;
   }
   table.mini td:first-child {
-    font-weight: 650;
+    font-weight: 500;
+  }
+  table.mini .muted {
+    font-weight: 400;
+    color: var(--ink-2);
   }
   @media (max-width: 820px) {
     .grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .period {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       grid-template-areas:
         'head'
         'text'

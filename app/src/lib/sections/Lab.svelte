@@ -53,14 +53,14 @@
 </script>
 
 <section id="lab" class="lab">
-  <header class="lab-head">
+  <header class="sec-head lab-head">
     <p class="kicker">{t('lab.kicker')}</p>
     <h2>{t('lab.title')}</h2>
     <p class="lead">{t('lab.lead')}</p>
     <div class="cases">
       <span class="small">{t('lab.cases')}</span>
       {#each CASES as c (c.id)}
-        <button class="btn small-btn" onclick={() => openCase(c.id)}>{t(`lab.case.${c.id}`)}</button>
+        <button class="chipbtn" onclick={() => openCase(c.id)}>{t(`lab.case.${c.id}`)}</button>
       {/each}
     </div>
   </header>
@@ -109,10 +109,10 @@
         <input id="p-to" type="range" min={def.y0} max={def.y1} step="1" value={ui.y1} oninput={onTo} />
       </div>
       <div class="presets">
-        <button class="btn small-btn" onclick={() => setPeriod(def.y0, def.y1)}>{t('s3.full', { y0: def.y0, y1: def.y1 })}</button>
-        <button class="btn small-btn" onclick={() => setPeriod(def.y1 - 14, def.y1)}>{t('s3.last15')}</button>
+        <button class="chipbtn" aria-pressed={ui.y0 === def.y0 && ui.y1 === def.y1} onclick={() => setPeriod(def.y0, def.y1)}>{t('s3.full', { y0: def.y0, y1: def.y1 })}</button>
+        <button class="chipbtn" aria-pressed={ui.y0 === def.y1 - 14 && ui.y1 === def.y1} onclick={() => setPeriod(def.y1 - 14, def.y1)}>{t('s3.last15')}</button>
         {#if isLst}
-          <button class="btn small-btn" onclick={() => setPeriod(def.y0, 2019)}>{t('s3.preDrift', { y0: def.y0 })}</button>
+          <button class="chipbtn" aria-pressed={ui.y0 === def.y0 && ui.y1 === 2019} onclick={() => setPeriod(def.y0, 2019)}>{t('s3.preDrift', { y0: def.y0 })}</button>
         {/if}
       </div>
       <div class="opts">
@@ -142,7 +142,7 @@
   </Step>
 
   <Step n="4" id="step-look" kicker={t('s4.kicker')} title={t('s4.title')} lead={t('s4.lead')}>
-    <div class="chartcard card">
+    <div class="chartcard">
       <p class="chart-title">
         <strong>{t(`var.${ui.variable}.name`)}</strong> · {t(`site.${ui.site}.name`)} · {a.y0}–{a.y1}
       </p>
@@ -191,50 +191,45 @@
 
 <style>
   .lab {
-    padding-top: 56px;
-  }
-  .lab-head {
-    display: grid;
-    gap: 12px;
-    border-top: 2px solid var(--ink);
-    padding-top: 26px;
-  }
-  .lab-head h2 {
-    font-size: clamp(28px, 4.4vw, 46px);
-    letter-spacing: -0.025em;
+    padding-top: 0;
   }
   .cases {
+    grid-column: 1 / -1;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 8px 10px;
-    margin-top: 4px;
+    margin-top: 12px;
   }
+  .cases .small {
+    margin-right: 4px;
+  }
+  /* The seven clues: tiles you can press. The chosen one is drawn in ink. */
   .vars {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 12px;
   }
   .var {
     text-align: left;
     display: grid;
-    gap: 7px;
+    gap: 8px;
     align-content: start;
-    padding: 15px 16px;
-    border-radius: 14px;
-    border: 1.5px solid var(--border);
-    background: var(--surface);
+    padding: 16px 18px 18px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: transparent;
     cursor: pointer;
     transition:
       border-color 0.15s,
-      box-shadow 0.15s;
+      background-color 0.15s;
   }
   .var:hover {
     border-color: var(--border-strong);
   }
   .var.sel {
     border-color: var(--ink);
-    box-shadow: 0 0 0 1px var(--ink);
+    background: color-mix(in srgb, var(--ink) 5%, transparent);
   }
   .var .tag {
     justify-self: start;
@@ -249,54 +244,45 @@
     background: var(--series-3);
   }
   .vname {
-    font-size: 17.5px;
-    font-weight: 700;
-    line-height: 1.2;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
   }
   .vdef {
-    font-size: 14px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
-    line-height: 1.4;
+    line-height: 1.45;
   }
   .vmeta {
-    font-size: 12px;
+    font-size: var(--fs-micro);
     color: var(--muted);
-    line-height: 1.35;
+    line-height: 1.4;
   }
   .place {
     align-items: start;
   }
   .placeinfo {
     display: grid;
-    gap: 10px;
+    gap: 12px;
     align-content: start;
   }
   .placeinfo h3 {
-    font-size: 20px;
-    margin-top: 4px;
+    margin-top: 6px;
+  }
+  .placeinfo p:not(.small):not(.note) {
+    color: var(--ink-2);
   }
   .chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
-  }
-  .chipbtn {
-    padding: 7px 13px;
-    border-radius: 999px;
-    border: 1px solid var(--border-strong);
-    background: var(--surface);
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 14px;
-  }
-  .chipbtn[aria-pressed='true'] {
-    background: var(--ink);
-    color: var(--page);
-    border-color: var(--ink);
+    gap: 8px;
   }
   .period {
     display: grid;
-    gap: 16px;
+    gap: 20px;
+    border-top: 0;
+    padding-top: 0;
   }
   .sliders {
     display: grid;
@@ -305,19 +291,21 @@
     align-items: center;
   }
   .sliders label {
-    font-weight: 600;
-    font-size: 14.5px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
     white-space: nowrap;
   }
   .sliders output {
     display: inline-block;
-    min-width: 3.2em;
-    font-size: 19px;
-    font-weight: 750;
+    min-width: 2.6em;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     color: var(--ink);
     font-variant-numeric: tabular-nums;
-    margin-left: 4px;
   }
   .presets {
     display: flex;
@@ -327,13 +315,13 @@
   .opts {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px 28px;
-    border-top: 1px solid var(--grid);
-    padding-top: 14px;
+    gap: 16px 48px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
   }
   .check {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     align-items: flex-start;
     cursor: pointer;
   }
@@ -343,44 +331,38 @@
   }
   .quality {
     display: grid;
-    gap: 6px;
+    gap: 8px;
   }
   .qrow {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px 12px;
+    gap: 8px 14px;
   }
   .rule {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px 12px;
-    font-size: 14.5px;
+    gap: 6px 20px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
-    border-top: 1px solid var(--grid);
-    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
   }
+  /* A rule of the page, met or not: a word with its mark. */
   .badge {
-    padding: 3px 9px;
-    border-radius: 7px;
-    border: 1px solid var(--border-strong);
-    font-size: 12.5px;
-    font-weight: 650;
+    font-weight: 500;
     color: var(--ink);
     white-space: nowrap;
   }
   .badge.bad {
-    border-style: dashed;
     color: var(--ink-2);
   }
   .chartcard {
-    padding: clamp(14px, 2.4vw, 24px);
     display: grid;
-    gap: 10px;
+    gap: 12px;
   }
   .chart-title {
-    font-size: 15px;
     color: var(--ink-2);
   }
   .chart-title strong {
@@ -388,43 +370,38 @@
   }
   .squares-view {
     display: grid;
-    gap: 8px;
-    border-top: 1px solid var(--grid);
-    padding-top: 14px;
-    margin-top: 4px;
+    gap: 10px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    margin-top: 8px;
     min-width: 0;
-  }
-  .squares-view h4 {
-    font-size: 15.5px;
   }
   .reveal {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px 16px;
-    border-top: 1px solid var(--grid);
-    padding-top: 14px;
-    margin-top: 4px;
+    gap: 10px 18px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    margin-top: 8px;
   }
   .locked {
-    margin-top: 32px;
-    padding: 26px;
-    border: 1.5px dashed var(--axis);
-    border-radius: var(--radius);
+    margin-top: clamp(56px, 7vw, 96px);
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     display: grid;
     gap: 10px;
     justify-items: start;
   }
-  .locked h3 {
-    font-size: 20px;
-  }
   .locked p {
     color: var(--ink-2);
     max-width: 68ch;
+    margin-bottom: 6px;
   }
   @media (max-width: 720px) {
     .opts {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

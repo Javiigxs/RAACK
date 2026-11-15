@@ -33,25 +33,28 @@
 </div>
 
 <style>
+  /* The two cases of the site: a line across the page and the open case marked on it. */
   .tabs {
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
+    margin-top: clamp(40px, 6vw, 88px);
   }
   .inner {
     display: flex;
-    gap: 4px;
+    gap: 28px;
     overflow-x: auto;
+    border-bottom: 1px solid var(--border-strong);
   }
   button {
     border: 0;
     background: transparent;
-    padding: 11px 14px 9px;
-    border-bottom: 3px solid transparent;
+    padding: 14px 0 13px;
+    margin-bottom: -1px;
+    border-bottom: 2px solid transparent;
     cursor: pointer;
-    font-size: 14px;
-    font-weight: 650;
+    font-size: var(--fs-small);
+    font-weight: 500;
     color: var(--ink-2);
     white-space: nowrap;
+    transition: color 0.15s;
   }
   button:hover {
     color: var(--ink);
@@ -64,9 +67,8 @@
     display: none;
   }
   @media (max-width: 600px) {
-    button {
-      padding: 10px 8px 8px;
-      font-size: 13px;
+    .inner {
+      gap: 20px;
     }
     .long {
       display: none;

@@ -123,8 +123,9 @@
     position: sticky;
     top: 0;
     z-index: 20;
-    background: color-mix(in srgb, var(--page) 88%, transparent);
-    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--page) 84%, transparent);
+    backdrop-filter: saturate(1.4) blur(14px);
+    -webkit-backdrop-filter: saturate(1.4) blur(14px);
     border-bottom: 1px solid var(--border);
     transition:
       background 0.35s ease,
@@ -150,73 +151,79 @@
     color: var(--ink);
   }
   .name {
-    font-weight: 750;
-    font-size: 17px;
-    letter-spacing: -0.01em;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.015em;
+    white-space: nowrap;
   }
   .team {
-    font-size: 12px;
-    font-weight: 650;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: var(--fs-small);
     color: var(--ink-2);
-    padding-left: 9px;
-    border-left: 1px solid var(--axis);
+    padding-left: 10px;
+    border-left: 1px solid var(--border-strong);
   }
   nav {
     display: flex;
-    gap: 4px;
+    gap: 2px;
     margin-left: auto;
   }
   nav a {
     padding: 7px 11px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
+    border-radius: var(--r-pill);
+    font-size: var(--fs-small);
     color: var(--ink-2);
     text-decoration: none;
+    transition: color 0.15s;
   }
   nav a:hover {
-    background: var(--surface-2);
     color: var(--ink);
   }
   .tools {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
   }
+  .tools :global(.seg) {
+    margin-right: 4px;
+  }
+  /* Ghost buttons: no outline until the pointer is on them. */
   .icon {
     width: 36px;
     height: 36px;
     display: grid;
     place-items: center;
     border-radius: 50%;
-    border: 1px solid var(--border-strong);
-    background: var(--surface);
+    border: 0;
+    background: transparent;
     cursor: pointer;
-    color: var(--ink);
+    color: var(--ink-2);
+    transition:
+      background-color 0.15s,
+      color 0.15s;
   }
   .icon:hover {
-    background: var(--surface-2);
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+    color: var(--ink);
   }
   .ask {
-    height: 36px;
+    height: 34px;
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    padding: 0 13px 0 11px;
-    border-radius: 999px;
-    border: 1px solid var(--accent);
-    background: var(--accent-wash);
-    color: var(--accent-ink);
-    font-size: 13.5px;
-    font-weight: 700;
+    padding: 0 14px 0 12px;
+    margin-right: 6px;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    color: var(--ink);
+    font-size: var(--fs-small);
+    font-weight: 500;
     white-space: nowrap;
     cursor: pointer;
+    transition: border-color 0.15s;
   }
   .ask:hover {
-    background: var(--accent);
-    color: #fff;
+    border-color: var(--ink);
   }
   /* Below the full width of the page there is no room for it: it would push the name onto two lines.
      DE-T's round button in the corner of the screen (dete/Dete.svelte) takes its place. */
@@ -230,6 +237,21 @@
   @media (max-width: 480px) {
     .motion {
       display: none;
+    }
+  }
+  /* The narrowest screens (and a narrow side panel): the name stays on one line. */
+  @media (max-width: 380px) {
+    .inner {
+      gap: 10px;
+    }
+    .brand {
+      gap: 7px;
+    }
+    .name {
+      font-size: 15px;
+    }
+    .tools :global(.seg button) {
+      padding: 6px 9px;
     }
   }
   @media (max-width: 760px) {

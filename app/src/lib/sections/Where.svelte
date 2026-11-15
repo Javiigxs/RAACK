@@ -71,9 +71,9 @@
         {t('wh.pick')}
       </p>
       {#if stats.ins.length}
-        <p class="small muted">{t('wh.insNote', { list: stats.ins.map((r) => name(r.site)).join(', ') })}</p>
+        <p class="small">{t('wh.insNote', { list: stats.ins.map((r) => name(r.site)).join(', ') })}</p>
       {/if}
-      <p class="small muted">{t('wh.caveat')}</p>
+      <p class="small">{t('wh.caveat')}</p>
     </div>
   </div>
 {:else}
@@ -84,7 +84,7 @@
   .where {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-    gap: 26px;
+    gap: var(--gap-block) 56px;
     align-items: start;
   }
   .barcol {
@@ -92,9 +92,9 @@
     gap: 12px;
   }
   .headline {
-    font-size: clamp(18px, 2.1vw, 21px);
-    font-weight: 500;
-    line-height: 1.4;
+    font-size: var(--fs-lead);
+    line-height: 1.42;
+    letter-spacing: -0.008em;
   }
   .legend-line {
     display: flex;
@@ -128,7 +128,7 @@
   }
   @media (max-width: 820px) {
     .where {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

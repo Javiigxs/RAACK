@@ -380,6 +380,8 @@ export const waterEn: Dict = {
   'w.ev.suppliesMty': 'Supplies Monterrey',
   'w.ev.deficit': 'Deficit',
   'w.ev.available': 'Available',
+  'w.ev.showRest': 'Show the {n} aquifers with water available',
+  'w.ev.hideRest': 'Show only the aquifers in deficit',
   'w.ev.tableNote':
     'Availability is recharge minus committed natural discharge minus extraction. Extraction adds, to the concessioned volume shown here, three volumes that are not shown: free-withdrawal zones, titles pending registration and reserves. Table compiled by the team; its 23 rows were checked against the published agreement on 14 November 2026.',
   'w.ev.magnitude':
@@ -952,6 +954,8 @@ export const waterEs: Dict = {
   'w.ev.suppliesMty': 'Abastece a Monterrey',
   'w.ev.deficit': 'Déficit',
   'w.ev.available': 'Disponible',
+  'w.ev.showRest': 'Ver los {n} acuíferos con agua disponible',
+  'w.ev.hideRest': 'Ver solo los acuíferos en déficit',
   'w.ev.tableNote':
     'La disponibilidad es la recarga menos la descarga natural comprometida menos la extracción. La extracción suma, al volumen concesionado que se muestra, tres volúmenes que no se muestran: zonas de libre alumbramiento, títulos pendientes de registro y reservas. Tabla reunida por el equipo; sus 23 renglones se contrastaron con el acuerdo publicado el 14 de noviembre de 2026.',
   'w.ev.magnitude':

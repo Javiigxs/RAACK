@@ -6,6 +6,8 @@
   // Code written with AI assistance (Claude).
   import { onMount } from 'svelte';
   import { fmt } from '../catalog';
+  import AskDete from '../dete/AskDete.svelte';
+  import { dete, setGlobe } from '../dete/dete.svelte';
   import { t } from '../i18n';
   import { setRegion, ui } from '../state.svelte';
   import { isStill, motion, setMotion } from '../ui/motion.svelte';
@@ -188,6 +190,24 @@
     return s ? t('wr.years', { y0: s.years[0], y1: s.years[s.years.length - 1] }) : '';
   };
   const sorted = $derived([...countries].sort((a, b) => a[ui.lang].localeCompare(b[ui.lang], ui.lang)));
+
+  // ---- DE-T, the case assistant: questions about the place the globe shows
+  const asked = $derived({ id: place.id, name });
+  /** Nuevo León has its whole case file behind it; any other place, the layers and the first look. */
+  const questions = $derived(
+    place.id === 'nl' ? ['dete.s1', 'dete.s2', 'dete.s3'].map((k) => t(k)) : ['dete.place.q1', 'dete.place.q2', 'dete.place.q3'].map((k) => t(k, { name }))
+  );
+  // A number of this section pressed and sent to DE-T is about this place.
+  $effect(() => {
+    setGlobe(asked);
+    return () => setGlobe(null);
+  });
+  /** From the finder to the line where the question is written. */
+  function toAsk() {
+    const field = document.getElementById('wr-ask-q');
+    field?.scrollIntoView({ block: 'center' });
+    field?.focus({ preventScroll: true });
+  }
   const lookWord = (l: FirstLook) => `${t(`w.cert.${l.trend.label}`)}${l.trend.label !== 'none' && l.trend.dir ? ` · ${t(l.trend.dir > 0 ? 'dir.rising' : 'dir.falling')}` : ''}`;
 </script>
 
@@ -213,7 +233,7 @@
   <p class="lead">{t('wr.lead')}</p>
 </header>
 
-<div class="reach">
+<div class="reach" data-dete-place>
   <div class="stage">
     <Globe
       {dots}
@@ -228,7 +248,7 @@
     {#if isStill()}
       <p class="motion-note small">
         <span>{t('wr.motion.note')}</span>
-        <button class="btn small-btn" onclick={() => setMotion('full')}>{t('wr.motion.on')}</button>
+        <button class="textlink" onclick={() => setMotion('full')}>{t('wr.motion.on')}</button>
       </p>
     {:else if motion.system}
       <!-- The system asks for less motion and the reader turned it on here: the way back. -->
@@ -279,7 +299,7 @@
               <!-- mousedown, not click: the list closes when the field loses the focus -->
               <li id="wr-opt-{c.id}" role="option" aria-selected={i === active} class:active={i === active} onmousedown={(e) => { e.preventDefault(); pick(c.id); }}>
                 <span>{c[ui.lang]}</span>
-                <span class="small muted">{counts.get(c.id)!.ready} / {r.total}</span>
+                <span class="small">{counts.get(c.id)!.ready} / {r.total}</span>
               </li>
             {:else}
               <li class="empty">{t('wr.search.none', { q: query.trim() })}</li>
@@ -298,9 +318,13 @@
           {/if}
         {/each}
       </div>
+      <!-- DE-T answers questions about the chosen place: the line to write them is under the result. -->
+      {#if dete.status === 'on'}
+        <button class="textlink ask-jump" onclick={toAsk}>{t('dete.place.title', { name })} <span aria-hidden="true">↓</span></button>
+      {/if}
     </div>
 
-    <article class="card result" aria-live="polite">
+    <article class="result" aria-live="polite">
       <header class="result-head">
         <h3>{name}</h3>
         {#if place.kind === 'case'}
@@ -345,9 +369,9 @@
           </p>
           <p class="small">{t('wr.look.facts', { ci: range(look.ci), p: pW(look.trend.p), n: look.trend.n, y0: look.trend.y0, y1: look.trend.y1 })}</p>
           {#if place.kind === 'case'}
-            <p class="small muted">{t('wr.look.case', { n: data.regions[place.region!].cells.tws_grace_mascons ?? 0, y0: look.trend.y0, y1: look.trend.y1 })}</p>
+            <p class="small">{t('wr.look.case', { n: data.regions[place.region!].cells.tws_grace_mascons ?? 0, y0: look.trend.y0, y1: look.trend.y1 })}</p>
           {:else}
-            <p class="small muted">
+            <p class="small">
               {t('wr.look.caveat')}
               {#if place.country?.twsKind === 'coast'}{t('wr.look.coast')}{/if}
               {#if look.wider}{t('wr.look.wider', { name })}{/if}
@@ -363,12 +387,17 @@
   </div>
 </div>
 
+<!-- Where the country is chosen, DE-T answers questions about it with the data of the tool. -->
+<AskDete id="wr-ask" title={t('dete.place.title', { name })} placeholder={t('dete.place.placeholder', { name })} suggestions={questions} place={asked} />
+
 {#if world}
   <p class="note tally">{t('wr.tally', { n: countries.length, falling: total.falling, rising: total.rising, rest: total.hintFalling + total.hintRising + total.none, sea: total.sea })}</p>
 {/if}
 
-<div class="panel layers">
-  <h3>{t('wr.table.title')}</h3>
+<div class="blocks">
+<!-- Layer by layer. Closed for the complete case, open as soon as the chosen place lacks one. -->
+<details class="block layers" open={!full}>
+  <summary>{t('wr.table.title')}</summary>
   <div class="scroll-x">
     <table class="data ltable">
       <thead>
@@ -382,11 +411,11 @@
           <tr>
             <td>
               <span class="lname"><span class="lnum">{i + 1}</span><strong>{t(`wr.layer.${l.def.id}.name`)}</strong></span>
-              <span class="small muted lrole">{t(`wr.layer.${l.def.id}.role`)}</span>
+              <span class="small lrole">{t(`wr.layer.${l.def.id}.role`)}</span>
             </td>
             <td data-label={t('wr.table.nl')}>
               {t(`wr.nl.${l.def.id}`)}
-              {#if nlYears(l.def.id)}<span class="small muted years">{nlYears(l.def.id)}</span>{/if}
+              {#if nlYears(l.def.id)}<span class="small years">{nlYears(l.def.id)}</span>{/if}
             </td>
             <td data-label={t('wr.table.here', { name })}>
               <div class="here">
@@ -399,16 +428,17 @@
       </tbody>
     </table>
   </div>
-</div>
+</details>
 
-<div class="panel recipe">
-  <h3>{t('wr.recipe.title')}</h3>
+<details class="block recipe" open>
+  <summary>{t('wr.recipe.title')}</summary>
   <ol>
     <li>{t('wr.recipe.1')}</li>
     <li>{t('wr.recipe.2')}</li>
     <li>{t('wr.recipe.3')}</li>
   </ol>
-  <p class="small muted">{t('wr.note', { lat: latText(place.lat), lon: lonText(place.lon) })}</p>
+  <p class="note">{t('wr.note', { lat: latText(place.lat), lon: lonText(place.lon) })}</p>
+</details>
 </div>
 
 {#if world}
@@ -436,23 +466,11 @@
 {/if}
 
 <style>
-  .sec-head {
-    display: grid;
-    gap: 8px;
-    border-top: 2px solid var(--ink);
-    padding-top: 24px;
-    margin-top: 38px;
-  }
-  .sec-head h2 {
-    font-size: clamp(26px, 3.8vw, 40px);
-    letter-spacing: -0.022em;
-  }
   .reach {
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
-    gap: 22px 36px;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+    gap: 28px 64px;
     align-items: start;
-    margin-top: 6px;
   }
   /* The planet has no frame and may reach a little beyond its column: the cards stay above it. */
   .stage {
@@ -466,7 +484,7 @@
     position: relative;
     z-index: 1;
     display: grid;
-    gap: 14px;
+    gap: 32px;
     min-width: 0;
   }
   .motion-note {
@@ -484,11 +502,8 @@
     gap: 9px;
   }
   .finder label {
-    font-size: 13px;
-    font-weight: 650;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--ink-2);
+    font-size: var(--fs-small);
+    font-weight: 600;
   }
   .combo {
     position: relative;
@@ -498,10 +513,13 @@
     font: inherit;
     font-size: 16px;
     padding: 11px 14px;
-    border-radius: 12px;
+    border-radius: 8px;
     border: 1px solid var(--border-strong);
-    background: var(--surface);
+    background: var(--page);
     color: var(--ink);
+  }
+  .combo input:hover {
+    border-color: var(--ink);
   }
   .results {
     position: absolute;
@@ -512,8 +530,8 @@
     margin: 0;
     padding: 5px;
     list-style: none;
-    border-radius: 12px;
-    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
     background: var(--surface);
     box-shadow: var(--shadow);
     max-height: 300px;
@@ -526,7 +544,7 @@
     padding: 8px 10px;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 500;
   }
   .results li.active,
   .results li:hover {
@@ -541,43 +559,31 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 7px;
+    gap: 8px;
+    margin-top: 6px;
   }
   .picks .small {
     flex-basis: 100%;
   }
-  .chipbtn {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--border-strong);
-    background: var(--surface);
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 13.5px;
-  }
-  .chipbtn[aria-pressed='true'] {
-    background: var(--ink);
-    color: var(--page);
-    border-color: var(--ink);
-  }
   .sq {
-    width: 9px;
-    height: 9px;
-    border-radius: 2px;
+    width: 7px;
+    height: 7px;
     background: currentColor;
     flex: none;
+  }
+  .ask-jump {
+    justify-self: start;
+    margin-top: 8px;
   }
 
   /* ---- the result */
   .result {
-    padding: clamp(16px, 2.4vw, 24px);
     display: grid;
-    gap: 12px;
+    gap: 14px;
     justify-items: start;
     min-width: 0;
+    border-top: 1px solid var(--border-strong);
+    padding-top: 20px;
   }
   .result > :global(*) {
     max-width: 100%;
@@ -585,27 +591,34 @@
   .result-head {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 12px;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px 16px;
+    width: 100%;
   }
   .result-head h3 {
-    font-size: clamp(22px, 2.8vw, 28px);
+    font-size: clamp(24px, 2.6vw, 32px);
+    letter-spacing: -0.03em;
+  }
+  .result-head .tag {
+    font-size: var(--fs-small);
   }
   .count {
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
-    gap: 4px 12px;
+    gap: 4px 14px;
+    margin-top: 6px;
   }
   .num {
-    font-size: clamp(48px, 6.4vw, 68px);
-    font-weight: 780;
-    letter-spacing: -0.04em;
-    line-height: 0.92;
+    font-size: clamp(56px, 7.4vw, 96px);
+    font-weight: 500;
+    letter-spacing: -0.055em;
+    line-height: 0.86;
+    font-variant-numeric: tabular-nums;
   }
   .count-label {
-    font-size: 15px;
-    font-weight: 600;
+    font-size: var(--fs-small);
     color: var(--ink-2);
     padding-bottom: 4px;
   }
@@ -614,14 +627,15 @@
     display: grid;
     grid-template-columns: repeat(10, minmax(0, 1fr));
     gap: 4px;
-    width: min(100%, 420px);
+    width: min(100%, 400px);
+    margin-top: 4px;
   }
   .cell,
   .swatch {
     display: grid;
     place-items: center;
-    border-radius: 5px;
-    border: 1.5px solid transparent;
+    border-radius: var(--r-mark);
+    border: 1px solid transparent;
     color: var(--ink-2);
   }
   .cell {
@@ -635,7 +649,6 @@
     width: 18px;
     height: 18px;
     flex: none;
-    border-radius: 4px;
   }
   .swatch :global(svg) {
     width: 10px;
@@ -661,7 +674,7 @@
   }
   .local {
     background: transparent;
-    border: 1.5px dashed var(--axis);
+    border: 1px dashed var(--muted);
   }
   .sum {
     list-style: none;
@@ -669,8 +682,8 @@
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 6px 16px;
-    font-size: 14px;
+    gap: 6px 18px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
   }
   .sum li {
@@ -679,30 +692,30 @@
     gap: 7px;
   }
   .say {
-    font-size: 16.5px;
-    line-height: 1.45;
-    max-width: 52ch;
+    font-size: var(--fs-lead);
+    line-height: 1.42;
+    letter-spacing: -0.008em;
+    max-width: 46ch;
   }
   .inside {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 8px 12px;
-    font-size: 14.5px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
   }
   .look {
     width: 100%;
-    border-top: 1px solid var(--grid);
-    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    margin-top: 8px;
     display: grid;
-    gap: 6px;
+    gap: 8px;
   }
   .look h4 {
-    font-size: 13px;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--ink-2);
+    font-size: var(--fs-small);
+    font-weight: 600;
     margin: 0;
   }
   .look-rate {
@@ -712,8 +725,10 @@
     gap: 8px 12px;
   }
   .look-rate strong {
-    font-size: clamp(20px, 2.4vw, 24px);
-    letter-spacing: -0.015em;
+    font-size: clamp(20px, 2.2vw, 24px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
   }
 
   /* ---- legend of the globe */
@@ -763,31 +778,31 @@
     border-top: 2px dashed var(--ink-2);
   }
   .tally {
-    max-width: 90ch;
+    font-size: var(--fs-body);
+    max-width: 84ch;
   }
 
   /* ---- the ten layers */
-  .layers {
-    display: grid;
-    gap: 6px;
+  /* The table uses the whole width of the page, not the reading width of the other blocks. */
+  .layers > .scroll-x {
+    max-width: none;
   }
   .ltable th,
   .ltable td {
     text-align: left;
     vertical-align: top;
-    padding: 10px 12px 10px 0;
-  }
-  .ltable td {
-    font-size: 14.5px;
+    padding: 12px 16px 12px 0;
   }
   .ltable tr.group th {
-    font-size: 12px;
-    font-weight: 650;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    padding-top: 18px;
-    border-bottom: 1px solid var(--axis);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--ink);
+    padding-top: 26px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .ltable tbody tr.group:first-child th {
+    padding-top: 12px;
   }
   .ltable td:first-child {
     width: 26%;
@@ -806,7 +821,9 @@
     min-width: 1.5em;
     font-variant-numeric: tabular-nums;
     color: var(--muted);
-    font-weight: 650;
+  }
+  .lname strong {
+    font-weight: 500;
   }
   .lrole {
     display: block;
@@ -816,13 +833,8 @@
   .state {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    padding: 3px 11px 3px 4px;
-    border-radius: 999px;
-    border: 1px solid var(--border-strong);
-    background: var(--surface);
-    font-size: 13px;
-    font-weight: 650;
+    gap: 8px;
+    font-weight: 500;
     white-space: nowrap;
   }
   /* The state and its reason side by side; the reasons of all the rows start on one line. */
@@ -843,14 +855,11 @@
     color: var(--ink-2);
   }
   .recipe ol {
-    margin: 6px 0 10px;
-    padding-left: 22px;
-    display: grid;
-    gap: 6px;
-    font-size: 15px;
+    font-size: var(--fs-body);
+    color: var(--ink);
   }
-  .recipe .small {
-    max-width: 92ch;
+  .recipe .note {
+    margin-top: 18px;
   }
   details.all {
     margin-top: 0;
@@ -863,11 +872,16 @@
     background: none;
     padding: 0;
     cursor: pointer;
-    font-weight: 650;
-    color: var(--accent-ink);
+    font-weight: 500;
+    color: var(--ink);
     text-align: left;
     text-decoration: underline;
-    text-underline-offset: 2px;
+    text-decoration-color: var(--border-strong);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+  .linkish:hover {
+    text-decoration-color: currentColor;
   }
   details.all table.data td,
   details.all table.data th {
@@ -927,10 +941,8 @@
     .ltable td[data-label]::before {
       content: attr(data-label);
       display: block;
-      font-size: 11.5px;
-      font-weight: 650;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      font-size: var(--fs-micro);
+      font-weight: 500;
       color: var(--muted);
       margin-top: 4px;
     }

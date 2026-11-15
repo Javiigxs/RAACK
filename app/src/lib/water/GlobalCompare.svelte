@@ -44,10 +44,10 @@
 <div class="pair">
   {#each cases as x, k (x.id)}
     {@const s = x.c.storage!}
-    <article class="card side">
+    <article class="side">
       <header>
         <h3>{t(`w.region.${x.id}.name`)}</h3>
-        <span class="small muted">{t('w.g.mascons', { n: data.regions[x.id].cells.tws_grace_mascons ?? 0 })}</span>
+        <span class="small">{t('w.g.mascons', { n: data.regions[x.id].cells.tws_grace_mascons ?? 0 })}</span>
       </header>
       <div class="headline">
         <span class="num">{signed(s.perDecade, 1)}</span>
@@ -55,7 +55,7 @@
       </div>
       <div class="label-row">
         <CertaintyChip label={s.trend.label} dir={s.trend.dir} />
-        <span class="small muted">{t('w.fact.ci')} {ciW(s.def, s.ci)} · {pW(s.trend.p)}</span>
+        <span class="small">{t('w.fact.ci')} {ciW(s.def, s.ci)} · {pW(s.trend.p)}</span>
       </div>
       <YearChart
         lines={[
@@ -103,7 +103,7 @@
         </div>
       </dl>
       {#if ui.region !== x.id}
-        <button class="btn small-btn" onclick={() => { setRegion(x.id); document.getElementById('w-verdict')?.scrollIntoView({ behavior: 'smooth' }); }}>{t('w.g.open', { name: t(`w.region.${x.id}.name`) })}</button>
+        <button class="btn" onclick={() => { setRegion(x.id); document.getElementById('w-verdict')?.scrollIntoView({ behavior: 'smooth' }); }}>{t('w.g.open', { name: t(`w.region.${x.id}.name`) })} <span aria-hidden="true">↑</span></button>
       {/if}
     </article>
   {/each}
@@ -114,65 +114,70 @@
   .pair {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    gap: var(--gap-block) 64px;
     align-items: start;
   }
   .side {
-    padding: clamp(16px, 2.4vw, 24px);
     display: grid;
-    gap: 12px;
+    gap: 14px;
     min-width: 0;
     justify-items: start;
+    border-top: 1px solid var(--border);
+    padding-top: 22px;
   }
   .side > :global(*) {
     width: 100%;
   }
   .side > .btn {
     width: auto;
+    margin-top: 6px;
   }
   header {
     display: grid;
-    gap: 2px;
+    gap: 4px;
   }
   h3 {
-    font-size: clamp(20px, 2.4vw, 24px);
+    font-size: clamp(22px, 2.3vw, 28px);
+    letter-spacing: -0.025em;
   }
   .headline {
     display: flex;
     align-items: flex-end;
-    gap: 10px;
+    gap: 12px;
+    margin-top: 8px;
   }
   .num {
-    font-size: clamp(38px, 5.4vw, 54px);
-    font-weight: 780;
-    letter-spacing: -0.035em;
-    line-height: 0.95;
+    font-size: var(--fs-figure);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    line-height: 0.92;
+    font-variant-numeric: tabular-nums;
   }
   .unit {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: var(--fs-small);
     color: var(--ink-2);
     line-height: 1.25;
-    padding-bottom: 3px;
+    padding-bottom: 2px;
   }
   .label-row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px 12px;
+    gap: 6px 16px;
+    margin-bottom: 8px;
   }
   .facts {
-    margin: 0;
+    margin: 6px 0 0;
     display: grid;
     gap: 0;
-    font-size: 14.5px;
+    font-size: var(--fs-small);
   }
   .facts div {
     display: grid;
     grid-template-columns: minmax(110px, 0.8fr) 1.6fr;
-    gap: 10px;
-    padding: 8px 0;
-    border-top: 1px solid var(--grid);
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
     align-items: center;
   }
   .facts dt {
@@ -183,12 +188,15 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 6px 8px;
+    gap: 4px 14px;
     font-variant-numeric: tabular-nums;
+  }
+  .verdict-row dd strong {
+    font-weight: 600;
   }
   @media (max-width: 860px) {
     .pair {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

@@ -1,6 +1,17 @@
 /* RAACK · Trend Detective — estilos base.
    Colores: paleta de referencia validada para visualización de datos (roles como variables CSS).
-   El modo oscuro tiene sus propios pasos; no es una inversión automática. */
+   El modo oscuro tiene sus propios pasos; no es una inversión automática.
+
+   Sistema visual (15 de noviembre de 2026, pedido de Fran: que se vea diseñada, no generada).
+   Reglas medidas en apple.com, sustainability.google y palantir.com y aplicadas aquí:
+   · una sola familia tipográfica (Hanken Grotesk, licencia SIL OFL, servida desde el propio sitio)
+     y tres pesos: 400 para leer, 500 para titulares y cifras, 600 para destacar;
+   · una escala corta de tamaños (12, 14, 16, 20, 24 y los titulares) y de espacios (múltiplos de 4);
+   · la jerarquía sale del tamaño y del gris, no de la negrita ni de las mayúsculas;
+   · líneas finas y aire en lugar de cajas: una caja solo cuando algo flota sobre la página;
+   · la forma de píldora queda para lo que se puede pulsar; las etiquetas son texto;
+   · el color se reserva a los datos; la interfaz va en tinta y gris.
+   Estilos escritos con ayuda de IA (Claude) para el equipo RAACK. */
 
 :root {
   color-scheme: light;
@@ -9,7 +20,7 @@
   --surface-2: #f3f2ee;
   --ink: #0b0b0b;
   --ink-2: #52514e;
-  --muted: #898781;
+  --muted: #6f6e69;
   --grid: #e1e0d9;
   --axis: #c3c2b7;
   --border: rgba(11, 11, 11, 0.1);
@@ -52,10 +63,38 @@
   --header-h: 59px;
   --sheet-opacity: 91%;
 
-  --radius: 14px;
-  --shadow: 0 1px 2px rgba(11, 11, 11, 0.04), 0 8px 24px rgba(11, 11, 11, 0.05);
-  --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Solo tres radios: marcas de datos, superficies que flotan y lo que se pulsa. */
+  --r-mark: 3px;
+  --radius: 12px;
+  --r-pill: 999px;
+  /* Sombra solo para lo que flota sobre la página (avisos, listas desplegadas, el panel de DE-T). */
+  --shadow: 0 1px 2px rgba(11, 11, 11, 0.05), 0 12px 32px rgba(11, 11, 11, 0.1);
+  --font: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Escala tipográfica */
+  --fs-micro: 12px;
+  --fs-small: 14px;
+  --fs-body: 16px;
+  --fs-lead: clamp(18px, 1.5vw, 20px);
+  --fs-h3: clamp(21px, 2.1vw, 26px);
+  --fs-h2: clamp(28px, 3.7vw, 46px);
+  --fs-display: clamp(38px, 6.2vw, 80px);
+  --fs-figure: clamp(40px, 4.6vw, 58px);
+
+  /* Escala de espacios */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  /* Aire entre una sección y la siguiente, y entre los bloques de una misma sección */
+  --gap-section: clamp(72px, 9.5vw, 132px);
+  --gap-block: clamp(28px, 3.4vw, 44px);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -92,7 +131,7 @@
     --heat-3: #e14c4a;
     --heat-4: #ed7f78;
     --sheet-opacity: 88%;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 14px 36px rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -129,7 +168,7 @@
   --heat-3: #e14c4a;
   --heat-4: #ed7f78;
   --sheet-opacity: 88%;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 14px 36px rgba(0, 0, 0, 0.5);
 }
 
 *,
@@ -174,9 +213,17 @@ body {
   background: var(--page);
   color: var(--ink);
   font-family: var(--font);
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.5;
+  font-synthesis-weight: none;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
 h1,
@@ -188,21 +235,48 @@ figure {
   margin: 0;
 }
 
+/* Titulares: peso medio y letras juntas. Cuanto más grande el cuerpo, más se cierran. */
 h1,
 h2,
 h3 {
-  line-height: 1.12;
-  letter-spacing: -0.015em;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.028em;
   text-wrap: balance;
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.18;
+  letter-spacing: -0.018em;
+}
+
+h4 {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+strong,
+b {
+  font-weight: 600;
 }
 
 p {
   text-wrap: pretty;
 }
 
+/* Enlaces en tinta, con una línea fina debajo: el azul queda para los datos. */
 a {
-  color: var(--accent-ink);
-  text-underline-offset: 2px;
+  color: var(--ink);
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
 }
 
 button {
@@ -217,26 +291,28 @@ button {
 }
 
 .wrap {
-  width: min(1120px, 100% - 32px);
+  width: min(1180px, 100% - clamp(40px, 7vw, 112px));
   margin-inline: auto;
 }
 
+/* La línea que va sobre un título: frase corta en gris, sin mayúsculas forzadas. */
 .kicker {
-  font-size: 12px;
-  font-weight: 650;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  line-height: 1.4;
   color: var(--ink-2);
 }
 
 .lead {
-  font-size: 18px;
+  font-size: var(--fs-lead);
+  line-height: 1.45;
   color: var(--ink-2);
-  max-width: 62ch;
+  max-width: 58ch;
 }
 
 .small {
-  font-size: 13.5px;
+  font-size: var(--fs-small);
+  line-height: 1.45;
   color: var(--ink-2);
 }
 
@@ -249,35 +325,85 @@ button {
   font-size: 0.92em;
 }
 
+/* ---------- Encabezado de sección ----------
+   Una línea fina, el paso en gris y, debajo, el título a la izquierda con su explicación a la derecha.
+   El aire de arriba separa las secciones; no hace falta más adorno. */
+.sec-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px 56px;
+  align-items: start;
+  margin-top: var(--gap-section);
+  padding-top: 18px;
+  border-top: 1px solid var(--border-strong);
+}
+
+.sec-head .kicker {
+  margin-bottom: clamp(14px, 2.4vw, 30px);
+}
+
+.sec-head h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.03;
+  letter-spacing: -0.034em;
+}
+
+@media (min-width: 900px) {
+  .sec-head {
+    grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+  }
+  .sec-head .kicker {
+    grid-column: 1 / -1;
+  }
+  .sec-head .lead {
+    padding-top: 0.42em;
+  }
+}
+
+/* ---------- Superficies ----------
+   Una caja solo cuando algo flota sobre la página. El resto se agrupa con aire y líneas finas. */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
 }
 
+.panel {
+  border-top: 1px solid var(--border);
+  padding: 20px 0 0;
+}
+
+.panel h3,
+.panel h4 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 6px;
+}
+
+/* ---------- Lo que se pulsa: píldoras ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
-  border-radius: 999px;
+  padding: 10px 18px;
+  border-radius: var(--r-pill);
   border: 1px solid var(--border-strong);
-  background: var(--surface);
+  background: transparent;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 14.5px;
+  font-weight: 500;
+  font-size: var(--fs-small);
   line-height: 1.2;
   text-decoration: none;
   color: var(--ink);
   transition:
-    background 0.15s,
+    background-color 0.15s,
     border-color 0.15s,
-    transform 0.1s;
+    color 0.15s;
 }
 
 .btn:hover {
-  background: var(--surface-2);
+  border-color: var(--ink);
 }
 
 .btn:active {
@@ -291,70 +417,134 @@ button {
 }
 
 .btn.primary:hover {
-  background: color-mix(in srgb, var(--ink) 86%, var(--page));
+  background: color-mix(in srgb, var(--ink) 84%, var(--page));
+  border-color: transparent;
 }
 
 .btn.small-btn {
-  padding: 6px 12px;
-  font-size: 13px;
+  padding: 7px 13px;
+}
+
+.btn[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--page);
+  border-color: var(--ink);
+}
+
+/* Opciones entre las que se elige una (región, preocupación, año): la misma píldora, más ligera. */
+.chipbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: var(--fs-small);
+  line-height: 1.2;
+  text-align: left;
+  color: var(--ink-2);
+  transition:
+    background-color 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.chipbtn:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.chipbtn[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--page);
+  border-color: var(--ink);
 }
 
 .seg {
   display: inline-flex;
   padding: 3px;
-  border-radius: 999px;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
 }
 
 .seg button {
   border: 0;
   background: transparent;
   padding: 6px 13px;
-  border-radius: 999px;
+  border-radius: var(--r-pill);
   cursor: pointer;
-  font-size: 13.5px;
-  font-weight: 600;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  line-height: 1.2;
   color: var(--ink-2);
 }
 
-.seg button[aria-pressed='true'] {
-  background: var(--surface);
+.seg button:hover {
   color: var(--ink);
-  box-shadow: 0 1px 2px rgba(11, 11, 11, 0.12);
 }
 
+.seg button[aria-pressed='true'] {
+  background: var(--page);
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(11, 11, 11, 0.16);
+}
+
+/* Enlace de texto con flecha: la acción secundaria. Solo hay un botón relleno por pantalla. */
+.textlink {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.textlink:hover {
+  text-decoration-color: currentColor;
+}
+
+/* ---------- Etiquetas: texto, no píldoras ---------- */
 .tag {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 9px;
-  border-radius: 999px;
-  border: 1px solid var(--border-strong);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  line-height: 1.3;
   color: var(--ink-2);
   white-space: nowrap;
 }
 
 .tag .dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--ink-2);
 }
 
+/* Aclaración al margen: un párrafo en gris, sin barra lateral. */
 .note {
-  border-left: 3px solid var(--axis);
-  padding: 2px 0 2px 14px;
   color: var(--ink-2);
-  font-size: 14.5px;
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  max-width: 76ch;
 }
 
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: var(--gap-block);
 }
 
 @media (max-width: 820px) {
@@ -363,52 +553,226 @@ button {
   }
 }
 
+/* ---------- Fila de cifras: sin cajas, una línea arriba y columnas con aire ---------- */
+.statrow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0 32px;
+  margin: 0;
+}
+
+.statrow dt,
+.statrow dd {
+  margin: 0;
+}
+
+.statrow > * {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  justify-items: start;
+  padding: 16px 0 20px;
+  border-top: 1px solid var(--border);
+  min-width: 0;
+}
+
+.statrow .k {
+  font-size: var(--fs-small);
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+
+.statrow .v {
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-variant-numeric: tabular-nums;
+}
+
+.statrow .d {
+  font-size: var(--fs-small);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+/* ---------- Tablas ---------- */
 table.data {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: var(--fs-small);
   font-variant-numeric: tabular-nums;
 }
 
 table.data th,
 table.data td {
   text-align: right;
-  padding: 7px 10px;
-  border-bottom: 1px solid var(--grid);
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--border);
 }
 
 table.data th:first-child,
 table.data td:first-child {
   text-align: left;
+  padding-left: 0;
+}
+
+table.data th:last-child,
+table.data td:last-child {
+  padding-right: 0;
 }
 
 table.data thead th {
-  font-size: 12px;
-  font-weight: 650;
-  letter-spacing: 0.04em;
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink-2);
-  border-bottom: 1px solid var(--axis);
+  padding-top: 0;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--border-strong);
+  vertical-align: bottom;
+}
+
+table.data tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---------- Lo que se abre al pulsar ---------- */
+details > summary {
+  cursor: pointer;
 }
 
 details.table-view {
-  margin-top: 10px;
-  font-size: 13.5px;
+  margin-top: 12px;
+  font-size: var(--fs-small);
 }
 
-details.table-view summary {
-  cursor: pointer;
-  color: var(--accent-ink);
-  font-weight: 600;
+details.table-view summary,
+summary.more {
   width: fit-content;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+details.table-view summary:hover,
+summary.more:hover {
+  color: var(--ink);
+  text-decoration-color: currentColor;
 }
 
 details.table-view .scroll {
   max-height: 260px;
   overflow: auto;
-  margin-top: 8px;
+  margin-top: 10px;
+  padding: 12px 14px 4px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--radius);
+}
+
+details.table-view .scroll table.data th:first-child,
+details.table-view .scroll table.data td:first-child {
+  padding-left: 0;
+}
+
+/* El expediente se abre bloque a bloque: una línea, un título y un signo que cambia. */
+.blocks {
+  display: grid;
+  border-bottom: 1px solid var(--border);
+}
+
+details.block {
+  border-top: 1px solid var(--border);
+}
+
+details.block > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 0;
+  list-style: none;
+  font-size: clamp(19px, 1.9vw, 24px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+details.block > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.block > summary::after {
+  content: '';
+  flex: none;
+  width: 14px;
+  height: 14px;
+  background:
+    linear-gradient(var(--ink), var(--ink)) center / 100% 1.5px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) center / 1.5px 100% no-repeat;
+}
+
+details.block[open] > summary::after {
+  background: linear-gradient(var(--ink), var(--ink)) center / 100% 1.5px no-repeat;
+}
+
+details.block > :not(summary) {
+  max-width: 92ch;
+}
+
+details.block > :last-child {
+  margin-bottom: 28px;
+}
+
+details.block h4 {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  margin: 22px 0 8px;
+}
+
+details.block summary + h4 {
+  margin-top: 4px;
+}
+
+details.block ul,
+details.block ol {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 9px;
+  font-size: var(--fs-small);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+details.block ul a {
+  font-weight: 500;
+}
+
+details.block p {
+  margin-top: 12px;
+  color: var(--ink-2);
+}
+
+details.block summary + p {
+  margin-top: 0;
+}
+
+details.block ul + p,
+details.block ol + p {
+  margin-top: 16px;
+}
+
+details.block .btn {
+  margin-top: 18px;
+}
+
+details.block .refs {
+  font-size: var(--fs-micro);
 }
 
 /* Gráficas: texto en tinta, nunca en el color de la serie */
@@ -444,9 +808,10 @@ svg.chart .axisline {
   display: flex;
   flex-wrap: wrap;
   gap: 6px 18px;
-  font-size: 13px;
+  font-size: var(--fs-micro);
+  line-height: 1.4;
   color: var(--ink-2);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .legend .item {
@@ -456,23 +821,23 @@ svg.chart .axisline {
 }
 
 .legend .key-line {
-  width: 18px;
+  width: 16px;
   height: 0;
   border-top: 2px solid var(--ink-2);
   border-radius: 2px;
 }
 
 .legend .key-dot {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--ink-2);
 }
 
 .legend .key-box {
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
+  width: 11px;
+  height: 11px;
+  border-radius: var(--r-mark);
   background: var(--ink-2);
 }
 
@@ -482,22 +847,22 @@ svg.chart .axisline {
   z-index: 5;
   background: var(--ink);
   color: var(--page);
-  border-radius: 9px;
-  padding: 8px 10px;
-  font-size: 12.5px;
-  line-height: 1.35;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 8px 11px;
+  font-size: var(--fs-micro);
+  line-height: 1.4;
+  box-shadow: var(--shadow);
   white-space: nowrap;
   transform: translate(-50%, calc(-100% - 12px));
 }
 
 .tooltip strong {
-  font-size: 14px;
+  font-size: var(--fs-small);
   font-variant-numeric: tabular-nums;
 }
 
 .tooltip .sub {
-  opacity: 0.75;
+  opacity: 0.72;
 }
 
 .chart-holder {
@@ -518,38 +883,29 @@ svg.chart .axisline {
 
 select {
   font: inherit;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: var(--fs-small);
+  font-weight: 500;
   color: var(--ink);
-  background: var(--surface);
+  background: var(--page);
   border: 1px solid var(--border-strong);
-  border-radius: 10px;
-  padding: 8px 12px;
+  border-radius: 8px;
+  padding: 7px 10px;
   cursor: pointer;
 }
 
+select:hover {
+  border-color: var(--ink);
+}
+
 input[type='range'] {
-  accent-color: var(--accent);
+  accent-color: var(--ink);
   width: 100%;
 }
 
 input[type='checkbox'] {
-  accent-color: var(--accent);
+  accent-color: var(--ink);
   width: 17px;
   height: 17px;
-}
-
-.panel {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--surface);
-  padding: 18px 20px;
-}
-
-.panel h3,
-.panel h4 {
-  font-size: 17px;
-  margin-bottom: 6px;
 }
 
 .scroll-x {
@@ -570,8 +926,8 @@ html.num-hover * {
 .numhint {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13.5px;
+  gap: 9px;
+  font-size: var(--fs-small);
   color: var(--ink-2);
 }
 
@@ -580,11 +936,11 @@ html.num-hover * {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 1.5px solid currentColor;
+  border: 1px solid currentColor;
   display: grid;
   place-items: center;
-  font-size: 11.5px;
-  font-weight: 750;
+  font-size: 12px;
+  font-weight: 600;
   font-style: italic;
   font-family: Georgia, 'Times New Roman', serif;
   line-height: 1;

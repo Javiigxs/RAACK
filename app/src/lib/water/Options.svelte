@@ -143,15 +143,17 @@
 {#snippet item(i: Item)}
   <li>
     <p class="what">{t(i.key, i.params)}</p>
-    <p class="why"><span class="k">{t('w.opt.why')}</span>{i.why.text}</p>
-    <CertaintyChip label={i.why.label} text={i.why.chip ?? ''} compact />
+    <div class="because">
+      <p class="why"><span class="k">{t('w.opt.why')}</span>{i.why.text}</p>
+      <CertaintyChip label={i.why.label} text={i.why.chip ?? ''} compact />
+    </div>
   </li>
 {/snippet}
 
-<p class="note fixed">{t('w.opt.note')}</p>
+<p class="fixed">{t('w.opt.note')}</p>
 
 {#if !active.length}
-  <div class="panel">
+  <div class="empty">
     <h3>{t('w.opt.none')}</h3>
     <p>{t('w.opt.noneText')}</p>
   </div>
@@ -160,48 +162,52 @@
 <div class="groups">
   {#each active as id (id)}
     {@const g = catalogue[id]}
-    <div class="group card">
+    <div class="group">
       <header>
         <p class="kicker">{t('w.opt.because')}</p>
         <h3>{t(`w.opt.group.${g.id}`)}</h3>
       </header>
-      <ul class="items">
-        {#each g.items as i (i.key)}
-          {@render item(i)}
-        {/each}
-      </ul>
-      <div class="avoid">
-        <h4>{t('w.opt.avoid')}</h4>
-        <ul>
-          {#each g.avoid as k (k)}
-            <li><span class="x" aria-hidden="true">✕</span>{t(k)}</li>
+      <div class="body">
+        <ul class="items">
+          {#each g.items as i (i.key)}
+            {@render item(i)}
           {/each}
         </ul>
+        <div class="avoid">
+          <h4>{t('w.opt.avoid')}</h4>
+          <ul>
+            {#each g.avoid as k (k)}
+              <li><span class="x" aria-hidden="true">✕</span><span>{t(k)}</span></li>
+            {/each}
+          </ul>
+        </div>
       </div>
     </div>
   {/each}
 
   {#if local.length}
-    <div class="group card wide">
+    <div class="group">
       <header>
         <p class="kicker">{t('w.opt.because')}</p>
         <h3>{t('w.opt.group.nl')}</h3>
       </header>
-      <ul class="items two">
-        {#each local as i (i.key)}
-          {@render item(i)}
-        {/each}
-      </ul>
+      <div class="body">
+        <ul class="items">
+          {#each local as i (i.key)}
+            {@render item(i)}
+          {/each}
+        </ul>
+      </div>
     </div>
   {/if}
 </div>
 
 {#if idle.length}
   <details class="idle">
-    <summary>{t('w.opt.idle', { n: idle.length })}</summary>
+    <summary class="more">{t('w.opt.idle', { n: idle.length })}</summary>
     <ul>
       {#each idle as id (id)}
-        <li><strong>{t(`w.opt.group.${id}`)}.</strong> {idleReason(id)} <span class="muted">{catalogue[id].items.map((i) => t(i.key, i.params)).join(' ')}</span></li>
+        <li><strong>{t(`w.opt.group.${id}`)}.</strong> {idleReason(id)} <span class="rest">{catalogue[id].items.map((i) => t(i.key, i.params)).join(' ')}</span></li>
       {/each}
     </ul>
   </details>
@@ -209,111 +215,126 @@
 
 <style>
   .fixed {
-    border-left-color: var(--ink);
-    font-size: 15.5px;
-    max-width: 82ch;
+    color: var(--ink-2);
+    max-width: 78ch;
+  }
+  .empty {
+    display: grid;
+    gap: 8px;
+    border-top: 1px solid var(--border);
+    padding-top: 22px;
   }
   .groups {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-    align-items: start;
+    gap: var(--gap-block);
   }
+  /* One reason of the verdict per block: the reason on the left, what follows from it on the right. */
   .group {
-    padding: clamp(16px, 2.4vw, 24px);
     display: grid;
-    gap: 14px;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 9fr);
+    gap: 20px 64px;
+    align-items: start;
+    border-top: 1px solid var(--border-strong);
+    padding-top: 20px;
     min-width: 0;
   }
-  .group.wide {
-    grid-column: 1 / -1;
+  .group header {
+    display: grid;
+    gap: 8px;
   }
   .group h3 {
-    font-size: clamp(19px, 2.2vw, 23px);
-    margin-top: 4px;
+    font-size: clamp(22px, 2.3vw, 28px);
+    letter-spacing: -0.025em;
+    line-height: 1.12;
   }
   .items {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    gap: 14px;
-  }
-  .items.two {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px 28px;
-  }
-  .what {
-    font-size: 16.5px;
-    font-weight: 650;
-    line-height: 1.3;
   }
   .items li {
     display: grid;
-    gap: 5px;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 8px 32px;
+    align-items: start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .items li:first-child {
+    padding-top: 2px;
+  }
+  .what {
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+  }
+  .because {
+    display: grid;
+    gap: 8px;
     justify-items: start;
-    align-content: start;
   }
   .why {
-    font-size: 14px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
-    line-height: 1.4;
+    line-height: 1.5;
   }
   .k {
-    font-size: 11.5px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-right: 7px;
+    color: var(--ink);
+    font-weight: 500;
+    margin-right: 6px;
+  }
+  .k::after {
+    content: ':';
   }
   .avoid {
-    border-top: 1px solid var(--grid);
-    padding-top: 12px;
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 8px 32px;
+    padding-top: 16px;
   }
   .avoid h4 {
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    font-size: var(--fs-small);
+    font-weight: 500;
     color: var(--ink-2);
-    margin-bottom: 6px;
   }
   .avoid ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    gap: 5px;
-    font-size: 15px;
+    gap: 8px;
+    font-size: var(--fs-small);
   }
   .avoid li {
-    display: flex;
-    gap: 9px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 10px;
     align-items: baseline;
   }
   .x {
-    font-weight: 800;
+    font-size: 12px;
+    color: var(--muted);
   }
   details.idle {
-    font-size: 14.5px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
   }
-  details.idle summary {
-    cursor: pointer;
-    font-weight: 650;
-    color: var(--accent-ink);
-    width: fit-content;
-  }
   details.idle ul {
-    margin: 8px 0 0;
+    margin: 12px 0 0;
     padding-left: 20px;
     display: grid;
-    gap: 6px;
+    gap: 8px;
+    max-width: 96ch;
+  }
+  details.idle strong {
+    color: var(--ink);
   }
   @media (max-width: 860px) {
-    .groups,
-    .items.two {
-      grid-template-columns: 1fr;
+    .group,
+    .items li,
+    .avoid {
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

@@ -559,8 +559,8 @@
   }
   .sel text {
     fill: #ffffff;
-    font-size: 15px;
-    font-weight: 750;
+    font-size: 14px;
+    font-weight: 600;
     paint-order: stroke;
     stroke: rgba(4, 6, 11, 0.88);
     stroke-width: 4.5px;
@@ -574,8 +574,8 @@
   }
   .parallel-label {
     fill: #ffffff;
-    font-size: 12.5px;
-    font-weight: 750;
+    font-size: 12px;
+    font-weight: 600;
     paint-order: stroke;
     stroke: rgba(4, 6, 11, 0.92);
     stroke-width: 7px;
@@ -593,7 +593,7 @@
     justify-content: center;
     gap: 6px 14px;
     min-height: 30px;
-    font-size: 13px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
   }
   .drag {

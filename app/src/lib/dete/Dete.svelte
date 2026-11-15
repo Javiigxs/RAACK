@@ -1,7 +1,7 @@
 <script lang="ts">
   // DE-T, the case assistant: a panel at the side of the page (the whole screen on a phone). It opens
-  // from the header, from the verdict, or from «Not clear? Ask DE-T» under the explanation of a number,
-  // and the page stays where the reader left it. The assistant itself is the team's design (server,
+  // from the header, from the verdict, from «Not clear? Ask DE-T» under the explanation of a number, or
+  // from the question asked under the country finder, and the page stays where the reader left it. The assistant itself is the team's design (server,
   // tools, figure checker); this panel was written with AI assistance (Claude) for team RAACK.
   import { tick } from 'svelte';
   import { t } from '../i18n';
@@ -146,11 +146,11 @@
 
     <form class="ask" onsubmit={submit}>
       <label class="sr" for="dete-q">{t('dete.input')}</label>
-      <textarea id="dete-q" bind:this={input} bind:value={draft} rows="2" maxlength="500" placeholder={t('dete.placeholder')} onkeydown={onKey}></textarea>
+      <textarea id="dete-q" bind:this={input} bind:value={draft} rows="2" maxlength="500" placeholder={dete.place ? t('dete.place.placeholder', { name: dete.place.name }) : t('dete.placeholder')} onkeydown={onKey}></textarea>
       <button class="btn primary" type="submit" disabled={dete.busy || !draft.trim()}>{t('dete.send')}</button>
     </form>
     <footer class="foot">
-      <p><span aria-hidden="true">ℹ️</span> {t('dete.memory')}</p>
+      <p class="mem"><span class="i" aria-hidden="true">i</span>{t('dete.memory')}</p>
       <p>{t('dete.disclosure')}</p>
     </footer>
   </aside>
@@ -171,7 +171,7 @@
     background: var(--surface);
     color: var(--ink);
     border-left: 1px solid var(--border-strong);
-    box-shadow: -14px 0 44px rgba(0, 0, 0, 0.18);
+    box-shadow: -18px 0 48px rgba(0, 0, 0, 0.16);
     transform: translateX(104%);
     visibility: hidden;
     transition:
@@ -209,24 +209,23 @@
     border-radius: 50%;
     display: grid;
     place-items: center;
-    background: var(--accent);
-    color: #fff;
+    background: var(--ink);
+    color: var(--page);
   }
   .who h2 {
-    font-size: 19px;
-    font-weight: 780;
-    letter-spacing: 0.02em;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
   .who h2 span {
-    font-size: 12px;
-    font-weight: 650;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: var(--fs-micro);
+    font-weight: 400;
+    letter-spacing: 0;
     color: var(--ink-2);
     margin-left: 6px;
   }
   .who p {
-    font-size: 13px;
+    font-size: var(--fs-small);
     line-height: 1.4;
     color: var(--ink-2);
     margin-top: 3px;
@@ -235,14 +234,16 @@
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    border: 1px solid var(--border-strong);
-    background: var(--surface);
+    border: 0;
+    background: transparent;
+    color: var(--ink-2);
     font-size: 20px;
     line-height: 1;
     cursor: pointer;
   }
   .icon-btn:hover {
-    background: var(--surface-2);
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+    color: var(--ink);
   }
 
   .setup {
@@ -253,14 +254,13 @@
     gap: 8px 12px;
     padding: 10px 16px;
     border-bottom: 1px solid var(--border);
-    font-size: 13.5px;
+    font-size: var(--fs-small);
   }
   .setup label {
     display: flex;
     align-items: center;
     gap: 8px;
     color: var(--ink-2);
-    font-weight: 600;
   }
   .setup select {
     font: inherit;
@@ -275,12 +275,14 @@
     border: 0;
     background: none;
     padding: 4px 0;
-    color: var(--accent-ink);
-    font-size: 13px;
-    font-weight: 600;
+    color: var(--ink);
+    font-size: var(--fs-small);
+    font-weight: 500;
     cursor: pointer;
     text-decoration: underline;
-    text-underline-offset: 2px;
+    text-decoration-color: var(--border-strong);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
   }
   .link:disabled {
     opacity: 0.5;
@@ -298,14 +300,13 @@
   .hello {
     display: grid;
     gap: 10px;
-    font-size: 14.5px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
   }
   .hello .try {
-    font-size: 12px;
-    font-weight: 650;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 6px;
   }
   .hello ul {
     list-style: none;
@@ -317,41 +318,41 @@
   .chip {
     text-align: left;
     width: 100%;
-    border: 1px solid var(--border-strong);
-    background: var(--surface);
+    border: 1px solid var(--border);
+    background: transparent;
     color: var(--ink);
-    border-radius: 12px;
-    padding: 9px 12px;
-    font-size: 14px;
-    line-height: 1.35;
+    border-radius: var(--radius);
+    padding: 10px 13px;
+    font-size: var(--fs-small);
+    line-height: 1.4;
     cursor: pointer;
+    transition: border-color 0.15s;
   }
   .chip:hover {
-    background: var(--accent-wash);
-    border-color: var(--accent);
+    border-color: var(--ink);
   }
 
   .msg {
     max-width: 92%;
     padding: 10px 13px;
-    border-radius: 14px;
-    font-size: 14.5px;
+    border-radius: var(--radius);
+    font-size: var(--fs-small);
     line-height: 1.5;
     display: grid;
     gap: 7px;
     overflow-wrap: anywhere;
   }
+  /* The reader writes in ink; DE-T answers on a quiet grey. */
   .msg.user {
     align-self: flex-end;
-    background: var(--accent-wash);
-    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-    border-bottom-right-radius: 5px;
+    background: var(--ink);
+    color: var(--page);
+    border-bottom-right-radius: 3px;
   }
   .msg.bot {
     align-self: flex-start;
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-bottom-left-radius: 5px;
+    background: color-mix(in srgb, var(--ink) 6%, transparent);
+    border-bottom-left-radius: 3px;
   }
   .msg ul,
   .msg ol {
@@ -361,35 +362,32 @@
     gap: 4px;
   }
   .about {
-    font-size: 12.5px;
-    color: var(--ink-2);
+    font-size: var(--fs-micro);
+    opacity: 0.72;
   }
   .about span {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-weight: 600;
   }
   .note {
     color: var(--ink-2);
   }
   .ok {
-    font-size: 12.5px;
-    font-weight: 650;
+    font-size: var(--fs-micro);
+    font-weight: 500;
     color: var(--ink-2);
     border-top: 1px solid var(--border);
     padding-top: 6px;
   }
   .ok span {
     color: var(--ok);
-    font-weight: 800;
+    font-weight: 600;
   }
   .wait {
     display: flex;
     align-items: center;
     gap: 8px;
     color: var(--ink-2);
-    font-size: 13.5px;
+    font-size: var(--fs-small);
   }
   .dots {
     display: inline-flex;
@@ -425,12 +423,12 @@
   }
   .ask textarea {
     font: inherit;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.4;
     color: var(--ink);
     background: var(--page);
     border: 1px solid var(--border-strong);
-    border-radius: 12px;
+    border-radius: var(--radius);
     padding: 9px 11px;
     resize: none;
     width: 100%;
@@ -447,9 +445,30 @@
     padding: 0 16px 14px;
     display: grid;
     gap: 5px;
-    font-size: 11.5px;
+    font-size: var(--fs-micro);
     line-height: 1.4;
     color: var(--muted);
+  }
+  .mem {
+    display: flex;
+    gap: 7px;
+    align-items: baseline;
+  }
+  /* The same small «i» as the hint under the squares, instead of an emoji. */
+  .i {
+    flex: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    display: inline-grid;
+    place-items: center;
+    font-size: 10px;
+    font-weight: 600;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1;
+    transform: translateY(1px);
   }
 
   @media (max-width: 560px) {
@@ -473,16 +492,14 @@
     border: 1px solid color-mix(in srgb, var(--page) 25%, transparent);
     background: var(--ink);
     color: var(--page);
-    font-size: 14.5px;
-    font-weight: 750;
-    letter-spacing: 0.03em;
-    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.28);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    box-shadow: var(--shadow);
     cursor: pointer;
     transition: opacity 0.3s ease;
   }
   .fab:hover {
-    background: var(--accent);
-    color: #fff;
+    background: color-mix(in srgb, var(--ink) 84%, var(--page));
   }
   /* Not over the opening Earth, and not while the panel is open. */
   :global(html[data-intro='on']) .fab,

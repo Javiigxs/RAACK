@@ -2,33 +2,42 @@
   import { fmt } from '../catalog';
   import { t } from '../i18n';
   import { ui } from '../state.svelte';
+
+  // The title is two sentences: the question in ink, the answer in grey.
+  const title = $derived.by(() => {
+    const full = t('hero.title');
+    const cut = full.indexOf('? ');
+    return cut < 0 ? { ask: full, say: '' } : { ask: full.slice(0, cut + 1), say: full.slice(cut + 2) };
+  });
 </script>
 
 <section class="hero" id="top">
-  <div class="wrap">
+  <div class="wrap hero-in">
     <p class="kicker">{t('hero.kicker')}</p>
-    <h2 class="case-title">{t('hero.title')}</h2>
-    <p class="lead">{t('hero.lead')}</p>
-    <div class="cta">
-      <a class="btn primary" href="#case">{t('hero.cta')} <span aria-hidden="true">↓</span></a>
-      <a class="btn" href="#lab">{t('hero.cta2')}</a>
+    <h2 class="case-title">{title.ask}{#if title.say}{' '}<span class="say">{title.say}</span>{/if}</h2>
+    <div class="hero-side">
+      <p class="lead">{t('hero.lead')}</p>
+      <div class="cta">
+        <a class="btn primary" href="#case">{t('hero.cta')} <span aria-hidden="true">↓</span></a>
+        <a class="textlink" href="#lab">{t('hero.cta2')}</a>
+      </div>
     </div>
-    <dl class="stats">
+    <dl class="statrow stats">
       <div>
-        <dt>{fmt(8401, 0, ui.lang)}</dt>
-        <dd>{t('hero.stat1')}</dd>
+        <dt class="v">{fmt(8401, 0, ui.lang)}</dt>
+        <dd class="d">{t('hero.stat1')}</dd>
       </div>
       <div>
-        <dt>25</dt>
-        <dd>{t('hero.stat2')}</dd>
+        <dt class="v">25</dt>
+        <dd class="d">{t('hero.stat2')}</dd>
       </div>
       <div>
-        <dt>5</dt>
-        <dd>{t('hero.stat3')}</dd>
+        <dt class="v">5</dt>
+        <dd class="d">{t('hero.stat3')}</dd>
       </div>
       <div>
-        <dt>3</dt>
-        <dd>{t('hero.stat4')}</dd>
+        <dt class="v">3</dt>
+        <dd class="d">{t('hero.stat4')}</dd>
       </div>
     </dl>
   </div>
@@ -36,64 +45,56 @@
 
 <style>
   .hero {
-    padding: clamp(36px, 7vw, 76px) 0 clamp(28px, 4vw, 44px);
+    padding: clamp(48px, 8vw, 112px) 0 0;
   }
-  .wrap {
+  .hero-in {
     display: grid;
-    gap: 18px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px 56px;
+    align-items: end;
   }
   .case-title {
-    font-size: clamp(34px, 6vw, 62px);
-    max-width: 17ch;
-    letter-spacing: -0.03em;
-    line-height: 1.02;
+    font-size: var(--fs-display);
+    letter-spacing: -0.042em;
+    line-height: 0.98;
+    max-width: 13ch;
   }
-  .lead {
-    font-size: clamp(17px, 2vw, 20px);
+  .say {
+    color: var(--muted);
+  }
+  .hero-side {
+    display: grid;
+    gap: 24px;
+    justify-items: start;
   }
   .cta {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 4px;
+    align-items: center;
+    gap: 14px 22px;
   }
   .stats {
-    display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0;
-    margin: 18px 0 0;
-    border-top: 1px solid var(--grid);
+    margin-top: clamp(28px, 5vw, 64px);
   }
-  .stats div {
-    padding: 16px 18px 4px 0;
+  .stats .d {
+    max-width: 26ch;
   }
-  .stats div + div {
-    padding-left: 18px;
-    border-left: 1px solid var(--grid);
-  }
-  dt {
-    font-size: clamp(26px, 3.4vw, 36px);
-    font-weight: 750;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-  dd {
-    margin: 4px 0 0;
-    font-size: 13.5px;
-    color: var(--ink-2);
-    line-height: 1.35;
-    max-width: 22ch;
+  @media (min-width: 900px) {
+    .hero-in {
+      grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+    }
+    .hero-in > .kicker,
+    .stats {
+      grid-column: 1 / -1;
+    }
+    .hero-side {
+      padding-bottom: 0.6em;
+    }
   }
   @media (max-width: 720px) {
     .stats {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .stats div:nth-child(3) {
-      padding-left: 0;
-      border-left: 0;
-    }
-    .stats div:nth-child(n + 3) {
-      border-top: 1px solid var(--grid);
     }
   }
 </style>

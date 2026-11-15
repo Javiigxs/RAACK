@@ -27,15 +27,29 @@ export interface Msg {
   note?: 'busy' | 'down' | 'empty';
 }
 
+/** A place of the globe: «nl» or «cv» for the cases of the tool, the ISO code of a country otherwise. */
+export interface Place {
+  id: string;
+  name: string;
+}
+
 export interface Ask {
   question: string;
   about?: string;
   page?: PageContext;
+  /** The place the question is about. It stays with the conversation until a question about something else. */
+  place?: Place;
 }
 
 export const dete = $state({
   status: 'unknown' as 'unknown' | 'on' | 'off',
+  /** Why DE-T is off, when the page can tell: its server does not answer, or it has no Kimi key. */
+  why: '' as '' | 'noserver' | 'nokey',
   open: false,
+  /** The place this conversation is about: the server adds what the tool knows of it to each question. */
+  place: null as Place | null,
+  /** The place chosen on the globe right now, while the world section is on the page. */
+  globe: null as Place | null,
   sector: 'civil' as Sector,
   busy: false,
   messages: [] as Msg[],
@@ -71,9 +85,11 @@ export async function probe(): Promise<void> {
     const r = await fetch(URL, { headers: { Accept: 'application/json' }, signal: stop.signal });
     const body = r.ok ? ((await r.json()) as { nombre?: string; listo?: boolean }) : null;
     dete.status = body?.nombre === 'DE-T' && body.listo === true ? 'on' : 'off';
-    if (body?.nombre === 'DE-T' && !body.listo) console.info('DE-T: the server is running but has no Kimi API key (dete/.env).');
+    dete.why = dete.status === 'on' ? '' : body?.nombre === 'DE-T' ? 'nokey' : 'noserver';
+    if (dete.why === 'nokey') console.info('DE-T: the server is running but has no Kimi API key (dete/.env).');
   } catch {
     dete.status = 'off';
+    dete.why = 'noserver';
   } finally {
     clearTimeout(timer);
   }
@@ -86,6 +102,16 @@ export function setSector(s: Sector): void {
   } catch {
     // no local storage: the choice lasts until the page is closed
   }
+}
+
+/** The place this conversation is about; null goes back to the case of the page. */
+export function setPlace(place: Place | null): void {
+  dete.place = place;
+}
+
+/** The world section says which place its globe shows (null when it leaves the page). */
+export function setGlobe(place: Place | null): void {
+  dete.globe = place;
 }
 
 /** Opens the panel; with a question, asks it at once. */
@@ -109,6 +135,7 @@ export function closeDete(): void {
 export function clearChat(): void {
   if (dete.busy) return;
   dete.messages = [];
+  dete.place = null;
   dete.focusOn = 'input';
   dete.focus++;
 }
@@ -122,8 +149,12 @@ export function history(messages: Msg[], question: string): { role: 'user' | 'as
 export async function send(question: string, extra: Omit<Ask, 'question'> = {}): Promise<void> {
   const text = question.trim().slice(0, 500);
   if (!text || dete.busy) return;
+  // A question asked from the globe is about its place, and so are the ones typed after it; a question
+  // about a number of the page is about the case again, unless that number belongs to a place.
+  if (extra.place) dete.place = extra.place;
+  else if (extra.page) dete.place = null;
   const past = dete.messages;
-  dete.messages = [...past, { id: nextId++, role: 'user', text, about: extra.about }];
+  dete.messages = [...past, { id: nextId++, role: 'user', text, about: extra.about ?? dete.place?.name }];
   dete.busy = true;
   let reply: Msg;
   try {
@@ -134,6 +165,7 @@ export async function send(question: string, extra: Omit<Ask, 'question'> = {}):
         sector: dete.sector,
         region: 'nuevo-leon',
         messages: history(past, text),
+        ...(dete.place ? { lugar: dete.place.id } : {}),
         ...(extra.page ? { pagina: compact(extra.page) } : {})
       })
     });

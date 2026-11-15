@@ -109,7 +109,7 @@
 
   <footer class="wrap">
     <p>{t('footer.line1')}</p>
-    <p class="muted">{t('footer.line2')}</p>
+    <p>{t('footer.line2')}</p>
   </footer>
 </div>
 
@@ -157,7 +157,7 @@
     pointer-events: none;
   }
   main {
-    padding-bottom: 56px;
+    padding-bottom: var(--gap-section);
   }
   .status {
     padding: 28px;
@@ -169,15 +169,15 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px 14px;
-    font-size: 14.5px;
+    gap: 8px 16px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
-    margin-bottom: 18px;
+    margin: var(--gap-block) 0;
   }
   footer {
-    border-top: 1px solid var(--grid);
-    padding: 22px 0 40px;
-    font-size: 13.5px;
+    border-top: 1px solid var(--border-strong);
+    padding: 24px 0 56px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
     display: grid;
     gap: 4px;

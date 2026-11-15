@@ -131,7 +131,7 @@
     {#each pts as p (p.year)}
       {#if p.v !== null}
         {#if highlight.includes(p.year)}
-          <circle cx={x(p.year)} cy={y(p.v)} r="8.5" fill="var(--surface)" stroke="var(--ink)" stroke-width="2" />
+          <circle cx={x(p.year)} cy={y(p.v)} r="8.5" fill="var(--page)" stroke="var(--ink)" stroke-width="2" />
           <circle cx={x(p.year)} cy={y(p.v)} r="4.5" fill="var(--series-1)" />
           {@const below = showTrend && tr.ok ? y(p.v) > lineAt(tr.sen.slope, p.year) : p.v < (y.domain()[0] + y.domain()[1]) / 2}
           <text
@@ -141,7 +141,7 @@
             class="direct">{p.year} · {format(p.v)}</text
           >
         {:else}
-          <circle cx={x(p.year)} cy={y(p.v)} r="4.5" fill="var(--series-1)" stroke="var(--surface)" stroke-width="2" />
+          <circle cx={x(p.year)} cy={y(p.v)} r="4.5" fill="var(--series-1)" stroke="var(--page)" stroke-width="2" />
         {/if}
       {/if}
     {/each}
@@ -184,11 +184,11 @@
 
 <style>
   .direct {
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 600;
     fill: var(--ink);
     paint-order: stroke;
-    stroke: var(--surface);
+    stroke: var(--page);
     stroke-width: 4px;
     stroke-linejoin: round;
   }

@@ -18,6 +18,8 @@
     /** The words around the number and the section it is in: what DE-T is told when asked about it. */
     around: string;
     section: string;
+    /** The number sits in the world section, next to the place its globe shows. */
+    inPlace: boolean;
     left: number;
     top: number;
     above: boolean;
@@ -191,6 +193,7 @@
       label: found.label,
       around: found.around,
       section: sectionOf(found.node),
+      inPlace: !!found.node.parentElement?.closest('[data-dete-place]'),
       left: left + window.scrollX,
       top: (above ? rect.top - 10 : rect.bottom + 10) + window.scrollY,
       above,
@@ -283,6 +286,8 @@
     openDete({
       question: t('dete.q.number', { num: c.hit.phrase }),
       about: c.label ? `${c.hit.phrase} · ${c.label}` : c.hit.phrase,
+      // A figure of the globe is about the place the globe shows: DE-T gets it to check the number.
+      place: c.inPlace && dete.globe ? dete.globe : undefined,
       page: {
         numero: c.hit.phrase,
         tipo: t(`x.kind.${c.hit.kind}.name`),
@@ -347,14 +352,14 @@
     z-index: 40;
     width: min(310px, 100vw - 16px);
     padding: 13px 15px 14px;
-    border-radius: 13px;
+    border-radius: var(--radius);
     background: var(--ink);
     color: var(--page);
-    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.32);
+    box-shadow: var(--shadow);
     display: grid;
     gap: 6px;
-    font-size: 13.5px;
-    line-height: 1.42;
+    font-size: var(--fs-small);
+    line-height: 1.45;
     animation: pop 0.14s ease-out;
   }
   .xcard.above {
@@ -382,19 +387,17 @@
     }
   }
   .xnum {
-    font-size: 19px;
-    font-weight: 760;
-    letter-spacing: -0.015em;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     line-height: 1.15;
     font-variant-numeric: tabular-nums;
     padding-right: 26px;
     overflow-wrap: anywhere;
   }
   .xkind {
-    font-size: 11.5px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: var(--fs-micro);
+    font-weight: 500;
     opacity: 0.72;
   }
   .xunit,
@@ -408,7 +411,7 @@
   .xhere.first {
     border-top: 0;
     padding-top: 0;
-    font-size: 14.5px;
+    font-size: var(--fs-small);
     font-weight: 600;
   }
   .xtext.after {
@@ -418,10 +421,8 @@
   }
   .xhere span {
     display: block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: var(--fs-micro);
+    font-weight: 500;
     opacity: 0.65;
   }
   /* «Not clear? Ask DE-T»: the last line of the card, set apart like the others. */
@@ -447,8 +448,8 @@
     color: inherit;
     border-radius: 999px;
     padding: 6px 12px;
-    font-size: 13.5px;
-    font-weight: 700;
+    font-size: var(--fs-small);
+    font-weight: 500;
     line-height: 1.2;
     cursor: pointer;
   }
@@ -469,7 +470,7 @@
     border-radius: 50%;
     background: transparent;
     color: inherit;
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1;
     cursor: pointer;
     opacity: 0.7;

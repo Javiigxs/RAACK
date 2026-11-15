@@ -88,7 +88,7 @@
   const yearsToDetect = $derived(ind.trend.yearsToDetect);
 </script>
 
-<section id="case" class="opening card">
+<section id="case" class="opening">
   <div class="top">
     <div class="intro">
       <p class="kicker">{t('oc.kicker')}</p>
@@ -144,7 +144,7 @@
           {#each years as y (y.year)}<option value={y.year}>{y.year}</option>{/each}
         </select>
       </label>
-      <button class="btn small-btn" onclick={nextTwins} title={t('oc.twinsHelp')}>
+      <button class="chipbtn" onclick={nextTwins} title={t('oc.twinsHelp')}>
         <span aria-hidden="true">⟳</span>
         {t('oc.twins')}
       </button>
@@ -267,7 +267,7 @@
             <option value={i.id}>{t(`clue.${i.id}.name`)}</option>
           {/each}
         </select>
-        <span class="small muted">{t(`clue.${clue}.def`)}</span>
+        <span class="small">{t(`clue.${clue}.def`)}</span>
       </div>
 
       <IndicatorChart {ind} highlight={[A.year, B.year]} format={(v) => fmtClue(clue, v)} title={t(`clue.${clue}.name`)} />
@@ -320,7 +320,7 @@
               {yearsToDetect > 300 ? t('ev.yearsMany') : t('ev.years', { n: fmt(yearsToDetect, 0, ui.lang), have: ind.trend.n })}
             </p>
           {/if}
-          <p class="small muted">{t('oc.b3.method')}</p>
+          <p class="small">{t('oc.b3.method')}</p>
         </div>
       </details>
 
@@ -351,7 +351,7 @@
             </tbody>
           </table>
         </div>
-        <p class="small muted">{t('oc.lineup.note')}</p>
+        <p class="small">{t('oc.lineup.note')}</p>
       </div>
 
       <div class="next">
@@ -363,73 +363,63 @@
 </section>
 
 <style>
+  /* The opening case sits on the page itself: three beats, each under a thin line. */
   .opening {
-    padding: clamp(18px, 3vw, 32px);
     display: grid;
-    /* minmax(0, 1fr): una tabla ancha no ensancha la tarjeta; se desplaza dentro de .scroll-x */
+    /* minmax(0, 1fr): a wide table never widens the section; it scrolls inside .scroll-x */
     grid-template-columns: minmax(0, 1fr);
-    gap: 8px;
+    gap: 0;
+    margin-top: var(--gap-block);
+    padding-top: 18px;
+    border-top: 1px solid var(--border-strong);
   }
   .top {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    gap: 28px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: var(--gap-block) 56px;
     align-items: start;
   }
   .intro {
     display: grid;
-    gap: 12px;
+    gap: 14px;
   }
   .intro h2 {
-    font-size: clamp(26px, 3.6vw, 38px);
+    font-size: var(--fs-h2);
+    line-height: 1.03;
+    letter-spacing: -0.034em;
+    margin-top: clamp(8px, 1.6vw, 20px);
   }
   .selectors {
     display: flex;
     flex-wrap: wrap;
     align-items: end;
     gap: 8px 10px;
-    margin-top: 6px;
+    margin-top: 10px;
   }
   .selectors label {
     display: grid;
-    gap: 3px;
-    font-size: 11.5px;
-    font-weight: 650;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
+    gap: 5px;
+    font-size: var(--fs-micro);
     color: var(--ink-2);
   }
   .sep {
-    font-size: 22px;
+    font-size: 20px;
     color: var(--muted);
-    padding-bottom: 6px;
-  }
-  select {
-    font: inherit;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--ink);
-    background: var(--surface);
-    border: 1px solid var(--border-strong);
-    border-radius: 10px;
-    padding: 8px 12px;
-    cursor: pointer;
+    padding-bottom: 5px;
   }
   .source {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    gap: 6px 12px;
   }
   .beat {
-    border-top: 1px solid var(--grid);
-    margin-top: 22px;
-    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    margin-top: var(--gap-block);
+    padding-top: 22px;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: 16px;
+    gap: 18px;
     justify-items: start;
   }
   .beat > :global(*) {
@@ -440,91 +430,92 @@
   }
   .beat-head {
     display: flex;
-    align-items: center;
-    gap: 12px;
+    align-items: baseline;
+    gap: 14px;
   }
+  /* The number of the beat: an index in grey, not a badge. */
   .beat-n {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--ink);
-    color: var(--page);
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-    font-size: 14px;
+    font-size: clamp(22px, 2.3vw, 28px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
   }
   .beat-head h3 {
-    font-size: 21px;
+    font-size: clamp(22px, 2.3vw, 28px);
+    letter-spacing: -0.028em;
   }
   .pickers {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px 16px;
-    font-size: 14px;
+    gap: 10px 18px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
   }
   .pickers label {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-weight: 600;
-  }
-  .pickers select {
-    padding: 6px 10px;
   }
   .bars {
     display: grid;
     gap: 14px;
-    max-width: 760px;
+    max-width: 780px;
   }
   .row {
     display: grid;
-    grid-template-columns: 56px 1fr 110px;
+    grid-template-columns: 56px 1fr 116px;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
   .yr {
-    font-weight: 700;
-    font-size: 17px;
+    font-weight: 500;
     font-variant-numeric: tabular-nums;
   }
   .track {
-    height: 24px;
+    height: 14px;
+    background: color-mix(in srgb, var(--ink) 7%, transparent);
+    border-radius: 0 var(--r-mark) var(--r-mark) 0;
   }
   .bar {
-    height: 24px;
+    height: 14px;
     background: var(--series-1);
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 var(--r-mark) var(--r-mark) 0;
     transition: width 0.5s ease;
   }
   .val {
-    font-size: 15px;
+    font-size: var(--fs-small);
     color: var(--ink-2);
     font-variant-numeric: tabular-nums;
   }
   .val strong {
-    font-size: 22px;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
     color: var(--ink);
   }
   .caption {
-    font-size: 17px;
-    max-width: 70ch;
+    font-size: var(--fs-lead);
+    line-height: 1.42;
+    letter-spacing: -0.008em;
+    max-width: 64ch;
   }
   .caption .muted {
     display: block;
-    font-size: 14px;
-    margin-top: 2px;
+    font-size: var(--fs-small);
+    letter-spacing: 0;
+    color: var(--ink-2);
+    margin-top: 6px;
   }
   .cals {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
+    gap: var(--gap-block) 56px;
   }
   .cal {
     display: grid;
-    gap: 8px;
+    gap: 10px;
     min-width: 0;
   }
   .cal-head {
@@ -534,50 +525,60 @@
   }
   .cal-year {
     font-size: 24px;
-    font-weight: 750;
+    font-weight: 500;
+    letter-spacing: -0.025em;
     font-variant-numeric: tabular-nums;
   }
   .cal-total {
+    font-size: var(--fs-small);
     color: var(--ink-2);
   }
   .share {
     display: flex;
-    align-items: baseline;
-    gap: 10px;
+    align-items: flex-end;
+    gap: 12px;
     flex-wrap: wrap;
   }
   .share strong {
-    font-size: clamp(34px, 5vw, 50px);
-    line-height: 1;
-    letter-spacing: -0.02em;
+    font-size: var(--fs-figure);
+    font-weight: 500;
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    font-variant-numeric: tabular-nums;
   }
   .share span {
     color: var(--ink-2);
     max-width: 24ch;
-    font-size: 14.5px;
+    font-size: var(--fs-small);
     line-height: 1.3;
-  }
-  .days {
-    line-height: 1.45;
+    padding-bottom: 2px;
   }
   .cal-legend {
     margin: 0;
   }
   .key-box.ring {
     background: transparent;
-    outline: 2px solid var(--ink);
+    outline: 1.5px solid var(--ink);
     outline-offset: -1px;
   }
   .hid h4,
   .lineup h4 {
-    font-size: 16px;
-    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .lineup .small {
+    margin-bottom: 14px;
+  }
+  .lineup .small:last-child {
+    margin: 14px 0 0;
   }
   .scroll-x {
     overflow-x: auto;
   }
   .hid table {
-    max-width: 640px;
+    max-width: 680px;
   }
   tr.same td {
     color: var(--ink-2);
@@ -586,67 +587,74 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px 12px;
-  }
-  .clue-pick select {
-    padding: 6px 10px;
+    gap: 8px 14px;
   }
   .verdict {
     display: grid;
-    gap: 10px;
+    gap: 12px;
     justify-items: start;
   }
   .plain {
-    font-size: clamp(18px, 2.2vw, 22px);
-    line-height: 1.4;
+    font-size: var(--fs-lead);
+    line-height: 1.42;
+    letter-spacing: -0.008em;
     max-width: 60ch;
-    font-weight: 500;
   }
+  /* The evidence behind the sentence opens under it: two lines, no box. */
   details.evidence {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px 16px;
-    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
   }
   details.evidence summary {
-    cursor: pointer;
-    font-weight: 650;
+    width: fit-content;
+    font-size: var(--fs-small);
+    font-weight: 500;
+    color: var(--ink-2);
+    text-decoration: underline;
+    text-decoration-color: var(--border-strong);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+  details.evidence summary:hover {
+    color: var(--ink);
+    text-decoration-color: currentColor;
   }
   .ev-body {
     display: grid;
-    gap: 10px;
-    margin-top: 12px;
-    font-size: 15px;
+    gap: 12px;
+    margin-top: 16px;
+    font-size: var(--fs-small);
+    max-width: 84ch;
   }
   .jury-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    gap: 6px;
+    gap: 8px;
   }
   .jury-list li {
-    display: flex;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 5.5em minmax(0, 1fr);
+    gap: 12px;
     align-items: baseline;
-    flex-wrap: wrap;
   }
+  /* The vote of a test: a word, in ink when it sees the change. */
   .vote {
-    font-size: 12px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 6px;
-    border: 1px solid var(--border-strong);
     color: var(--ink-2);
     white-space: nowrap;
   }
   .vote.yes {
-    background: var(--ink);
-    color: var(--page);
-    border-color: var(--ink);
+    color: var(--ink);
+    font-weight: 600;
   }
   .lineup-table tr.active td {
-    background: var(--accent-wash);
+    background: color-mix(in srgb, var(--ink) 6%, transparent);
+  }
+  .lineup-table tr.active td:first-child {
+    box-shadow: inset 2px 0 0 var(--ink);
+    padding-left: 12px;
   }
   @media (max-width: 620px) {
     .lineup-table thead {
@@ -657,11 +665,17 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 6px 12px;
       padding: 12px 8px;
-      border-bottom: 1px solid var(--grid);
+      border-bottom: 1px solid var(--border);
     }
     .lineup-table tr.active {
-      background: var(--accent-wash);
-      border-radius: 8px;
+      background: color-mix(in srgb, var(--ink) 6%, transparent);
+    }
+    .lineup-table tr.active td {
+      background: none;
+    }
+    .lineup-table tr.active td:first-child {
+      box-shadow: none;
+      padding-left: 0;
     }
     .lineup-table td {
       display: block;
@@ -676,10 +690,7 @@
     .lineup-table td[data-label]::before {
       content: attr(data-label);
       display: block;
-      font-size: 11px;
-      font-weight: 650;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      font-size: var(--fs-micro);
       color: var(--muted);
     }
   }
@@ -687,33 +698,39 @@
     border: 0;
     background: none;
     padding: 0;
-    color: var(--accent-ink);
-    font-weight: 600;
+    color: var(--ink);
+    font-weight: 500;
     cursor: pointer;
     text-align: left;
     text-decoration: underline;
-    text-underline-offset: 2px;
+    text-decoration-color: var(--border-strong);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
   }
+  .linkish:hover {
+    text-decoration-color: currentColor;
+  }
+  /* The way on to the full investigation: a quiet row under a line. */
   .next {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 12px 18px;
-    padding: 16px 18px;
-    border-radius: 12px;
-    background: var(--accent-wash);
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
   }
   .next p {
     flex: 1 1 320px;
-    font-weight: 500;
+    color: var(--ink-2);
   }
   @media (max-width: 820px) {
     .top,
     .cals {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .row {
-      grid-template-columns: 48px 1fr 92px;
+      grid-template-columns: 48px 1fr 96px;
     }
   }
 </style>

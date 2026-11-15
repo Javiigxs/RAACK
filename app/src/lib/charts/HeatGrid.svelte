@@ -122,7 +122,7 @@
         rx="4"
         fill="none"
         stroke="var(--ink)"
-        stroke-width="2"
+        stroke-width="1.5"
         pointer-events="none"
       />
     {/if}
@@ -201,8 +201,8 @@
     font-variant-numeric: tabular-nums;
   }
   .tick-pick {
-    font-size: 11.5px;
-    font-weight: 750;
+    font-size: 11px;
+    font-weight: 600;
     fill: var(--ink);
     font-variant-numeric: tabular-nums;
   }
@@ -210,7 +210,8 @@
     margin: 8px 0 0;
   }
   .heat-legend .about {
-    font-weight: 650;
+    font-weight: 500;
+    color: var(--ink);
   }
   .key-box.none {
     background: transparent;

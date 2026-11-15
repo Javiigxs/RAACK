@@ -128,6 +128,6 @@
   }
   .tick-m.strong {
     fill: var(--ink);
-    font-weight: 700;
+    font-weight: 600;
   }
 </style>
