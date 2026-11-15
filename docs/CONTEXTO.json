@@ -2,6 +2,13 @@
   "proyecto": "RAACK",
   "reto": "https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/",
   "fecha": "2026-11-14",
+  "actualizaciones": [
+    "GLDAS quedó descargado: 14 originales cada tres horas, siete variables en Monterrey y Galeana, de marzo de 2001 a julio de 2026. Las medias mensuales conservan conteos y marcan diez combinaciones incompletas del último mes.",
+    "La persona autorizó el servicio de Giovanni únicamente para descargar las siete variables GLDAS; elegirlo como herramienta de la solución sigue pendiente. Ver [la decisión](decisiones/GIOVANNI.md).",
+    "Se descargó el netCDF científico GRACE tras el inicio de sesión humano en Earthdata. Su MD5 coincide con el oficial; se conserva íntegro en seis partes reconstruibles y como recorte de Nuevo León.",
+    "IMERG Final V07 termina en septiembre de 2025 según NASA y CMR. No se localizaron octubre–diciembre de 2025 como el mismo producto; no se sustituyeron ni interpolaron.",
+    "Los archivos, límites, procedencia y uso de IA del lote regional se detallan en [Datos solicitados para Nuevo León](REQUISITOS_DATOS_NUEVO_LEON.md). Codex preparó esta actualización a partir de la conversación retomada y las verificaciones de esta sesión."
+  ],
   "descripcion": "Contexto de la preparación de recursos: del reto a la página oficial, sus 13 recursos, lo que se obtuvo de cada uno, los accesos, las solicitudes enviadas y las decisiones pendientes.",
   "agentes": {
     "Codex": "Preparación inicial, 7 descargas, fichas 01–07 y 12, primera publicación.",
@@ -26,9 +33,9 @@
       "numero": "—",
       "etiqueta": "Giovanni",
       "grupo": "NASA · datos y recursos",
-      "estado": "no-abierto",
-      "punto_de_parada": "No se abrió: decisión pendiente",
-      "revisado_por": null,
+      "estado": "revisado",
+      "punto_de_parada": "API autorizada solo para GLDAS",
+      "revisado_por": "Codex",
       "ficha": null,
       "enlace": "https://giovanni.gsfc.nasa.gov/giovanni/"
     },
@@ -39,7 +46,7 @@
       "etiqueta": "Hydrology Time Series",
       "grupo": "NASA · datos y recursos",
       "estado": "revisado",
-      "punto_de_parada": "Visor probado: Monterrey, 26 años",
+      "punto_de_parada": "GLDAS: siete variables, dos puntos",
       "revisado_por": "Codex",
       "ficha": "recursos/paginas/01-hydrology.md",
       "enlace": "https://disc.gsfc.nasa.gov/information/tools?title=Hydrology%20Time%20Series"
@@ -252,7 +259,7 @@
     {
       "id": "d_giovanni",
       "tipo": "decision",
-      "etiqueta": "¿Usamos Giovanni?",
+      "etiqueta": "¿Giovanni en la solución?",
       "estado": "pendiente"
     },
     {
@@ -516,7 +523,7 @@
     {
       "de": "giovanni",
       "a": "d_giovanni",
-      "relacion": "pendiente"
+      "relacion": "solo descargas GLDAS autorizadas"
     },
     {
       "de": "hydrology",

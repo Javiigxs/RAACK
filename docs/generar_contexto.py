@@ -13,9 +13,9 @@ FECHA = "2026-11-14"
 
 FUENTES = [
     # id, num, etiqueta, grupo, estado, punto de parada, revisó, ficha, url
-    ("giovanni", "—", "Giovanni", "NASA", "no-abierto", "No se abrió: decisión pendiente", None, None,
+    ("giovanni", "—", "Giovanni", "NASA", "revisado", "API autorizada solo para GLDAS", "Codex", None,
      "https://giovanni.gsfc.nasa.gov/giovanni/"),
-    ("hydrology", "01", "Hydrology Time Series", "NASA", "revisado", "Visor probado: Monterrey, 26 años", "Codex",
+    ("hydrology", "01", "Hydrology Time Series", "NASA", "revisado", "GLDAS: siete variables, dos puntos", "Codex",
      "01-hydrology.md", "https://disc.gsfc.nasa.gov/information/tools?title=Hydrology%20Time%20Series"),
     ("appeears", "02", "AppEEARS", "NASA", "requiere-acceso", "Solicitud de prueba en cola", "Codex",
      "02-appeears.md", "https://appeears.earthdatacloud.nasa.gov/"),
@@ -69,8 +69,8 @@ SOLICITUDES = [
     ("s_appeears", "Prueba AppEEARS Monterrey · procesándose", "appeears", "docs/SOLICITUD_APPEEARS_MONTERREY.md"),
 ]
 DECISIONES = [
-    ("d_giovanni", "¿Usamos Giovanni?",
-     [("giovanni", "pendiente"), ("hydrology", "su API enlaza Giovanni"), ("seawifs", "lo usa como antecedente")]),
+    ("d_giovanni", "¿Giovanni en la solución?",
+     [("giovanni", "solo descargas GLDAS autorizadas"), ("hydrology", "su API enlaza Giovanni"), ("seawifs", "lo usa como antecedente")]),
     ("d_canada", "¿La región está en Canadá?", [("rcm", "acceso público solo en Canadá"), ("geo", "datos de Canadá")]),
 ]
 CASO = ("d_caso", "Elegir variable, región y periodo")
@@ -78,6 +78,13 @@ DESTINOS = [
     ("github", "GitHub · Javiigxs/RAACK", "Fichas, cobertura, solicitudes, grafo, índice y archivos",
      "https://github.com/Javiigxs/RAACK"),
     ("obsidian", "Obsidian · bóveda RAACK", "Clon local del repo; se empieza por INDICE.md", None),
+]
+ACTUALIZACIONES = [
+    "GLDAS quedó descargado: 14 originales cada tres horas, siete variables en Monterrey y Galeana, de marzo de 2001 a julio de 2026. Las medias mensuales conservan conteos y marcan diez combinaciones incompletas del último mes.",
+    "La persona autorizó el servicio de Giovanni únicamente para descargar las siete variables GLDAS; elegirlo como herramienta de la solución sigue pendiente. Ver [la decisión](decisiones/GIOVANNI.md).",
+    "Se descargó el netCDF científico GRACE tras el inicio de sesión humano en Earthdata. Su MD5 coincide con el oficial; se conserva íntegro en seis partes reconstruibles y como recorte de Nuevo León.",
+    "IMERG Final V07 termina en septiembre de 2025 según NASA y CMR. No se localizaron octubre–diciembre de 2025 como el mismo producto; no se sustituyeron ni interpolaron.",
+    "Los archivos, límites, procedencia y uso de IA del lote regional se detallan en [Datos solicitados para Nuevo León](REQUISITOS_DATOS_NUEVO_LEON.md). Codex preparó esta actualización a partir de la conversación retomada y las verificaciones de esta sesión.",
 ]
 
 
@@ -124,6 +131,7 @@ def datos():
         "proyecto": "RAACK",
         "reto": RETO,
         "fecha": FECHA,
+        "actualizaciones": ACTUALIZACIONES,
         "descripcion": ("Contexto de la preparación de recursos: del reto a la página oficial, sus 13 recursos, "
                         "lo que se obtuvo de cada uno, los accesos, las solicitudes enviadas y las decisiones pendientes."),
         "agentes": {
@@ -455,6 +463,10 @@ GitHub y Obsidian dibujan este diagrama Mermaid. Las flechas continuas van a lo 
    - No descargó archivos de datos. No abrió Giovanni ni llamó a su API: usó solo el visor.
 
 En la tabla, «Revisó» es quien hizo la primera revisión de la página. Las ampliaciones posteriores están fechadas al final de cada ficha.
+
+## Actualización del 14 de noviembre de 2026 · continuación de las descargas
+
+{chr(10).join('- ' + texto for texto in ACTUALIZACIONES)}
 
 ## Cómo actualizarlo
 

@@ -6,7 +6,7 @@ fecha: 2026-11-14
 
 ## Decisiones del equipo
 
-- [ ] **Giovanni: pendiente de nuestra decisión.** Ver [Giovanni - decisión pendiente](decisiones/GIOVANNI.md).
+- [ ] **Giovanni como herramienta del proyecto: pendiente de nuestra decisión.** El 14 de noviembre de 2026 se autorizó únicamente su servicio para descargar las siete variables GLDAS. Ver la actualización en [Giovanni](decisiones/GIOVANNI.md).
 - [ ] Elegir la idea de la herramienta entre las [propuestas](IDEAS.md) y escribir la frase diferenciadora con palabras del equipo. La guía oficial pide que la idea sea del equipo, no de una IA.
 - [ ] Decidir el formato de la demo: vídeo de 30 segundos o 7 diapositivas ([Reglas oficiales](REGLAS_OFICIALES.md)).
 - [ ] Elegir una o dos variables para la primera demostración.
@@ -17,11 +17,11 @@ fecha: 2026-11-14
 
 ## Datos y acceso
 
-- [ ] Descargar una serie suficientemente larga para analizar tendencias; el CSV GLDAS actual es una muestra corta.
+- [x] Descargar series largas: siete variables GLDAS en dos puntos de marzo de 2001 a julio de 2026, además de GRACE regional. Ver [descargas de Nuevo León](REQUISITOS_DATOS_NUEVO_LEON.md).
 - [ ] Confirmar unidades, versión, calidad, cobertura y cita del producto seleccionado.
 - [x] Crear la cuenta NASA Earthdata del equipo (14 de noviembre de 2026).
 - [x] Probar que Hydrology Time Series entrega una serie larga de Monterrey: 26 años en menos de 20 segundos (14 de noviembre de 2026). Ver [Funcionalidades y tiempos](FUNCIONALIDADES.md).
-- [ ] Guardar en el repo ese CSV de Monterrey (GLDAS 2.1, 2000–2026) y registrarlo en `descargas.json`, para empezar la herramienta.
+- [x] Guardar GLDAS 2.1 de Monterrey desde marzo de 2001, tras el cambio de insumos, con originales y mensuales registrados en `descargas.json`. No se repitieron enero de 2000–febrero de 2001.
 - [ ] Repetir con el CSV el cálculo preliminar de tendencias de [Ideas](IDEAS.md), desde marzo de 2001.
 - [ ] Buscar una fuente independiente sobre el cambio en Monterrey, como pide la regla 1 de [Validación](VALIDACION.md).
 - [ ] Verificar en el artículo original la fórmula de «años que faltan» antes de usarla ([Ideas](IDEAS.md), idea 6).

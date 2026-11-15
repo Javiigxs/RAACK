@@ -58,7 +58,7 @@ flowchart LR
     s_appeears["Prueba AppEEARS Monterrey · procesándose"]
   end
   subgraph DEC["Decisiones pendientes"]
-    d_giovanni{"¿Usamos Giovanni?"}
+    d_giovanni{"¿Giovanni en la solución?"}
     d_canada{"¿La región está en Canadá?"}
     d_caso{"Elegir variable, región y periodo"}
   end
@@ -80,7 +80,7 @@ flowchart LR
   appeears -->|prueba| s_appeears
   a_earthdata --> s_appeears
   s_appeears -.->|ayuda a decidir| d_caso
-  giovanni -.->|pendiente| d_giovanni
+  giovanni -.->|solo descargas GLDAS autorizadas| d_giovanni
   hydrology -.->|su API enlaza Giovanni| d_giovanni
   seawifs -.->|lo usa como antecedente| d_giovanni
   rcm -.->|acceso público solo en Canadá| d_canada
@@ -98,10 +98,10 @@ flowchart LR
   classDef destino fill:#eef0f2,stroke:#3d4650,color:#1d2430
   classDef solicitud fill:#e6f4f8,stroke:#1b7f99,color:#1d2430
   classDef inicio fill:#1f2a44,stroke:#1f2a44,color:#ffffff
-  class hydrology,cdo,seawifs,medium,statsig,geo,ecosistemas,sar revisado
+  class giovanni,hydrology,cdo,seawifs,medium,statsig,geo,ecosistemas,sar revisado
   class appeears,rcm,swot requiere
   class knmi bloqueado
-  class giovanni noabierto
+  class  noabierto
   class f_gldas,f_gsom,f_seawifs,f_knmi,f_sar_nb,f_sar_qgis,f_sar_lic archivo
   class a_noaa,a_knmi,a_eodms acceso
   class a_earthdata revisado
@@ -115,8 +115,8 @@ flowchart LR
 
 | # | Recurso | Bloque oficial | Hasta dónde se llegó | Revisó |
 |---|---|---|---|---|
-| — | Giovanni | NASA · datos y recursos | No se abrió: decisión pendiente | — |
-| 01 | [Hydrology Time Series](../recursos/paginas/01-hydrology.md) | NASA · datos y recursos | Visor probado: Monterrey, 26 años | Codex |
+| — | Giovanni | NASA · datos y recursos | API autorizada solo para GLDAS | Codex |
+| 01 | [Hydrology Time Series](../recursos/paginas/01-hydrology.md) | NASA · datos y recursos | GLDAS: siete variables, dos puntos | Codex |
 | 02 | [AppEEARS](../recursos/paginas/02-appeears.md) | NASA · datos y recursos | Solicitud de prueba en cola | Codex |
 | 03 | [Climate Data Online · NOAA](../recursos/paginas/03-cdo.md) | NASA · datos y recursos | Servicio de datos sin token probado | Codex |
 | 04 | [Artículo SeaWiFS](../recursos/paginas/04-seawifs.md) | NASA · datos y recursos | Metodología del PDF | Codex |
@@ -152,6 +152,14 @@ flowchart LR
    - No descargó archivos de datos. No abrió Giovanni ni llamó a su API: usó solo el visor.
 
 En la tabla, «Revisó» es quien hizo la primera revisión de la página. Las ampliaciones posteriores están fechadas al final de cada ficha.
+
+## Actualización del 14 de noviembre de 2026 · continuación de las descargas
+
+- GLDAS quedó descargado: 14 originales cada tres horas, siete variables en Monterrey y Galeana, de marzo de 2001 a julio de 2026. Las medias mensuales conservan conteos y marcan diez combinaciones incompletas del último mes.
+- La persona autorizó el servicio de Giovanni únicamente para descargar las siete variables GLDAS; elegirlo como herramienta de la solución sigue pendiente. Ver [la decisión](decisiones/GIOVANNI.md).
+- Se descargó el netCDF científico GRACE tras el inicio de sesión humano en Earthdata. Su MD5 coincide con el oficial; se conserva íntegro en seis partes reconstruibles y como recorte de Nuevo León.
+- IMERG Final V07 termina en septiembre de 2025 según NASA y CMR. No se localizaron octubre–diciembre de 2025 como el mismo producto; no se sustituyeron ni interpolaron.
+- Los archivos, límites, procedencia y uso de IA del lote regional se detallan en [Datos solicitados para Nuevo León](REQUISITOS_DATOS_NUEVO_LEON.md). Codex preparó esta actualización a partir de la conversación retomada y las verificaciones de esta sesión.
 
 ## Cómo actualizarlo
 
