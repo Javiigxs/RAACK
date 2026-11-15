@@ -18,15 +18,16 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
   - [Ideas para la herramienta](docs/IDEAS.md) propuestas, con su paso por las cuatro reglas.
   - Fran propuso explorar lo que oculta el resumen anual y los cambios de calendario. El [mapa de datos](docs/MAPA_DE_DATOS.md) separa las cinco variables y enlaza la comparación anual de la lluvia.
   - [Datos regionales solicitados para Nuevo León](docs/REQUISITOS_DATOS_NUEVO_LEON.md): GLDAS (siete variables, dos puntos) y GRACE descargados y verificados; CHIRPS completo 1998–2025, cuencas y presas disponibles. IMERG Final V07 termina en septiembre de 2025; se documentó el límite oficial.
-  - [Página web](app/README.md), en inglés y con versión en español, con dos casos. **Caso 001, el detective del ciclo del agua** (idea que el equipo eligió, según el encargo de Fran del 14 de noviembre): interroga a siete sospechosos del balance de agua de Nuevo León y del Valle Central de California y da un veredicto con su certeza. **Caso 002:** lo que esconde el total anual de lluvia y el laboratorio de ocho pasos sobre Monterrey. La página abre con la Tierra en 3D y «la señal en cuadros», y cada número se explica al pulsarlo. Funciona en local, con 139 pruebas automáticas. Sin publicar y pendiente de revisión del equipo.
+  - [Página web](app/README.md), en inglés y con versión en español, con dos casos. **Caso 001, el detective del ciclo del agua** (idea que el equipo eligió, según el encargo de Fran del 14 de noviembre): interroga a siete sospechosos del balance de agua de Nuevo León y del Valle Central de California y da un veredicto con su certeza. **Caso 002:** lo que esconde el total anual de lluvia y el laboratorio de ocho pasos sobre Monterrey. La página abre con la Tierra en 3D y «la señal en cuadros», y cada número se explica al pulsarlo. El código y el sitio generado están en GitHub. Pasan las 139 pruebas automáticas. Quedan la revisión de los textos y el despliegue en GitHub Pages.
   - [Escalabilidad por país](docs/ESCALABILIDAD.md), propuesta de Fran del 15 de noviembre de 2026 y paso 9 del Caso 001: se elige un país, el globo gira hasta él y la página cuenta cuántas de las diez capas de datos del caso de Nuevo León están listas (Nuevo León, 10 de 10; la mayoría de los países, 7 de 10). Incluye un primer vistazo al agua almacenada de GRACE bajo 189 países.
+  - El [grafo de conocimiento](docs/CONOCIMIENTO.md) conecta las preguntas de los dos casos con sus fuentes, métodos, resultados y límites.
   - [Cifras del caso del agua verificadas](docs/DIAGNOSTICO_AGUA.md): 61 de 70 reproducidas con los archivos del repositorio. La pendiente de GRACE con años reales es −7.1 cm por década, no −8.5: el equipo decide cuál cita.
   - [Borradores de la entrega](docs/ENTREGA_BORRADORES.md): campos de la página del proyecto, siete diapositivas y guion de 30 segundos.
 - **Regla clave:** toda propuesta debe pasar las cuatro reglas de [docs/VALIDACION.md](docs/VALIDACION.md).
 - **Por decidir:**
   - Formato de la demo, cifra de GRACE que se cita y nombres del equipo: ver los [borradores de la entrega](docs/ENTREGA_BORRADORES.md).
-  - Cómo se publica el sitio (`site/`) y quién revisa los textos.
-  - Qué se hace con las texturas de la Tierra, cuyo permiso de uso no está confirmado: ver [Pendientes](docs/PENDIENTES.md).
+  - Quién activa GitHub Pages y quién revisa los textos.
+  - Obtener el permiso para usar en la entrega las texturas de la Tierra que Fran eligió conservar en GitHub. [Pendientes](docs/PENDIENTES.md).
   - Si la región está en Canadá, que decide si sirven GEO.ca y RCM.
   - Si se usa Giovanni como herramienta de la solución; su vía de descarga quedó autorizada solo para las siete variables GLDAS.
 - **No asumir:**
@@ -59,6 +60,7 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | ¿Qué textos hay listos para la página del proyecto y la demo? | [docs/ENTREGA_BORRADORES.md](docs/ENTREGA_BORRADORES.md) |
 | ¿Cómo se lleva el caso a otro país y cuántos datos faltan en cada uno? | [docs/ESCALABILIDAD.md](docs/ESCALABILIDAD.md) |
 | ¿Qué queda por decidir o hacer? | [docs/PENDIENTES.md](docs/PENDIENTES.md) |
+| ¿Qué datos respaldan cada hallazgo y qué límites tiene? | [Grafo de conocimiento](docs/CONOCIMIENTO.md) |
 | ¿Qué se hizo, en qué orden y quién? | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
 
 ## Reto, estado y decisiones
@@ -77,6 +79,7 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | [app/README.md](app/README.md) | Página web del reto (Svelte + Vite, sitio estático), en inglés: la Tierra de la entrada, los dos casos, el paso de escalabilidad, de dónde salen sus datos, cómo ejecutarla, probarla y publicarla, métodos, uso de IA y límites. | 15 kB |
 | [docs/DIAGNOSTICO_AGUA.md](docs/DIAGNOSTICO_AGUA.md) | Verificación del caso del agua: cada cifra del equipo frente a la reproducida, y cuatro hallazgos (pendiente con años que faltan, prueba no calculable, Valle Central, acuíferos contrastados con el DOF). La genera `app/scripts/build_water.py`. | 12 kB |
 | [docs/ENTREGA_BORRADORES.md](docs/ENTREGA_BORRADORES.md) | Borradores en inglés para los ocho campos de la página del proyecto, siete diapositivas, guion de 30 segundos, lista antes de enviar y borrador para contar la escalabilidad. | 16 kB |
+| [docs/CONOCIMIENTO.md](docs/CONOCIMIENTO.md) | Grafo de preguntas, fuentes, métodos y hallazgos. Ocho vistas enlazan los casos de agua y clima con sus pruebas, sus límites y el paso de escalabilidad. | 45 kB |
 | [docs/ESCALABILIDAD.md](docs/ESCALABILIDAD.md) | Paso 9 de la página, idea de Fran: las diez capas de datos, la regla que dice cuáles están listas en cada país, el primer vistazo de GRACE por país, su paso por las cuatro reglas, límites y decisiones abiertas. | 9 kB |
 
 ## Recursos del reto
@@ -134,6 +137,8 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | [recursos/archivos/csa-sar-LICENSE.txt](recursos/archivos/csa-sar-LICENSE.txt) | Licencia del tutorial SAR | 4 kB | [recursos/paginas/12-sar.md](recursos/paginas/12-sar.md) |
 | [recursos/archivos/gldas-evapotranspiracion-muestra-2016-05.csv](recursos/archivos/gldas-evapotranspiracion-muestra-2016-05.csv) | Muestra GLDAS de una semana (53 filas) | 2 kB | [docs/REFERENCIA_CIENTIFICA.md](docs/REFERENCIA_CIENTIFICA.md) |
 | [recursos/archivos/descargas.json](recursos/archivos/descargas.json) | Manifiesto de 90 archivos: origen, tamaño, SHA-256 y transformaciones documentadas | 133 kB | [recursos/README.md](recursos/README.md) |
+| [docs/CONOCIMIENTO.json](docs/CONOCIMIENTO.json) | Nodos, relaciones, vistas y cifras del grafo de conocimiento | 68 kB | [docs/CONOCIMIENTO.md](docs/CONOCIMIENTO.md) |
+| [docs/generar_conocimiento.py](docs/generar_conocimiento.py) | Genera la nota y el JSON del grafo a partir de las fuentes del proyecto | 54 kB | [docs/CONOCIMIENTO.md](docs/CONOCIMIENTO.md) |
 | [docs/CONTEXTO.json](docs/CONTEXTO.json) | Nodos y aristas del grafo de contexto | 15 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
 | [docs/CONTEXTO.svg](docs/CONTEXTO.svg) | Imagen del grafo de contexto | 21 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
 | [docs/generar_contexto.py](docs/generar_contexto.py) | Script que genera el grafo de contexto | 27 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |

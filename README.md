@@ -20,6 +20,7 @@ Materiales preparados para [Be An Earth System Trend Detective!](https://www.spa
 - [Cobertura de los 13 recursos](recursos/COBERTURA.md): hasta dónde se llegó en cada página, qué se descargó y por qué aparece tanto Canadá.
 - Fichas por página: una por cada uno de los 12 recursos revisados, enlazadas desde la [cobertura](recursos/COBERTURA.md) y el [índice](INDICE.md).
 - [Bases de datos que hay que pedir](docs/SOLICITUDES_DE_DATOS.md) y para qué las usaríamos.
+- [Grafo de conocimiento](docs/CONOCIMIENTO.md) con las fuentes, los métodos y los hallazgos de los casos de agua y clima.
 - [Grafo de contexto](docs/CONTEXTO.md) de la preparación ([imagen](docs/CONTEXTO.svg), [datos](docs/CONTEXTO.json)).
 - [Reto y objetivos](docs/RETO.md).
 - [Referencia científica y muestra GLDAS](docs/REFERENCIA_CIENTIFICA.md).
