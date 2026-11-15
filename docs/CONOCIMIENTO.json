@@ -1090,6 +1090,20 @@
       ]
     },
     {
+      "id": "p_dete",
+      "tipo": "pagina",
+      "grupo": "pagina",
+      "etiqueta": "DE-T · asistente del caso",
+      "texto": "Responde con Kimi solo con los datos del caso del agua: cuatro herramientas calculan las cifras y un verificador las busca en los datos antes de mostrarlas. Se abre bajo la explicación de cada número («¿No quedó claro? Pregúntale al DE-T»), desde el veredicto y desde la cabecera, y solo aparece si su servidor está encendido. Diseño de Fran; integración del 15 de noviembre de 2026.",
+      "estado": "implementado",
+      "fuentes": [
+        {
+          "titulo": "DE-T",
+          "ruta": "app/dete/README.md"
+        }
+      ]
+    },
+    {
       "id": "t_entrega",
       "tipo": "pendiente",
       "grupo": "pendientes",
@@ -1113,6 +1127,20 @@
       "fuentes": [
         {
           "titulo": "Decisión y procedencia",
+          "ruta": "docs/PENDIENTES.md"
+        }
+      ]
+    },
+    {
+      "id": "t_dete",
+      "tipo": "pendiente",
+      "grupo": "pendientes",
+      "etiqueta": "Clave de Kimi y catálogo de DE-T",
+      "texto": "DE-T se probó con un Kimi simulado. Falta la clave del equipo, probarlo con el modelo real, aprobar el catálogo de opciones y declarar Kimi en el formulario de uso de IA.",
+      "estado": "pendiente",
+      "fuentes": [
+        {
+          "titulo": "Pendientes",
           "ruta": "docs/PENDIENTES.md"
         }
       ]
@@ -2291,6 +2319,24 @@
       "destino": "t_textos",
       "relacion": "requiere revisión",
       "pendiente": true
+    },
+    {
+      "origen": "p_dete",
+      "destino": "p_pagina",
+      "relacion": "forma parte de",
+      "pendiente": false
+    },
+    {
+      "origen": "p_agua",
+      "destino": "p_dete",
+      "relacion": "le da sus cifras",
+      "pendiente": false
+    },
+    {
+      "origen": "p_dete",
+      "destino": "t_dete",
+      "relacion": "requiere",
+      "pendiente": true
     }
   ],
   "vistas": [
@@ -2464,10 +2510,12 @@
         "entrega",
         "p_agua",
         "p_mundo",
+        "p_dete",
         "t_entrega",
         "t_demo",
         "t_textos",
-        "t_texturas"
+        "t_texturas",
+        "t_dete"
       ]
     }
   ]

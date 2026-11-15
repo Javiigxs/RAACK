@@ -280,6 +280,12 @@ N("p_lab", "pagina", "pagina", "Investigación en ocho pasos",
 N("p_expediente", "pagina", "pagina", "Expediente",
   "Fuentes, métodos, límites, declaración de uso de IA y descarga del resultado en JSON.",
   "implementado", ("Página web", "app/README.md"))
+N("p_dete", "pagina", "pagina", "DE-T · asistente del caso",
+  "Responde con Kimi solo con los datos del caso del agua: cuatro herramientas calculan las cifras y un verificador "
+  "las busca en los datos antes de mostrarlas. Se abre bajo la explicación de cada número («¿No quedó claro? "
+  "Pregúntale al DE-T»), desde el veredicto y desde la cabecera, y solo aparece si su servidor está encendido. "
+  "Diseño de Fran; integración del 15 de noviembre de 2026.",
+  "implementado", ("DE-T", "app/dete/README.md"))
 
 # ---------- Pendientes
 N("t_entrega", "pendiente", "pendientes", "Registrar la entrega del reto",
@@ -289,6 +295,10 @@ N("t_texturas", "pendiente", "pendientes", "Permiso de las texturas",
   "Fran eligió conservar el globo actual en GitHub después de una comparación local con mapas de la NASA. "
   "Queda obtener permiso para usar las texturas actuales en la entrega.",
   "pendiente", ("Decisión y procedencia", "docs/PENDIENTES.md"))
+N("t_dete", "pendiente", "pendientes", "Clave de Kimi y catálogo de DE-T",
+  "DE-T se probó con un Kimi simulado. Falta la clave del equipo, probarlo con el modelo real, aprobar el "
+  "catálogo de opciones y declarar Kimi en el formulario de uso de IA.",
+  "pendiente", ("Pendientes", "docs/PENDIENTES.md"))
 N("t_demo", "pendiente", "pendientes", "Demo y textos en inglés",
   "Vídeo de 30 segundos o 7 diapositivas, y los campos de la página del proyecto.",
   "pendiente", ("Reglas oficiales", "docs/REGLAS_OFICIALES.md"))
@@ -474,6 +484,9 @@ ARISTAS = [
     ("p_mundo", "t_texturas", "requiere para la entrega", True),
     ("entrega", "t_demo", "falta", True),
     ("p_pagina", "t_textos", "requiere revisión", True),
+    ("p_dete", "p_pagina", "forma parte de", False),
+    ("p_agua", "p_dete", "le da sus cifras", False),
+    ("p_dete", "t_dete", "requiere", True),
 ]
 
 GRUPOS = {
@@ -528,7 +541,7 @@ VISTAS = [
          intro="Qué enseña la herramienta, de dónde sale cada parte y qué queda antes de la entrega.",
          nodos=["h_vacio", "h_gemelos", "h_lluvia", "h_noches", "h_lugares", "h_verdor", "h_aire", "m_jurado",
                 "m_coartadas", "p_pagina", "p_caso", "p_lab", "p_expediente", "criterios", "entrega",
-                "p_agua", "p_mundo", "t_entrega", "t_demo", "t_textos", "t_texturas"]),
+                "p_agua", "p_mundo", "p_dete", "t_entrega", "t_demo", "t_textos", "t_texturas", "t_dete"]),
 ]
 
 ESENCIAL = [

@@ -8,7 +8,7 @@ fecha: 2026-11-15
 
 El equipo investiga qué explica la pérdida de agua en Nuevo León y qué ocultan los promedios anuales en Monterrey. Este grafo conecta las preguntas con los datos, el método, los hallazgos y las pruebas que aún faltan. Cada vista abre una parte del grafo. El [contexto](CONTEXTO.md) conserva la historia del trabajo.
 
-Actualizado el 15 de noviembre de 2026. Contiene 91 nodos y 138 relaciones. Las etiquetas «fijado por prueba» y «calculado por la página» remiten al motor del caso correspondiente.
+Actualizado el 15 de noviembre de 2026. Contiene 93 nodos y 141 relaciones. Las etiquetas «fijado por prueba» y «calculado por la página» remiten al motor del caso correspondiente.
 
 ## Lo esencial en un minuto
 
@@ -576,6 +576,7 @@ flowchart LR
     p_caso["Caso guiado · dos barras,<br/>dos calendarios, ¿tendencia?"]
     p_lab["Investigación en ocho pasos"]
     p_expediente["Expediente"]
+    p_dete["DE-T · asistente del caso"]
   end
   subgraph sg_pagina_reglas["Reto y reglas"]
     criterios["Cinco criterios, de 1 a 5"]
@@ -592,6 +593,7 @@ flowchart LR
     t_demo["Demo y textos en inglés"]
     t_textos["Revisar los textos de la demo"]
     t_texturas["Permiso de las texturas"]
+    t_dete["Clave de Kimi y catálogo de DE-T"]
   end
   p_agua -->|forma parte de| p_pagina
   p_agua -->|se amplía con| p_mundo
@@ -614,16 +616,19 @@ flowchart LR
   p_mundo -.->|requiere para la entrega| t_texturas
   entrega -.->|falta| t_demo
   p_pagina -.->|requiere revisión| t_textos
+  p_dete -->|forma parte de| p_pagina
+  p_agua -->|le da sus cifras| p_dete
+  p_dete -.->|requiere| t_dete
   classDef hallazgo fill:#e7f5ec,stroke:#2e7d4f,color:#1d2430
   class h_vacio,h_gemelos,h_lluvia,h_noches,h_lugares,h_verdor,h_aire hallazgo
   classDef metodo fill:#f2f2f2,stroke:#8a8a8a,color:#1d2430
   class m_jurado,m_coartadas metodo
   classDef pagina fill:#dbe7ff,stroke:#2a4fb5,color:#1d2430
-  class p_pagina,p_caso,p_lab,p_expediente,p_agua,p_mundo pagina
+  class p_pagina,p_caso,p_lab,p_expediente,p_agua,p_mundo,p_dete pagina
   classDef reto fill:#1f2a44,stroke:#1f2a44,color:#ffffff
   class criterios,entrega reto
   classDef pendiente fill:#ffffff,stroke:#8a8a8a,stroke-dasharray:5 4,color:#1d2430
-  class t_entrega,t_demo,t_textos,t_texturas pendiente
+  class t_entrega,t_demo,t_textos,t_texturas,t_dete pendiente
 ```
 
 | Parte | Qué hace | Estado |
@@ -632,11 +637,13 @@ flowchart LR
 | Caso guiado · dos barras, dos calendarios, ¿tendencia? | México, Monterrey, lluvia: dos totales casi iguales, los días de cada año y el veredicto de 23 años. Incluye un buscador de años gemelos. | implementado |
 | Investigación en ocho pasos | Qué, dónde, cuándo, mirar y dibujar una línea, veredicto, coartadas, cinco lugares y segundo testigo, para siete variables. | implementado |
 | Expediente | Fuentes, métodos, límites, declaración de uso de IA y descarga del resultado en JSON. | implementado |
+| DE-T · asistente del caso | Responde con Kimi solo con los datos del caso del agua: cuatro herramientas calculan las cifras y un verificador las busca en los datos antes de mostrarlas. Se abre bajo la explicación de cada número («¿No quedó claro? Pregúntale al DE-T»), desde el veredicto y desde la cabecera, y solo aparece si su servidor está encendido. Diseño de Fran; integración del 15 de noviembre de 2026. | implementado |
 
 ### Pendientes
 
 - [ ] **Registrar la entrega del reto.** El sitio generado está en GitHub. Queda habilitar la demo pública, verificar el enlace e incluirlo en la entrega oficial. [Pendientes](PENDIENTES.md)
 - [ ] **Permiso de las texturas.** Fran eligió conservar el globo actual en GitHub después de una comparación local con mapas de la NASA. Queda obtener permiso para usar las texturas actuales en la entrega. [Decisión y procedencia](PENDIENTES.md)
+- [ ] **Clave de Kimi y catálogo de DE-T.** DE-T se probó con un Kimi simulado. Falta la clave del equipo, probarlo con el modelo real, aprobar el catálogo de opciones y declarar Kimi en el formulario de uso de IA. [Pendientes](PENDIENTES.md)
 - [ ] **Demo y textos en inglés.** Vídeo de 30 segundos o 7 diapositivas, y los campos de la página del proyecto. [Reglas oficiales](REGLAS_OFICIALES.md)
 - [ ] **Revisar los textos de la demo.** El equipo eligió el caso del agua. Falta que revise los borradores en inglés y explique el diferenciador con sus palabras. [Pendientes](PENDIENTES.md)
 - [ ] **Completar la lluvia del Valle Central.** Los datos regionales de IMERG y CHIRPS para California faltan en el repositorio. El caso allí dispone de GRACE. [Diagnóstico](DIAGNOSTICO_AGUA.md)

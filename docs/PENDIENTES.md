@@ -76,3 +76,15 @@ Fran propuso que la página cuente, país por país, cuántas capas de datos del
 - [ ] Opcional: descargar un mapa de fronteras (Natural Earth, dominio público) para dibujar el contorno del país y promediar GRACE en todo su territorio. No se hizo sin permiso.
 - [ ] Al grabar la demo en un equipo con las animaciones del sistema desactivadas, activar el movimiento con el botón ▶ de la cabecera o con `?motion=full`.
 - [x] Subir a GitHub la página, el sitio generado, los datos de países, las capturas y las notas. Codex verificó los cuatro commits en `main` el 15 de noviembre de 2026.
+
+## Actualización del 15 de noviembre de 2026 · DE-T, el asistente del caso
+
+Fran entregó el diseño del asistente (zip `hydrodetective-asistente`: servidor con Kimi, cuatro herramientas que calculan las cifras y un verificador) y pidió meterlo en la página. Está integrado en local: al pulsar un número, la explicación termina con «¿No quedó claro? Pregúntale al DE-T»; también se abre desde el veredicto y desde la cabecera. Cómo se enciende y qué cambió respecto al zip: [app/dete/README.md](../app/dete/README.md). Lo que queda:
+
+- [ ] **Clave de Kimi.** Una persona del equipo crea la API key en platform.kimi.ai y la pone en `app/dete/.env` (copia de `.env.example`). Nunca se sube al repositorio.
+- [ ] **Probar DE-T con Kimi real.** El circuito completo se probó con un Kimi simulado en local; falta repetir las cinco pruebas rápidas del README con el modelo real.
+- [ ] **Aprobar el catálogo de opciones** (`app/dete/catalogo.md`). Es un borrador preparado con ayuda de IA; DE-T lo cita como «📚 Del catálogo».
+- [ ] **Declarar Kimi (Moonshot AI)** en el formulario de uso de IA de la entrega, además de Claude y Codex.
+- [ ] **Decidir cómo lo verán los jueces.** La copia en GitHub Pages es estática y no muestra a DE-T; se ve con `npm run dete` en un equipo con la clave. Si entra en la demo, grabarlo desde ese servidor.
+- [ ] Cuenta Tier0 de Kimi: cabe más o menos una pregunta por minuto. Si varias personas lo van a usar a la vez, recargar hasta Tier1.
+- [x] Las cifras de DE-T coinciden con las de la página. El zip daba −8,53 cm por década en GRACE (pendiente por paso de la serie); ahora DE-T usa −7,135, la cifra de la página, y lo comprueba una prueba automática.
