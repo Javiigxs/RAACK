@@ -1,6 +1,8 @@
 # RAACK
 Be An Earth System Trend Detective Challenge
 
+🌎 **Visit our project page: [https://javiigxs.github.io/RAACK/site/](https://javiigxs.github.io/RAACK/site/)**
+
 Your app should be able to do this:
 1. Decide on the data variable(s) for analysis.
 2. Choose a region for the analysis.
@@ -8,29 +10,29 @@ Your app should be able to do this:
 4. Create the time-series and examine it. Does it appear to have a trend?
 5. Analyze the trend for significance.
 
-## Recursos del hackathon
+## Hackathon resources
 
-Materiales preparados para [Be An Earth System Trend Detective!](https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/).
+Materials prepared for [Be An Earth System Trend Detective!](https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/). The team's internal notes linked below are written in Spanish.
 
-- [Índice para personas e IAs](INDICE.md): estado del proyecto y mapa de todas las notas. Empieza aquí.
-- [Reglas oficiales](docs/REGLAS_OFICIALES.md): cómo puntúan los jueces y qué exige la entrega del domingo 15 de noviembre de 2026.
-- [Ideas para la herramienta](docs/IDEAS.md): propuestas por validar, con una primera señal en los datos de Monterrey.
-- [Qué se puede hacer con cada recurso y cuánto tarda](docs/FUNCIONALIDADES.md), y las [cuatro reglas de validación](docs/VALIDACION.md) del equipo.
-- [Catálogo de recursos y descargas](recursos/README.md): archivos iniciales y descargas posteriores, fuentes y estado de acceso a los portales.
-- [Cobertura de los 13 recursos](recursos/COBERTURA.md): hasta dónde se llegó en cada página, qué se descargó y por qué aparece tanto Canadá.
-- Fichas por página: una por cada uno de los 12 recursos revisados, enlazadas desde la [cobertura](recursos/COBERTURA.md) y el [índice](INDICE.md).
-- [Bases de datos que hay que pedir](docs/SOLICITUDES_DE_DATOS.md) y para qué las usaríamos.
-- [Grafo de conocimiento](docs/CONOCIMIENTO.md) con las fuentes, los métodos y los hallazgos de los casos de agua y clima.
-- [Grafo de contexto](docs/CONTEXTO.md) de la preparación ([imagen](docs/CONTEXTO.svg), [datos](docs/CONTEXTO.json)).
-- [Reto y objetivos](docs/RETO.md).
-- [Referencia científica y muestra GLDAS](docs/REFERENCIA_CIENTIFICA.md).
-- [Pendientes del equipo](docs/PENDIENTES.md).
-- [Giovanni: pendiente de nuestra decisión](docs/decisiones/GIOVANNI.md).
+- [Index for people and AIs](INDICE.md): project status and a map of every note. Start here.
+- [Official rules](docs/REGLAS_OFICIALES.md): how the judges score and what the Sunday, November 15, 2026 submission requires.
+- [Ideas for the tool](docs/IDEAS.md): proposals still to be validated, with a first signal in the Monterrey data.
+- [What each resource can do and how long it takes](docs/FUNCIONALIDADES.md), and the team's [four validation rules](docs/VALIDACION.md).
+- [Resource and download catalog](recursos/README.md): initial files and later downloads, sources, and portal access status.
+- [Coverage of the 13 resources](recursos/COBERTURA.md): how far we got on each page, what was downloaded, and why Canada shows up so often.
+- Per-page fact sheets: one for each of the 12 reviewed resources, linked from the [coverage](recursos/COBERTURA.md) note and the [index](INDICE.md).
+- [Databases we need to request](docs/SOLICITUDES_DE_DATOS.md) and what we would use them for.
+- [Knowledge graph](docs/CONOCIMIENTO.md) with the sources, methods, and findings of the water and climate cases.
+- [Context graph](docs/CONTEXTO.md) of the preparation work ([image](docs/CONTEXTO.svg), [data](docs/CONTEXTO.json)).
+- [Challenge and objectives](docs/RETO.md).
+- [Scientific reference and GLDAS sample](docs/REFERENCIA_CIENTIFICA.md).
+- [Team to-dos](docs/PENDIENTES.md).
+- [Giovanni: pending our decision](docs/decisiones/GIOVANNI.md).
 
-El repositorio es también una bóveda de Obsidian: en Obsidian, usa «Abrir carpeta como bóveda» sobre esta carpeta. Los enlaces funcionan en GitHub y en Obsidian. Los agentes de IA tienen sus reglas en [AGENTS.md](AGENTS.md).
+The repository is also an Obsidian vault: in Obsidian, use "Open folder as vault" on this folder. Links work both on GitHub and in Obsidian. AI agents have their rules in [AGENTS.md](AGENTS.md).
 
-La carpeta `recursos/archivos/`, descrita en el [catálogo](recursos/README.md), conserva los archivos iniciales y los lotes posteriores de AppEEARS, lluvia, GLDAS, GRACE, cuencas y presas. El [manifiesto](recursos/archivos/descargas.json) registra procedencia, tamaño y SHA-256.
+The `recursos/archivos/` folder, described in the [catalog](recursos/README.md), holds the initial files and later batches from AppEEARS, rainfall, GLDAS, GRACE, watersheds, and dams. The [manifest](recursos/archivos/descargas.json) records provenance, size, and SHA-256.
 
-**El 14 de noviembre de 2026 se autorizó el servicio de Giovanni únicamente para descargar las siete variables GLDAS. Su selección como herramienta de la solución sigue pendiente del equipo; ver la actualización de [Giovanni](docs/decisiones/GIOVANNI.md).**
+**On November 14, 2026, the Giovanni service was authorized solely to download the seven GLDAS variables. Whether it will be selected as a tool for the solution is still pending the team's decision; see the [Giovanni](docs/decisiones/GIOVANNI.md) update.**
 
-Los [datos regionales de Nuevo León](docs/REQUISITOS_DATOS_NUEVO_LEON.md) incluyen siete variables GLDAS en Monterrey y Galeana desde marzo de 2001 hasta julio de 2026, GRACE con originales reconstruibles y recorte regional, CHIRPS, cuencas y presas. IMERG Final V07 termina en septiembre de 2025; se conserva la evidencia oficial del límite. La elección del caso y sus conclusiones siguen sujetas a las cuatro reglas de validación. Codex asistió las descargas, transformaciones, código y documentación; los valores científicos proceden de sus proveedores.
+The [regional data for Nuevo León](docs/REQUISITOS_DATOS_NUEVO_LEON.md) include seven GLDAS variables for Monterrey and Galeana from March 2001 to July 2026, GRACE with reconstructible originals and a regional subset, CHIRPS, watersheds, and dams. IMERG Final V07 ends in September 2025; the official evidence of that limit is kept. The choice of case and its conclusions remain subject to the four validation rules. Codex assisted with the downloads, transformations, code, and documentation; the scientific values come from their providers. Claude translated this README into English.
