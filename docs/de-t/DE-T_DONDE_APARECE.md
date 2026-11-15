@@ -56,3 +56,18 @@ La página ya está publicada en GitHub Pages y Fran preguntó si DE-T podía es
 El detalle y las opciones del comando están en [las instrucciones de DE-T](../../app/dete/README.md), sección «DE-T en la página pública: encenderlo y apagarlo».
 
 Nota redactada con ayuda de IA (Claude) para el equipo RAACK.
+
+## Actualización del 15 de noviembre de 2026, por la tarde · siempre visible, apagado
+
+Fran abrió la página pública a las 11:18, no vio a DE-T y pidió dos cosas: que DE-T esté siempre visible, aunque apagado, y los comandos para encenderlo y apagarlo.
+
+- **Qué cambió.** DE-T ya no se esconde. El botón de la cabecera, el redondo de la esquina, la invitación del veredicto y la franja del paso 9 están siempre. Mientras su servidor no responde dicen «Off», no dejan escribir ni enviar nada, y el panel explica que DE-T corre en un equipo del propio equipo y se enciende para las sesiones en vivo. «Check again» vuelve a preguntar si está encendido, sin recargar la página.
+- **Lo que sigue saliendo solo con DE-T encendido:** «Not clear? Ask DE-T», bajo la explicación de un número, y «Ask DE-T about this count». Son atajos que mandan una pregunta al instante; apagado no tendrían a quién mandarla.
+- **Por qué Fran no lo veía.** DE-T estaba encendido. Su túnel cambia de dirección cada veinte o veinticinco minutos (ese día, a las 10:58 y a las 11:18) y GitHub tarda hasta 5 minutos en entregar el interruptor nuevo: en ese rato la página leía la dirección vieja y escondía a DE-T.
+- **Lo que se hizo para eso.** La página lee el interruptor primero por la API de GitHub, que lo renueva cada minuto (medido ese día; admite 60 peticiones por hora desde una misma dirección), y si no responde, por el archivo de siempre. Si una pregunta falla, vuelve a leer el interruptor y, si DE-T responde en otra dirección, pregunta allí una sola vez.
+- **Los comandos**, desde `app/`: `npm run dete:publico` lo enciende y `npm run dete:apagar` (o Ctrl+C en su terminal) lo apaga. Sin encenderlo, la página lo muestra apagado.
+- **Cómo se comprobó.** Apagado, en una copia estática del sitio. Encendido, con el servidor de prueba y el Kimi simulado: se apagó el servidor a media conversación (la página pasó a «Off» y lo dijo) y se volvió a encender («Check again» lo recuperó). En inglés y español, a 1280 y 375 px, en tema claro y oscuro. Siete pruebas nuevas del interruptor (206 en total).
+- **Lo que no se probó.** El encendido en la página pública con esta versión: no se encendió el DE-T público, que gasta saldo y lo decide Fran.
+- **Queda para la tarea #247 del tablero.** Las instrucciones de DE-T y los avisos del comando todavía dicen que, al apagar, la página «deja de mostrar» a DE-T; ahora lo muestra apagado. `npm run dete:apagar` funciona en el equipo de Fran, pero sus cambios siguen sin confirmar.
+
+Actualización redactada con ayuda de IA (Claude) para el equipo RAACK.
