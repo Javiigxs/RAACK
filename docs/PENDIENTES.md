@@ -51,3 +51,28 @@ Detalle en [Reglas oficiales](REGLAS_OFICIALES.md).
 - [ ] Reunir las referencias: datos de NASA, datos de agencias socias, bibliotecas, imágenes y textos.
 - [ ] Probar los enlaces públicos en una ventana privada.
 - [ ] Completar todos los campos de la página del proyecto y pulsar **Submit for Judging** con margen.
+
+## Actualización del 14 de noviembre de 2026, por la noche · caso del agua
+
+Según el encargo de Fran, el equipo eligió la idea «detective del ciclo del agua». Está construida en la [página web](../app/README.md) como Caso 001 y funciona en local. Lo que queda es del equipo:
+
+- [ ] Revisar los textos de la página en inglés y en español: son un primer borrador hecho con IA.
+- [ ] Decidir qué cifra de GRACE se cita: −7.1 cm por década (años reales, la que muestra la página) o −8.5 (script original). Ver la [verificación](DIAGNOSTICO_AGUA.md).
+- [ ] Poner los nombres del equipo en los créditos de la página y en la demo.
+- [ ] Elegir el formato de la demo y terminarla a partir de los [borradores](ENTREGA_BORRADORES.md).
+- [ ] Publicar el sitio: subir `app/` y `site/` a GitHub y activar GitHub Pages (lo hace quien administra el repositorio).
+- [ ] Opcional: guardar la lluvia del Valle Central (IMERG y CHIRPS) en `recursos/archivos/valle-central/` y volver a ejecutar `app/scripts/build_water.py`. Sin esos archivos la página no muestra esas cifras.
+- [ ] Opcional: guardar los datos del norte de México, Ciudad del Cabo y el Alto Madeira si se quieren mostrar. Hoy no están en el repositorio.
+
+## Actualización del 15 de noviembre de 2026 · escalabilidad por país y diseño
+
+Fran propuso que la página cuente, país por país, cuántas capas de datos del caso de Nuevo León ya existen. Está construido como paso 9 del Caso 001 y funciona en local: ver [Escalabilidad](ESCALABILIDAD.md). Lo que queda:
+
+- [ ] **Texturas de la Tierra: permiso sin confirmar.** Los tres mapas del planeta (`app/public/earth/`) vienen del tutorial de referencia de la entrada (Robinzon100, «3D hero»). La guía que acompañaba al zip de diseño indica que ese repositorio no declara licencia. Las reglas de Space Apps piden no usar material sin permiso y citar todo lo externo. Opciones: pedir permiso al autor, o sustituirlos por los mapas Blue Marble y Black Marble de la NASA, de uso libre. Lo segundo pide descargar archivos y no se ha hecho.
+- [ ] Decidir si la página dice «10 data layers» (como está) o «databases»: las diez capas salen de siete fuentes.
+- [ ] Revisar los textos del paso 9 en inglés y en español: son un primer borrador hecho con IA.
+- [ ] Decidir si el paso 9 entra en la demo y cómo se cuenta. Hay un borrador en los [borradores de la entrega](ENTREGA_BORRADORES.md).
+- [ ] Confirmar la licencia de la lista de países antes de citarla en las referencias (ODbL 1.0 según el proyecto de origen; GPL-3+ el paquete de Linux Mint).
+- [ ] Opcional: descargar un mapa de fronteras (Natural Earth, dominio público) para dibujar el contorno del país y promediar GRACE en todo su territorio. No se hizo sin permiso.
+- [ ] Al grabar la demo en un equipo con las animaciones del sistema desactivadas, activar el movimiento con el botón ▶ de la cabecera o con `?motion=full`.
+- [ ] Publicar: `app/`, `site/`, `recursos/archivos/mundo/` y las notas nuevas siguen solo en el clon local.

@@ -189,3 +189,9 @@ Fran planteó dos preguntas para el detective en los mensajes de las 16:12. El e
 2. **¿Se adelantan, se retrasan o se acortan los ciclos naturales?** Fran propone investigar cambios en el calendario. Para ponerlo a prueba se pueden seguir, año a año, las fechas en que se acumula cierta parte de la lluvia o el mes de máximo verdor. Cada indicador necesita una definición y suficiente cobertura en la época que se compara.
 
 El [mapa de datos para estas propuestas](MAPA_DE_DATOS.md) reúne las series por variable, un ejemplo para la demo, las reglas de calidad y el estado de validación. La propuesta de Fran y la pregunta del equipo sobre la fiabilidad de los datos se complementan: después de descubrir un patrón, se puede comprobar si también aparece en la estación cercana. Codex organizó los datos y redactó esta actualización a partir de los mensajes del equipo.
+
+## Propuesta de Fran · 15 de noviembre de 2026 · escalabilidad por país
+
+Fran propuso, para cubrir la escalabilidad, que la página diga país por país cuántas de las bases de datos que hicieron falta en Nuevo León ya existen allí, por ejemplo «7/10», de modo que se vea cuánto falta recopilar. Nuevo León sería el caso más valioso, con 10 de 10, y el Valle Central de California el segundo caso. Pidió elegir el país en un globo interactivo: al seleccionar Italia, el mundo gira hasta quedar encima de ella.
+
+Está construida como paso 9 del caso del agua y funciona en local. Qué hace, las reglas de la cuenta, su paso por las cuatro reglas y lo que falta decidir están en [Escalabilidad](ESCALABILIDAD.md). Claude (IA) escribió el código y los textos; la idea y la forma de presentarla son de Fran. El equipo aún no ha revisado los textos ni ha decidido si entra en la demo.

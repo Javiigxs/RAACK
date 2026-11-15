@@ -2,7 +2,7 @@
 
 Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre solo lo que necesites:** cada línea dice qué contiene la nota y cuánto ocupa. El repositorio es también una bóveda de Obsidian; los enlaces funcionan en GitHub y en Obsidian. Los agentes de IA tienen sus reglas en [AGENTS.md](AGENTS.md).
 
-## Estado en 30 segundos · 14 de noviembre de 2026, por la tarde
+## Estado en 30 segundos · 15 de noviembre de 2026, de madrugada
 
 - **Reto:** NASA Space Apps 2026, *Be An Earth System Trend Detective!* Hay que construir una herramienta que elija variable, región y periodo, dibuje la serie y diga cuánto cambia y si la tendencia es significativa.
 - **Entrega:** domingo 15 de noviembre de 2026 a las 23:59, hora local. Todo en inglés, demo de 30 segundos o 7 diapositivas y declaración de uso de IA: [docs/REGLAS_OFICIALES.md](docs/REGLAS_OFICIALES.md).
@@ -18,11 +18,15 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
   - [Ideas para la herramienta](docs/IDEAS.md) propuestas, con su paso por las cuatro reglas.
   - Fran propuso explorar lo que oculta el resumen anual y los cambios de calendario. El [mapa de datos](docs/MAPA_DE_DATOS.md) separa las cinco variables y enlaza la comparación anual de la lluvia.
   - [Datos regionales solicitados para Nuevo León](docs/REQUISITOS_DATOS_NUEVO_LEON.md): GLDAS (siete variables, dos puntos) y GRACE descargados y verificados; CHIRPS completo 1998–2025, cuencas y presas disponibles. IMERG Final V07 termina en septiembre de 2025; se documentó el límite oficial.
+  - [Página web](app/README.md), en inglés y con versión en español, con dos casos. **Caso 001, el detective del ciclo del agua** (idea que el equipo eligió, según el encargo de Fran del 14 de noviembre): interroga a siete sospechosos del balance de agua de Nuevo León y del Valle Central de California y da un veredicto con su certeza. **Caso 002:** lo que esconde el total anual de lluvia y el laboratorio de ocho pasos sobre Monterrey. La página abre con la Tierra en 3D y «la señal en cuadros», y cada número se explica al pulsarlo. Funciona en local, con 139 pruebas automáticas. Sin publicar y pendiente de revisión del equipo.
+  - [Escalabilidad por país](docs/ESCALABILIDAD.md), propuesta de Fran del 15 de noviembre de 2026 y paso 9 del Caso 001: se elige un país, el globo gira hasta él y la página cuenta cuántas de las diez capas de datos del caso de Nuevo León están listas (Nuevo León, 10 de 10; la mayoría de los países, 7 de 10). Incluye un primer vistazo al agua almacenada de GRACE bajo 189 países.
+  - [Cifras del caso del agua verificadas](docs/DIAGNOSTICO_AGUA.md): 61 de 70 reproducidas con los archivos del repositorio. La pendiente de GRACE con años reales es −7.1 cm por década, no −8.5: el equipo decide cuál cita.
+  - [Borradores de la entrega](docs/ENTREGA_BORRADORES.md): campos de la página del proyecto, siete diapositivas y guion de 30 segundos.
 - **Regla clave:** toda propuesta debe pasar las cuatro reglas de [docs/VALIDACION.md](docs/VALIDACION.md).
 - **Por decidir:**
-  - Qué idea se construye y cuál es el diferenciador.
-  - Variable, región y periodo de la demostración.
-  - Formato de la demo.
+  - Formato de la demo, cifra de GRACE que se cita y nombres del equipo: ver los [borradores de la entrega](docs/ENTREGA_BORRADORES.md).
+  - Cómo se publica el sitio (`site/`) y quién revisa los textos.
+  - Qué se hace con las texturas de la Tierra, cuyo permiso de uso no está confirmado: ver [Pendientes](docs/PENDIENTES.md).
   - Si la región está en Canadá, que decide si sirven GEO.ca y RCM.
   - Si se usa Giovanni como herramienta de la solución; su vía de descarga quedó autorizada solo para las siete variables GLDAS.
 - **No asumir:**
@@ -50,6 +54,10 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | ¿Qué método estadístico usar y cómo explicarlo? | [recursos/paginas/06-metodos-estadisticos.md](recursos/paginas/06-metodos-estadisticos.md) · [recursos/paginas/07-significancia.md](recursos/paginas/07-significancia.md) · [recursos/paginas/04-seawifs.md](recursos/paginas/04-seawifs.md) · ideas 4 a 6 de [docs/IDEAS.md](docs/IDEAS.md) |
 | ¿Qué variables y periodos ofrece el visor de hidrología? | [recursos/paginas/01-hydrology.md](recursos/paginas/01-hydrology.md) |
 | ¿Qué unidades, escala y calidad tienen las capas de AppEEARS? | [recursos/paginas/02-appeears.md](recursos/paginas/02-appeears.md) |
+| ¿Dónde está la página web, qué hace y cómo se ejecuta? | [app/README.md](app/README.md) |
+| ¿De dónde sale cada cifra del caso del agua y cuáles se reprodujeron? | [docs/DIAGNOSTICO_AGUA.md](docs/DIAGNOSTICO_AGUA.md) |
+| ¿Qué textos hay listos para la página del proyecto y la demo? | [docs/ENTREGA_BORRADORES.md](docs/ENTREGA_BORRADORES.md) |
+| ¿Cómo se lleva el caso a otro país y cuántos datos faltan en cada uno? | [docs/ESCALABILIDAD.md](docs/ESCALABILIDAD.md) |
 | ¿Qué queda por decidir o hacer? | [docs/PENDIENTES.md](docs/PENDIENTES.md) |
 | ¿Qué se hizo, en qué orden y quién? | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
 
@@ -66,6 +74,10 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | [docs/PENDIENTES.md](docs/PENDIENTES.md) | Decisiones y tareas abiertas del equipo: idea, variable, región, periodo, accesos, criterios de la herramienta y lista de la entrega oficial. | 4 kB |
 | [docs/decisiones/GIOVANNI.md](docs/decisiones/GIOVANNI.md) | Exclusión general, autorización limitada para descargar GLDAS y decisión pendiente sobre su uso en la solución. | 2 kB |
 | [README.md](README.md) | Portada del repositorio: requisitos de la app y enlaces principales. | 3 kB |
+| [app/README.md](app/README.md) | Página web del reto (Svelte + Vite, sitio estático), en inglés: la Tierra de la entrada, los dos casos, el paso de escalabilidad, de dónde salen sus datos, cómo ejecutarla, probarla y publicarla, métodos, uso de IA y límites. | 15 kB |
+| [docs/DIAGNOSTICO_AGUA.md](docs/DIAGNOSTICO_AGUA.md) | Verificación del caso del agua: cada cifra del equipo frente a la reproducida, y cuatro hallazgos (pendiente con años que faltan, prueba no calculable, Valle Central, acuíferos contrastados con el DOF). La genera `app/scripts/build_water.py`. | 12 kB |
+| [docs/ENTREGA_BORRADORES.md](docs/ENTREGA_BORRADORES.md) | Borradores en inglés para los ocho campos de la página del proyecto, siete diapositivas, guion de 30 segundos, lista antes de enviar y borrador para contar la escalabilidad. | 16 kB |
+| [docs/ESCALABILIDAD.md](docs/ESCALABILIDAD.md) | Paso 9 de la página, idea de Fran: las diez capas de datos, la regla que dice cuáles están listas en cada país, el primer vistazo de GRACE por país, su paso por las cuatro reglas, límites y decisiones abiertas. | 9 kB |
 
 ## Recursos del reto
 
@@ -121,10 +133,13 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | [recursos/archivos/csa-sar-tutorial-qgis.md](recursos/archivos/csa-sar-tutorial-qgis.md) | Guía QGIS del tutorial SAR | 7 kB | [recursos/paginas/12-sar.md](recursos/paginas/12-sar.md) |
 | [recursos/archivos/csa-sar-LICENSE.txt](recursos/archivos/csa-sar-LICENSE.txt) | Licencia del tutorial SAR | 4 kB | [recursos/paginas/12-sar.md](recursos/paginas/12-sar.md) |
 | [recursos/archivos/gldas-evapotranspiracion-muestra-2016-05.csv](recursos/archivos/gldas-evapotranspiracion-muestra-2016-05.csv) | Muestra GLDAS de una semana (53 filas) | 2 kB | [docs/REFERENCIA_CIENTIFICA.md](docs/REFERENCIA_CIENTIFICA.md) |
-| [recursos/archivos/descargas.json](recursos/archivos/descargas.json) | Manifiesto de 88 archivos: origen, tamaño, SHA-256 y transformaciones documentadas | 131 kB | [recursos/README.md](recursos/README.md) |
+| [recursos/archivos/descargas.json](recursos/archivos/descargas.json) | Manifiesto de 90 archivos: origen, tamaño, SHA-256 y transformaciones documentadas | 133 kB | [recursos/README.md](recursos/README.md) |
 | [docs/CONTEXTO.json](docs/CONTEXTO.json) | Nodos y aristas del grafo de contexto | 15 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
 | [docs/CONTEXTO.svg](docs/CONTEXTO.svg) | Imagen del grafo de contexto | 21 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
 | [docs/generar_contexto.py](docs/generar_contexto.py) | Script que genera el grafo de contexto | 27 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
+| [docs/diagnostico_nl.py](docs/diagnostico_nl.py) | Script del equipo con el diagnóstico original de Nuevo León | 8 kB | [docs/DIAGNOSTICO_AGUA.md](docs/DIAGNOSTICO_AGUA.md) |
+| [recursos/archivos/nuevo-leon/acuiferos/acuiferos_nuevo_leon_DOF_2023-11-09.csv](recursos/archivos/nuevo-leon/acuiferos/acuiferos_nuevo_leon_DOF_2023-11-09.csv) | Los 23 acuíferos de Nuevo León del acuerdo del DOF, contrastados con el original | 1 kB | [docs/DIAGNOSTICO_AGUA.md](docs/DIAGNOSTICO_AGUA.md) |
+| [recursos/archivos/mundo/countries-mledoze-mintsources-2.4.3.json](recursos/archivos/mundo/countries-mledoze-mintsources-2.4.3.json) | Lista de 248 países y territorios: nombres, punto de referencia y superficie | 450 kB | [docs/ESCALABILIDAD.md](docs/ESCALABILIDAD.md) |
 | [docs/appeears-monterrey-puntos.csv](docs/appeears-monterrey-puntos.csv) | Puntos de la solicitud de prueba de AppEEARS | 1 kB | [docs/SOLICITUD_APPEEARS_MONTERREY.md](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
 | [recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-results.csv](recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD11A2-061-results.csv) | AppEEARS LST día/noche y calidad; 5.745 registros recibidos | 2589 kB | [Solicitud recibida](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
 | [recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-results.csv](recursos/archivos/appeears-monterrey-2001-2025/RAACK-prueba-Monterrey-NDVI-LST-2001-2025-MOD13A3-061-results.csv) | AppEEARS NDVI mensual y calidad; 1.500 registros recibidos | 555 kB | [Solicitud recibida](docs/SOLICITUD_APPEEARS_MONTERREY.md) |
