@@ -102,7 +102,9 @@ Fran pidió que DE-T pesara más en la página y propuso preguntarle donde se el
 - [ ] **Revisar el aviso del hielo.** DE-T dice que GRACE mide también nieve y hielo en los países más allá de 60° de latitud y en el ranking de países. Sale del título oficial del producto, no de un análisis del equipo.
 - [ ] **Revisar los textos nuevos**, en inglés y en español (`dete.place.*` en `app/src/lib/i18n-dete.ts`): el título de la franja y sus tres preguntas de inicio.
 - [ ] **Cuidar la clave de Kimi.** Está solo en `app/dete/.env`, en el equipo de Fran. Git ignora ese archivo y cualquier otro `.env` (reglas en `.gitignore`, `app/.gitignore` y `app/dete/.gitignore`), y tres pruebas fallan si la plantilla trae una clave, si se quitan esas reglas o si algún archivo de `app/dete/` lleva una escrita. **No subir la carpeta `app/dete/` arrastrándola a la web de GitHub:** esa vía no respeta `.gitignore` y se llevaría `.env`. Se sube con `git push`. Si la clave se llegara a publicar, hay que borrarla en platform.kimi.ai y crear otra.
-- [ ] **DE-T no está en el enlace público.** GitHub Pages solo sirve la página estática. Para que los jueces usen a DE-T hace falta un servidor con la clave guardada como secreto, o grabarlo en la demo desde el equipo de Fran.
+- [x] **DE-T en el enlace público, con interruptor.** Hecho el 15 de noviembre de 2026: `npm run dete:publico` (desde `app/`) lo enciende para la página pública desde el equipo que tiene la clave y Ctrl+C lo apaga. Probado con el Kimi simulado en la página pública real. Ver [dónde aparece DE-T](de-t/DE-T_DONDE_APARECE.md).
+- [ ] **Probar una pregunta con Kimi real desde la página pública.** Gasta saldo: lo decide Fran. Y decidir en qué horas estará encendido para los jueces, porque depende de que ese equipo siga encendido.
+- [ ] **DE-T no está en el enlace público si nadie lo enciende.** GitHub Pages solo sirve la página estática. Para que los jueces usen a DE-T hace falta un servidor con la clave guardada como secreto, o grabarlo en la demo desde el equipo de Fran.
 
 ## Actualización del 15 de noviembre de 2026 · rediseño visual de la página
 

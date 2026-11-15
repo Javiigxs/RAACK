@@ -1299,7 +1299,7 @@
       "tipo": "limite",
       "grupo": "dete",
       "etiqueta": "Solo con su servidor",
-      "texto": "DE-T aparece cuando sirve la página su propio servidor (dete/server.mjs) y tiene clave. La copia estática, como GitHub Pages, no muestra ningún botón ni hace peticiones, porque el servidor marca las páginas que sirve. Por qué: sin servidor no hay a quién preguntar, y un botón muerto o un error 404 quedarían mal ante los jueces.",
+      "texto": "DE-T aparece cuando sirve la página su propio servidor (dete/server.mjs) y tiene clave. Una copia estática no muestra ningún botón ni hace peticiones. La copia pública de GitHub Pages lee un interruptor (rama dete-publico): mientras alguien del equipo tiene abierto npm run dete:publico, muestra a DE-T, que responde desde ese equipo por un túnel y con tope de gasto; al cerrarlo, desaparece. Por qué: GitHub solo sirve archivos y la clave no puede ir en el repositorio; así Fran decide cuándo se enciende y cuándo se apaga.",
       "estado": "comprobado",
       "fuentes": [
         {

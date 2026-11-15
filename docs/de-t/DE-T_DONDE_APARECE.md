@@ -43,4 +43,16 @@ En desarrollo (`npm run dev`), si DE-T está apagado, en el sitio de la franja s
 
 **Cómo se comprobó:** en el navegador, con el estado de DE-T encendido a mano y las respuestas simuladas, en inglés y español, a 1024 y 375 px, en tema claro y oscuro. Se revisó lo que la página manda al servidor: el identificador del lugar y nada más.
 
+## Actualización del 15 de noviembre de 2026, a media mañana · en la página pública, con interruptor
+
+La página ya está publicada en GitHub Pages y Fran preguntó si DE-T podía estar ahí y poder apagarse, para que nadie más gaste el saldo de la prueba.
+
+- **Lo que no se puede:** GitHub Pages solo sirve archivos. No puede correr el servidor de DE-T, y la clave de Kimi no puede ir en el repositorio.
+- **Lo que se hizo:** un interruptor. La página pública lee un archivo de la rama `dete-publico`; si nombra una dirección, pregunta allí por DE-T y muestra sus botones, y si dice `null`, no muestra nada ni pregunta más. `npm run dete:publico` (desde `app/`) enciende a DE-T en el equipo que tiene la clave, le abre un túnel y escribe la dirección en el interruptor; Ctrl+C lo apaga todo.
+- **Por qué así:** la clave se queda en el equipo, Fran decide cuándo se enciende y cuándo se apaga, y el interruptor vive en una rama aparte para no llenar `main` de commits ni tocar el trabajo de otros.
+- **Lo que cuesta:** el equipo tiene que estar encendido; encender tarda hasta 5 minutos en verse (GitHub renueva ese archivo cada 5 minutos, medido ese día), y hay un tope de gasto por sesión (0,50 dólares o 40 preguntas, por defecto).
+- **Cómo se comprobó:** con el Kimi simulado, en la página pública real, pulsando un número y «Not clear? Ask DE-T». Con Kimi real, por este camino, no se ha probado.
+
+El detalle y las opciones del comando están en [las instrucciones de DE-T](../../app/dete/README.md), sección «DE-T en la página pública: encenderlo y apagarlo».
+
 Nota redactada con ayuda de IA (Claude) para el equipo RAACK.

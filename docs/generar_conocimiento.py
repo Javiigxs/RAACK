@@ -348,9 +348,11 @@ N("l_dete", "limite", "dete", "DE-T puede equivocarse",
   "periodo ni la región elegidos en la página.",
   "advertido", ("Cómo evita inventar", "docs/de-t/DE-T_COMO_EVITA_INVENTAR.md"), ("Límites de la página", "app/README.md"))
 N("l_dete_estatico", "limite", "dete", "Solo con su servidor",
-  "DE-T aparece cuando sirve la página su propio servidor (dete/server.mjs) y tiene clave. La copia estática, como "
-  "GitHub Pages, no muestra ningún botón ni hace peticiones, porque el servidor marca las páginas que sirve. Por qué: "
-  "sin servidor no hay a quién preguntar, y un botón muerto o un error 404 quedarían mal ante los jueces.",
+  "DE-T aparece cuando sirve la página su propio servidor (dete/server.mjs) y tiene clave. Una copia estática no "
+  "muestra ningún botón ni hace peticiones. La copia pública de GitHub Pages lee un interruptor (rama dete-publico): "
+  "mientras alguien del equipo tiene abierto npm run dete:publico, muestra a DE-T, que responde desde ese equipo por un "
+  "túnel y con tope de gasto; al cerrarlo, desaparece. Por qué: GitHub solo sirve archivos y la clave no puede ir en el "
+  "repositorio; así Fran decide cuándo se enciende y cuándo se apaga.",
   "comprobado", ("Dónde aparece y por qué", "docs/de-t/DE-T_DONDE_APARECE.md"), ("DE-T", "app/dete/README.md"))
 
 # ---------- Pendientes
