@@ -34,6 +34,39 @@ export const worldEn: Dict = {
   'wr.inside.open': '{name} · {n} / 10',
   'wr.meter.aria': '{ready} of 10 data layers ready for {name}',
 
+  'wr.why.q': 'Why {ready} / {total}?',
+  'wr.why.lead.full':
+    'Because with all ten layers we can give you our highest certainty: the verdict reaches “{verdict}”, and every trend behind it is put through two tests at the {level} confidence level.',
+  'wr.why.lead.place': 'Because {ready} of the ten layers are ready for {name} today.',
+  'wr.why.lead.tested': 'Enough for a first look at stored water, put through two tests at the {level} confidence level. Confirming a human footprint takes the ground records too.',
+  'wr.why.lead.untested': 'Not enough for a first look yet: there is no stored-water signal for a place this small.',
+  'wr.why.more': 'What backs it',
+  'wr.why.full':
+    'Because all ten layers the case needs are in the case file: stored in the repository and read by this page. They come from {sources} sources, {files} source files with their checksums.',
+  'wr.why.place':
+    'A layer counts when it is already in this tool or open to download today: {ready} of the ten for {name}. Layers that are only partly covered, not covered, or kept on the ground do not count.',
+  'wr.why.supports': 'What that evidence supports',
+  'wr.why.verdict.k': 'Verdict of the case',
+  'wr.why.verdict.d': '{known} of its {rules} rules answered, {y0}–{y1}.',
+  'wr.why.ground': 'With open layers alone it would stop at',
+  'wr.why.trends.k': 'Yearly series tested',
+  'wr.why.trends.d': 'Two tests each, at 95%: {confirmed} confirmed, {hint} a hint, {none} no evidence.',
+  'wr.why.trends.short': '{n} too short to judge.',
+  'wr.why.years.k': 'Years with a value',
+  'wr.why.years.v': '{have} of {span}',
+  'wr.why.years.d': '{pct} of the years between the first and the last of each series.',
+  'wr.why.python.k': 'Trends computed twice',
+  'wr.why.python.d': 'In the browser and in Python (pymannkendall, statsmodels). Automated tests compare the two.',
+  'wr.why.place.tested': 'Tested so far for {name}: stored water only, the first look below. The other open layers are ready to download, not analysed.',
+  'wr.why.place.none': 'Nothing has been tested for {name} yet: the open layers are ready to download, not analysed.',
+  'wr.why.place.ceiling':
+    'How far it can go: with open layers alone, a human footprint can only be called possible. The official groundwater balance is what confirms it, as in Nuevo León.',
+  'wr.why.limit.full':
+    'What it does not say: that the case is 100% certain. The count is about how complete the evidence is. Certainty is given figure by figure, with its label and its 95% interval.',
+  'wr.why.limit.place': 'What it does not say: that the data was downloaded or checked for {name}. Each limit is the published coverage of a product, read at one point.',
+  'wr.why.ask': 'Ask DE-T about this count',
+  'wr.why.ask.q': 'Why does {name} have {ready} of {total} data layers, and how certain is what they show?',
+
   'wr.look.title': 'First look: stored water',
   'wr.look.caveat': 'One GRACE mascon, about 330 km across, under the reference point of the country: a first look with the two tests of the case, not a verdict.',
   'wr.look.wider': 'That mascon is larger than {name} itself: the figure speaks for the wider region.',
@@ -185,6 +218,39 @@ export const worldEs: Dict = {
   'wr.inside': 'Dentro de {country}, esta herramienta ya tiene un caso:',
   'wr.inside.open': '{name} · {n} / 10',
   'wr.meter.aria': '{ready} de 10 capas de datos listas para {name}',
+
+  'wr.why.q': '¿Por qué {ready} / {total}?',
+  'wr.why.lead.full':
+    'Porque con las diez capas podemos darte nuestra certeza más alta: el veredicto llega a «{verdict}», y cada tendencia que lo sostiene pasa por dos pruebas al {level} de confianza.',
+  'wr.why.lead.place': 'Porque {ready} de las diez capas están listas hoy para {name}.',
+  'wr.why.lead.tested': 'Alcanzan para un primer vistazo al agua almacenada, con dos pruebas al {level} de confianza. Confirmar una huella humana pide además los registros en tierra.',
+  'wr.why.lead.untested': 'Todavía no alcanzan para un primer vistazo: no hay señal de agua almacenada para un lugar tan pequeño.',
+  'wr.why.more': 'Qué lo respalda',
+  'wr.why.full':
+    'Porque las diez capas que necesita el caso están en el expediente: guardadas en el repositorio y leídas por esta página. Vienen de {sources} fuentes, {files} archivos fuente con su suma de verificación.',
+  'wr.why.place':
+    'Una capa cuenta cuando ya está en esta herramienta o está abierta para descargarla hoy: {ready} de las diez para {name}. Las que solo están cubiertas en parte, no tienen cobertura o se guardan en tierra no cuentan.',
+  'wr.why.supports': 'Lo que respalda esa evidencia',
+  'wr.why.verdict.k': 'Veredicto del caso',
+  'wr.why.verdict.d': '{known} de sus {rules} reglas con respuesta, {y0}–{y1}.',
+  'wr.why.ground': 'Solo con las capas abiertas se quedaría en',
+  'wr.why.trends.k': 'Series anuales probadas',
+  'wr.why.trends.d': 'Dos pruebas cada una, al 95 %: {confirmed} confirmadas, {hint} con indicio, {none} sin evidencia.',
+  'wr.why.trends.short': '{n} demasiado cortas para juzgar.',
+  'wr.why.years.k': 'Años con dato',
+  'wr.why.years.v': '{have} de {span}',
+  'wr.why.years.d': 'El {pct} de los años entre el primero y el último de cada serie.',
+  'wr.why.python.k': 'Tendencias calculadas dos veces',
+  'wr.why.python.d': 'En el navegador y en Python (pymannkendall, statsmodels). Unas pruebas automáticas comparan los dos resultados.',
+  'wr.why.place.tested': 'Probado hasta ahora para {name}: solo el agua almacenada, el primer vistazo de abajo. Las demás capas abiertas están listas para descargar, no analizadas.',
+  'wr.why.place.none': 'Todavía no se ha probado nada para {name}: las capas abiertas están listas para descargar, no analizadas.',
+  'wr.why.place.ceiling':
+    'Hasta dónde puede llegar: solo con capas abiertas, una huella humana se queda en «posible». El balance oficial del agua subterránea es lo que la confirma, como en Nuevo León.',
+  'wr.why.limit.full':
+    'Lo que no dice: que el caso sea 100 % seguro. La cuenta mide lo completa que está la evidencia. La certeza se da cifra por cifra, con su etiqueta y su intervalo del 95 %.',
+  'wr.why.limit.place': 'Lo que no dice: que los datos se hayan descargado o comprobado para {name}. Cada límite es la cobertura publicada de un producto, leída en un solo punto.',
+  'wr.why.ask': 'Pregúntale a DE-T por esta cuenta',
+  'wr.why.ask.q': '¿Por qué {name} tiene {ready} de {total} capas de datos y cuánta certeza da lo que muestran?',
 
   'wr.look.title': 'Primer vistazo: agua almacenada',
   'wr.look.caveat': 'Un mascon de GRACE, de unos 330 km de ancho, bajo el punto de referencia del país: un primer vistazo con las dos pruebas del caso, no un veredicto.',

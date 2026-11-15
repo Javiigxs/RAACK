@@ -35,6 +35,8 @@
   } from './layers';
   import type { WorldCountry, WorldData } from './types';
   import { NEAR_DIST, distFor } from './view';
+  import { caseEvidence } from './why';
+  import WhyCount from './WhyCount.svelte';
 
   let { data, n }: { data: WaterData; n: string } = $props();
 
@@ -69,13 +71,16 @@
     } catch {
       // no address to read: start at the reference case
     }
-    if (isCase(wanted.toLowerCase())) placeId = wanted.toLowerCase();
+    // The cases are written in lower case and the countries in capitals, as pick() leaves them in the
+    // address: «cv» is the Central Valley and «CV» is Cabo Verde; «nl» is Nuevo León and «NL» the Netherlands.
+    const asCase = isCase(wanted);
+    if (asCase) placeId = wanted;
     fetch('data/world.json')
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
       .then((d: WorldData) => {
         world = d;
         const id = wanted.toUpperCase();
-        if (d.countries.some((c) => c.id === id)) placeId = id;
+        if (!asCase && d.countries.some((c) => c.id === id)) placeId = id;
       })
       .catch((e) => (error = e instanceof Error ? e.message : String(e)));
   });
@@ -103,6 +108,8 @@
   const full = $derived(r.loaded === r.total);
   /** A case of the tool that lies inside the chosen country. */
   const inside = $derived(place.kind === 'country' ? cases.filter((p) => p.countryId === place.id) : []);
+  /** «Why 10 / 10?»: for a case of the tool, what its evidence supports, measured on its data file. */
+  const evidence = $derived(place.kind === 'case' ? caseEvidence(data, place.region!) : null);
 
   // ---- first look at stored water
   const rate = (perDecade: number) => `${signed(perDecade, 1)} ${t('w.tunit.cm')} ${t('unit.perDecade')}`;
@@ -333,6 +340,9 @@
           <span class="tag">{t(`wr.region.${place.country.region}`)}</span>
         {/if}
       </header>
+
+      <!-- The question sits right above the count it asks about (Fran's request). -->
+      <WhyCount {r} {name} {full} {evidence} tested={!!look && look.trend.ok} {asked} />
 
       <div class="count">
         <span class="num">{r.ready} / {r.total}</span>
