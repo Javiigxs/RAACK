@@ -7,7 +7,7 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 - **Reto:** NASA Space Apps 2026, *Be An Earth System Trend Detective!* Hay que construir una herramienta que elija variable, región y periodo, dibuje la serie y diga cuánto cambia y si la tendencia es significativa.
 - **Entrega:** domingo 15 de noviembre de 2026 a las 23:59, hora local. Todo en inglés, demo de 30 segundos o 7 diapositivas y declaración de uso de IA: [docs/REGLAS_OFICIALES.md](docs/REGLAS_OFICIALES.md).
 - **Hecho:**
-  - Los 13 recursos oficiales revisados: 12 fichas; Giovanni sin abrir.
+  - Los 13 recursos oficiales revisados: 12 fichas; el servicio de Giovanni se usó solo para las siete descargas GLDAS autorizadas.
   - Página oficial y guías de evaluación y entrega leídas enteras.
   - Los 7 archivos iniciales y los 7 archivos de resultados AppEEARS guardados, con cobertura y grafo de contexto.
   - Cuenta NASA Earthdata del equipo creada.
@@ -17,19 +17,19 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
   - [Lluvia en Monterrey, 2002–2024](docs/LLUVIA_MONTERREY.md): 8.401 días de IMERG, 276 meses de humedad MERRA-2 y un registro del SMN guardados en el repositorio. Casos reproducibles de sequedad, aguaceros y concentración de la lluvia.
   - [Ideas para la herramienta](docs/IDEAS.md) propuestas, con su paso por las cuatro reglas.
   - Fran propuso explorar lo que oculta el resumen anual y los cambios de calendario. El [mapa de datos](docs/MAPA_DE_DATOS.md) separa las cinco variables y enlaza la comparación anual de la lluvia.
-  - [Datos regionales solicitados para Nuevo León](docs/REQUISITOS_DATOS_NUEVO_LEON.md): CHIRPS completo1998–2025, IMERG hasta septiembre2025, cuencas y presas descargados; GLDAS y el netCDF GRACE siguen pendientes de acceso.
+  - [Datos regionales solicitados para Nuevo León](docs/REQUISITOS_DATOS_NUEVO_LEON.md): GLDAS (siete variables, dos puntos) y GRACE descargados y verificados; CHIRPS completo 1998–2025, cuencas y presas disponibles. IMERG Final V07 termina en septiembre de 2025; se documentó el límite oficial.
 - **Regla clave:** toda propuesta debe pasar las cuatro reglas de [docs/VALIDACION.md](docs/VALIDACION.md).
 - **Por decidir:**
   - Qué idea se construye y cuál es el diferenciador.
   - Variable, región y periodo de la demostración.
   - Formato de la demo.
   - Si la región está en Canadá, que decide si sirven GEO.ca y RCM.
-  - Si se usa Giovanni.
+  - Si se usa Giovanni como herramienta de la solución; su vía de descarga quedó autorizada solo para las siete variables GLDAS.
 - **No asumir:**
   - Las 13 propuestas iniciales proceden de un agente. Las dos propuestas añadidas el 14 de noviembre son de Fran. La elección corresponde al equipo.
   - Las cifras previas de GLDAS en Monterrey siguen siendo preliminares. El nuevo análisis de lluvia usa series distintas y sí conserva los originales. La entrega AppEEARS está guardada y pendiente de filtros de calidad y análisis.
   - Las horas del CSV del visor no son UTC reales.
-  - Giovanni no está aprobado.
+  - La autorización de Giovanni se limita a esas siete descargas; no elige una herramienta ni una idea final.
   - Las fichas separan lo comprobado de lo que solo afirma cada fuente.
 
 ## Si buscas…
@@ -61,10 +61,10 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | [docs/REGLAS_OFICIALES.md](docs/REGLAS_OFICIALES.md) | Reglas de la organización: 5 criterios de evaluación, plazo, demo, idioma, uso de IA, campos de la página del proyecto y premios. | 8 kB |
 | [docs/IDEAS.md](docs/IDEAS.md) | 13 propuestas iniciales, dos propuestas de Fran, primera señal preliminar en Monterrey y borrador del diferenciador. | 17 kB |
 | [docs/MAPA_DE_DATOS.md](docs/MAPA_DE_DATOS.md) | Propuestas de Fran, cinco series por variable, indicadores por año y fuente, cobertura y límites para interpretar ciclos. | 8 kB |
-| [docs/REQUISITOS_DATOS_NUEVO_LEON.md](docs/REQUISITOS_DATOS_NUEVO_LEON.md) | Requisitos del Word, archivos regionales descargados, cobertura, unidades, límites y accesos pendientes. | 10 kB |
+| [docs/REQUISITOS_DATOS_NUEVO_LEON.md](docs/REQUISITOS_DATOS_NUEVO_LEON.md) | Requisitos del Word, GLDAS y GRACE verificados, cobertura, unidades, procedencia y límite oficial de IMERG. | 13 kB |
 | [docs/VALIDACION.md](docs/VALIDACION.md) | Las 4 reglas que toda propuesta debe pasar (problema real, medible, con los datos que nos dieron, diferenciador) y estado del caso Monterrey. | 6 kB |
 | [docs/PENDIENTES.md](docs/PENDIENTES.md) | Decisiones y tareas abiertas del equipo: idea, variable, región, periodo, accesos, criterios de la herramienta y lista de la entrega oficial. | 4 kB |
-| [docs/decisiones/GIOVANNI.md](docs/decisiones/GIOVANNI.md) | Por qué Giovanni está excluido y qué falta para decidir si se usa. | 1 kB |
+| [docs/decisiones/GIOVANNI.md](docs/decisiones/GIOVANNI.md) | Exclusión general, autorización limitada para descargar GLDAS y decisión pendiente sobre su uso en la solución. | 2 kB |
 | [README.md](README.md) | Portada del repositorio: requisitos de la app y enlaces principales. | 3 kB |
 
 ## Recursos del reto
@@ -96,6 +96,8 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | Nota | Qué contiene | Tamaño |
 |---|---|---|
 | [docs/LLUVIA_MONTERREY.md](docs/LLUVIA_MONTERREY.md) | Tres preguntas sustentadas con lluvia IMERG, humedad MERRA-2 y un pluviómetro del SMN, con incertidumbre, gráfica y código reproducible. | 6 kB |
+| [recursos/archivos/nuevo-leon/gldas/README.md](recursos/archivos/nuevo-leon/gldas/README.md) | Siete variables GLDAS en dos puntos, originales cada tres horas, agregación mensual UTC, procedencia, código y límites de cobertura. | 5 kB |
+| [recursos/archivos/nuevo-leon/grace/README.md](recursos/archivos/nuevo-leon/grace/README.md) | GRACE mundial íntegro en seis partes, reconstrucción verificada, recorte regional netCDF y CSV, resolución y huecos. | 6 kB |
 | [docs/FUNCIONALIDADES.md](docs/FUNCIONALIDADES.md) | Qué se puede hacer y pedir en cada recurso y cuánto tarda en llegar el dato; lo comprobado por la tarde; qué no hacen las herramientas oficiales; ruta rápida para el hackathon. | 9 kB |
 | [docs/SOLICITUDES_DE_DATOS.md](docs/SOLICITUDES_DE_DATOS.md) | Qué acceso pedir en cada portal (Earthdata, NOAA, KNMI, EODMS), para qué lo usaríamos y texto para «uso previsto». | 5 kB |
 | [docs/SOLICITUD_APPEEARS_MONTERREY.md](docs/SOLICITUD_APPEEARS_MONTERREY.md) | Solicitud recibida: 5 puntos en Monterrey, NDVI y temperatura 2001–2025; inventario, integridad, privacidad y revisión de calidad pendiente. | 6 kB |
@@ -119,7 +121,7 @@ Mapa de las notas del repositorio, para personas e IAs. **Empieza aquí y abre s
 | [recursos/archivos/csa-sar-tutorial-qgis.md](recursos/archivos/csa-sar-tutorial-qgis.md) | Guía QGIS del tutorial SAR | 7 kB | [recursos/paginas/12-sar.md](recursos/paginas/12-sar.md) |
 | [recursos/archivos/csa-sar-LICENSE.txt](recursos/archivos/csa-sar-LICENSE.txt) | Licencia del tutorial SAR | 4 kB | [recursos/paginas/12-sar.md](recursos/paginas/12-sar.md) |
 | [recursos/archivos/gldas-evapotranspiracion-muestra-2016-05.csv](recursos/archivos/gldas-evapotranspiracion-muestra-2016-05.csv) | Muestra GLDAS de una semana (53 filas) | 2 kB | [docs/REFERENCIA_CIENTIFICA.md](docs/REFERENCIA_CIENTIFICA.md) |
-| [recursos/archivos/descargas.json](recursos/archivos/descargas.json) | Manifiesto de descargas: origen, tamaño, SHA-256 y transformaciones documentadas | 14 kB | [recursos/README.md](recursos/README.md) |
+| [recursos/archivos/descargas.json](recursos/archivos/descargas.json) | Manifiesto de 88 archivos: origen, tamaño, SHA-256 y transformaciones documentadas | 131 kB | [recursos/README.md](recursos/README.md) |
 | [docs/CONTEXTO.json](docs/CONTEXTO.json) | Nodos y aristas del grafo de contexto | 15 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
 | [docs/CONTEXTO.svg](docs/CONTEXTO.svg) | Imagen del grafo de contexto | 21 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
 | [docs/generar_contexto.py](docs/generar_contexto.py) | Script que genera el grafo de contexto | 27 kB | [docs/CONTEXTO.md](docs/CONTEXTO.md) |
