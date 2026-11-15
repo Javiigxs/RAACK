@@ -111,3 +111,38 @@ El equipo donde se construyó tiene las animaciones del sistema desactivadas. Co
 3. **Contornos de países.** Dibujarlos y calcular promedios por país pide descargar un mapa de fronteras (Natural Earth, dominio público, unos 110 kB). No se hizo sin permiso.
 4. **Licencia de la lista de países.** El proyecto de origen la publica como ODbL 1.0 y el paquete de Linux Mint como GPL-3+; falta confirmarlo antes de citarla en las referencias de la entrega.
 5. **Texturas de la Tierra.** Ver [Pendientes](PENDIENTES.md): los tres mapas del planeta vienen del tutorial de referencia, cuyo repositorio no declara licencia.
+
+## Actualización del 15 de noviembre de 2026 · «Why 10 / 10?»
+
+Pedido de Fran: que justo encima de la cuenta salga la pregunta «Why 10 / 10?» y que diga cuánta certeza dan las diez capas. Subido a GitHub el mismo día, junto con `site/` regenerado.
+
+**Qué hace.** El resultado abre con la pregunta y su respuesta a la vista, encima de la cifra grande (segundo pedido de Fran, el mismo día: «abrir con el porqué del 10/10, porque así podemos dar un 95 % de certeza o así»):
+
+> **Why 10 / 10?** Because with all ten layers we can give you our highest certainty: the verdict reaches “Confirmed”, and every trend behind it is put through two tests at the 95% confidence level.
+
+El 95 % es el nivel de confianza de las dos pruebas que hay detrás de cada etiqueta (sale de `WATER_RULES.alpha`, no está escrito a mano). No es la probabilidad de que el veredicto sea cierto: ese cálculo no existe en la herramienta, y por eso la página no dice «95 % de certeza» a secas. En otro lugar la pregunta es «Why 7 / 10?» y la respuesta dice para qué alcanzan esas capas. Debajo, el enlace «What backs it» despliega, sin caja, el detalle:
+
+- **En un caso de la herramienta:** por qué cuenta lo que cuenta y lo que respalda esa evidencia, medido sobre `app/public/data/water.json` con el motor de la página (`app/src/lib/world/why.ts`). Nada está escrito a mano: si cambian los datos, cambian las cifras, y `app/src/lib/world/why.test.ts` avisa.
+- **En un país:** cómo se hace la cuenta, qué se ha probado allí (solo el agua almacenada) y hasta dónde puede llegar un veredicto sin los registros en tierra.
+- **Siempre, al final:** lo que la cuenta no dice.
+- Con DE-T encendido, un enlace le manda la pregunta sobre ese lugar.
+
+**Lo que mide para Nuevo León, con el archivo generado el 15 de noviembre de 2026:**
+
+| Qué | Valor | De dónde sale |
+|---|---|---|
+| Capas en el expediente | 10 de 10, de 7 fuentes | Las capas con series en `water.json` |
+| Archivos fuente con tamaño y SHA-256 | 15 | `inputs` de `water.json` |
+| Veredicto del caso, 1998–2026 | Confirmada, con sus 6 reglas respondidas | `analyzeCase` sobre todo el registro |
+| El mismo caso sin los registros en tierra | Indicio | El mismo cálculo sin las series de estación y sin la tabla de acuíferos |
+| Series anuales probadas | 27: 8 confirmadas, 4 con indicio, 15 sin evidencia | Las dos pruebas del caso, al 95 % |
+| Años con dato | 670 de 682 (98 %) | Años con valor entre el primero y el último de cada serie |
+| Tendencias calculadas dos veces | 429 series y periodos | Las que las pruebas automáticas comparan con pymannkendall y statsmodels |
+
+Aparte, y sin mostrarse en la página: en la [verificación del caso del agua](DIAGNOSTICO_AGUA.md), las 59 cifras de Nuevo León de la tabla están reproducidas con los archivos del repositorio. Las que no se reproducen o solo se aproximan son las otras 11, del Valle Central y de lugares sin archivos.
+
+**Lo que no se puede afirmar.** 10 de 10 mide lo completa que está la evidencia, no lo exacta que es: no equivale a «100 % de certeza». La certeza se da cifra por cifra, con su etiqueta y su intervalo del 95 %. Los 12 años sin dato están en tres series: GRACE (21 de 24), la evaporación de tanque del SMN (19 de 26) y la temperatura del SMN (26 de 28). El veredicto «confirmada» acusa a la extracción humana de forma indirecta: el agua almacenada baja, la lluvia y la demanda de evaporación no lo explican, y el balance oficial de acuíferos lo respalda. Ninguna capa mide el bombeo.
+
+**Corrección de paso.** Al recargar la dirección del Valle Central (`?place=cv`) la página mostraba Cabo Verde, cuyo código de país es CV. Ahora los casos se leen en minúsculas y los países en mayúsculas, como los escribe la propia página: `cv` es el Valle Central y `CV`, Cabo Verde.
+
+**Uso de IA.** Claude (IA) escribió el código, los textos en inglés y español y esta actualización. Las cifras salen de los archivos del repositorio, no de la IA.
