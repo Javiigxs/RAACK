@@ -4,6 +4,8 @@
   // información: la señal en cuadros y las dos investigaciones (el caso del agua y el de Monterrey).
   // Interfaz escrita con ayuda de IA (Claude) para el equipo RAACK.
   import { onMount } from 'svelte';
+  import Dete from './lib/dete/Dete.svelte';
+  import { probe } from './lib/dete/dete.svelte';
   import EarthIntro from './lib/earth/EarthIntro.svelte';
   import NumberExplainer from './lib/explain/NumberExplainer.svelte';
   import { t } from './lib/i18n';
@@ -49,6 +51,8 @@
     load<CaseData>('data/monterrey.json')
       .then((d) => (data = d))
       .catch((e) => (error = e instanceof Error ? e.message : String(e)));
+    // DE-T, the case assistant, shows its buttons only if its server answers.
+    void probe();
   });
 
   $effect(() => {
@@ -110,6 +114,7 @@
 </div>
 
 <NumberExplainer />
+<Dete />
 
 <style>
   .skip {

@@ -2,8 +2,12 @@
   // «Press a number and it tells you what it is.» One listener for the whole page: it finds the
   // number under the pointer in the text itself (nothing is marked by hand, nothing is rewritten),
   // asks detect.ts what kind of figure it is, and shows a short card next to it with the name the
-  // page gives to that number. Code written with AI assistance (Claude) for team RAACK.
+  // page gives to that number. When DE-T, the case assistant, is reachable, the card ends with
+  // «Not clear? Ask DE-T», which hands the number and what the card said to DE-T.
+  // Code written with AI assistance (Claude) for team RAACK.
   import { onMount } from 'svelte';
+  import { around } from '../dete/context';
+  import { dete, openDete } from '../dete/dete.svelte';
   import { t } from '../i18n';
   import { ui } from '../state.svelte';
   import { numberAt, type NumHit } from './detect';
@@ -11,6 +15,9 @@
   interface Card {
     hit: NumHit;
     label: string;
+    /** The words around the number and the section it is in: what DE-T is told when asked about it. */
+    around: string;
+    section: string;
     left: number;
     top: number;
     above: boolean;
@@ -19,8 +26,9 @@
   }
   let card = $state<Card | null>(null);
 
-  /** Things that already do something when pressed: the number inside them is not explained. */
-  const BUSY = 'a, button, select, option, input, textarea, summary, [role="button"], [contenteditable=""], [contenteditable="true"], .xcard';
+  /** Things that already do something when pressed: the number inside them is not explained.
+      DE-T's panel is one of them: its answers are not the page's figures. */
+  const BUSY = 'a, button, select, option, input, textarea, summary, [role="button"], [contenteditable=""], [contenteditable="true"], .xcard, .dete';
   /** A label that ticks a box or opens a list when pressed is busy too; the label of a slider is not. */
   const busy = (el: Element) => !!el.closest(BUSY) || !!el.closest('label')?.querySelector('input[type="checkbox"], input[type="radio"], select');
   /** Kinds whose general explanation says little: for them the name the page gives comes first. */
@@ -120,9 +128,23 @@
     return clean(box?.querySelector('h2, h3, h4')?.textContent);
   }
 
+  /** The section a number is in: the last step title before it («Step 2 · Case file — The verdict»). */
+  function sectionOf(node: Node): string {
+    let found: Element | null = null;
+    for (const h of document.querySelectorAll('h2')) {
+      if (h.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING) found = h;
+      else break;
+    }
+    if (!found) return '';
+    const kicker = found.closest('header, .sec-head')?.querySelector('.kicker');
+    return [clean(kicker?.textContent), clean(found.textContent)].filter(Boolean).join(' — ');
+  }
+
   interface Found {
     hit: NumHit;
     label: string;
+    around: string;
+    node: Text;
     range: Range;
     rect: DOMRect;
   }
@@ -147,7 +169,14 @@
     const rects = Array.from(range.getClientRects());
     const on = rects.find((r) => x >= r.left - 3 && x <= r.right + 3 && y >= r.top - 3 && y <= r.bottom + 3);
     if (!on) return null;
-    return { hit, label: short(label), range, rect: range.getBoundingClientRect() };
+    return {
+      hit,
+      label: short(label),
+      around: around(block.text, Math.min(hit.start, hit.spanStart), Math.max(hit.end, hit.spanEnd)),
+      node: caret.node,
+      range,
+      rect: range.getBoundingClientRect()
+    };
   }
 
   function show(found: Found) {
@@ -160,6 +189,8 @@
     card = {
       hit: found.hit,
       label: found.label,
+      around: found.around,
+      section: sectionOf(found.node),
       left: left + window.scrollX,
       top: (above ? rect.top - 10 : rect.bottom + 10) + window.scrollY,
       above,
@@ -237,6 +268,35 @@
     };
   });
 
+  /** What the reader has chosen on the page, in a line: DE-T needs it to talk about the same case. */
+  function pageState(): string {
+    return ui.view === 'water'
+      ? t('dete.state.water', { region: t(`w.region.${ui.region}.name`), y0: ui.wy0, y1: ui.wy1, concern: t(`w.concern.${ui.concern}`) })
+      : t('dete.state.city', { variable: t(`var.${ui.variable}.name`), site: t(`site.${ui.site}.short`), y0: ui.y0, y1: ui.y1 });
+  }
+
+  /** «Not clear? Ask DE-T»: the card closes and DE-T gets the number, the card's words and the page state. */
+  function askDete() {
+    if (!card) return;
+    const c = card;
+    card = null;
+    openDete({
+      question: t('dete.q.number', { num: c.hit.phrase }),
+      about: c.label ? `${c.hit.phrase} · ${c.label}` : c.hit.phrase,
+      page: {
+        numero: c.hit.phrase,
+        tipo: t(`x.kind.${c.hit.kind}.name`),
+        explicacion: t(`x.kind.${c.hit.kind}.text`),
+        unidad: c.hit.unit ? t(`x.unit.${c.hit.unit}`) : undefined,
+        etiqueta: c.label,
+        seccion: c.section,
+        texto: c.around,
+        estado: pageState(),
+        idioma: ui.lang
+      }
+    });
+  }
+
   // The card speaks the language of the page: a change of language closes it.
   let lastLang = ui.lang;
   $effect(() => {
@@ -269,6 +329,14 @@
     {/if}
     {#if card.label && !first}
       <p class="xhere"><span>{t('x.here')}</span>{card.label}</p>
+    {/if}
+    {#if dete.status === 'on'}
+      <p class="xask">
+        <span>{t('x.ask.q')}</span>
+        <button class="xask-btn" onclick={askDete} aria-label={t('x.ask.aria', { num: card.hit.phrase })}>
+          {t('x.ask.cta')} <span aria-hidden="true">→</span>
+        </button>
+      </p>
     {/if}
   </div>
 {/if}
@@ -355,6 +423,41 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     opacity: 0.65;
+  }
+  /* «Not clear? Ask DE-T»: the last line of the card, set apart like the others. */
+  .xask {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px 10px;
+    border-top: 1px solid color-mix(in srgb, var(--page) 22%, transparent);
+    padding-top: 9px;
+    margin-top: 2px;
+  }
+  .xask > span {
+    opacity: 0.78;
+  }
+  .xask-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid color-mix(in srgb, var(--page) 40%, transparent);
+    background: color-mix(in srgb, var(--page) 12%, transparent);
+    color: inherit;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 13.5px;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+  }
+  .xask-btn:hover {
+    background: var(--page);
+    color: var(--ink);
+  }
+  .xask-btn:focus-visible {
+    outline-color: var(--page);
   }
   .xclose {
     position: absolute;

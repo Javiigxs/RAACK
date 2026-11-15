@@ -3,6 +3,7 @@
   // questioned with the same two tests, and fixed rules turn the answers into a verdict.
   // The idea and the rules are the team's; code written with AI assistance (Claude).
   import { fmt } from '../catalog';
+  import { dete, openDete } from '../dete/dete.svelte';
   import { t } from '../i18n';
   import { setConcern, setRegion, setView, setWaterPeriod, ui } from '../state.svelte';
   import { toCases } from '../ui/scroll';
@@ -348,6 +349,14 @@
       </div>
       <p class="small">{t('w.rule.legend')}</p>
     </details>
+
+    <!-- DE-T, the case assistant: only when its server answers. -->
+    {#if dete.status === 'on'}
+      <div class="dete-cta">
+        <p>{t('dete.verdict.text')}</p>
+        <button class="btn small-btn" onclick={() => openDete()}>{t('dete.open')} <span aria-hidden="true">→</span></button>
+      </div>
+    {/if}
   </div>
 
   <!-- 3 · Suspects -->
@@ -832,6 +841,22 @@
     width: 100%;
     border-top: 1px solid var(--grid);
     padding-top: 12px;
+  }
+  .dete-cta {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--accent-wash);
+    font-size: 14.5px;
+    color: var(--ink-2);
+  }
+  .dete-cta p {
+    max-width: 64ch;
   }
   details.rules summary {
     cursor: pointer;

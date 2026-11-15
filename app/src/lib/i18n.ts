@@ -2,6 +2,7 @@
 // Redacción asistida por IA (Claude); las dos preguntas del caso guiado son de Fran (equipo RAACK).
 
 import type { Lang } from './catalog';
+import { deteEn, deteEs } from './i18n-dete';
 import { designEn, designEs } from './i18n-design';
 import { labEn, labEs } from './i18n-lab';
 import { waterEn, waterEs } from './i18n-water';
@@ -419,8 +420,8 @@ const es: Dict = {
 };
 
 const dict: Record<Lang, Dict> = {
-  en: { ...en, ...labEn, ...waterEn, ...designEn, ...worldEn },
-  es: { ...es, ...labEs, ...waterEs, ...designEs, ...worldEs }
+  en: { ...en, ...labEn, ...waterEn, ...designEn, ...worldEn, ...deteEn },
+  es: { ...es, ...labEs, ...waterEs, ...designEs, ...worldEs, ...deteEs }
 };
 
 /** Traduce una clave; `{nombre}` se sustituye por el parámetro correspondiente. */

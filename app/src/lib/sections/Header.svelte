@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { Lang } from '../catalog';
+  import { dete, openDete } from '../dete/dete.svelte';
   import { t } from '../i18n';
   import { ui } from '../state.svelte';
   import { isStill, motion, setMotion } from '../ui/motion.svelte';
@@ -69,6 +70,16 @@
       {/if}
     </nav>
     <div class="tools">
+      <!-- DE-T, the case assistant: only when its server answers (not on a static copy of the site). -->
+      {#if dete.status === 'on'}
+        <button class="ask" onclick={() => openDete()} aria-label={t('dete.openAria')} aria-expanded={dete.open} title={t('dete.openAria')}>
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+            <path d="M4 5.5h16v10H9.5L5.5 19v-3.5H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" />
+            <path d="M8.5 10.5h7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
+          </svg>
+          <span class="ask-label">{t('dete.open')}</span>
+        </button>
+      {/if}
       <div class="seg" role="group" aria-label={t('header.lang')}>
         <button aria-pressed={ui.lang === 'en'} onclick={() => setLang('en')} lang="en">EN</button>
         <button aria-pressed={ui.lang === 'es'} onclick={() => setLang('es')} lang="es">ES</button>
@@ -187,6 +198,32 @@
   }
   .icon:hover {
     background: var(--surface-2);
+  }
+  .ask {
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 13px 0 11px;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    background: var(--accent-wash);
+    color: var(--accent-ink);
+    font-size: 13.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .ask:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+  /* Below the full width of the page there is no room for it: it would push the name onto two lines.
+     DE-T's round button in the corner of the screen (dete/Dete.svelte) takes its place. */
+  @media (max-width: 1179px) {
+    .ask {
+      display: none;
+    }
   }
   /* On a narrow screen the motion button would push the name onto two lines: the world section
      carries the same switch next to the globe. */
