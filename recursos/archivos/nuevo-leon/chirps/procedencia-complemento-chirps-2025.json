@@ -1,0 +1,450 @@
+{
+  "producto": "CHIRPS v2.0 monthly",
+  "fuente_primaria": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/",
+  "metodo": "Lectura HTTPS Range de cabecera y mosaicos nativos necesarios. Recorte exacto GeoTIFF sin interpolación. Selección de los mismos19x12centros de celda del ERDDAP de NOAA, paso5 (0.25° de espaciado) de una malla nativa0.05°. Unión temporal de NOAA enero1998–febrero2025 y UCSB marzo–diciembre2025; no se rellenan huecos ni se agregan celdas.",
+  "solapamiento_validado": {
+    "mes": "2025-02",
+    "celdas": 228,
+    "diferencia_maxima_redondeo_mm": 4.599999989807202e-07,
+    "rangos": {
+      "mes": "2025-02",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.02.cog",
+      "etag": "\"67d4a457-189b954\"",
+      "bytes_original_remoto": 25803092,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "0a378f7a1daa77b33c424b24942c1add6a5ccaac297e37ff6a3e143e5eae1f01"
+        },
+        {
+          "inicio": 8077390,
+          "fin": 9085690,
+          "sha256": "8b12d968360dfa33f9483c2775940d40ca4bec2268dddbfc4709681eb7a848ee"
+        },
+        {
+          "inicio": 15316058,
+          "fin": 15601378,
+          "sha256": "981e0abf402c89dc7846f244b6858a6c2e6559669806ca42fb5581e5acc4cd50"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false
+    }
+  },
+  "archivos_cog_derivados": [
+    {
+      "mes": "2025-03",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.03.cog",
+      "etag": "\"67fd5250-187e18b\"",
+      "bytes_original_remoto": 25682315,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "0a12d0e730d1f636cdf0066048b853b2ae1785c4eb460d39eb3e3d9def01e3cb"
+        },
+        {
+          "inicio": 8033418,
+          "fin": 9032581,
+          "sha256": "1bc42c3ed421ce9b63b31a233d5fd8f0e6db29fbc9bf11de537b8650bf4ae9c9"
+        },
+        {
+          "inicio": 15242094,
+          "fin": 15525649,
+          "sha256": "af429e2a24cbbfa3254985d6052675e15451f731d70026898ae59f93ab486849"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "archivo": "recursos/archivos/nuevo-leon/chirps/chirps-v2.0.2025.03.nuevo-leon-ventana.tif",
+      "bytes": 19285,
+      "sha256": "6b04a3325e269bf422b8f7aef020f9b7275a71e3bdaa161b5c59db5824f25e81",
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida."
+    },
+    {
+      "mes": "2025-04",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.04.cog",
+      "etag": "\"6824ca5a-1863670\"",
+      "bytes_original_remoto": 25572976,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "fe8fb4c3fe4c2992f22a94bf44e88b2b09139c2850c376293e2ddfd895d47960"
+        },
+        {
+          "inicio": 8002054,
+          "fin": 8984874,
+          "sha256": "f4ca0c22ed98502f18842dc2ec8381d142a6a713516b8de3fda0eff2a42290d2"
+        },
+        {
+          "inicio": 15168746,
+          "fin": 15451117,
+          "sha256": "757eb420a23ce8ae60932215721d4dc98d86cd1f0f3c4807ed56ddf54f9e13ae"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "archivo": "recursos/archivos/nuevo-leon/chirps/chirps-v2.0.2025.04.nuevo-leon-ventana.tif",
+      "bytes": 18939,
+      "sha256": "c3803e07a82719536489dd7bcd71be5a41283b6cc834db9c2b00cc4dac28de53",
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida."
+    },
+    {
+      "mes": "2025-05",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.05.cog",
+      "etag": "\"6a7cad29-187e156\"",
+      "bytes_original_remoto": 25682262,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "75ff0cd4598b69dd032ae8b8e5cafb98a88ae556448274733054f5c9d97d23c5"
+        },
+        {
+          "inicio": 8037954,
+          "fin": 9019505,
+          "sha256": "ce7800e1d8123fc196f03769e85a3b82879c7f4a5ecdb06102a5fbab79dafd5f"
+        },
+        {
+          "inicio": 15222147,
+          "fin": 15499345,
+          "sha256": "d513e47ff13c68257de481bf2b72c4fc3617a844ac89a3dce021528f5612a4af"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "archivo": "recursos/archivos/nuevo-leon/chirps/chirps-v2.0.2025.05.nuevo-leon-ventana.tif",
+      "bytes": 18967,
+      "sha256": "67cbbc81c1cfd66a63afbff2533431cf20b462c53fc09ddd0b4a86360dd83c26",
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida."
+    },
+    {
+      "mes": "2025-06",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.06.cog",
+      "etag": "\"6876c808-1899aeb\"",
+      "bytes_original_remoto": 25795307,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "e2bb3d6390d3480400c51c666d9313fb320e460ecfd124f84f1ffb8bc99f8cf5"
+        },
+        {
+          "inicio": 8074812,
+          "fin": 9056405,
+          "sha256": "454c0ebb5050fb6d21694475a9fa1e4dee79e9cd9fd500c4a9f627523b5dec7d"
+        },
+        {
+          "inicio": 15279225,
+          "fin": 15551505,
+          "sha256": "a2bfdee1a3f4f9d6bd63c92d917adbe85f436170961821d1a5749e1e0d30b6aa"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "archivo": "recursos/archivos/nuevo-leon/chirps/chirps-v2.0.2025.06.nuevo-leon-ventana.tif",
+      "bytes": 19063,
+      "sha256": "bf5b3b8da260ae978969b13e80a1134a3be77be3debf4a9c9b58bbcccacffa4d",
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida."
+    },
+    {
+      "mes": "2025-07",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.07.cog",
+      "etag": "\"68af56c9-18b0d38\"",
+      "bytes_original_remoto": 25890104,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "f88b3907f6313c5931758a76f9704657d307bdb1234f7b90d84a5a59438f8c9b"
+        },
+        {
+          "inicio": 8100658,
+          "fin": 9081091,
+          "sha256": "0345603485ca00887d4736ba4fc97e39c0190d1ad1e9eaf6095f1352dfeae695"
+        },
+        {
+          "inicio": 15347698,
+          "fin": 15622703,
+          "sha256": "af587fdee909873f16cb026f98a4f2c359ce3c75ee50e8d5cd4b435179858de2"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "archivo": "recursos/archivos/nuevo-leon/chirps/chirps-v2.0.2025.07.nuevo-leon-ventana.tif",
+      "bytes": 19249,
+      "sha256": "5683cadcdc95362a82b0abc08e0d73b7d7a3950d571e2dd2804b81749a777687",
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida."
+    },
+    {
+      "mes": "2025-08",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.08.cog",
+      "etag": "\"68c4af58-18aafb8\"",
+      "bytes_original_remoto": 25866168,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "7455a98387275056697580b41ec5358420cc565b8535be3696b48720c9b8b7b7"
+        },
+        {
+          "inicio": 8084430,
+          "fin": 9071413,
+          "sha256": "7e256b177585eb891a360e127626c121723d6f1774ad2f4353ca4a943f4117f7"
+        },
+        {
+          "inicio": 15344689,
+          "fin": 15618595,
+          "sha256": "b9636717c7899d9982072ba06600a319d31f1d9cd4120bd121a8288bc13d8712"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "archivo": "recursos/archivos/nuevo-leon/chirps/chirps-v2.0.2025.08.nuevo-leon-ventana.tif",
+      "bytes": 18953,
+      "sha256": "a82b27045697ab378ed761ace3292798ca2f0b5e743a2ce7cb83526182696403",
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida."
+    },
+    {
+      "mes": "2025-09",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.09.cog",
+      "etag": "\"68f02fa7-1888c82\"",
+      "bytes_original_remoto": 25726082,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "8385460d16790943b3ad1fd95e35e9be4aec796044637e62ba63f63a2649334c"
+        },
+        {
+          "inicio": 8044115,
+          "fin": 9023196,
+          "sha256": "bff30d94eb3eccbbff34ec20b28fb8cc7ce6ff6bbbdb5374e62b6076decde541"
+        },
+        {
+          "inicio": 15245863,
+          "fin": 15518881,
+          "sha256": "493991fa90e65f2f1d824f3244aa898034a14bbbe15984c11bdb9a0edc69cb6b"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "archivo": "recursos/archivos/nuevo-leon/chirps/chirps-v2.0.2025.09.nuevo-leon-ventana.tif",
+      "bytes": 19111,
+      "sha256": "3e20f160ab93b1271285660c607ea7ddf94dcf090b98ec98ebeda7c691e342fc",
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida."
+    },
+    {
+      "mes": "2025-10",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.10.cog",
+      "etag": "\"6af25b1d-18767a6\"",
+      "bytes_original_remoto": 25651110,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "76e9cb38d4be44fb6b146bb9d4cfa6145a38e727d73a119afb0b3f2eb8ddce4c"
+        },
+        {
+          "inicio": 8032527,
+          "fin": 9020619,
+          "sha256": "7563c93f2c272b4f8b393f3732262a82afbab96e094828b4df89c945d1d6ff74"
+        },
+        {
+          "inicio": 15216378,
+          "fin": 15493179,
+          "sha256": "8134aa4467b7f2abd27ab58f958396e72834fc1c9ed736bf1d5a200f2dcc7bb7"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "archivo": "recursos/archivos/nuevo-leon/chirps/chirps-v2.0.2025.10.nuevo-leon-ventana.tif",
+      "bytes": 19349,
+      "sha256": "6b7c8425650a865b8c436199e8f7a17aa73f52a6825efce31eebd3b9e6f6bd9b",
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida."
+    },
+    {
+      "mes": "2025-11",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.11.cog",
+      "etag": "\"6af25c16-18836b9\"",
+      "bytes_original_remoto": 25704121,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "f1d398984b697806a3bfb1d2a35154b2522ecf38992c53bf9ef0e1370f2714cf"
+        },
+        {
+          "inicio": 8054472,
+          "fin": 9053270,
+          "sha256": "2db5bb3de9ff10d3a93c3160c40afe65d4b85d4830b66a8bcb64e387d31e4a04"
+        },
+        {
+          "inicio": 15256059,
+          "fin": 15540016,
+          "sha256": "4a85107a41d2de32136e35c708d304e68453ddd3167ba0462bfea9787635674b"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "archivo": "recursos/archivos/nuevo-leon/chirps/chirps-v2.0.2025.11.nuevo-leon-ventana.tif",
+      "bytes": 19119,
+      "sha256": "3fdc2d0125a0ea786d40c94095882f7e43950877e02f308ece43fc03fb90240a",
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida."
+    },
+    {
+      "mes": "2025-12",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.12.cog",
+      "etag": "\"6af25d13-18989bc\"",
+      "bytes_original_remoto": 25790908,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "407289d1f0ec9e8a9b2b56eb5225e4273a8fc562235df15dbb02605248bf321f"
+        },
+        {
+          "inicio": 8079721,
+          "fin": 9083229,
+          "sha256": "b50c52c26170231c489b5935a685e4f17ed762b43bc4b9bbadbe88e3901eec6a"
+        },
+        {
+          "inicio": 15322866,
+          "fin": 15606485,
+          "sha256": "6bc0607f7fba9afdad7d9249922e2557b7cc44eadb1b594dae3a553710e98ed8"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "archivo": "recursos/archivos/nuevo-leon/chirps/chirps-v2.0.2025.12.nuevo-leon-ventana.tif",
+      "bytes": 19147,
+      "sha256": "2bcb8ffa6bad7e088453a209df793b0fddae8d71ccbe1dd3cbf4c0a4dc8784ef",
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida."
+    }
+  ],
+  "uso_ia": "Código y organización asistidos por Codex; valores científicos originales del productor CHIRPS.",
+  "limite_espacial": "Recuadro; incluye partes fuera de Nuevo León. No es promedio ni máscara del estado."
+}

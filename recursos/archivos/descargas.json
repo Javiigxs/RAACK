@@ -228,6 +228,2298 @@
         "publicado": false,
         "motivo": "Contiene un correo personal en el JSON de la solicitud."
       }
+    },
+    {
+      "archivo": "nuevo-leon/imerg/nuevo-leon-imerg-mensual-1998-2025-09.das",
+      "fuente": "https://erddap.marine.usf.edu/erddap/griddap/IMERG_monthly_global_precip.das",
+      "url_final": "https://erddap.marine.usf.edu/erddap/griddap/IMERG_monthly_global_precip.das",
+      "bytes": 4567,
+      "sha256": "3fa24cb60ae544678e947c3504aa74e9bf86afe1850a9c902bb756b024aeb3c5",
+      "tipo": "metadata",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; descarga asistida por Codex",
+      "metadatos_producto": {
+        "name": "imerg",
+        "base": "https://erddap.marine.usf.edu/erddap/griddap/IMERG_monthly_global_precip",
+        "file": "nuevo-leon-imerg-mensual-1998-2025-09",
+        "query": "precipitation[(1998-01-01):1:(2025-09-01)][(27.8):1:(23.1)][(-101.2):1:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-09",
+        "resolucion_nativa": "0.1 grados",
+        "paso_espacial": 1,
+        "unidades": "mm por mes",
+        "limitacion": "Faltan octubre-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "registros": 447552,
+        "latitudes": 48,
+        "longitudes": 28
+      }
+    },
+    {
+      "archivo": "nuevo-leon/imerg/nuevo-leon-imerg-mensual-1998-2025-09.csv",
+      "fuente": "https://erddap.marine.usf.edu/erddap/griddap/IMERG_monthly_global_precip.csv?precipitation%5B(1998-01-01):1:(2025-09-01)%5D%5B(27.8):1:(23.1)%5D%5B(-101.2):1:(-98.4)%5D",
+      "url_final": "https://erddap.marine.usf.edu/erddap/griddap/IMERG_monthly_global_precip.csv?precipitation%5B(1998-01-01):1:(2025-09-01)%5D%5B(27.8):1:(23.1)%5D%5B(-101.2):1:(-98.4)%5D",
+      "bytes": 24470635,
+      "sha256": "1bde814f9319044f76356d4a8791b4ff8620fb28a32bdf09d469b323a8d8fbd5",
+      "tipo": "data",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; descarga asistida por Codex",
+      "metadatos_producto": {
+        "name": "imerg",
+        "base": "https://erddap.marine.usf.edu/erddap/griddap/IMERG_monthly_global_precip",
+        "file": "nuevo-leon-imerg-mensual-1998-2025-09",
+        "query": "precipitation[(1998-01-01):1:(2025-09-01)][(27.8):1:(23.1)][(-101.2):1:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-09",
+        "resolucion_nativa": "0.1 grados",
+        "paso_espacial": 1,
+        "unidades": "mm por mes",
+        "limitacion": "Faltan octubre-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "registros": 447552,
+        "latitudes": 48,
+        "longitudes": 28
+      }
+    },
+    {
+      "archivo": "nuevo-leon/imerg/README.md",
+      "bytes": 1371,
+      "sha256": "74eb365c33f9040c093db64caa8e1f1588333f790efa7ff547a22a55a41715f6",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "support",
+      "fuente": "https://erddap.marine.usf.edu/erddap/griddap/IMERG_monthly_global_precip.html",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "fecha_generacion": "2026-11-14",
+      "metadatos_producto": {
+        "name": "imerg",
+        "base": "https://erddap.marine.usf.edu/erddap/griddap/IMERG_monthly_global_precip",
+        "file": "nuevo-leon-imerg-mensual-1998-2025-09",
+        "query": "precipitation[(1998-01-01):1:(2025-09-01)][(27.8):1:(23.1)][(-101.2):1:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-09",
+        "resolucion_nativa": "0.1 grados",
+        "paso_espacial": 1,
+        "unidades": "mm por mes",
+        "limitacion": "Faltan octubre-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "registros": 447552,
+        "latitudes": 48,
+        "longitudes": 28
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/nuevo-leon-chirps-mensual-1998-2025-02-paso5.das",
+      "fuente": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05.das",
+      "url_final": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05.das",
+      "bytes": 6022,
+      "sha256": "095516ce4746a41bf74044c04d7abb04df001b91301782da13e20526bdc40184",
+      "tipo": "metadata",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; descarga asistida por Codex",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/nuevo-leon-chirps-mensual-1998-2025-02-paso5.csv",
+      "fuente": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05.csv?precip%5B(1998-01-01):1:(2025-02-01)%5D%5B(23.1):5:(27.8)%5D%5B(-101.2):5:(-98.4)%5D",
+      "url_final": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05.csv?precip%5B(1998-01-01):1:(2025-02-01)%5D%5B(23.1):5:(27.8)%5D%5B(-101.2):5:(-98.4)%5D",
+      "bytes": 3421018,
+      "sha256": "1f572f76a93271b79fe1481e2bae6c4935b580d6eff254c7cb8ced487dc068c6",
+      "tipo": "data",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; descarga asistida por Codex",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/README.md",
+      "bytes": 2886,
+      "sha256": "83a7baa58f459fc226b9d97479ca423c1a7b1a99eed20ec0fa4e04b57077e4ec",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "support",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "fecha_generacion": "2026-11-14",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/chirps-v2.0.2025.03.nuevo-leon-ventana.tif",
+      "bytes": 19285,
+      "sha256": "6b04a3325e269bf422b8f7aef020f9b7275a71e3bdaa161b5c59db5824f25e81",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.03.cog",
+      "mes": "2025-03",
+      "etag": "\"67fd5250-187e18b\"",
+      "bytes_original_remoto": 25682315,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "0a12d0e730d1f636cdf0066048b853b2ae1785c4eb460d39eb3e3d9def01e3cb"
+        },
+        {
+          "inicio": 8033418,
+          "fin": 9032581,
+          "sha256": "1bc42c3ed421ce9b63b31a233d5fd8f0e6db29fbc9bf11de537b8650bf4ae9c9"
+        },
+        {
+          "inicio": 15242094,
+          "fin": 15525649,
+          "sha256": "af429e2a24cbbfa3254985d6052675e15451f731d70026898ae59f93ab486849"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida.",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/chirps-v2.0.2025.04.nuevo-leon-ventana.tif",
+      "bytes": 18939,
+      "sha256": "c3803e07a82719536489dd7bcd71be5a41283b6cc834db9c2b00cc4dac28de53",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.04.cog",
+      "mes": "2025-04",
+      "etag": "\"6824ca5a-1863670\"",
+      "bytes_original_remoto": 25572976,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "fe8fb4c3fe4c2992f22a94bf44e88b2b09139c2850c376293e2ddfd895d47960"
+        },
+        {
+          "inicio": 8002054,
+          "fin": 8984874,
+          "sha256": "f4ca0c22ed98502f18842dc2ec8381d142a6a713516b8de3fda0eff2a42290d2"
+        },
+        {
+          "inicio": 15168746,
+          "fin": 15451117,
+          "sha256": "757eb420a23ce8ae60932215721d4dc98d86cd1f0f3c4807ed56ddf54f9e13ae"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida.",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/chirps-v2.0.2025.05.nuevo-leon-ventana.tif",
+      "bytes": 18967,
+      "sha256": "67cbbc81c1cfd66a63afbff2533431cf20b462c53fc09ddd0b4a86360dd83c26",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.05.cog",
+      "mes": "2025-05",
+      "etag": "\"6a7cad29-187e156\"",
+      "bytes_original_remoto": 25682262,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "75ff0cd4598b69dd032ae8b8e5cafb98a88ae556448274733054f5c9d97d23c5"
+        },
+        {
+          "inicio": 8037954,
+          "fin": 9019505,
+          "sha256": "ce7800e1d8123fc196f03769e85a3b82879c7f4a5ecdb06102a5fbab79dafd5f"
+        },
+        {
+          "inicio": 15222147,
+          "fin": 15499345,
+          "sha256": "d513e47ff13c68257de481bf2b72c4fc3617a844ac89a3dce021528f5612a4af"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida.",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/chirps-v2.0.2025.06.nuevo-leon-ventana.tif",
+      "bytes": 19063,
+      "sha256": "bf5b3b8da260ae978969b13e80a1134a3be77be3debf4a9c9b58bbcccacffa4d",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.06.cog",
+      "mes": "2025-06",
+      "etag": "\"6876c808-1899aeb\"",
+      "bytes_original_remoto": 25795307,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "e2bb3d6390d3480400c51c666d9313fb320e460ecfd124f84f1ffb8bc99f8cf5"
+        },
+        {
+          "inicio": 8074812,
+          "fin": 9056405,
+          "sha256": "454c0ebb5050fb6d21694475a9fa1e4dee79e9cd9fd500c4a9f627523b5dec7d"
+        },
+        {
+          "inicio": 15279225,
+          "fin": 15551505,
+          "sha256": "a2bfdee1a3f4f9d6bd63c92d917adbe85f436170961821d1a5749e1e0d30b6aa"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida.",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/chirps-v2.0.2025.07.nuevo-leon-ventana.tif",
+      "bytes": 19249,
+      "sha256": "5683cadcdc95362a82b0abc08e0d73b7d7a3950d571e2dd2804b81749a777687",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.07.cog",
+      "mes": "2025-07",
+      "etag": "\"68af56c9-18b0d38\"",
+      "bytes_original_remoto": 25890104,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "f88b3907f6313c5931758a76f9704657d307bdb1234f7b90d84a5a59438f8c9b"
+        },
+        {
+          "inicio": 8100658,
+          "fin": 9081091,
+          "sha256": "0345603485ca00887d4736ba4fc97e39c0190d1ad1e9eaf6095f1352dfeae695"
+        },
+        {
+          "inicio": 15347698,
+          "fin": 15622703,
+          "sha256": "af587fdee909873f16cb026f98a4f2c359ce3c75ee50e8d5cd4b435179858de2"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida.",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/chirps-v2.0.2025.08.nuevo-leon-ventana.tif",
+      "bytes": 18953,
+      "sha256": "a82b27045697ab378ed761ace3292798ca2f0b5e743a2ce7cb83526182696403",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.08.cog",
+      "mes": "2025-08",
+      "etag": "\"68c4af58-18aafb8\"",
+      "bytes_original_remoto": 25866168,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "7455a98387275056697580b41ec5358420cc565b8535be3696b48720c9b8b7b7"
+        },
+        {
+          "inicio": 8084430,
+          "fin": 9071413,
+          "sha256": "7e256b177585eb891a360e127626c121723d6f1774ad2f4353ca4a943f4117f7"
+        },
+        {
+          "inicio": 15344689,
+          "fin": 15618595,
+          "sha256": "b9636717c7899d9982072ba06600a319d31f1d9cd4120bd121a8288bc13d8712"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida.",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/chirps-v2.0.2025.09.nuevo-leon-ventana.tif",
+      "bytes": 19111,
+      "sha256": "3e20f160ab93b1271285660c607ea7ddf94dcf090b98ec98ebeda7c691e342fc",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.09.cog",
+      "mes": "2025-09",
+      "etag": "\"68f02fa7-1888c82\"",
+      "bytes_original_remoto": 25726082,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "8385460d16790943b3ad1fd95e35e9be4aec796044637e62ba63f63a2649334c"
+        },
+        {
+          "inicio": 8044115,
+          "fin": 9023196,
+          "sha256": "bff30d94eb3eccbbff34ec20b28fb8cc7ce6ff6bbbdb5374e62b6076decde541"
+        },
+        {
+          "inicio": 15245863,
+          "fin": 15518881,
+          "sha256": "493991fa90e65f2f1d824f3244aa898034a14bbbe15984c11bdb9a0edc69cb6b"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida.",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/chirps-v2.0.2025.10.nuevo-leon-ventana.tif",
+      "bytes": 19349,
+      "sha256": "6b7c8425650a865b8c436199e8f7a17aa73f52a6825efce31eebd3b9e6f6bd9b",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.10.cog",
+      "mes": "2025-10",
+      "etag": "\"6af25b1d-18767a6\"",
+      "bytes_original_remoto": 25651110,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "76e9cb38d4be44fb6b146bb9d4cfa6145a38e727d73a119afb0b3f2eb8ddce4c"
+        },
+        {
+          "inicio": 8032527,
+          "fin": 9020619,
+          "sha256": "7563c93f2c272b4f8b393f3732262a82afbab96e094828b4df89c945d1d6ff74"
+        },
+        {
+          "inicio": 15216378,
+          "fin": 15493179,
+          "sha256": "8134aa4467b7f2abd27ab58f958396e72834fc1c9ed736bf1d5a200f2dcc7bb7"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida.",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/chirps-v2.0.2025.11.nuevo-leon-ventana.tif",
+      "bytes": 19119,
+      "sha256": "3fdc2d0125a0ea786d40c94095882f7e43950877e02f308ece43fc03fb90240a",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.11.cog",
+      "mes": "2025-11",
+      "etag": "\"6af25c16-18836b9\"",
+      "bytes_original_remoto": 25704121,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "f1d398984b697806a3bfb1d2a35154b2522ecf38992c53bf9ef0e1370f2714cf"
+        },
+        {
+          "inicio": 8054472,
+          "fin": 9053270,
+          "sha256": "2db5bb3de9ff10d3a93c3160c40afe65d4b85d4830b66a8bcb64e387d31e4a04"
+        },
+        {
+          "inicio": 15256059,
+          "fin": 15540016,
+          "sha256": "4a85107a41d2de32136e35c708d304e68453ddd3167ba0462bfea9787635674b"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida.",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/chirps-v2.0.2025.12.nuevo-leon-ventana.tif",
+      "bytes": 19147,
+      "sha256": "2bcb8ffa6bad7e088453a209df793b0fddae8d71ccbe1dd3cbf4c0a4dc8784ef",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/chirps-v2.0.2025.12.cog",
+      "mes": "2025-12",
+      "etag": "\"6af25d13-18989bc\"",
+      "bytes_original_remoto": 25790908,
+      "sha256_original_completo": null,
+      "nota_hash": "El COG completo no se descargó; los rangos recuperados tienen sus propias sumas.",
+      "rangos_http": [
+        {
+          "inicio": 0,
+          "fin": 65535,
+          "sha256": "407289d1f0ec9e8a9b2b56eb5225e4273a8fc562235df15dbb02605248bf321f"
+        },
+        {
+          "inicio": 8079721,
+          "fin": 9083229,
+          "sha256": "b50c52c26170231c489b5935a685e4f17ed762b43bc4b9bbadbe88e3901eec6a"
+        },
+        {
+          "inicio": 15322866,
+          "fin": 15606485,
+          "sha256": "6bc0607f7fba9afdad7d9249922e2557b7cc44eadb1b594dae3a553710e98ed8"
+        }
+      ],
+      "filas_nativas": [
+        447,
+        537
+      ],
+      "columnas_nativas": [
+        1576,
+        1631
+      ],
+      "paso_muestra": 5,
+      "resolucion_nativa_grados": 0.05,
+      "interpolacion": false,
+      "transformacion": "Ventana nativa rectangular, sin interpolación, reproyección ni cambios de valores; GeoTIFF local comprimido sin pérdida.",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/extraer_complemento_chirps.py",
+      "bytes": 6606,
+      "sha256": "ae5a24b870e582cc5580e488e4900c1e675d76212775cdb5f4d450e06a12f319",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "support",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "fecha_generacion": "2026-11-14",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/nuevo-leon-chirps-mensual-1998-2025-paso5-combinado.csv",
+      "bytes": 3528869,
+      "sha256": "4b1bed2459da8727671a3158fce4825ac7b2ad937013a7917ba55b5c11716ae1",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/",
+      "transformacion": "Unión temporal de NOAA enero1998–febrero2025 y píxeles UCSB marzo–diciembre2025; mismo producto, unidades y centros de celda, sin interpolar. Ver procedencia-complemento-chirps-2025.json.",
+      "fuentes": [
+        "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05.csv?precip%5B(1998-01-01):1:(2025-02-01)%5D%5B(23.1):5:(27.8)%5D%5B(-101.2):5:(-98.4)%5D",
+        "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/"
+      ],
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/nuevo-leon-chirps-mensual-2025-03-12-paso5-complemento.csv",
+      "bytes": 107922,
+      "sha256": "249eeb6d533a9aae6e18915f204e0987892de57c2f8dec382dd6961d72f0815f",
+      "fecha_descarga": "2026-11-14",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "derived",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/",
+      "transformacion": "Selección cada5celdas nativas de10ventanas COG; mismas228coordenadas de NOAA, sin interpolar.",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/procedencia-complemento-chirps-2025.json",
+      "bytes": 16569,
+      "sha256": "f3231c3460e06c5ca34cadbc14195ab89f477c1ea7b41715ed7aa625b8f1c251",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "support",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "fecha_generacion": "2026-11-14",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/chirps/requirements.txt",
+      "bytes": 29,
+      "sha256": "f65f31b4377529bc1a171708fbe45808beb385bbb8c524dcafc2c7671c2b3978",
+      "via": "Extracción y documentación asistidas por Codex",
+      "tipo": "support",
+      "fuente": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/global_monthly/cogs/",
+      "generado_localmente": true,
+      "uso_ia": "Extracción, código, validación y documentación asistidos por Codex; no se generaron valores científicos.",
+      "fecha_generacion": "2026-11-14",
+      "metadatos_producto": {
+        "name": "chirps",
+        "base": "https://coastwatch.pfeg.noaa.gov/erddap/griddap/chirps20GlobalMonthlyP05",
+        "file": "nuevo-leon-chirps-mensual-1998-2025-02-paso5",
+        "query": "precip[(1998-01-01):1:(2025-02-01)][(23.1):5:(27.8)][(-101.2):5:(-98.4)]",
+        "periodo_solicitado": "1998-01 a 2025-12",
+        "periodo_disponible": "1998-01 a 2025-02",
+        "resolucion_nativa": "0.05 grados",
+        "paso_espacial": 5,
+        "espaciado_muestras": "0.25 grados; selección de una celda cada5, no promedio de5celdas",
+        "unidades": "mm/month",
+        "limitacion": "Faltan marzo-diciembre2025 en este servidor; recuadro incluye zonas fuera de Nuevo León.",
+        "periodo_disponible_combinado": "1998-01 a 2025-12",
+        "registros_combinados": 76608,
+        "meses_combinados": 336,
+        "latitudes": 19,
+        "longitudes": 12,
+        "limite_original_ERDDAP": "2025-02; complementado con diez meses de UCSB."
+      }
+    },
+    {
+      "archivo": "nuevo-leon/cuencas/san-juan-cuenca-inegi.zip",
+      "fuente": "https://www.inegi.org.mx/contenidos/Productos/prod_serv/contenidos/espanol/bvinegi/productos/geografia/hidrogeolo/cuenca/702825006909_s.zip",
+      "bytes": 56608569,
+      "sha256": "15733ef4375dd6491e2e0337a341d2e987f72b8c573714c994ab918c73475559",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS; URL devuelta por API pública de SIATL INEGI, descarga y comprobación asistidas por Codex",
+      "transformacion": "Ninguna; ZIP original conservado; CRC comprobado",
+      "escala": "1:50 000; Red Hidrográfica 2a edición",
+      "crs": "GCS_GRS_1980, grados, según PRJ original",
+      "contenido": "Shapefiles originales: límites de subcuenca, red hidrográfica, cuerpos de agua, puntos y metadatos; incluye documento técnico del proveedor",
+      "inventario_zip": [
+        {
+          "archivo": "Documento_Tecnico_Descriptivo_de_la_Red_Hidrografica_50K_2a_Edici≤n_2.pdf",
+          "bytes": 7546261
+        },
+        {
+          "archivo": "RH24/",
+          "bytes": 0
+        },
+        {
+          "archivo": "RH24/RH24B/",
+          "bytes": 0
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/",
+          "bytes": 0
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_dr.dbf",
+          "bytes": 423
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_dr.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_dr.shp",
+          "bytes": 156
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_dr.shx",
+          "bytes": 116
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_ha.dbf",
+          "bytes": 55229
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_ha.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_ha.shp",
+          "bytes": 402780
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_ha.shx",
+          "bytes": 8916
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_hl.dbf",
+          "bytes": 1119580
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_hl.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_hl.shp",
+          "bytes": 987100
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_hl.shx",
+          "bytes": 34396
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_to.dbf",
+          "bytes": 25133
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_to.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_to.shp",
+          "bytes": 1696
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_to.shx",
+          "bytes": 556
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_hl.shp.txt",
+          "bytes": 14156
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_hl.shp.xml",
+          "bytes": 14394
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_hl.shp.html",
+          "bytes": 22405
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_hl.shp.sgml",
+          "bytes": 15823
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba.jpg",
+          "bytes": 372102
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_subc.dbf",
+          "bytes": 888
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_subc.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_subc.shp",
+          "bytes": 57948
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Ba/RH24Ba_subc.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/",
+          "bytes": 0
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_hl.shp.html",
+          "bytes": 23837
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_hl.shp.sgml",
+          "bytes": 16648
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_subc.dbf",
+          "bytes": 882
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_subc.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_subc.shp",
+          "bytes": 96108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_subc.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_hl.shp.txt",
+          "bytes": 15125
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_hl.shp.xml",
+          "bytes": 15999
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_dr.dbf",
+          "bytes": 340
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_dr.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_dr.shp",
+          "bytes": 128
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_dr.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_ha.dbf",
+          "bytes": 174979
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_ha.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_ha.shp",
+          "bytes": 1404636
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_ha.shx",
+          "bytes": 28076
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb.jpg",
+          "bytes": 444845
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_hl.dbf",
+          "bytes": 5012395
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_hl.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_hl.shp",
+          "bytes": 5096052
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_hl.shx",
+          "bytes": 153716
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_to.dbf",
+          "bytes": 116513
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_to.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_to.shp",
+          "bytes": 7604
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bb/RH24Bb_to.shx",
+          "bytes": 2244
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/",
+          "bytes": 0
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_hl.shp.html",
+          "bytes": 23365
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_hl.shp.sgml",
+          "bytes": 16386
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_subc.dbf",
+          "bytes": 883
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_subc.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_subc.shp",
+          "bytes": 91420
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_subc.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_dr.dbf",
+          "bytes": 506
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_dr.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_dr.shp",
+          "bytes": 184
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_dr.shx",
+          "bytes": 124
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_ha.dbf",
+          "bytes": 52979
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_ha.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_ha.shp",
+          "bytes": 532888
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_ha.shx",
+          "bytes": 8556
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_hl.dbf",
+          "bytes": 5159860
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_hl.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_hl.shp",
+          "bytes": 8144572
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_hl.shx",
+          "bytes": 158236
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_to.dbf",
+          "bytes": 164800
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_to.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_to.shp",
+          "bytes": 10152
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_to.shx",
+          "bytes": 2972
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_hl.shp.txt",
+          "bytes": 14801
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc_hl.shp.xml",
+          "bytes": 15463
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bc/RH24Bc.jpg",
+          "bytes": 378012
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/",
+          "bytes": 0
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_ha.dbf",
+          "bytes": 13629
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_ha.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_ha.shp",
+          "bytes": 153332
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_ha.shx",
+          "bytes": 2260
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_hl.dbf",
+          "bytes": 3871825
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_hl.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_hl.shp",
+          "bytes": 9254052
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_hl.shx",
+          "bytes": 118756
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_to.dbf",
+          "bytes": 134667
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_to.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_to.shp",
+          "bytes": 8360
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_to.shx",
+          "bytes": 2460
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_hl.shp.html",
+          "bytes": 22839
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_hl.shp.sgml",
+          "bytes": 16070
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_subc.dbf",
+          "bytes": 881
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_subc.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_subc.shp",
+          "bytes": 121004
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_subc.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd.jpg",
+          "bytes": 596793
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_hl.shp.txt",
+          "bytes": 14467
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_hl.shp.xml",
+          "bytes": 14917
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_dr.dbf",
+          "bytes": 340
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_dr.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_dr.shp",
+          "bytes": 128
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bd/RH24Bd_dr.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/",
+          "bytes": 0
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_dr.dbf",
+          "bytes": 506
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_dr.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_dr.shp",
+          "bytes": 184
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_dr.shx",
+          "bytes": 124
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_ha.dbf",
+          "bytes": 34679
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_ha.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_ha.shp",
+          "bytes": 330420
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_ha.shx",
+          "bytes": 5628
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_hl.dbf",
+          "bytes": 10846789
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_hl.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_hl.shp",
+          "bytes": 16228164
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_hl.shx",
+          "bytes": 332548
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_hl.shp.html",
+          "bytes": 24469
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_hl.shp.sgml",
+          "bytes": 17012
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_to.dbf",
+          "bytes": 266657
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_to.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_to.shp",
+          "bytes": 15612
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_to.shx",
+          "bytes": 4532
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be.jpg",
+          "bytes": 566120
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_subc.dbf",
+          "bytes": 884
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_subc.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_subc.shp",
+          "bytes": 264220
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_subc.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_hl.shp.txt",
+          "bytes": 15539
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Be/RH24Be_hl.shp.xml",
+          "bytes": 16678
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/",
+          "bytes": 0
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_hl.shp.html",
+          "bytes": 22231
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_hl.shp.sgml",
+          "bytes": 15714
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_hl.shp.txt",
+          "bytes": 14061
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_hl.shp.xml",
+          "bytes": 14246
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_subc.dbf",
+          "bytes": 883
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_subc.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_subc.shp",
+          "bytes": 51964
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_subc.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_dr.dbf",
+          "bytes": 423
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_dr.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_dr.shp",
+          "bytes": 156
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_dr.shx",
+          "bytes": 116
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_ha.dbf",
+          "bytes": 1029
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_ha.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_ha.shp",
+          "bytes": 82960
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_ha.shx",
+          "bytes": 244
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_hl.dbf",
+          "bytes": 2679055
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_hl.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_hl.shp",
+          "bytes": 5943268
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_hl.shx",
+          "bytes": 82196
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_to.dbf",
+          "bytes": 57087
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_to.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_to.shp",
+          "bytes": 3320
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf_to.shx",
+          "bytes": 1020
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bf/RH24Bf.jpg",
+          "bytes": 522716
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/",
+          "bytes": 0
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_hl.shp.txt",
+          "bytes": 13971
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_hl.shp.xml",
+          "bytes": 14103
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_hl.shp.html",
+          "bytes": 22083
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_hl.shp.sgml",
+          "bytes": 15634
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_subc.dbf",
+          "bytes": 879
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_subc.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_subc.shp",
+          "bytes": 38524
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_subc.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_dr.dbf",
+          "bytes": 340
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_dr.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_dr.shp",
+          "bytes": 128
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_dr.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_ha.dbf",
+          "bytes": 3229
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_ha.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_ha.shp",
+          "bytes": 36904
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_ha.shx",
+          "bytes": 596
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_hl.dbf",
+          "bytes": 1080430
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_hl.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_hl.shp",
+          "bytes": 2173500
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_hl.shx",
+          "bytes": 33196
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg.jpg",
+          "bytes": 431587
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_to.dbf",
+          "bytes": 31412
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_to.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_to.shp",
+          "bytes": 2200
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bg/RH24Bg_to.shx",
+          "bytes": 700
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/",
+          "bytes": 0
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_hl.shp.txt",
+          "bytes": 14465
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_hl.shp.xml",
+          "bytes": 14915
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_dr.dbf",
+          "bytes": 340
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_dr.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_dr.shp",
+          "bytes": 128
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_dr.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_ha.dbf",
+          "bytes": 8979
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_ha.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_ha.shp",
+          "bytes": 63692
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_ha.shx",
+          "bytes": 1516
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_hl.dbf",
+          "bytes": 3414031
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_hl.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_hl.shp",
+          "bytes": 6448420
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_hl.shx",
+          "bytes": 104724
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_hl.shp.html",
+          "bytes": 22845
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_hl.shp.sgml",
+          "bytes": 16092
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_to.dbf",
+          "bytes": 92279
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_to.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_to.shp",
+          "bytes": 6232
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_to.shx",
+          "bytes": 1852
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_subc.dbf",
+          "bytes": 879
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_subc.prj",
+          "bytes": 145
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_subc.shp",
+          "bytes": 85692
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh_subc.shx",
+          "bytes": 108
+        },
+        {
+          "archivo": "RH24/RH24B/RH24Bh/RH24Bh.jpg",
+          "bytes": 427723
+        }
+      ],
+      "unidad": "R. Bravo - San Juan (RH24B)",
+      "seleccion_siatl": {
+        "x": -99.41,
+        "y": 25.69
+      },
+      "descripcion": "Cuenca oficial R. Bravo - San Juan; paquete completo con todas sus subcuencas, incluida RH24Bb, RH24Bc y RH24Bf. Superpone contenido con los tres ZIP individuales."
+    },
+    {
+      "archivo": "nuevo-leon/cuencas/limites-subcuencas-san-juan-pesqueria-monterrey.zip",
+      "fuente": "https://antares.inegi.org.mx/analisis/red_hidro/siatl/index.html",
+      "descripcion": "Tres límites de subcuenca oficiales: R. San Juan RH24Bb, R. Pesquería RH24Bc y R. Monterrey RH24Bf. Esta última es la unidad devuelta para el punto metropolitano (-100.43,25.66) próximo al Santa Catarina; no es una delineación separada de ese río.",
+      "bytes": 181313,
+      "sha256": "5aac607fd52f6b5afdfb93f84d60404cdbc3f5400d588c668c8007af0949d3bb",
+      "fecha_descarga": "2026-11-14",
+      "via": "Selección y reempaquetado asistidos por Codex de miembros de tres ZIP originales INEGI",
+      "transformacion": "Únicamente selección de los doce miembros *_subc.shp/.shx/.dbf/.prj y recompresión ZIP. Los bytes de cada miembro son idénticos a su origen; no se alteraron geometrías, atributos ni CRS.",
+      "crs": "GCS_GRS_1980, grados, según PRJ original",
+      "escala": "1:50 000; Red Hidrográfica 2a edición",
+      "origenes": [
+        {
+          "fuente": "https://www.inegi.org.mx/contenidos/Productos/prod_serv/contenidos/espanol/bvinegi/productos/geografia/hidrogeolo/subcuencas_2.0/889463133865_s.zip",
+          "zip_original_bytes": 12749673,
+          "zip_original_sha256": "1b2718a33e50e3c549b90523e5ccbf97f6e51a7ddc633721499078cf50c4ab18",
+          "unidad": "R. San Juan (RH24Bb)",
+          "seleccion_siatl": {
+            "x": -99.41,
+            "y": 25.69
+          },
+          "miembros_seleccionados": [
+            {
+              "miembro": "RH24/RH24B/RH24Bb/RH24Bb_subc.dbf",
+              "bytes": 882,
+              "sha256": "960d076d86ff526fcf070fe73aeaf4f8049ab59bdc060424500bbd174dd25dd4"
+            },
+            {
+              "miembro": "RH24/RH24B/RH24Bb/RH24Bb_subc.prj",
+              "bytes": 145,
+              "sha256": "97ac2187cc4e7133992bb632beb400fe89194ceb139b00979faec210382dbc26"
+            },
+            {
+              "miembro": "RH24/RH24B/RH24Bb/RH24Bb_subc.shp",
+              "bytes": 96108,
+              "sha256": "893d47a6859a0fd1969edc0929b628e4c1297fef18445c6db18bf03d9eae71e8"
+            },
+            {
+              "miembro": "RH24/RH24B/RH24Bb/RH24Bb_subc.shx",
+              "bytes": 108,
+              "sha256": "4615f5fc084ee98de33ebbe0637feaf829175951904560d24754cac519171922"
+            }
+          ]
+        },
+        {
+          "fuente": "https://www.inegi.org.mx/contenidos/Productos/prod_serv/contenidos/espanol/bvinegi/productos/geografia/hidrogeolo/subcuencas_2.0/889463133841_s.zip",
+          "zip_original_bytes": 14402317,
+          "zip_original_sha256": "f8161941b04f67c51808cf3f11b81a8388a81ac743c99e2abf7053a2c3ceb0eb",
+          "unidad": "R. Pesquería (RH24Bc)",
+          "seleccion_siatl": {
+            "x": -100.05,
+            "y": 25.79
+          },
+          "miembros_seleccionados": [
+            {
+              "miembro": "RH24/RH24B/RH24Bc/RH24Bc_subc.dbf",
+              "bytes": 883,
+              "sha256": "4dbd43664a0f014c9513fef866c1f070aa4ca328facb1b1692abe34b08b2fe8e"
+            },
+            {
+              "miembro": "RH24/RH24B/RH24Bc/RH24Bc_subc.prj",
+              "bytes": 145,
+              "sha256": "97ac2187cc4e7133992bb632beb400fe89194ceb139b00979faec210382dbc26"
+            },
+            {
+              "miembro": "RH24/RH24B/RH24Bc/RH24Bc_subc.shp",
+              "bytes": 91420,
+              "sha256": "dd339ed2960efe425d849726063da0c999107ba28cdd0942a47fb858efb42c8f"
+            },
+            {
+              "miembro": "RH24/RH24B/RH24Bc/RH24Bc_subc.shx",
+              "bytes": 108,
+              "sha256": "428c6a94444a792cedea527c02db7b3471bb9f60ff47bc939518c92813664a15"
+            }
+          ]
+        },
+        {
+          "fuente": "https://www.inegi.org.mx/contenidos/Productos/prod_serv/contenidos/espanol/bvinegi/productos/geografia/hidrogeolo/subcuencas_2.0/889463133629_s.zip",
+          "zip_original_bytes": 12375506,
+          "zip_original_sha256": "8a7b9e6fffd59a82534f3f8ccb41648717c7ad9747d45832f5a8027050db8d9e",
+          "unidad": "R. Monterrey (RH24Bf)",
+          "seleccion_siatl": {
+            "x": -100.43,
+            "y": 25.66
+          },
+          "miembros_seleccionados": [
+            {
+              "miembro": "RH24/RH24B/RH24Bf/RH24Bf_subc.dbf",
+              "bytes": 883,
+              "sha256": "ada197ab1cdedceaeee23795eee44ed2cf7f8a1a0846a1f5be7821d203573122"
+            },
+            {
+              "miembro": "RH24/RH24B/RH24Bf/RH24Bf_subc.prj",
+              "bytes": 145,
+              "sha256": "97ac2187cc4e7133992bb632beb400fe89194ceb139b00979faec210382dbc26"
+            },
+            {
+              "miembro": "RH24/RH24B/RH24Bf/RH24Bf_subc.shp",
+              "bytes": 51964,
+              "sha256": "d65b1fcd5cd6b865cb2758b9bd7ea242996b3d4bd9cbf1af8f17b9727df3c0de"
+            },
+            {
+              "miembro": "RH24/RH24B/RH24Bf/RH24Bf_subc.shx",
+              "bytes": 108,
+              "sha256": "9ec0e1b69ce89c4bc68fb9d2b92f46075286b86c015924c2c17fe572e36b8c6b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "archivo": "nuevo-leon/presas/CCHNL.csv",
+      "fuente": "https://sih.conagua.gob.mx/basedatos/Presas/CCHNL.csv",
+      "bytes": 1198150,
+      "sha256": "60a12c888cc0aa3d6c2e872bcf8712aa0b4c444351964ea65cd98c037faadf94",
+      "fecha_descarga": "2026-11-14",
+      "via": "Descarga directa en Chrome; archivo original conservado; comprobación de integridad y cobertura asistida por Codex",
+      "nombre_original": "CCHNL.csv",
+      "transformacion": "Ninguna; bytes originales conservados.",
+      "descripcion": "El Cuchillo / Cuchillo Solidaridad, China, Nuevo León; registro diario histórico SIH, con nivel, volumen y variables hidrometeorológicas.",
+      "codificacion": "UTF-8",
+      "filas_previas_a_cabecera": 7,
+      "registros": 31208,
+      "inicio_fechas": "1938-12-01",
+      "fin_fechas": "2026-11-13",
+      "cobertura_por_variable": {
+        "Precipitacion(mm)": {
+          "observaciones_validas": 31208,
+          "inicio": "1938-12-01",
+          "fin": "2026-11-13",
+          "faltantes": 0,
+          "dias_esperados_entre_extremos_validos": 32125,
+          "dias_sin_medicion_en_ese_intervalo": 917
+        },
+        "Nivel(m)": {
+          "observaciones_validas": 12125,
+          "inicio": "1993-09-01",
+          "fin": "2026-11-13",
+          "faltantes": 19083,
+          "dias_esperados_entre_extremos_validos": 12127,
+          "dias_sin_medicion_en_ese_intervalo": 2
+        },
+        "VolumenAlm(Mm3)": {
+          "observaciones_validas": 12101,
+          "inicio": "1993-09-01",
+          "fin": "2026-11-13",
+          "faltantes": 19107,
+          "dias_esperados_entre_extremos_validos": 12127,
+          "dias_sin_medicion_en_ese_intervalo": 26
+        },
+        "ObraToma(m3/s)": {
+          "observaciones_validas": 11997,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 19211,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 8
+        },
+        "Vertedor(m3/s)": {
+          "observaciones_validas": 11997,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 19211,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 8
+        },
+        "Derrame(m3/s)": {
+          "observaciones_validas": 11997,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 19211,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 8
+        },
+        "Evaporacion(mm)": {
+          "observaciones_validas": 10858,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 20350,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 1147
+        }
+      },
+      "nota_cobertura": "El inicio del archivo no equivale al comienzo de la serie de volumen. Las celdas vacías se mantienen como faltantes; no se convierten en cero. La columna VolumenAlm(Mm3) está en millones de m³ (hm³). El orden de columnas difiere en LBCNL.",
+      "dias_esperados_entre_extremos": 32125,
+      "fechas_ausentes_en_archivo": 917
+    },
+    {
+      "archivo": "nuevo-leon/presas/CPRNL.csv",
+      "fuente": "https://sih.conagua.gob.mx/basedatos/Presas/CPRNL.csv",
+      "bytes": 994691,
+      "sha256": "b1f0a0776ce52ecb5adbb150c3fe3866b3a6c42df895582c89d68cf41e61b45c",
+      "fecha_descarga": "2026-11-14",
+      "via": "Descarga directa en Chrome; archivo original conservado; comprobación de integridad y cobertura asistida por Codex",
+      "nombre_original": "CPRNL.csv",
+      "transformacion": "Ninguna; bytes originales conservados.",
+      "descripcion": "Cerro Prieto / José López Portillo, Linares, Nuevo León; registro diario histórico SIH, con nivel, volumen y variables hidrometeorológicas.",
+      "codificacion": "UTF-8",
+      "filas_previas_a_cabecera": 7,
+      "registros": 23481,
+      "inicio_fechas": "1958-05-01",
+      "fin_fechas": "2026-11-13",
+      "cobertura_por_variable": {
+        "Precipitacion(mm)": {
+          "observaciones_validas": 23481,
+          "inicio": "1958-05-01",
+          "fin": "2026-11-13",
+          "faltantes": 0,
+          "dias_esperados_entre_extremos_validos": 25034,
+          "dias_sin_medicion_en_ese_intervalo": 1553
+        },
+        "Nivel(m)": {
+          "observaciones_validas": 14527,
+          "inicio": "1982-04-01",
+          "fin": "2026-11-13",
+          "faltantes": 8954,
+          "dias_esperados_entre_extremos_validos": 16298,
+          "dias_sin_medicion_en_ese_intervalo": 1771
+        },
+        "VolumenAlm(Mm3)": {
+          "observaciones_validas": 12369,
+          "inicio": "1993-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 11112,
+          "dias_esperados_entre_extremos_validos": 12370,
+          "dias_sin_medicion_en_ese_intervalo": 1
+        },
+        "ObraToma(m3/s)": {
+          "observaciones_validas": 12001,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 11480,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 4
+        },
+        "Vertedor(m3/s)": {
+          "observaciones_validas": 12001,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 11480,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 4
+        },
+        "Derrame(m3/s)": {
+          "observaciones_validas": 12001,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 11480,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 4
+        },
+        "Evaporacion(mm)": {
+          "observaciones_validas": 11991,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 11490,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 14
+        }
+      },
+      "nota_cobertura": "El inicio del archivo no equivale al comienzo de la serie de volumen. Las celdas vacías se mantienen como faltantes; no se convierten en cero. La columna VolumenAlm(Mm3) está en millones de m³ (hm³). El orden de columnas difiere en LBCNL.",
+      "dias_esperados_entre_extremos": 25034,
+      "fechas_ausentes_en_archivo": 1553
+    },
+    {
+      "archivo": "nuevo-leon/presas/LBCNL.csv",
+      "fuente": "https://sih.conagua.gob.mx/basedatos/Presas/LBCNL.csv",
+      "bytes": 1003599,
+      "sha256": "eed540e4370eff48ca911b71c2431d36be0f0a00bc5a6c335e8fd7f5834608e1",
+      "fecha_descarga": "2026-11-14",
+      "via": "Descarga directa en Chrome; archivo original conservado; comprobación de integridad y cobertura asistida por Codex",
+      "nombre_original": "LBCNL.csv",
+      "transformacion": "Ninguna; bytes originales conservados.",
+      "descripcion": "La Boca / Rodrigo Gómez, Santiago, Nuevo León; registro diario histórico SIH, con nivel, volumen y variables hidrometeorológicas.",
+      "codificacion": "UTF-8",
+      "filas_previas_a_cabecera": 7,
+      "registros": 22986,
+      "inicio_fechas": "1957-07-01",
+      "fin_fechas": "2026-11-13",
+      "cobertura_por_variable": {
+        "Nivel(m)": {
+          "observaciones_validas": 22986,
+          "inicio": "1957-07-01",
+          "fin": "2026-11-13",
+          "faltantes": 0,
+          "dias_esperados_entre_extremos_validos": 25338,
+          "dias_sin_medicion_en_ese_intervalo": 2352
+        },
+        "Precipitacion(mm)": {
+          "observaciones_validas": 18846,
+          "inicio": "1969-10-01",
+          "fin": "2026-11-13",
+          "faltantes": 4140,
+          "dias_esperados_entre_extremos_validos": 20863,
+          "dias_sin_medicion_en_ese_intervalo": 2017
+        },
+        "VolumenAlm(Mm3)": {
+          "observaciones_validas": 12363,
+          "inicio": "1993-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 10623,
+          "dias_esperados_entre_extremos_validos": 12370,
+          "dias_sin_medicion_en_ese_intervalo": 7
+        },
+        "ObraToma(m3/s)": {
+          "observaciones_validas": 11994,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 10992,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 11
+        },
+        "Vertedor(m3/s)": {
+          "observaciones_validas": 11993,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 10993,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 12
+        },
+        "Derrame(m3/s)": {
+          "observaciones_validas": 11993,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 10993,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 12
+        },
+        "Evaporacion(mm)": {
+          "observaciones_validas": 11542,
+          "inicio": "1994-01-01",
+          "fin": "2026-11-13",
+          "faltantes": 11444,
+          "dias_esperados_entre_extremos_validos": 12005,
+          "dias_sin_medicion_en_ese_intervalo": 463
+        }
+      },
+      "nota_cobertura": "El inicio del archivo no equivale al comienzo de la serie de volumen. Las celdas vacías se mantienen como faltantes; no se convierten en cero. La columna VolumenAlm(Mm3) está en millones de m³ (hm³). El orden de columnas difiere en LBCNL.",
+      "dias_esperados_entre_extremos": 25338,
+      "fechas_ausentes_en_archivo": 2352
+    },
+    {
+      "archivo": "nuevo-leon/presas/0_Catalogo_de_presas.csv",
+      "fuente": "https://sih.conagua.gob.mx/basedatos/Presas/0_Catalogo_de_presas.csv",
+      "bytes": 25023,
+      "sha256": "98b5ec13e8ff1c2f11ff7bf74ae751b1efb34d383320aa63db7c211fc6e07cce",
+      "fecha_descarga": "2026-11-14",
+      "via": "Descarga directa en Chrome; archivo original conservado; comprobación de integridad y cobertura asistida por Codex",
+      "nombre_original": "0_Catalogo_de_presas.csv",
+      "transformacion": "Ninguna; bytes originales conservados.",
+      "descripcion": "Catálogo nacional SIH de presas, identificación y coordenadas; incluye CCHNL, CPRNL y LBCNL.",
+      "codificacion": "Windows-1252",
+      "registros": 210,
+      "presas_seleccionadas": [
+        {
+          "Número": "137",
+          "Clave ": "CCHNL",
+          "Nombre de la presa": "Cuchillo Solidaridad, N.L.",
+          "Latitud": "25.711667",
+          "Longitud": "-99.276944",
+          "Altitud": "145",
+          "Estado": "Nuevo León",
+          "Municipio": "China",
+          "Identificador de la \ncuenca de disponibilidad": "436",
+          "Cuenca de disponibilidad": "Río San Juan 1",
+          "Número de la \nregión hidrológica": "24",
+          "Región hidrológica": "Bravo Conchos"
+        },
+        {
+          "Número": "138",
+          "Clave ": "CPRNL",
+          "Nombre de la presa": "José López Portillo, N.L.",
+          "Latitud": "24.937500",
+          "Longitud": "-99.399722",
+          "Altitud": "270",
+          "Estado": "Nuevo León",
+          "Municipio": "Linares",
+          "Identificador de la \ncuenca de disponibilidad": "472",
+          "Cuenca de disponibilidad": "Río Pablillo 2",
+          "Número de la \nregión hidrológica": "25",
+          "Región hidrológica": "San Fernando-Soto La Marina"
+        },
+        {
+          "Número": "139",
+          "Clave ": "LBCNL",
+          "Nombre de la presa": "Rodrigo Gómez, N.L.",
+          "Latitud": "25.428056",
+          "Longitud": "-100.128056",
+          "Altitud": "460",
+          "Estado": "Nuevo León",
+          "Municipio": "Santiago",
+          "Identificador de la \ncuenca de disponibilidad": "436",
+          "Cuenca de disponibilidad": "Río San Juan 1",
+          "Número de la \nregión hidrológica": "24",
+          "Región hidrológica": "Bravo Conchos"
+        }
+      ]
+    },
+    {
+      "archivo": "nuevo-leon/grace/grace-jpl-rl06.3-v04-coleccion-cmr.json",
+      "fuente": "https://cmr.earthdata.nasa.gov/search/collections.json?concept_id=C3195527175-POCLOUD",
+      "descripcion": "Metadatos oficiales CMR de la colección GRACE JPL CRI RL06.3Mv04.",
+      "bytes": 10094,
+      "sha256": "406479146a50aafa2c843844720ae860d6969a7716b6aee3df26d0757aa86275",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; consulta y conservación de metadatos asistida por Codex",
+      "nombre_original": "grace-jpl-rl06.3-v04-coleccion-cmr.json"
+    },
+    {
+      "archivo": "nuevo-leon/grace/grace-jpl-rl06.3-v04-granulo-cmr.json",
+      "fuente": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C3195527175-POCLOUD&page_size=10",
+      "descripcion": "Metadatos oficiales CMR del gránulo global, abril de 2002 a septiembre de 2026.",
+      "bytes": 5072,
+      "sha256": "07e1c8079118326b0c0d3124b9ef9e670b8058be49514a077eb753e9f2224c5b",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; consulta y conservación de metadatos asistida por Codex",
+      "nombre_original": "grace-jpl-rl06.3-v04-granulo-cmr.json"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.md5",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-public/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.md5",
+      "descripcion": "Suma MD5 oficial publicada por PO.DAAC para verificar el netCDF.",
+      "bytes": 87,
+      "sha256": "46afa99fa0817987f80436ee9118ae1ada99fc90e6f22b7e4dee3debda791e35",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; consulta y conservación de metadatos asistida por Codex",
+      "nombre_original": "GRCTellus.JPL.200204_202609.GLO.RL06.3M.MSCNv04CRI.nc.md5"
+    },
+    {
+      "archivo": "nuevo-leon/grace/GRACE_GRACE-FO_ReleaseNotes_JPL_MASCON.txt",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_ReleaseNotes_JPL_MASCON.txt",
+      "descripcion": "Notas originales de la versión de GRACE/GRACE-FO JPL Mascon.",
+      "bytes": 9466,
+      "sha256": "dc562791e6324605e630513d41cabcf83c83b0251bcc2cba43f3cc3d30e52836",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; consulta y conservación de metadatos asistida por Codex",
+      "nombre_original": "GRACE_GRACE-FO_ReleaseNotes_JPL_MASCON.txt"
+    },
+    {
+      "archivo": "nuevo-leon/grace/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4_virtual_https.json",
+      "fuente": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-public/virtual_collections/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4_virtual_https.json",
+      "descripcion": "Descriptor virtual oficial con metadatos y coordenadas; las referencias de los datos científicos apuntan al netCDF protegido, que requiere Earthdata. Este JSON no contiene la serie científica completa.",
+      "bytes": 383719,
+      "sha256": "3e8f599e590a945aa3d199f25ca2c29f3a1d3e729fc90a82965cf3d9e406b89c",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; metadatos conservados con asistencia de Codex",
+      "nombre_original": "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4_virtual_https.json"
+    },
+    {
+      "archivo": "nuevo-leon/gldas/gldas-noah025-3h-2.1-coleccion-cmr.json",
+      "fuente": "https://cmr.earthdata.nasa.gov/search/collections.json?concept_id=C1342986035-GES_DISC",
+      "descripcion": "Metadatos oficiales de la colección GLDAS Noah 0.25°, 3 horas, versión 2.1. No contiene las series científicas solicitadas.",
+      "bytes": 27925,
+      "sha256": "6053a3198d2c12baef2a0e32983a4fa781412e68604976bece2f51512c891db4",
+      "fecha_descarga": "2026-11-14",
+      "via": "HTTPS público; metadatos conservados con asistencia de Codex",
+      "tipo": "metadatos; datos científicos pendientes"
+    },
+    {
+      "archivo": "RAACK_descarga_datos_Nuevo_Leon.docx",
+      "fuente": "Documento aportado por la persona en este chat: RAACK_descarga_datos_Nuevo_Leon.docx",
+      "descripcion": "Lista de requisitos de datos de Nuevo León aportada el14nov2026; original sin modificar. Sus afirmaciones no sustituyen la verificación de acceso y cobertura.",
+      "bytes": 11825,
+      "sha256": "36ac32618b9dafb8996d94d9254c0ca26bcc4d64576966e4402a6417f3440537",
+      "fecha_descarga": "2026-11-14",
+      "via": "Adjunto de la persona; incorporación y registro asistidos por Codex",
+      "nombre_original": "RAACK_descarga_datos_Nuevo_Leon.docx"
     }
   ]
 }
