@@ -8,13 +8,14 @@ fecha: 2026-11-15
 
 El equipo investiga qué explica la pérdida de agua en Nuevo León y qué ocultan los promedios anuales en Monterrey. Este grafo conecta las preguntas con los datos, el método, los hallazgos y las pruebas que aún faltan. Cada vista abre una parte del grafo. El [contexto](CONTEXTO.md) conserva la historia del trabajo.
 
-Actualizado el 15 de noviembre de 2026. Contiene 93 nodos y 141 relaciones. Las etiquetas «fijado por prueba» y «calculado por la página» remiten al motor del caso correspondiente.
+Actualizado el 15 de noviembre de 2026. Contiene 104 nodos y 161 relaciones. Las etiquetas «fijado por prueba» y «calculado por la página» remiten al motor del caso correspondiente.
 
 ## Lo esencial en un minuto
 
 - El equipo eligió investigar el ciclo del agua en Nuevo León. El Valle Central de California permite comparar el almacenamiento con menos datos locales. [Verificación de las cifras](DIAGNOSTICO_AGUA.md).
 - El paso 9, propuesto por Fran, cuenta las capas que ya se tienen o se podrían obtener en otro país. [Escalabilidad](ESCALABILIDAD.md).
 - En el Caso 002, las noches del centro de Monterrey se calientan a razón de 0,96 °C por década entre 2001 y 2025. En 2016 y 2020, dos totales de lluvia casi iguales se distribuyeron de formas muy distintas. [Pruebas del laboratorio](../app/src/lib/analysis.test.ts) · [Tabla anual de lluvia](../datos/derivados/lluvia_anual.csv).
+- DE-T, el asistente que entregó Fran, responde con las mismas cifras que la página: salen de water.json y un verificador las busca en los datos antes de mostrarlas. Se abre bajo la explicación de cada número. Al integrarlo se vio que el zip medía la pendiente por paso (GRACE −8,53 frente a −7,135 cm por década). [Qué se hizo y por qué](de-t/DE-T.md).
 
 ## Mapa general
 
@@ -34,6 +35,7 @@ flowchart LR
   p_agua["Caso 001 · ¿Adónde fue el agua?"]
   p_mundo["Paso 9 · llevar el caso a otro país"]
   p_pagina["Trend Detective<br/>página web"]
+  p_dete["DE-T · asistente del caso"]
   g_pendientes["Entrega de la demo<br/>y revisión del equipo"]
   reto -->|se evalúa con| g_reglas
   reto -->|ofrece| g_recursos
@@ -50,6 +52,8 @@ flowchart LR
   g_nl -->|alimenta| p_agua
   p_agua -->|forma parte de| p_pagina
   p_agua -->|se amplía con| p_mundo
+  p_dete -->|forma parte de| p_pagina
+  p_agua -->|le da sus cifras| p_dete
   classDef reto fill:#1f2a44,stroke:#1f2a44,color:#ffffff
   class reto reto
   classDef grupo fill:#eef0f2,stroke:#3d4650,color:#1d2430
@@ -67,7 +71,7 @@ flowchart LR
   classDef limite fill:#fdecea,stroke:#c0392b,color:#1d2430
   class g_limites limite
   classDef pagina fill:#dbe7ff,stroke:#2a4fb5,color:#1d2430
-  class p_agua,p_mundo,p_pagina pagina
+  class p_agua,p_mundo,p_pagina,p_dete pagina
   classDef pendiente fill:#ffffff,stroke:#8a8a8a,stroke-dasharray:5 4,color:#1d2430
   class g_pendientes pendiente
 ```
@@ -96,6 +100,7 @@ flowchart LR
   subgraph sg_reto_pagina["Página web"]
     p_caso["Caso guiado · dos barras,<br/>dos calendarios, ¿tendencia?"]
     p_lab["Investigación en ocho pasos"]
+    p_cuadros["La señal en cuadros"]
   end
   subgraph sg_reto_pendientes["Pendientes"]
     t_textos["Revisar los textos de la demo"]
@@ -112,6 +117,7 @@ flowchart LR
   fran1 -->|se ve en| p_caso
   fran2 -->|se pone a prueba en| p_caso
   ideas13 -->|dan forma a| p_lab
+  fran1 -->|se ve en| p_cuadros
   classDef reto fill:#1f2a44,stroke:#1f2a44,color:#ffffff
   class reto,criterios,entrega,consideraciones reto
   classDef regla fill:#eef0f2,stroke:#3d4650,color:#1d2430
@@ -119,7 +125,7 @@ flowchart LR
   classDef pregunta fill:#f6e8f7,stroke:#8e44ad,color:#1d2430
   class fran1,fran2,ideas13 pregunta
   classDef pagina fill:#dbe7ff,stroke:#2a4fb5,color:#1d2430
-  class p_caso,p_lab pagina
+  class p_caso,p_lab,p_cuadros pagina
   classDef pendiente fill:#ffffff,stroke:#8a8a8a,stroke-dasharray:5 4,color:#1d2430
   class t_textos pendiente
 ```
@@ -577,6 +583,8 @@ flowchart LR
     p_lab["Investigación en ocho pasos"]
     p_expediente["Expediente"]
     p_dete["DE-T · asistente del caso"]
+    p_cuadros["La señal en cuadros"]
+    p_numeros["Cada número se explica<br/>al pulsarlo"]
   end
   subgraph sg_pagina_reglas["Reto y reglas"]
     criterios["Cinco criterios, de 1 a 5"]
@@ -594,6 +602,7 @@ flowchart LR
     t_textos["Revisar los textos de la demo"]
     t_texturas["Permiso de las texturas"]
     t_dete["Clave de Kimi y catálogo de DE-T"]
+    t_subir["Subir a GitHub DE-T y los cuadros"]
   end
   p_agua -->|forma parte de| p_pagina
   p_agua -->|se amplía con| p_mundo
@@ -619,16 +628,21 @@ flowchart LR
   p_dete -->|forma parte de| p_pagina
   p_agua -->|le da sus cifras| p_dete
   p_dete -.->|requiere| t_dete
+  p_cuadros -->|abre| p_pagina
+  p_pagina -->|contiene| p_numeros
+  p_numeros -->|termina con «¿No quedó claro?»| p_dete
+  p_dete -.->|falta subir| t_subir
+  p_cuadros -.->|falta subir| t_subir
   classDef hallazgo fill:#e7f5ec,stroke:#2e7d4f,color:#1d2430
   class h_vacio,h_gemelos,h_lluvia,h_noches,h_lugares,h_verdor,h_aire hallazgo
   classDef metodo fill:#f2f2f2,stroke:#8a8a8a,color:#1d2430
   class m_jurado,m_coartadas metodo
   classDef pagina fill:#dbe7ff,stroke:#2a4fb5,color:#1d2430
-  class p_pagina,p_caso,p_lab,p_expediente,p_agua,p_mundo,p_dete pagina
+  class p_pagina,p_caso,p_lab,p_expediente,p_agua,p_mundo,p_dete,p_cuadros,p_numeros pagina
   classDef reto fill:#1f2a44,stroke:#1f2a44,color:#ffffff
   class criterios,entrega reto
   classDef pendiente fill:#ffffff,stroke:#8a8a8a,stroke-dasharray:5 4,color:#1d2430
-  class t_entrega,t_demo,t_textos,t_texturas,t_dete pendiente
+  class t_entrega,t_demo,t_textos,t_texturas,t_dete,t_subir pendiente
 ```
 
 | Parte | Qué hace | Estado |
@@ -638,12 +652,15 @@ flowchart LR
 | Investigación en ocho pasos | Qué, dónde, cuándo, mirar y dibujar una línea, veredicto, coartadas, cinco lugares y segundo testigo, para siete variables. | implementado |
 | Expediente | Fuentes, métodos, límites, declaración de uso de IA y descarga del resultado en JSON. | implementado |
 | DE-T · asistente del caso | Responde con Kimi solo con los datos del caso del agua: cuatro herramientas calculan las cifras y un verificador las busca en los datos antes de mostrarlas. Se abre bajo la explicación de cada número («¿No quedó claro? Pregúntale al DE-T»), desde el veredicto y desde la cabecera, y solo aparece si su servidor está encendido. Diseño de Fran; integración del 15 de noviembre de 2026. | implementado |
+| La señal en cuadros | Abre la página sobre la Tierra: un cuadro por día de lluvia de un año y un cuadro por mes de temperatura nocturna frente a lo habitual. Idea de Fran. El 15 de noviembre de 2026, a petición suya, las dos tarjetas quedaron centradas en la columna de la página (con la tabla abierta, la de temperatura se ensanchaba y se salía por la derecha) y la de temperatura recibió el mismo selector de año que la de lluvia: recuadra ese año en la cuadrícula y dice cuántos de sus meses fueron más cálidos de lo habitual y cuál se pasó más. | implementado |
+| Cada número se explica al pulsarlo | Un clic en cualquier cifra abre una tarjeta que dice qué tipo de número es (cambio por década, intervalo, p-valor…), su unidad y cómo lo llama la página. Desde el 15 de noviembre de 2026 termina con «¿No quedó claro? Pregúntale al DE-T» cuando DE-T está encendido. | fijado por prueba |
 
 ### Pendientes
 
 - [ ] **Registrar la entrega del reto.** El sitio generado está en GitHub. Queda habilitar la demo pública, verificar el enlace e incluirlo en la entrega oficial. [Pendientes](PENDIENTES.md)
 - [ ] **Permiso de las texturas.** Fran eligió conservar el globo actual en GitHub después de una comparación local con mapas de la NASA. Queda obtener permiso para usar las texturas actuales en la entrega. [Decisión y procedencia](PENDIENTES.md)
 - [ ] **Clave de Kimi y catálogo de DE-T.** DE-T se probó con un Kimi simulado. Falta la clave del equipo, probarlo con el modelo real, aprobar el catálogo de opciones y declarar Kimi en el formulario de uso de IA. [Pendientes](PENDIENTES.md)
+- [ ] **Subir a GitHub DE-T y los cuadros.** La integración de DE-T y los cuadros centrados están en commits locales de main, sin subir. El sitio publicado (site/) no los tendrá hasta ejecutar npm run site y subirlo. [Pendientes](PENDIENTES.md)
 - [ ] **Demo y textos en inglés.** Vídeo de 30 segundos o 7 diapositivas, y los campos de la página del proyecto. [Reglas oficiales](REGLAS_OFICIALES.md)
 - [ ] **Revisar los textos de la demo.** El equipo eligió el caso del agua. Falta que revise los borradores en inglés y explique el diferenciador con sus palabras. [Pendientes](PENDIENTES.md)
 - [ ] **Completar la lluvia del Valle Central.** Los datos regionales de IMERG y CHIRPS para California faltan en el repositorio. El caso allí dispone de GRACE. [Diagnóstico](DIAGNOSTICO_AGUA.md)
@@ -651,8 +668,83 @@ flowchart LR
 - [ ] **Decidir sobre Giovanni.** Si se usa como herramienta de la solución, más allá de las siete descargas autorizadas. [Decisión](decisiones/GIOVANNI.md)
 - [ ] **Verificar una cita.** La página atribuye el cálculo a Weatherhead et al. (1998). La revisión de la fórmula frente al artículo figura pendiente en la nota de ideas. [Ideas](IDEAS.md)
 
+## 8 · DE-T, el asistente del caso
+
+Qué se hizo el 15 de noviembre de 2026 al integrar el asistente que entregó Fran, y por qué: de dónde saca sus cifras, cómo evita inventarlas, dónde aparece y qué falta.
+
+```mermaid
+flowchart LR
+  subgraph sg_dete_dete["DE-T · asistente del caso"]
+    q_dete["Fran · «¿No quedó claro?<br/>Pregúntale al DE-T»"]
+    m_dete_contexto["Contexto del número pulsado"]
+    d_dete["Datos de DE-T<br/>27 series y 23 acuíferos"]
+    h_dete_paso["El zip medía la pendiente<br/>por paso, no por año"]
+    m_dete_herr["Herramientas que calculan"]
+    m_dete_verif["Verificador de cifras"]
+    l_dete["DE-T puede equivocarse"]
+    l_dete_estatico["Solo con su servidor"]
+  end
+  subgraph sg_dete_pagina["Página web"]
+    p_numeros["Cada número se explica<br/>al pulsarlo"]
+    p_dete["DE-T · asistente del caso"]
+    p_pagina["Trend Detective<br/>página web"]
+  end
+  subgraph sg_dete_agua["Caso 001 · agua"]
+    m_agua["Dos pruebas del caso del agua"]
+    d_acuiferos["13 de 23 acuíferos<br/>con disponibilidad negativa"]
+    h_almacen["Nuevo León · GRACE<br/>−7,1 cm por década"]
+  end
+  subgraph sg_dete_pendientes["Pendientes"]
+    t_dete["Clave de Kimi y catálogo de DE-T"]
+    t_subir["Subir a GitHub DE-T y los cuadros"]
+  end
+  m_agua -->|calcula la tendencia| h_almacen
+  p_dete -->|forma parte de| p_pagina
+  p_dete -.->|requiere| t_dete
+  p_pagina -->|contiene| p_numeros
+  q_dete -->|se construye como| p_dete
+  p_numeros -->|termina con «¿No quedó claro?»| p_dete
+  p_numeros -->|aporta el número y su explicación| m_dete_contexto
+  m_dete_contexto -->|le dice qué número se pulsó| p_dete
+  m_agua -->|da las tendencias de referencia| d_dete
+  d_acuiferos -->|aporta la tabla oficial| d_dete
+  d_dete -->|es la única base de| m_dete_herr
+  m_dete_herr -->|calcula las cifras de| p_dete
+  m_dete_verif -->|revisa cada cifra de| p_dete
+  h_dete_paso -->|obligó a exportar desde la página| d_dete
+  h_dete_paso -->|habría contradicho| h_almacen
+  l_dete -->|matiza| p_dete
+  l_dete_estatico -->|limita dónde aparece| p_dete
+  p_dete -.->|falta subir| t_subir
+  classDef pregunta fill:#f6e8f7,stroke:#8e44ad,color:#1d2430
+  class q_dete pregunta
+  classDef pagina fill:#dbe7ff,stroke:#2a4fb5,color:#1d2430
+  class p_numeros,p_dete,p_pagina pagina
+  classDef metodo fill:#f2f2f2,stroke:#8a8a8a,color:#1d2430
+  class m_dete_contexto,m_agua,m_dete_herr,m_dete_verif metodo
+  classDef dato fill:#e6f4f8,stroke:#1b7f99,color:#1d2430
+  class d_dete,d_acuiferos dato
+  classDef hallazgo fill:#e7f5ec,stroke:#2e7d4f,color:#1d2430
+  class h_dete_paso,h_almacen hallazgo
+  classDef limite fill:#fdecea,stroke:#c0392b,color:#1d2430
+  class l_dete,l_dete_estatico limite
+  classDef pendiente fill:#ffffff,stroke:#8a8a8a,stroke-dasharray:5 4,color:#1d2430
+  class t_dete,t_subir pendiente
+```
+
+| Pieza | Qué es y por qué | Estado | Fuente |
+|---|---|---|---|
+| Fran · «¿No quedó claro? Pregúntale al DE-T» | Fran entregó el diseño del asistente (zip «hydrodetective-asistente»: servidor con Kimi, cuatro herramientas, verificador de cifras, datos y catálogo de opciones) y pidió ponerlo donde tenga sentido en la página: bajo la explicación de cada número, para quien siga con dudas. También eligió el nombre, DE-T. | propuesta del equipo | [Qué se hizo y por qué](de-t/DE-T.md) · [DE-T](../app/dete/README.md) |
+| Datos de DE-T 27 series y 23 acuíferos | series_nl.json sale de water.json, el mismo archivo que usa la página: copia los valores anuales y la tendencia de referencia de cada serie sin recalcular nada, más la tabla de acuíferos del DOF. Por qué: así DE-T dice las mismas cifras que la página. Se regenera con npm run dete:data y una prueba falla si dejan de coincidir. | fijado por prueba | [Las cifras de DE-T son las de la página](de-t/DE-T_CIFRAS_DE_LA_PAGINA.md) · [Exportador](../app/dete/exportar_series.mjs) · [Pruebas](../app/dete/herramientas.test.mjs) |
+| El zip medía la pendiente por paso, no por año | Al comparar sus 27 series con la página, los valores coincidían, pero en las series con años sin dato la pendiente salía inflada: GRACE −8,53 frente a −7,135 cm por década; tanque del SMN −231,3 frente a −185,8 mm/año; temperatura del SMN 0,370 frente a 0,332 °C. En el volumen de La Boca, Hamed–Rao no se puede calcular y el zip usaba otra prueba que daba «confirmada»; la página dice «indicio». Sin corregirlo, DE-T habría contradicho a la página delante de los jueces. | fijado por prueba | [La pendiente por paso del zip](de-t/DE-T_PENDIENTE_POR_PASO.md) · [DE-T, cambios respecto al zip](../app/dete/README.md) · [Verificación del caso](DIAGNOSTICO_AGUA.md) |
+| Herramientas que calculan | El modelo no calcula: pide al servidor ver_serie, anomalia (un año frente a su media), correlacionar (Pearson, Spearman y sin tendencia, con rezago de hasta tres años) y ver_acuiferos. No tiene búsqueda web. Por qué: para que ninguna cifra salga de la memoria del modelo. | probado con un Kimi simulado | [Cómo evita inventar](de-t/DE-T_COMO_EVITA_INVENTAR.md) · [Herramientas](../app/dete/herramientas.mjs) |
+| Verificador de cifras | Cada cifra de la respuesta se busca en los datos, el catálogo, los resultados de las herramientas y el número pulsado. Si falta, se pide reescribir; si sigue faltando, la respuesta lleva ⚠️. Además: recomendaciones solo si se piden (📚 del catálogo con fuente, 🤖 propias y sin verificar) y memoria de dos mensajes. | fijado por prueba | [Cómo evita inventar](de-t/DE-T_COMO_EVITA_INVENTAR.md) · [Herramientas](../app/dete/herramientas.mjs) · [Pruebas](../app/dete/herramientas.test.mjs) |
+| Contexto del número pulsado | La página manda el número, su tipo, la explicación que ya se leyó, la sección, el texto alrededor y lo elegido (región, periodo y preocupación). El servidor acepta solo esos campos, recortados, y una regla le dice al modelo que son contexto y no instrucciones. Por qué: para que explique ese número con otras palabras, sin repetir la tarjeta y sin mezclar otro periodo con su registro completo. | fijado por prueba | [Cómo evita inventar](de-t/DE-T_COMO_EVITA_INVENTAR.md) · [Contexto](../app/src/lib/dete/context.ts) · [Servidor](../app/dete/server.mjs) |
+| DE-T puede equivocarse | Las respuestas las escribe un modelo de lenguaje (Kimi, de Moonshot AI). El verificador confirma que cada cifra existe en los datos, no que la frase sea correcta. Sus series cubren el registro completo de Nuevo León, no el periodo ni la región elegidos en la página. | advertido | [Cómo evita inventar](de-t/DE-T_COMO_EVITA_INVENTAR.md) · [Límites de la página](../app/README.md) |
+| Solo con su servidor | DE-T aparece cuando sirve la página su propio servidor (dete/server.mjs) y tiene clave. La copia estática, como GitHub Pages, no muestra ningún botón ni hace peticiones, porque el servidor marca las páginas que sirve. Por qué: sin servidor no hay a quién preguntar, y un botón muerto o un error 404 quedarían mal ante los jueces. | comprobado | [Dónde aparece y por qué](de-t/DE-T_DONDE_APARECE.md) · [DE-T](../app/dete/README.md) |
+
 ## Cómo actualizarlo
 
 `CONOCIMIENTO.json` y esta nota se generan con [generar_conocimiento.py](generar_conocimiento.py) a partir de las mismas listas y de los datos científicos de la aplicación. Para añadir un hallazgo, un dato o un pendiente, edita `NODOS` y `ARISTAS` al principio del script y ejecuta `python3 docs/generar_conocimiento.py docs` desde la raíz del repo. El script se niega a escribir si una relación apunta a un nodo que no existe o si una fuente citada no está en el repositorio.
 
-Claude preparó el grafo inicial del laboratorio y sus recursos. Codex recuperó ese trabajo y añadió el caso del agua y la extensión mundial con las cifras de los archivos del proyecto. El caso del agua fue elegido por el equipo. Las preguntas sobre el calendario y la extensión por país son de Fran.
+Claude preparó el grafo inicial del laboratorio y sus recursos. Codex recuperó ese trabajo y añadió el caso del agua y la extensión mundial con las cifras de los archivos del proyecto. El caso del agua fue elegido por el equipo. Las preguntas sobre el calendario y la extensión por país son de Fran. Claude integró DE-T, el asistente que diseñó el equipo y entregó Fran ([qué se hizo y por qué](de-t/DE-T.md)), centró los [cuadros de la portada](CUADROS_PORTADA.md) y añadió su vista a este grafo el 15 de noviembre de 2026.

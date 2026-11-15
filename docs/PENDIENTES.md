@@ -79,7 +79,7 @@ Fran propuso que la página cuente, país por país, cuántas capas de datos del
 
 ## Actualización del 15 de noviembre de 2026 · DE-T, el asistente del caso
 
-Fran entregó el diseño del asistente (zip `hydrodetective-asistente`: servidor con Kimi, cuatro herramientas que calculan las cifras y un verificador) y pidió meterlo en la página. Está integrado en local: al pulsar un número, la explicación termina con «¿No quedó claro? Pregúntale al DE-T»; también se abre desde el veredicto y desde la cabecera. Cómo se enciende y qué cambió respecto al zip: [app/dete/README.md](../app/dete/README.md). Lo que queda:
+Fran entregó el diseño del asistente (zip `hydrodetective-asistente`: servidor con Kimi, cuatro herramientas que calculan las cifras y un verificador) y pidió meterlo en la página. Está integrado en local: al pulsar un número, la explicación termina con «¿No quedó claro? Pregúntale al DE-T»; también se abre desde el veredicto y desde la cabecera. Cómo se enciende y qué cambió respecto al zip: [app/dete/README.md](../app/dete/README.md). Qué se hizo y por qué, nota por nota: [DE-T](de-t/DE-T.md). Lo que queda:
 
 - [ ] **Clave de Kimi.** Una persona del equipo crea la API key en platform.kimi.ai y la pone en `app/dete/.env` (copia de `.env.example`). Nunca se sube al repositorio.
 - [ ] **Probar DE-T con Kimi real.** El circuito completo se probó con un Kimi simulado en local; falta repetir las cinco pruebas rápidas del README con el modelo real.
@@ -87,4 +87,5 @@ Fran entregó el diseño del asistente (zip `hydrodetective-asistente`: servidor
 - [ ] **Declarar Kimi (Moonshot AI)** en el formulario de uso de IA de la entrega, además de Claude y Codex.
 - [ ] **Decidir cómo lo verán los jueces.** La copia en GitHub Pages es estática y no muestra a DE-T; se ve con `npm run dete` en un equipo con la clave. Si entra en la demo, grabarlo desde ese servidor.
 - [ ] Cuenta Tier0 de Kimi: cabe más o menos una pregunta por minuto. Si varias personas lo van a usar a la vez, recargar hasta Tier1.
+- [ ] **Subir a GitHub DE-T y los cuadros de la portada.** La integración de DE-T, los cuadros centrados con el selector de año de temperatura y la vista de DE-T del [grafo de conocimiento](CONOCIMIENTO.md) están en commits locales de `main`, sin subir. El sitio publicado (`site/`) no los tendrá hasta ejecutar `npm run site` y subirlo.
 - [x] Las cifras de DE-T coinciden con las de la página. El zip daba −8,53 cm por década en GRACE (pendiente por paso de la serie); ahora DE-T usa −7,135, la cifra de la página, y lo comprueba una prueba automática.

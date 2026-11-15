@@ -144,6 +144,7 @@
     "pagina": "Página web",
     "agua": "Caso 001 · agua",
     "mundo": "Escalabilidad",
+    "dete": "DE-T · asistente del caso",
     "pendientes": "Pendientes"
   },
   "estados": {
@@ -1098,6 +1099,214 @@
       "estado": "implementado",
       "fuentes": [
         {
+          "titulo": "Qué se hizo y por qué",
+          "ruta": "docs/de-t/DE-T.md"
+        },
+        {
+          "titulo": "Dónde aparece",
+          "ruta": "docs/de-t/DE-T_DONDE_APARECE.md"
+        },
+        {
+          "titulo": "DE-T",
+          "ruta": "app/dete/README.md"
+        }
+      ]
+    },
+    {
+      "id": "p_cuadros",
+      "tipo": "pagina",
+      "grupo": "pagina",
+      "etiqueta": "La señal en cuadros",
+      "texto": "Abre la página sobre la Tierra: un cuadro por día de lluvia de un año y un cuadro por mes de temperatura nocturna frente a lo habitual. Idea de Fran. El 15 de noviembre de 2026, a petición suya, las dos tarjetas quedaron centradas en la columna de la página (con la tabla abierta, la de temperatura se ensanchaba y se salía por la derecha) y la de temperatura recibió el mismo selector de año que la de lluvia: recuadra ese año en la cuadrícula y dice cuántos de sus meses fueron más cálidos de lo habitual y cuál se pasó más.",
+      "estado": "implementado",
+      "fuentes": [
+        {
+          "titulo": "Cuadros de la portada",
+          "ruta": "docs/CUADROS_PORTADA.md"
+        },
+        {
+          "titulo": "Sección de los cuadros",
+          "ruta": "app/src/lib/sections/Squares.svelte"
+        },
+        {
+          "titulo": "Página web",
+          "ruta": "app/README.md"
+        }
+      ]
+    },
+    {
+      "id": "p_numeros",
+      "tipo": "pagina",
+      "grupo": "pagina",
+      "etiqueta": "Cada número se explica al pulsarlo",
+      "texto": "Un clic en cualquier cifra abre una tarjeta que dice qué tipo de número es (cambio por década, intervalo, p-valor…), su unidad y cómo lo llama la página. Desde el 15 de noviembre de 2026 termina con «¿No quedó claro? Pregúntale al DE-T» cuando DE-T está encendido.",
+      "estado": "fijado por prueba",
+      "fuentes": [
+        {
+          "titulo": "Detector de números",
+          "ruta": "app/src/lib/explain/detect.ts"
+        },
+        {
+          "titulo": "Pruebas del detector",
+          "ruta": "app/src/lib/explain/detect.test.ts"
+        }
+      ]
+    },
+    {
+      "id": "q_dete",
+      "tipo": "pregunta",
+      "grupo": "dete",
+      "etiqueta": "Fran · «¿No quedó claro? Pregúntale al DE-T»",
+      "texto": "Fran entregó el diseño del asistente (zip «hydrodetective-asistente»: servidor con Kimi, cuatro herramientas, verificador de cifras, datos y catálogo de opciones) y pidió ponerlo donde tenga sentido en la página: bajo la explicación de cada número, para quien siga con dudas. También eligió el nombre, DE-T.",
+      "estado": "propuesta del equipo",
+      "fuentes": [
+        {
+          "titulo": "Qué se hizo y por qué",
+          "ruta": "docs/de-t/DE-T.md"
+        },
+        {
+          "titulo": "DE-T",
+          "ruta": "app/dete/README.md"
+        }
+      ]
+    },
+    {
+      "id": "d_dete",
+      "tipo": "dato",
+      "grupo": "dete",
+      "etiqueta": "Datos de DE-T 27 series y 23 acuíferos",
+      "texto": "series_nl.json sale de water.json, el mismo archivo que usa la página: copia los valores anuales y la tendencia de referencia de cada serie sin recalcular nada, más la tabla de acuíferos del DOF. Por qué: así DE-T dice las mismas cifras que la página. Se regenera con npm run dete:data y una prueba falla si dejan de coincidir.",
+      "estado": "fijado por prueba",
+      "fuentes": [
+        {
+          "titulo": "Las cifras de DE-T son las de la página",
+          "ruta": "docs/de-t/DE-T_CIFRAS_DE_LA_PAGINA.md"
+        },
+        {
+          "titulo": "Exportador",
+          "ruta": "app/dete/exportar_series.mjs"
+        },
+        {
+          "titulo": "Pruebas",
+          "ruta": "app/dete/herramientas.test.mjs"
+        }
+      ]
+    },
+    {
+      "id": "h_dete_paso",
+      "tipo": "hallazgo",
+      "grupo": "dete",
+      "etiqueta": "El zip medía la pendiente por paso, no por año",
+      "texto": "Al comparar sus 27 series con la página, los valores coincidían, pero en las series con años sin dato la pendiente salía inflada: GRACE −8,53 frente a −7,135 cm por década; tanque del SMN −231,3 frente a −185,8 mm/año; temperatura del SMN 0,370 frente a 0,332 °C. En el volumen de La Boca, Hamed–Rao no se puede calcular y el zip usaba otra prueba que daba «confirmada»; la página dice «indicio». Sin corregirlo, DE-T habría contradicho a la página delante de los jueces.",
+      "estado": "fijado por prueba",
+      "fuentes": [
+        {
+          "titulo": "La pendiente por paso del zip",
+          "ruta": "docs/de-t/DE-T_PENDIENTE_POR_PASO.md"
+        },
+        {
+          "titulo": "DE-T, cambios respecto al zip",
+          "ruta": "app/dete/README.md"
+        },
+        {
+          "titulo": "Verificación del caso",
+          "ruta": "docs/DIAGNOSTICO_AGUA.md"
+        }
+      ]
+    },
+    {
+      "id": "m_dete_herr",
+      "tipo": "metodo",
+      "grupo": "dete",
+      "etiqueta": "Herramientas que calculan",
+      "texto": "El modelo no calcula: pide al servidor ver_serie, anomalia (un año frente a su media), correlacionar (Pearson, Spearman y sin tendencia, con rezago de hasta tres años) y ver_acuiferos. No tiene búsqueda web. Por qué: para que ninguna cifra salga de la memoria del modelo.",
+      "estado": "probado con un Kimi simulado",
+      "fuentes": [
+        {
+          "titulo": "Cómo evita inventar",
+          "ruta": "docs/de-t/DE-T_COMO_EVITA_INVENTAR.md"
+        },
+        {
+          "titulo": "Herramientas",
+          "ruta": "app/dete/herramientas.mjs"
+        }
+      ]
+    },
+    {
+      "id": "m_dete_verif",
+      "tipo": "metodo",
+      "grupo": "dete",
+      "etiqueta": "Verificador de cifras",
+      "texto": "Cada cifra de la respuesta se busca en los datos, el catálogo, los resultados de las herramientas y el número pulsado. Si falta, se pide reescribir; si sigue faltando, la respuesta lleva ⚠️. Además: recomendaciones solo si se piden (📚 del catálogo con fuente, 🤖 propias y sin verificar) y memoria de dos mensajes.",
+      "estado": "fijado por prueba",
+      "fuentes": [
+        {
+          "titulo": "Cómo evita inventar",
+          "ruta": "docs/de-t/DE-T_COMO_EVITA_INVENTAR.md"
+        },
+        {
+          "titulo": "Herramientas",
+          "ruta": "app/dete/herramientas.mjs"
+        },
+        {
+          "titulo": "Pruebas",
+          "ruta": "app/dete/herramientas.test.mjs"
+        }
+      ]
+    },
+    {
+      "id": "m_dete_contexto",
+      "tipo": "metodo",
+      "grupo": "dete",
+      "etiqueta": "Contexto del número pulsado",
+      "texto": "La página manda el número, su tipo, la explicación que ya se leyó, la sección, el texto alrededor y lo elegido (región, periodo y preocupación). El servidor acepta solo esos campos, recortados, y una regla le dice al modelo que son contexto y no instrucciones. Por qué: para que explique ese número con otras palabras, sin repetir la tarjeta y sin mezclar otro periodo con su registro completo.",
+      "estado": "fijado por prueba",
+      "fuentes": [
+        {
+          "titulo": "Cómo evita inventar",
+          "ruta": "docs/de-t/DE-T_COMO_EVITA_INVENTAR.md"
+        },
+        {
+          "titulo": "Contexto",
+          "ruta": "app/src/lib/dete/context.ts"
+        },
+        {
+          "titulo": "Servidor",
+          "ruta": "app/dete/server.mjs"
+        }
+      ]
+    },
+    {
+      "id": "l_dete",
+      "tipo": "limite",
+      "grupo": "dete",
+      "etiqueta": "DE-T puede equivocarse",
+      "texto": "Las respuestas las escribe un modelo de lenguaje (Kimi, de Moonshot AI). El verificador confirma que cada cifra existe en los datos, no que la frase sea correcta. Sus series cubren el registro completo de Nuevo León, no el periodo ni la región elegidos en la página.",
+      "estado": "advertido",
+      "fuentes": [
+        {
+          "titulo": "Cómo evita inventar",
+          "ruta": "docs/de-t/DE-T_COMO_EVITA_INVENTAR.md"
+        },
+        {
+          "titulo": "Límites de la página",
+          "ruta": "app/README.md"
+        }
+      ]
+    },
+    {
+      "id": "l_dete_estatico",
+      "tipo": "limite",
+      "grupo": "dete",
+      "etiqueta": "Solo con su servidor",
+      "texto": "DE-T aparece cuando sirve la página su propio servidor (dete/server.mjs) y tiene clave. La copia estática, como GitHub Pages, no muestra ningún botón ni hace peticiones, porque el servidor marca las páginas que sirve. Por qué: sin servidor no hay a quién preguntar, y un botón muerto o un error 404 quedarían mal ante los jueces.",
+      "estado": "comprobado",
+      "fuentes": [
+        {
+          "titulo": "Dónde aparece y por qué",
+          "ruta": "docs/de-t/DE-T_DONDE_APARECE.md"
+        },
+        {
           "titulo": "DE-T",
           "ruta": "app/dete/README.md"
         }
@@ -1137,6 +1346,20 @@
       "grupo": "pendientes",
       "etiqueta": "Clave de Kimi y catálogo de DE-T",
       "texto": "DE-T se probó con un Kimi simulado. Falta la clave del equipo, probarlo con el modelo real, aprobar el catálogo de opciones y declarar Kimi en el formulario de uso de IA.",
+      "estado": "pendiente",
+      "fuentes": [
+        {
+          "titulo": "Pendientes",
+          "ruta": "docs/PENDIENTES.md"
+        }
+      ]
+    },
+    {
+      "id": "t_subir",
+      "tipo": "pendiente",
+      "grupo": "pendientes",
+      "etiqueta": "Subir a GitHub DE-T y los cuadros",
+      "texto": "La integración de DE-T y los cuadros centrados están en commits locales de main, sin subir. El sitio publicado (site/) no los tendrá hasta ejecutar npm run site y subirlo.",
       "estado": "pendiente",
       "fuentes": [
         {
@@ -2337,6 +2560,126 @@
       "destino": "t_dete",
       "relacion": "requiere",
       "pendiente": true
+    },
+    {
+      "origen": "p_cuadros",
+      "destino": "p_pagina",
+      "relacion": "abre",
+      "pendiente": false
+    },
+    {
+      "origen": "fran1",
+      "destino": "p_cuadros",
+      "relacion": "se ve en",
+      "pendiente": false
+    },
+    {
+      "origen": "d_imerg",
+      "destino": "p_cuadros",
+      "relacion": "un cuadro por día",
+      "pendiente": false
+    },
+    {
+      "origen": "d_lst",
+      "destino": "p_cuadros",
+      "relacion": "un cuadro por mes",
+      "pendiente": false
+    },
+    {
+      "origen": "p_pagina",
+      "destino": "p_numeros",
+      "relacion": "contiene",
+      "pendiente": false
+    },
+    {
+      "origen": "q_dete",
+      "destino": "p_dete",
+      "relacion": "se construye como",
+      "pendiente": false
+    },
+    {
+      "origen": "p_numeros",
+      "destino": "p_dete",
+      "relacion": "termina con «¿No quedó claro?»",
+      "pendiente": false
+    },
+    {
+      "origen": "p_numeros",
+      "destino": "m_dete_contexto",
+      "relacion": "aporta el número y su explicación",
+      "pendiente": false
+    },
+    {
+      "origen": "m_dete_contexto",
+      "destino": "p_dete",
+      "relacion": "le dice qué número se pulsó",
+      "pendiente": false
+    },
+    {
+      "origen": "m_agua",
+      "destino": "d_dete",
+      "relacion": "da las tendencias de referencia",
+      "pendiente": false
+    },
+    {
+      "origen": "d_acuiferos",
+      "destino": "d_dete",
+      "relacion": "aporta la tabla oficial",
+      "pendiente": false
+    },
+    {
+      "origen": "d_dete",
+      "destino": "m_dete_herr",
+      "relacion": "es la única base de",
+      "pendiente": false
+    },
+    {
+      "origen": "m_dete_herr",
+      "destino": "p_dete",
+      "relacion": "calcula las cifras de",
+      "pendiente": false
+    },
+    {
+      "origen": "m_dete_verif",
+      "destino": "p_dete",
+      "relacion": "revisa cada cifra de",
+      "pendiente": false
+    },
+    {
+      "origen": "h_dete_paso",
+      "destino": "d_dete",
+      "relacion": "obligó a exportar desde la página",
+      "pendiente": false
+    },
+    {
+      "origen": "h_dete_paso",
+      "destino": "h_almacen",
+      "relacion": "habría contradicho",
+      "pendiente": false
+    },
+    {
+      "origen": "l_dete",
+      "destino": "p_dete",
+      "relacion": "matiza",
+      "pendiente": false
+    },
+    {
+      "origen": "l_dete_estatico",
+      "destino": "p_dete",
+      "relacion": "limita dónde aparece",
+      "pendiente": false
+    },
+    {
+      "origen": "p_dete",
+      "destino": "t_subir",
+      "relacion": "falta subir",
+      "pendiente": true
+    },
+    {
+      "origen": "p_cuadros",
+      "destino": "t_subir",
+      "relacion": "falta subir",
+      "pendiente": true
     }
   ],
   "vistas": [
@@ -2356,6 +2699,7 @@
         "p_agua",
         "p_mundo",
         "p_pagina",
+        "p_dete",
         "g_pendientes"
       ]
     },
@@ -2374,6 +2718,7 @@
         "ideas13",
         "p_caso",
         "p_lab",
+        "p_cuadros",
         "t_textos"
       ]
     },
@@ -2511,11 +2856,36 @@
         "p_agua",
         "p_mundo",
         "p_dete",
+        "p_cuadros",
+        "p_numeros",
         "t_entrega",
         "t_demo",
         "t_textos",
         "t_texturas",
-        "t_dete"
+        "t_dete",
+        "t_subir"
+      ]
+    },
+    {
+      "id": "dete",
+      "titulo": "8 · DE-T, el asistente del caso",
+      "nodos": [
+        "q_dete",
+        "p_numeros",
+        "m_dete_contexto",
+        "d_dete",
+        "m_agua",
+        "d_acuiferos",
+        "h_dete_paso",
+        "h_almacen",
+        "m_dete_herr",
+        "m_dete_verif",
+        "l_dete",
+        "l_dete_estatico",
+        "p_dete",
+        "p_pagina",
+        "t_dete",
+        "t_subir"
       ]
     }
   ]
