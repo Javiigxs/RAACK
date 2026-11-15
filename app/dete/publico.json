@@ -1,0 +1,6 @@
+{
+  "nota": "DE-T en la copia pública del sitio. «pagina» es la dirección desde la que la página pública pregunta; «interruptor» es el archivo que dice si DE-T está encendido y dónde responde (rama «rama» del repositorio; null = apagado). Lo leen la página (src/lib/dete/switch.ts) y el comando que lo enciende y lo apaga (dete/publico.mjs, npm run dete:publico).",
+  "pagina": "https://javiigxs.github.io",
+  "interruptor": "https://raw.githubusercontent.com/Javiigxs/RAACK/dete-publico/dete.json",
+  "rama": "dete-publico"
+}

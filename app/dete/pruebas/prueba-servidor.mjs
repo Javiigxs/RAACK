@@ -1,6 +1,6 @@
 // DE-T · Prueba del servidor de principio a fin, sin clave: arranca el Kimi simulado (kimi-falso.mjs) y
 // el servidor real, hace preguntas por HTTP como las hace la página y revisa las respuestas y lo que el
-// servidor le mandó al modelo. Usa los puertos 8791 y 8793 a 8804 y se apaga sola.
+// servidor le mandó al modelo. Usa los puertos 8791, 8793 a 8804, 8806 y 8807, y se apaga sola.
 // No prueba a Kimi: prueba que el servidor le habla como pide su documentación y que cada cifra que
 // llega a la página sale de las bases de DE-T.
 // Uso, desde app/:  npm run dete:prueba
@@ -165,6 +165,51 @@ try {
   const tres = await Promise.all([1, 2, 3].map(() => preguntar(8804, q("Is Italy losing stored water?", { lugar: "IT" }))));
   await espera(300);
   comprobar("si ni esperando cabe, la página recibe «ocupado» (429) y la terminal lo explica", tres.some((d) => d.status === 429 && d.error === "ocupado") && /Kimi sigue diciendo 429/.test(sinEsperas.salida));
+
+  // DE-T para la página pública: otra dirección puede preguntar solo si está en la lista, hay tope de
+  // preguntas y de gasto, y el servidor puede no servir la página (npm run dete:publico lo arranca así).
+  console.log("— página pública: otra dirección, tope y solo respuestas");
+  const PAGINA = "https://javiigxs.github.io";
+  const pedir = (puerto, metodo, origen, cuerpo, extra = {}) =>
+    fetch(`http://127.0.0.1:${puerto}/api/chat`, {
+      method: metodo,
+      headers: { ...(origen ? { Origin: origen } : {}), ...(cuerpo ? { "Content-Type": "application/json" } : {}), ...extra },
+      body: cuerpo ? JSON.stringify(cuerpo) : undefined,
+    });
+  const publico = arrancar("node", [SERVER], { ...base, PORT: "8806", DETE_ORIGENES: `${PAGINA}/`, DETE_SOLO_API: "1", DETE_TOPE_PREGUNTAS: "2" });
+  await hasta("http://127.0.0.1:8806/api/chat");
+  await espera(400);
+  comprobar("al arrancar dice desde dónde acepta preguntas y cuál es el tope", /Acepta preguntas también desde: https:\/\/javiigxs\.github\.io\./.test(publico.salida) && /Tope de esta sesión: 2 preguntas/.test(publico.salida) && /solo responde en \/api\/chat/.test(publico.salida));
+  let h = await pedir(8806, "OPTIONS", PAGINA, null, { "Access-Control-Request-Method": "POST", "Access-Control-Request-Headers": "content-type" });
+  comprobar("la página pública pide permiso (OPTIONS) y lo recibe", h.status === 204 && h.headers.get("access-control-allow-origin") === PAGINA && /POST/.test(h.headers.get("access-control-allow-methods") ?? "") && /content-type/i.test(h.headers.get("access-control-allow-headers") ?? ""));
+  h = await pedir(8806, "OPTIONS", "https://otra.example", null, { "Access-Control-Request-Method": "POST" });
+  comprobar("otra página no recibe permiso", h.status === 405 && !h.headers.get("access-control-allow-origin"));
+  h = await pedir(8806, "GET", PAGINA);
+  comprobar("la página pública puede leer si DE-T está listo", h.status === 200 && h.headers.get("access-control-allow-origin") === PAGINA && (await h.json()).listo === true);
+  h = await fetch("http://127.0.0.1:8806/");
+  comprobar("con DETE_SOLO_API no sirve la página", h.status === 404);
+  await limpiar();
+  h = await pedir(8806, "POST", "https://otra.example", q("Is Italy losing stored water?", { lugar: "IT" }));
+  comprobar("una pregunta lanzada desde otra página se rechaza y no llega a Kimi", h.status === 403 && (await peticiones()).length === 0);
+  h = await pedir(8806, "POST", PAGINA, q("Is Italy losing stored water?", { lugar: "IT" }));
+  let cuerpoPublico = await h.json();
+  comprobar("la página pública pregunta y recibe la respuesta verificada", h.status === 200 && h.headers.get("access-control-allow-origin") === PAGINA && cuerpoPublico.verificado === true && /-6\.7 cm por década/.test(cuerpoPublico.answer));
+  h = await pedir(8806, "POST", "", q("¿Chile está perdiendo agua almacenada?", { lugar: "CL" }));
+  comprobar("segunda pregunta (la última del tope) responde", h.status === 200);
+  h = await pedir(8806, "POST", PAGINA, q("Is Italy losing stored water?", { lugar: "IT" }));
+  const trasTope = await (await pedir(8806, "GET", PAGINA)).json();
+  comprobar("al llegar al tope de preguntas deja de responder y lo dice", h.status === 503 && (await h.json()).error === "tope" && trasTope.listo === false && trasTope.motivo === "tope" && /Tope de preguntas de esta sesión alcanzado \(2\)/.test(publico.salida));
+  const caro = arrancar("node", [SERVER], { ...base, PORT: "8807", DETE_TOPE_USD: "0.0001" });
+  await hasta("http://127.0.0.1:8807/api/chat");
+  r = await preguntar(8807, q("Is Italy losing stored water?", { lugar: "IT" }));
+  await espera(300);
+  const trasGasto = await (await fetch("http://127.0.0.1:8807/api/chat")).json();
+  const otraMas = await preguntar(8807, q("Is Italy losing stored water?", { lugar: "IT" }));
+  comprobar("al llegar al tope de gasto deja de responder", r.status === 200 && trasGasto.listo === false && trasGasto.motivo === "tope" && otraMas.status === 503 && /Tope de gasto de esta sesión alcanzado/.test(caro.salida));
+  h = await pedir(8791, "POST", "http://127.0.0.1:8791", q("Is Italy losing stored water?", { lugar: "IT" }));
+  comprobar("la página que sirve el propio servidor sigue pudiendo preguntar", h.status === 200 && !h.headers.get("access-control-allow-origin"));
+  h = await pedir(8791, "POST", PAGINA, q("Is Italy losing stored water?", { lugar: "IT" }));
+  comprobar("sin lista, la página pública no puede preguntar a un servidor local", h.status === 403);
 } catch (e) {
   fallos++;
   console.log("ERROR", e);

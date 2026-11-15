@@ -1,9 +1,12 @@
 // DE-T, the case assistant: whether it is reachable, whether its panel is open, and the conversation.
 // The page asks the DE-T server (app/dete/server.mjs) once whether it is ready; if it is not there,
 // as on a static copy of the site, none of DE-T's buttons appear and the page works as before.
+// The public copy of the site first reads a switch that says whether the team has DE-T on right now
+// and where it answers (switch.ts).
 // Code written with AI assistance (Claude) for team RAACK.
 
 import { compact, type PageContext } from './context';
+import { isPublicCopy, readSwitch } from './switch';
 
 export type Sector = 'civil' | 'gobierno' | 'periodista' | 'investigador' | 'industria';
 export const SECTORS: Sector[] = ['civil', 'gobierno', 'periodista', 'investigador', 'industria'];
@@ -13,6 +16,8 @@ export const MEMORY = 2;
 
 /** Where DE-T answers. The server of app/dete serves the page and this address next to it. */
 const URL = (import.meta.env.VITE_DETE_URL as string | undefined) || 'api/chat';
+/** Where DE-T answers for this visit: the address above, or the one the switch of the public copy names. */
+let endpoint = URL;
 const SECTOR_KEY = 'raack-dete-sector';
 
 export interface Msg {
@@ -65,7 +70,8 @@ let opener: HTMLElement | null = null;
 /**
  * Asks the server once whether DE-T is ready. Anything but a clear yes keeps DE-T hidden. The DE-T
  * server marks the pages it serves (<meta name="dete">); a static copy of the site has no mark and
- * asks nothing, so it leaves no failed request behind. In development, Vite passes the question on.
+ * asks nothing, so it leaves no failed request behind. The public copy is the exception: it reads its
+ * switch, and asks DE-T only when the switch names an address. In development, Vite passes the question on.
  */
 export async function probe(): Promise<void> {
   try {
@@ -76,13 +82,18 @@ export async function probe(): Promise<void> {
   }
   const served = !!document.querySelector('meta[name="dete"]');
   if (!served && !import.meta.env.DEV && !import.meta.env.VITE_DETE_URL) {
-    dete.status = 'off';
-    return;
+    // A static copy. The public one reads the switch: with DE-T off, as almost always, nothing else is asked.
+    const remote = isPublicCopy(location.origin) ? await readSwitch() : null;
+    if (!remote) {
+      dete.status = 'off';
+      return;
+    }
+    endpoint = remote;
   }
   const stop = new AbortController();
   const timer = setTimeout(() => stop.abort(), 4000);
   try {
-    const r = await fetch(URL, { headers: { Accept: 'application/json' }, signal: stop.signal });
+    const r = await fetch(endpoint, { headers: { Accept: 'application/json' }, signal: stop.signal });
     const body = r.ok ? ((await r.json()) as { nombre?: string; listo?: boolean }) : null;
     dete.status = body?.nombre === 'DE-T' && body.listo === true ? 'on' : 'off';
     dete.why = dete.status === 'on' ? '' : body?.nombre === 'DE-T' ? 'nokey' : 'noserver';
@@ -158,7 +169,7 @@ export async function send(question: string, extra: Omit<Ask, 'question'> = {}):
   dete.busy = true;
   let reply: Msg;
   try {
-    const r = await fetch(URL, {
+    const r = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

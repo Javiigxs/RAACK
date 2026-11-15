@@ -14,6 +14,10 @@
 // Base por país (Claude, 15-nov-2026, idea de Fran: preguntar donde se elige el país): DE-T lee también
 // paises.json, la página manda el lugar elegido en el globo (campo «lugar») y la petición a Kimi deja
 // sitio al razonamiento del modelo (ver MAX_TOKENS).
+// DE-T en la página pública (Claude, 15-nov-2026, pedido de Fran: que se vea en GitHub y se pueda
+// apagar): con DETE_ORIGENES acepta preguntas de esa página, que vive en otra dirección; con
+// DETE_TOPE_USD o DETE_TOPE_PREGUNTAS deja de responder al llegar al tope, y con DETE_SOLO_API=1 no
+// sirve la página. Lo enciende y lo apaga dete/publico.mjs (npm run dete:publico).
 
 import http from "node:http";
 import fs from "node:fs/promises";
@@ -73,6 +77,19 @@ const PRECIO = {
   salida: numero(process.env.KIMI_PRECIO_SALIDA) ?? TARIFAS[MODELO]?.salida ?? null,
 };
 const sesion = { preguntas: 0, entrada: 0, cache: 0, salida: 0 };
+
+// DE-T para la página pública. La página de GitHub vive en otra dirección que este servidor, y un
+// navegador solo deja que una página lea la respuesta de otro sitio si ese sitio la nombra: aquí van
+// las páginas desde las que se aceptan preguntas (p. ej. https://javiigxs.github.io). Sin nada, como
+// hasta ahora, solo pregunta la página que sirve este mismo servidor.
+const ORIGENES = (process.env.DETE_ORIGENES || "").split(",").map(s => s.trim().replace(/\/+$/, "")).filter(Boolean);
+// Tope de la sesión, para que una prueba pública no se coma el saldo: al llegar a él, DE-T deja de
+// responder y la página deja de mostrarlo. En dólares (según la estimación de arriba) o en preguntas.
+const TOPE_USD = numero(process.env.DETE_TOPE_USD);
+const TOPE_PREGUNTAS = numero(process.env.DETE_TOPE_PREGUNTAS);
+// Solo las respuestas de DE-T, sin servir la página: lo que hace falta cuando la página está en GitHub.
+const SOLO_API = process.env.DETE_SOLO_API === "1";
+let empezadas = 0; // preguntas aceptadas en esta sesión, hayan terminado o no
 const miles = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 const dolares = v => (v < 0.995 ? `${(v * 100).toFixed(1)} centavos de dólar` : `${v.toFixed(2)} dólares`);
 /** Costo estimado en dólares de unos tokens, o null si no hay precio para este modelo. */
@@ -93,6 +110,33 @@ function apuntarGasto(cuenta, ms) {
     if (c !== null) linea += ` · unos ${dolares(c)}; en esta sesión, ${dolares(costo(sesion))}`;
   } else linea += " · Kimi no dijo cuántos tokens gastó";
   console.log(linea);
+  const c = costo(sesion);
+  if (TOPE_USD !== null && c !== null && c >= TOPE_USD) console.log(`Tope de gasto de esta sesión alcanzado (${dolares(TOPE_USD)}): DE-T ya no responde. Para seguir, vuelve a arrancarlo.`);
+}
+
+/** Por qué DE-T ya no responde en esta sesión ("" si aún puede): se llegó al tope de preguntas o de gasto. */
+function topeAlcanzado() {
+  if (TOPE_PREGUNTAS !== null && empezadas >= TOPE_PREGUNTAS) return `${empezadas} preguntas`;
+  const c = costo(sesion);
+  if (TOPE_USD !== null && c !== null && c >= TOPE_USD) return dolares(c);
+  return "";
+}
+
+/**
+ * Si la petición viene de una página de la lista, le pone las cabeceras que el navegador exige para
+ * dejarle leer la respuesta. Devuelve si esa página puede preguntar: las de la lista, la que sirve
+ * este mismo servidor y lo que no es un navegador (sin cabecera Origin). Así una página cualquiera no
+ * puede hacer que el navegador de un visitante gaste preguntas.
+ */
+function origenPermitido(req, res) {
+  const origen = req.headers.origin;
+  if (!origen) return true;
+  if (ORIGENES.includes(origen)) {
+    res.setHeader("Access-Control-Allow-Origin", origen);
+    res.setHeader("Vary", "Origin");
+    return true;
+  }
+  try { return new URL(origen).host === req.headers.host; } catch { return false; }
 }
 
 /** La clave de Kimi, o "" si no está puesta (o si sigue el texto de la plantilla). */
@@ -354,19 +398,35 @@ async function estatico(req, res) {
 
 http.createServer((req, res) => {
   if (req.url.startsWith("/api/chat")) {
-    // GET: la página pregunta si DE-T está listo antes de mostrar sus botones (sin clave, no los muestra).
-    if (req.method === "GET") return enviar(res, 200, { nombre: "DE-T", listo: Boolean(clave()), memoria: MEMORIA_MENSAJES, sectores: Object.keys(SECTORES) });
+    const permitido = origenPermitido(req, res);
+    // OPTIONS: antes de preguntar desde otra dirección, el navegador pide permiso. Solo lo tiene la página de la lista.
+    if (req.method === "OPTIONS" && res.hasHeader("Access-Control-Allow-Origin")) {
+      res.writeHead(204, { "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type", "Access-Control-Max-Age": "600" });
+      return res.end();
+    }
+    // GET: la página pregunta si DE-T está listo antes de mostrar sus botones (sin clave o con el tope alcanzado, no los muestra).
+    if (req.method === "GET") {
+      const tope = topeAlcanzado();
+      return enviar(res, 200, { nombre: "DE-T", listo: Boolean(clave()) && !tope, ...(tope ? { motivo: "tope" } : {}), memoria: MEMORIA_MENSAJES, sectores: Object.keys(SECTORES) });
+    }
     if (req.method !== "POST") { res.writeHead(405); return res.end(); }
+    if (!permitido) return enviar(res, 403, { error: "Esta página no puede preguntar a DE-T" });
+    if (topeAlcanzado()) return enviar(res, 503, { error: "tope" });
+    empezadas++;
+    if (topeAlcanzado() && TOPE_PREGUNTAS !== null && empezadas === TOPE_PREGUNTAS) console.log(`Tope de preguntas de esta sesión alcanzado (${TOPE_PREGUNTAS}): esta es la última que DE-T responde.`);
     return chat(req, res);
   }
+  if (SOLO_API) { res.writeHead(404); return res.end("No encontrado"); }
   if (req.method !== "GET" && req.method !== "HEAD") { res.writeHead(405); return res.end(); }
   return estatico(req, res);
 }).listen(PORT, HOST, () => {
-  console.log(`DE-T · HydroDetective en http://${HOST === "0.0.0.0" ? "localhost" : HOST}:${PORT}  (carpeta: ${ROOT})`);
+  console.log(`DE-T · HydroDetective en http://${HOST === "0.0.0.0" ? "localhost" : HOST}:${PORT}  ${SOLO_API ? "(solo responde en /api/chat; no sirve la página)" : `(carpeta: ${ROOT})`}`);
   if (!clave()) console.warn("Aviso: falta MOONSHOT_API_KEY en dete/.env; el chat no va a responder y la página no mostrará a DE-T.");
   else if (costo(sesion) !== null) console.log(`Cada pregunta dirá aquí lo que gastó, con la tarifa de ${MODELO}: ${PRECIO.entrada} dólares por millón de tokens de entrada (${PRECIO.cache ?? PRECIO.entrada} con caché) y ${PRECIO.salida} de salida. Es una estimación.`);
   else console.log(`Cada pregunta dirá aquí los tokens que gastó. Para ver también el costo, pon el precio de ${MODELO} en dete/.env (KIMI_PRECIO_ENTRADA y KIMI_PRECIO_SALIDA).`);
-  fs.access(path.join(ROOT, "index.html")).catch(() => console.warn(`Aviso: no hay index.html en ${ROOT}. Ejecuta antes npm run build.`));
+  if (ORIGENES.length) console.log(`Acepta preguntas también desde: ${ORIGENES.join(", ")}.`);
+  if (TOPE_USD !== null || TOPE_PREGUNTAS !== null) console.log(`Tope de esta sesión: ${[TOPE_USD !== null ? (costo(sesion) !== null ? dolares(TOPE_USD) : "en dólares, sin efecto: no hay tarifa para este modelo") : "", TOPE_PREGUNTAS !== null ? `${TOPE_PREGUNTAS} preguntas` : ""].filter(Boolean).join(" o ")}. Al llegar, DE-T deja de responder.`);
+  if (!SOLO_API) fs.access(path.join(ROOT, "index.html")).catch(() => console.warn(`Aviso: no hay index.html en ${ROOT}. Ejecuta antes npm run build.`));
   for (const f of [DATA_FILE, PAISES_FILE, CATALOG_FILE]) fs.access(f).catch(() => console.warn(`Aviso: falta ${f}. Ejecuta npm run dete:data.`));
   void comprobarClave();
 });
