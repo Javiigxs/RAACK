@@ -166,7 +166,8 @@ Si la voz no es en inglés, el vídeo necesita subtítulos en inglés.
 - [ ] Revisar los textos de la página (inglés y español): son un primer borrador.
 - [ ] Decidir la cifra de GRACE que se cita y usar la misma en la página, la demo y la descripción.
 - [ ] Poner los nombres del equipo en los créditos (`w.credits.team` en `app/src/lib/i18n-water.ts`) y en la demo.
-- [ ] Publicar el sitio: subir la carpeta `site/` y activar GitHub Pages. El enlace quedaría como `https://javiigxs.github.io/RAACK/site/`.
+- [x] Subir la carpeta `site/` a GitHub.
+- [ ] Activar GitHub Pages y comprobar la dirección pública antes de incluirla en la entrega.
 - [ ] Abrir el enlace del sitio y el de la demo en una ventana privada.
 - [ ] Completar los ocho campos y pulsar **Submit for Judging** con margen.
 - [ ] Opcional: guardar la lluvia del Valle Central en `recursos/archivos/valle-central/` para que su veredicto use lluvia y no solo GRACE.

@@ -1,0 +1,2474 @@
+{
+  "proyecto": "RAACK",
+  "reto": "https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/",
+  "fecha": "2026-11-15",
+  "corte": "15 de noviembre de 2026",
+  "nota": "Grafo de conocimiento del equipo. Generado por docs/generar_conocimiento.py con ayuda de IA (Claude y Codex). Las rutas son relativas a la raíz del repositorio.",
+  "tendencias_caso_agua": [
+    {
+      "region": "nl",
+      "serie": "rain_imerg",
+      "nombre": "Lluvia anual IMERG · Nuevo León",
+      "unidad": "mm",
+      "n": 27,
+      "desde": 1998,
+      "hasta": 2024,
+      "sen_decada": 33.00400000000002,
+      "ic_ols_95_decada": [
+        -46.48258740671727,
+        109.13685480598262
+      ],
+      "p_hamed_rao": 0.35900429696743297,
+      "etiqueta": "sin evidencia"
+    },
+    {
+      "region": "nl",
+      "serie": "rain_chirps",
+      "nombre": "Lluvia anual CHIRPS · Nuevo León",
+      "unidad": "mm",
+      "n": 28,
+      "desde": 1998,
+      "hasta": 2025,
+      "sen_decada": 2.114733333333324,
+      "ic_ols_95_decada": [
+        -52.96770508213966,
+        53.802500374967224
+      ],
+      "p_hamed_rao": 0.9527374072913992,
+      "etiqueta": "sin evidencia"
+    },
+    {
+      "region": "nl",
+      "serie": "temp_gldas_mty",
+      "nombre": "Temperatura GLDAS · Monterrey",
+      "unidad": "°C",
+      "n": 24,
+      "desde": 2002,
+      "hasta": 2025,
+      "sen_decada": 0.6010666666666664,
+      "ic_ols_95_decada": [
+        0.3055129183420245,
+        0.8487053425275682
+      ],
+      "p_hamed_rao": 0.002281249640504912,
+      "etiqueta": "confirmada"
+    },
+    {
+      "region": "nl",
+      "serie": "pet_gldas_mty",
+      "nombre": "Demanda evaporativa anual GLDAS · Monterrey",
+      "unidad": "mm",
+      "n": 24,
+      "desde": 2002,
+      "hasta": 2025,
+      "sen_decada": -95.48680263157884,
+      "ic_ols_95_decada": [
+        -186.08085024912427,
+        -4.865774968265679
+      ],
+      "p_hamed_rao": 0.044520524087646285,
+      "etiqueta": "confirmada"
+    },
+    {
+      "region": "nl",
+      "serie": "soil_gldas_gal",
+      "nombre": "Humedad de las raíces GLDAS · Galeana",
+      "unidad": "mm",
+      "n": 24,
+      "desde": 2002,
+      "hasta": 2025,
+      "sen_decada": -28.13255833333333,
+      "ic_ols_95_decada": [
+        -38.900930526873196,
+        -13.883039038346306
+      ],
+      "p_hamed_rao": 0.007952706286745492,
+      "etiqueta": "confirmada"
+    },
+    {
+      "region": "nl",
+      "serie": "tws_grace",
+      "nombre": "Agua total GRACE · Nuevo León",
+      "unidad": "cm",
+      "n": 21,
+      "desde": 2003,
+      "hasta": 2026,
+      "sen_decada": -7.135116666666665,
+      "ic_ols_95_decada": [
+        -8.246951878143976,
+        -5.648546730272549
+      ],
+      "p_hamed_rao": 2.861441131596365e-06,
+      "etiqueta": "confirmada"
+    },
+    {
+      "region": "cv",
+      "serie": "tws_grace",
+      "nombre": "Agua total GRACE · Valle Central (preliminar)",
+      "unidad": "cm",
+      "n": 21,
+      "desde": 2003,
+      "hasta": 2026,
+      "sen_decada": -13.062436974789918,
+      "ic_ols_95_decada": [
+        -16.770759199040338,
+        -6.671593250988486
+      ],
+      "p_hamed_rao": 0.0003263486811857508,
+      "etiqueta": "confirmada"
+    }
+  ],
+  "tipos": {
+    "reto": "Reto y reglas oficiales",
+    "regla": "Regla del equipo",
+    "pregunta": "Pregunta o idea",
+    "recurso": "Recurso o portal",
+    "dato": "Dato guardado",
+    "metodo": "Método",
+    "hallazgo": "Hallazgo",
+    "preliminar": "Hallazgo preliminar",
+    "limite": "Límite conocido",
+    "pagina": "Página web",
+    "pendiente": "Pendiente",
+    "grupo": "Resumen de un grupo"
+  },
+  "grupos": {
+    "reglas": "Reto y reglas",
+    "preguntas": "Preguntas e ideas",
+    "recursos": "Recursos",
+    "monterrey": "Datos de Monterrey",
+    "nuevo_leon": "Datos de Nuevo León",
+    "metodo": "Método",
+    "hallazgos": "Hallazgos",
+    "limites": "Límites",
+    "pagina": "Página web",
+    "agua": "Caso 001 · agua",
+    "mundo": "Escalabilidad",
+    "pendientes": "Pendientes"
+  },
+  "estados": {
+    "oficial": "Lo dice una página oficial de Space Apps o de la NASA.",
+    "fijado por prueba": "Lo calcula la página y una prueba automática fija la cifra.",
+    "calculado por la página": "Lo calcula la página; ninguna prueba fija todavía la cifra.",
+    "cálculo exploratorio": "Se calculó una vez con el mismo motor; no está fijado ni documentado aparte.",
+    "documentado / comprobado contra SciPy": "Está en una nota publicada, con un script que lo reproduce.",
+    "preliminar": "Se calculó sin tener los datos guardados; hay que repetirlo.",
+    "datos del caso": "El producto aporta observaciones al caso del agua.",
+    "preliminar por punto": "Se ha calculado con GRACE mundial y falta corroboración local."
+  },
+  "nodos": [
+    {
+      "id": "reto",
+      "tipo": "reto",
+      "grupo": "reglas",
+      "etiqueta": "Reto · Be An Earth System Trend Detective!",
+      "texto": "Crear una herramienta que elija variables medidas por misiones o producidas por modelos, las dibuje en el tiempo y diga qué cambia, dónde, cuánto y si el cambio es significativo.",
+      "estado": "oficial",
+      "fuentes": [
+        {
+          "titulo": "Reto",
+          "ruta": "docs/RETO.md"
+        }
+      ]
+    },
+    {
+      "id": "criterios",
+      "tipo": "reto",
+      "grupo": "reglas",
+      "etiqueta": "Cinco criterios, de 1 a 5",
+      "texto": "Los jueces puntúan Impact, Creativity, Validity, Relevance y Presentation.",
+      "estado": "oficial",
+      "fuentes": [
+        {
+          "titulo": "Reglas oficiales",
+          "ruta": "docs/REGLAS_OFICIALES.md"
+        }
+      ]
+    },
+    {
+      "id": "entrega",
+      "tipo": "reto",
+      "grupo": "reglas",
+      "etiqueta": "Entrega · domingo 15-nov, 23:59 hora local",
+      "texto": "Todo en inglés, demo de 30 segundos o 7 diapositivas, enlaces públicos y declaración de uso de IA.",
+      "estado": "oficial",
+      "fuentes": [
+        {
+          "titulo": "Reglas oficiales",
+          "ruta": "docs/REGLAS_OFICIALES.md"
+        }
+      ]
+    },
+    {
+      "id": "consideraciones",
+      "tipo": "reto",
+      "grupo": "reglas",
+      "etiqueta": "Consideraciones oficiales",
+      "texto": "Público estudiantil, definiciones sencillas, preguntas guía y ejemplos de demostración. Las tendencias no significativas también interesan y algunas no se ven sin quitar el ciclo estacional.",
+      "estado": "oficial",
+      "fuentes": [
+        {
+          "titulo": "Reto",
+          "ruta": "docs/RETO.md"
+        }
+      ]
+    },
+    {
+      "id": "validacion",
+      "tipo": "regla",
+      "grupo": "reglas",
+      "etiqueta": "Cuatro reglas del equipo",
+      "texto": "Toda propuesta debe mostrar que el problema existe, que es medible, que se hace con los datos dados y que tiene un diferenciador.",
+      "estado": "regla del equipo",
+      "fuentes": [
+        {
+          "titulo": "Validación",
+          "ruta": "docs/VALIDACION.md"
+        }
+      ]
+    },
+    {
+      "id": "regla_ia",
+      "tipo": "regla",
+      "grupo": "reglas",
+      "etiqueta": "La idea la decide el equipo",
+      "texto": "La guía oficial pide que la IA no idee la solución: los agentes proponen opciones y declaran lo que generan.",
+      "estado": "regla del equipo",
+      "fuentes": [
+        {
+          "titulo": "Instrucciones para agentes",
+          "ruta": "AGENTS.md"
+        }
+      ]
+    },
+    {
+      "id": "fran1",
+      "tipo": "pregunta",
+      "grupo": "preguntas",
+      "etiqueta": "Fran · ¿Qué esconde el total de un año?",
+      "texto": "Dos años con casi la misma lluvia pueden diferir en cuántos días llueve, cuánta cae de golpe y cuánto dura la racha seca.",
+      "estado": "propuesta del equipo",
+      "fuentes": [
+        {
+          "titulo": "Ideas",
+          "ruta": "docs/IDEAS.md"
+        },
+        {
+          "titulo": "Mapa de datos",
+          "ruta": "docs/MAPA_DE_DATOS.md"
+        }
+      ]
+    },
+    {
+      "id": "fran2",
+      "tipo": "pregunta",
+      "grupo": "preguntas",
+      "etiqueta": "Fran · ¿Se adelantan o se acortan los ciclos?",
+      "texto": "Seguir año a año las fechas en que se acumula parte de la lluvia o el mes de máximo verdor.",
+      "estado": "propuesta del equipo",
+      "fuentes": [
+        {
+          "titulo": "Ideas",
+          "ruta": "docs/IDEAS.md"
+        },
+        {
+          "titulo": "Mapa de datos",
+          "ruta": "docs/MAPA_DE_DATOS.md"
+        }
+      ]
+    },
+    {
+      "id": "ideas13",
+      "tipo": "pregunta",
+      "grupo": "preguntas",
+      "etiqueta": "13 ideas de un agente",
+      "texto": "Expediente de detective, rueda de reconocimiento, ojo contra estadística, jurado de tres, coartadas, años que faltan, gemelos opuestos, dos testigos y otras.",
+      "estado": "propuesta sin decidir",
+      "fuentes": [
+        {
+          "titulo": "Ideas",
+          "ruta": "docs/IDEAS.md"
+        }
+      ]
+    },
+    {
+      "id": "recursos",
+      "tipo": "recurso",
+      "grupo": "recursos",
+      "etiqueta": "13 recursos oficiales",
+      "texto": "Doce tienen ficha propia. Giovanni quedó excluido, salvo una autorización limitada.",
+      "estado": "revisado",
+      "fuentes": [
+        {
+          "titulo": "Cobertura",
+          "ruta": "recursos/COBERTURA.md"
+        }
+      ]
+    },
+    {
+      "id": "r_appeears",
+      "tipo": "recurso",
+      "grupo": "recursos",
+      "etiqueta": "AppEEARS · NASA",
+      "texto": "Extrae productos de satélite por puntos o áreas con sus capas de calidad. Entrega en cola, no al instante.",
+      "estado": "usado",
+      "fuentes": [
+        {
+          "titulo": "Ficha 02",
+          "ruta": "recursos/paginas/02-appeears.md"
+        }
+      ]
+    },
+    {
+      "id": "r_hydro",
+      "tipo": "recurso",
+      "grupo": "recursos",
+      "etiqueta": "Hydrology Time Series · NASA",
+      "texto": "Visor con 172 variables de 13 productos. Entrega series largas al instante y no calcula tendencias.",
+      "estado": "usado",
+      "fuentes": [
+        {
+          "titulo": "Ficha 01",
+          "ruta": "recursos/paginas/01-hydrology.md"
+        }
+      ]
+    },
+    {
+      "id": "r_giovanni",
+      "tipo": "recurso",
+      "grupo": "recursos",
+      "etiqueta": "Giovanni · NASA",
+      "texto": "Fran lo autorizó solo como vía de descarga de las siete variables GLDAS. Usarlo como herramienta de la solución sigue sin decidir.",
+      "estado": "autorización limitada",
+      "fuentes": [
+        {
+          "titulo": "Decisión",
+          "ruta": "docs/decisiones/GIOVANNI.md"
+        }
+      ]
+    },
+    {
+      "id": "r_otros",
+      "tipo": "recurso",
+      "grupo": "recursos",
+      "etiqueta": "NOAA, KNMI, SWOT, GEO.ca y RCM",
+      "texto": "NOAA responde sin token; KNMI pide una verificación humana; SWOT empieza en 2023; GEO.ca y RCM solo cubren Canadá.",
+      "estado": "revisado, sin usar",
+      "fuentes": [
+        {
+          "titulo": "Funcionalidades",
+          "ruta": "docs/FUNCIONALIDADES.md"
+        }
+      ]
+    },
+    {
+      "id": "r_externos",
+      "tipo": "recurso",
+      "grupo": "recursos",
+      "etiqueta": "Fuentes fuera de la lista",
+      "texto": "NASA POWER, PO.DAAC, SMN, CHIRPS, INEGI y CONAGUA. Se usan con justificación escrita, como pide la regla 3.",
+      "estado": "justificado",
+      "fuentes": [
+        {
+          "titulo": "Lluvia en Monterrey",
+          "ruta": "docs/LLUVIA_MONTERREY.md"
+        },
+        {
+          "titulo": "Datos de Nuevo León",
+          "ruta": "docs/REQUISITOS_DATOS_NUEVO_LEON.md"
+        }
+      ]
+    },
+    {
+      "id": "d_imerg",
+      "tipo": "dato",
+      "grupo": "monterrey",
+      "etiqueta": "Lluvia diaria GPM IMERG 2002–2024 · misión",
+      "texto": "8.401 días de lluvia estimada por satélite en la celda de 0,1° del centro de Monterrey, vía NASA POWER.",
+      "estado": "en uso",
+      "fuentes": [
+        {
+          "titulo": "Original",
+          "ruta": "recursos/archivos/monterrey-lluvia-nasa-power.csv"
+        },
+        {
+          "titulo": "Lluvia en Monterrey",
+          "ruta": "docs/LLUVIA_MONTERREY.md"
+        }
+      ]
+    },
+    {
+      "id": "d_merra",
+      "tipo": "dato",
+      "grupo": "monterrey",
+      "etiqueta": "Humedad en raíces MERRA-2 2002–2024 · modelo",
+      "texto": "276 meses de saturación del suelo, de 0 a 1, en una celda de 0,5° × 0,625°, vía NASA POWER.",
+      "estado": "en uso",
+      "fuentes": [
+        {
+          "titulo": "Original",
+          "ruta": "recursos/archivos/monterrey-humedad-nasa-power.csv"
+        }
+      ]
+    },
+    {
+      "id": "d_lst",
+      "tipo": "dato",
+      "grupo": "monterrey",
+      "etiqueta": "Temperatura superficial MODIS 2001–2025 · misión",
+      "texto": "MOD11A2: compuestos de ocho días, de día y de noche, en cinco píxeles de 1 km. Son 5.745 registros con su calidad.",
+      "estado": "en uso",
+      "fuentes": [
+        {
+          "titulo": "Solicitud AppEEARS",
+          "ruta": "docs/SOLICITUD_APPEEARS_MONTERREY.md"
+        }
+      ]
+    },
+    {
+      "id": "d_ndvi",
+      "tipo": "dato",
+      "grupo": "monterrey",
+      "etiqueta": "Verdor NDVI MODIS 2001–2025 · misión",
+      "texto": "MOD13A3: 300 meses por punto en los mismos cinco píxeles. Son 1.500 registros con su fiabilidad.",
+      "estado": "en uso",
+      "fuentes": [
+        {
+          "titulo": "Solicitud AppEEARS",
+          "ruta": "docs/SOLICITUD_APPEEARS_MONTERREY.md"
+        }
+      ]
+    },
+    {
+      "id": "d_smn",
+      "tipo": "dato",
+      "grupo": "monterrey",
+      "etiqueta": "Estación SMN 19052 2002–2024 · en tierra",
+      "texto": "Lluvia y temperaturas máxima y mínima diarias del Observatorio de Monterrey. Es el testigo en tierra; no es un dato de la NASA.",
+      "estado": "en uso",
+      "fuentes": [
+        {
+          "titulo": "Original",
+          "ruta": "recursos/archivos/smn-monterrey-19052.txt"
+        }
+      ]
+    },
+    {
+      "id": "s_series",
+      "tipo": "dato",
+      "grupo": "monterrey",
+      "etiqueta": "Cinco series de trabajo",
+      "texto": "Una tabla por variable con unidades, fuente, lugar y banderas de calidad. Se regeneran con un script.",
+      "estado": "en uso",
+      "fuentes": [
+        {
+          "titulo": "Mapa de datos",
+          "ruta": "docs/MAPA_DE_DATOS.md"
+        },
+        {
+          "titulo": "Script",
+          "ruta": "docs/separar_series.py"
+        }
+      ]
+    },
+    {
+      "id": "s_anual",
+      "tipo": "dato",
+      "grupo": "monterrey",
+      "etiqueta": "Resumen anual de lluvia",
+      "texto": "Una fila por año y fuente con el total, los días con lluvia, la concentración, la racha seca y las fechas del 20, 50 y 80 %.",
+      "estado": "en uso",
+      "fuentes": [
+        {
+          "titulo": "Tabla",
+          "ruta": "datos/derivados/lluvia_anual.csv"
+        },
+        {
+          "titulo": "Script",
+          "ruta": "docs/calcular_calendario_lluvia.py"
+        }
+      ]
+    },
+    {
+      "id": "d_gldas",
+      "tipo": "dato",
+      "grupo": "nuevo_leon",
+      "etiqueta": "GLDAS 2.1 · 7 variables mar-2001 a jul-2026 · modelo",
+      "texto": "Lluvia, evapotranspiración, evaporación potencial, humedad en raíces, dos escurrimientos y temperatura del aire, cada tres horas, en Monterrey y Galeana.",
+      "estado": "datos del caso",
+      "fuentes": [
+        {
+          "titulo": "Detalle",
+          "ruta": "recursos/archivos/nuevo-leon/gldas/README.md"
+        }
+      ]
+    },
+    {
+      "id": "d_grace",
+      "tipo": "dato",
+      "grupo": "nuevo_leon",
+      "etiqueta": "GRACE y GRACE-FO 2002–2026 · misión",
+      "texto": "Anomalías de agua total (lwe_thickness) de JPL mascon RL06.3: 261 soluciones, un recorte de 50 celdas y el original mundial en seis partes.",
+      "estado": "datos del caso",
+      "fuentes": [
+        {
+          "titulo": "Detalle",
+          "ruta": "recursos/archivos/nuevo-leon/grace/README.md"
+        }
+      ]
+    },
+    {
+      "id": "d_lluvia_nl",
+      "tipo": "dato",
+      "grupo": "nuevo_leon",
+      "etiqueta": "Lluvia mensual regional IMERG y CHIRPS",
+      "texto": "IMERG Final V07 de enero de 1998 a septiembre de 2025 y CHIRPS de 1998 a 2025, en el recuadro de Nuevo León.",
+      "estado": "datos del caso",
+      "fuentes": [
+        {
+          "titulo": "Datos de Nuevo León",
+          "ruta": "docs/REQUISITOS_DATOS_NUEVO_LEON.md"
+        }
+      ]
+    },
+    {
+      "id": "d_agua_nl",
+      "tipo": "dato",
+      "grupo": "nuevo_leon",
+      "etiqueta": "Cuencas INEGI y tres presas CONAGUA",
+      "texto": "Límites de la cuenca Bravo–San Juan y volumen diario de El Cuchillo, Cerro Prieto y La Boca desde 1993.",
+      "estado": "datos del caso",
+      "fuentes": [
+        {
+          "titulo": "Datos de Nuevo León",
+          "ruta": "docs/REQUISITOS_DATOS_NUEVO_LEON.md"
+        }
+      ]
+    },
+    {
+      "id": "manifiesto",
+      "tipo": "dato",
+      "grupo": "nuevo_leon",
+      "etiqueta": "Manifiesto de descargas",
+      "texto": "Origen, tamaño y SHA-256 de los archivos registrados. Las notas de cada producto identifican los recortes y las transformaciones.",
+      "estado": "verificado",
+      "fuentes": [
+        {
+          "titulo": "Manifiesto",
+          "ruta": "recursos/archivos/descargas.json"
+        }
+      ]
+    },
+    {
+      "id": "m_calidad",
+      "tipo": "metodo",
+      "grupo": "metodo",
+      "etiqueta": "Filtro de calidad",
+      "texto": "En MODIS se conservan las temperaturas con error estimado de 2 K o menos y los NDVI de fiabilidad 0 o 1. Hay un modo estricto.",
+      "estado": "en la página",
+      "fuentes": [
+        {
+          "titulo": "Laboratorio",
+          "ruta": "app/src/lib/analysis.ts"
+        }
+      ]
+    },
+    {
+      "id": "m_anom",
+      "tipo": "metodo",
+      "grupo": "metodo",
+      "etiqueta": "Quitar el ciclo estacional",
+      "texto": "Cada mes se compara con lo habitual de ese mes. Así el verano y el invierno no esconden un cambio lento.",
+      "estado": "en la página",
+      "fuentes": [
+        {
+          "titulo": "Laboratorio",
+          "ruta": "app/src/lib/analysis.ts"
+        }
+      ]
+    },
+    {
+      "id": "m_sen",
+      "tipo": "metodo",
+      "grupo": "metodo",
+      "etiqueta": "Ritmo · pendiente de Theil–Sen",
+      "texto": "Cambio por década con su intervalo del 95 % por el método de Sen. Coincide con SciPy en las series de lluvia.",
+      "estado": "comprobado contra SciPy",
+      "fuentes": [
+        {
+          "titulo": "Lluvia en Monterrey",
+          "ruta": "docs/LLUVIA_MONTERREY.md"
+        }
+      ]
+    },
+    {
+      "id": "m_jurado",
+      "tipo": "metodo",
+      "grupo": "metodo",
+      "etiqueta": "Jurado de tres pruebas",
+      "texto": "Prueba t de la pendiente, Mann–Kendall y bootstrap de bloques con semilla fija: los tres métodos que nombra el reto.",
+      "estado": "en la página",
+      "fuentes": [
+        {
+          "titulo": "Métodos estadísticos",
+          "ruta": "recursos/paginas/06-metodos-estadisticos.md"
+        }
+      ]
+    },
+    {
+      "id": "m_memoria",
+      "tipo": "metodo",
+      "grupo": "metodo",
+      "etiqueta": "Corrección por memoria",
+      "texto": "Si un mes se parece al anterior, las tres pruebas se ensanchan. Sin esa corrección las falsas alarmas se vuelven más frecuentes.",
+      "estado": "probado con series simuladas",
+      "fuentes": [
+        {
+          "titulo": "Pruebas",
+          "ruta": "app/src/lib/stats/trend.test.ts"
+        }
+      ]
+    },
+    {
+      "id": "m_regla",
+      "tipo": "metodo",
+      "grupo": "metodo",
+      "etiqueta": "Regla de datos suficientes",
+      "texto": "Con menos de 15 años o menos del 80 % de meses válidos no hay veredicto.",
+      "estado": "regla del equipo",
+      "fuentes": [
+        {
+          "titulo": "Validación",
+          "ruta": "docs/VALIDACION.md"
+        }
+      ]
+    },
+    {
+      "id": "m_veredicto",
+      "tipo": "metodo",
+      "grupo": "metodo",
+      "etiqueta": "Veredicto graduado",
+      "texto": "Tres pruebas de tres dan pruebas sólidas; dos, indicios; una, pista débil; ninguna, sin pruebas.",
+      "estado": "en la página",
+      "fuentes": [
+        {
+          "titulo": "Laboratorio",
+          "ruta": "app/src/lib/analysis.ts"
+        }
+      ]
+    },
+    {
+      "id": "m_pistas",
+      "tipo": "metodo",
+      "grupo": "metodo",
+      "etiqueta": "Ocho pistas dentro del año",
+      "texto": "Total, días con lluvia, lluvia por día lluvioso, parte en cinco días, día más lluvioso, racha seca, fecha del 50 % y días entre el 20 y el 80 %.",
+      "estado": "documentado",
+      "fuentes": [
+        {
+          "titulo": "Script",
+          "ruta": "docs/calcular_calendario_lluvia.py"
+        }
+      ]
+    },
+    {
+      "id": "m_coartadas",
+      "tipo": "metodo",
+      "grupo": "metodo",
+      "etiqueta": "Coartadas",
+      "texto": "El veredicto se repite con otros periodos, mes a mes, sin los años de deriva del satélite, con un escalón en vez de una recta y sin quitar las estaciones.",
+      "estado": "en la página",
+      "fuentes": [
+        {
+          "titulo": "Laboratorio",
+          "ruta": "app/src/lib/analysis.ts"
+        }
+      ]
+    },
+    {
+      "id": "m_anios",
+      "tipo": "metodo",
+      "grupo": "metodo",
+      "etiqueta": "Años que faltan",
+      "texto": "Estima cuántos años de datos harían falta para detectar un cambio de ese tamaño con ese ruido.",
+      "estado": "cita por verificar",
+      "fuentes": [
+        {
+          "titulo": "Ideas",
+          "ruta": "docs/IDEAS.md"
+        }
+      ]
+    },
+    {
+      "id": "h_noches",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "Las noches se calientan +0,96 °C por década",
+      "texto": "Temperatura superficial nocturna en el centro, 2001–2025: +0,96 °C por década, con intervalo de 0,71 a 1,20. Las tres pruebas coinciden, con 259 de 300 meses válidos.",
+      "estado": "fijado por prueba",
+      "fuentes": [
+        {
+          "titulo": "Pruebas del laboratorio",
+          "ruta": "app/src/lib/analysis.test.ts"
+        }
+      ]
+    },
+    {
+      "id": "h_lugares",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "Suben en los cinco lugares",
+      "texto": "De +0,67 °C por década en Chipinque a +1,10 en García. Ningún par de lugares va en sentidos opuestos.",
+      "estado": "fijado por prueba",
+      "fuentes": [
+        {
+          "titulo": "Pruebas del laboratorio",
+          "ruta": "app/src/lib/analysis.test.ts"
+        }
+      ]
+    },
+    {
+      "id": "h_deriva",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "Aguanta sin los años de deriva",
+      "texto": "Solo con 2001–2019 la tendencia nocturna del centro sigue ahí: +0,69 °C por década, con pruebas sólidas.",
+      "estado": "fijado por prueba",
+      "fuentes": [
+        {
+          "titulo": "Pruebas del laboratorio",
+          "ruta": "app/src/lib/analysis.test.ts"
+        }
+      ]
+    },
+    {
+      "id": "h_aire",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "La estación coincide mínima +0,50 °C por década",
+      "texto": "Temperatura mínima del aire en el Observatorio, 2002–2024: +0,50 °C por década, de 0,22 a 0,78. El satélite da +0,91 en esos mismos años.",
+      "estado": "calculado por la página",
+      "fuentes": [
+        {
+          "titulo": "Motor",
+          "ruta": "app/src/lib/analysis.ts"
+        },
+        {
+          "titulo": "Datos",
+          "ruta": "app/public/data/monterrey.json"
+        }
+      ]
+    },
+    {
+      "id": "h_dia",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "De día, sin pruebas",
+      "texto": "La temperatura superficial diurna de MODIS no muestra tendencia en ninguno de los cinco lugares.",
+      "estado": "cálculo exploratorio",
+      "fuentes": [
+        {
+          "titulo": "Motor",
+          "ruta": "app/src/lib/analysis.ts"
+        },
+        {
+          "titulo": "Datos",
+          "ruta": "app/public/data/monterrey.json"
+        }
+      ]
+    },
+    {
+      "id": "h_lluvia",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "Lluvia sin tendencia confirmada",
+      "texto": "Ninguna de las ocho métricas anuales muestra pruebas de tendencia en 2002–2024. La concentración da +0,52 puntos por década, de −4,06 a +6,33.",
+      "estado": "comprobado contra SciPy",
+      "fuentes": [
+        {
+          "titulo": "Lluvia en Monterrey",
+          "ruta": "docs/LLUVIA_MONTERREY.md"
+        }
+      ]
+    },
+    {
+      "id": "h_gemelos",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "Años gemelos 2016 y 2020",
+      "texto": "806 y 796 mm de lluvia, pero 89 y 62 días con lluvia, y 28,5 % frente a 51,7 % del total en cinco días.",
+      "estado": "documentado",
+      "fuentes": [
+        {
+          "titulo": "Mapa de datos",
+          "ruta": "docs/MAPA_DE_DATOS.md"
+        }
+      ]
+    },
+    {
+      "id": "h_episodios",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "Sequía de 2022 y diluvio de junio de 2024",
+      "texto": "Enero–julio de 2022: 120 mm frente a una mediana de 312. Junio de 2024: 367 mm, 5,9 veces la mediana de junio.",
+      "estado": "documentado",
+      "fuentes": [
+        {
+          "titulo": "Lluvia en Monterrey",
+          "ruta": "docs/LLUVIA_MONTERREY.md"
+        }
+      ]
+    },
+    {
+      "id": "h_testigo",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "Satélite y pluviómetro coinciden · r = 0,92",
+      "texto": "Totales mensuales de IMERG y del Observatorio en 257 meses comunes. El satélite marca unos 9 mm menos al mes.",
+      "estado": "fijado por prueba",
+      "fuentes": [
+        {
+          "titulo": "Pruebas del laboratorio",
+          "ruta": "app/src/lib/analysis.test.ts"
+        }
+      ]
+    },
+    {
+      "id": "h_verdor",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "El verdor solo cambia en Pesquería",
+      "texto": "−0,088 de NDVI por década, 2001–2025. Se describe mejor como un escalón hacia 2011, de −0,155, que como una recta.",
+      "estado": "fijado por prueba",
+      "fuentes": [
+        {
+          "titulo": "Pruebas del laboratorio",
+          "ruta": "app/src/lib/analysis.test.ts"
+        }
+      ]
+    },
+    {
+      "id": "h_suelo",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "Humedad sin tendencia confirmada",
+      "texto": "La humedad en raíces de MERRA-2 no muestra pruebas de cambio en 2002–2024. Es una serie con mucha memoria.",
+      "estado": "cálculo exploratorio",
+      "fuentes": [
+        {
+          "titulo": "Motor",
+          "ruta": "app/src/lib/analysis.ts"
+        },
+        {
+          "titulo": "Datos",
+          "ruta": "app/public/data/monterrey.json"
+        }
+      ]
+    },
+    {
+      "id": "h_gldas",
+      "tipo": "preliminar",
+      "grupo": "hallazgos",
+      "etiqueta": "Preliminar · aire GLDAS +0,39 K por década",
+      "texto": "Estimación histórica del visor para 2000–2026, sin CSV guardado entonces. Para el caso actual hay series guardadas desde marzo de 2001 y resultados sobre años completos en el diagnóstico del agua.",
+      "estado": "preliminar",
+      "fuentes": [
+        {
+          "titulo": "Ideas",
+          "ruta": "docs/IDEAS.md"
+        }
+      ]
+    },
+    {
+      "id": "h_vacio",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "Las herramientas oficiales no dan veredicto",
+      "texto": "El visor dibuja una variable por gráfico y no calcula tendencia ni significación. AppEEARS entrega los datos en cola.",
+      "estado": "comprobado al usarlas",
+      "fuentes": [
+        {
+          "titulo": "Funcionalidades",
+          "ruta": "docs/FUNCIONALIDADES.md"
+        }
+      ]
+    },
+    {
+      "id": "l_terra",
+      "tipo": "limite",
+      "grupo": "limites",
+      "etiqueta": "Terra deriva desde 2020",
+      "texto": "La hora de paso de Terra cambió a partir de 2020. Observar la superficie a otra hora puede alterar la lectura. La página repite el cálculo hasta 2019 para evaluar su efecto.",
+      "estado": "aviso de la NASA",
+      "fuentes": [
+        {
+          "titulo": "Terra orbital drift information",
+          "ruta": "https://terra.nasa.gov/about/terra-orbital-drift-information"
+        }
+      ]
+    },
+    {
+      "id": "l_calidad",
+      "tipo": "limite",
+      "grupo": "limites",
+      "etiqueta": "Calidad MODIS en el centro",
+      "texto": "El centro nunca recibe la marca de mejor calidad en temperatura y casi no tiene meses fiables de NDVI.",
+      "estado": "comprobado",
+      "fuentes": [
+        {
+          "titulo": "Mapa de datos",
+          "ruta": "docs/MAPA_DE_DATOS.md"
+        }
+      ]
+    },
+    {
+      "id": "l_celda",
+      "tipo": "limite",
+      "grupo": "limites",
+      "etiqueta": "Un píxel no es la ciudad",
+      "texto": "Cada serie es un píxel de 1 km o una celda de 10 a 55 km. No representa un distrito, el estado ni una cuenca.",
+      "estado": "comprobado",
+      "fuentes": [
+        {
+          "titulo": "Mapa de datos",
+          "ruta": "docs/MAPA_DE_DATOS.md"
+        }
+      ]
+    },
+    {
+      "id": "l_multiples",
+      "tipo": "limite",
+      "grupo": "limites",
+      "etiqueta": "Muchas pruebas a la vez",
+      "texto": "Con ocho pistas o doce meses a prueba se espera alguna falsa alarma. Una pista débil suelta no es fiable.",
+      "estado": "advertido",
+      "fuentes": [
+        {
+          "titulo": "Significación",
+          "ruta": "recursos/paginas/07-significancia.md"
+        }
+      ]
+    },
+    {
+      "id": "l_causa",
+      "tipo": "limite",
+      "grupo": "limites",
+      "etiqueta": "Significativo no es causa",
+      "texto": "Una tendencia significativa describe un patrón en un lugar y un periodo. No dice por qué ocurre.",
+      "estado": "advertido",
+      "fuentes": [
+        {
+          "titulo": "Significación",
+          "ruta": "recursos/paginas/07-significancia.md"
+        }
+      ]
+    },
+    {
+      "id": "l_gldas",
+      "tipo": "limite",
+      "grupo": "limites",
+      "etiqueta": "GLDAS 2.1 cambió en 2001",
+      "texto": "Cambió sus datos de entrada en marzo de 2001. Por eso las descargas empiezan ahí.",
+      "estado": "oficial",
+      "fuentes": [
+        {
+          "titulo": "Ficha 01",
+          "ruta": "recursos/paginas/01-hydrology.md"
+        }
+      ]
+    },
+    {
+      "id": "l_horas",
+      "tipo": "limite",
+      "grupo": "limites",
+      "etiqueta": "Horas del visor desplazadas",
+      "texto": "El CSV del visor mueve las horas según el huso del navegador. Con medias mensuales no afecta.",
+      "estado": "comprobado",
+      "fuentes": [
+        {
+          "titulo": "Ficha 01",
+          "ruta": "recursos/paginas/01-hydrology.md"
+        }
+      ]
+    },
+    {
+      "id": "l_imerg",
+      "tipo": "limite",
+      "grupo": "limites",
+      "etiqueta": "IMERG Final acaba en sep-2025",
+      "texto": "La versión V07 termina ahí por la transición a V08. No se rellenaron los meses que faltan.",
+      "estado": "oficial",
+      "fuentes": [
+        {
+          "titulo": "Detalle",
+          "ruta": "recursos/archivos/nuevo-leon/imerg/README.md"
+        }
+      ]
+    },
+    {
+      "id": "l_grace",
+      "tipo": "limite",
+      "grupo": "limites",
+      "etiqueta": "GRACE ve a unos 300 km",
+      "texto": "Su resolución efectiva es de unos 3°. Mide agua total: no solo la subterránea ni el volumen de una presa.",
+      "estado": "oficial",
+      "fuentes": [
+        {
+          "titulo": "Detalle",
+          "ruta": "recursos/archivos/nuevo-leon/grace/README.md"
+        }
+      ]
+    },
+    {
+      "id": "l_noaa",
+      "tipo": "limite",
+      "grupo": "limites",
+      "etiqueta": "Estaciones NOAA hasta 2012",
+      "texto": "49 de las 50 estaciones cercanas terminan en 2012 o antes. Por eso el testigo en tierra es el SMN.",
+      "estado": "comprobado",
+      "fuentes": [
+        {
+          "titulo": "Ficha 03",
+          "ruta": "recursos/paginas/03-cdo.md"
+        }
+      ]
+    },
+    {
+      "id": "p_pagina",
+      "tipo": "pagina",
+      "grupo": "pagina",
+      "etiqueta": "Trend Detective página web",
+      "texto": "Aplicación estática en Svelte y Vite. La interfaz en inglés y español calcula tendencias en el navegador para el caso del agua y para el laboratorio de Monterrey.",
+      "estado": "implementado",
+      "fuentes": [
+        {
+          "titulo": "Página web",
+          "ruta": "app/README.md"
+        }
+      ]
+    },
+    {
+      "id": "p_caso",
+      "tipo": "pagina",
+      "grupo": "pagina",
+      "etiqueta": "Caso guiado · dos barras, dos calendarios, ¿tendencia?",
+      "texto": "México, Monterrey, lluvia: dos totales casi iguales, los días de cada año y el veredicto de 23 años. Incluye un buscador de años gemelos.",
+      "estado": "implementado",
+      "fuentes": [
+        {
+          "titulo": "Página web",
+          "ruta": "app/README.md"
+        }
+      ]
+    },
+    {
+      "id": "p_lab",
+      "tipo": "pagina",
+      "grupo": "pagina",
+      "etiqueta": "Investigación en ocho pasos",
+      "texto": "Qué, dónde, cuándo, mirar y dibujar una línea, veredicto, coartadas, cinco lugares y segundo testigo, para siete variables.",
+      "estado": "implementado",
+      "fuentes": [
+        {
+          "titulo": "Página web",
+          "ruta": "app/README.md"
+        }
+      ]
+    },
+    {
+      "id": "p_expediente",
+      "tipo": "pagina",
+      "grupo": "pagina",
+      "etiqueta": "Expediente",
+      "texto": "Fuentes, métodos, límites, declaración de uso de IA y descarga del resultado en JSON.",
+      "estado": "implementado",
+      "fuentes": [
+        {
+          "titulo": "Página web",
+          "ruta": "app/README.md"
+        }
+      ]
+    },
+    {
+      "id": "t_entrega",
+      "tipo": "pendiente",
+      "grupo": "pendientes",
+      "etiqueta": "Registrar la entrega del reto",
+      "texto": "El sitio generado está en GitHub. Queda habilitar la demo pública, verificar el enlace e incluirlo en la entrega oficial.",
+      "estado": "pendiente",
+      "fuentes": [
+        {
+          "titulo": "Pendientes",
+          "ruta": "docs/PENDIENTES.md"
+        }
+      ]
+    },
+    {
+      "id": "t_texturas",
+      "tipo": "pendiente",
+      "grupo": "pendientes",
+      "etiqueta": "Permiso de las texturas",
+      "texto": "Fran eligió conservar el globo actual en GitHub después de una comparación local con mapas de la NASA. Queda obtener permiso para usar las texturas actuales en la entrega.",
+      "estado": "pendiente",
+      "fuentes": [
+        {
+          "titulo": "Decisión y procedencia",
+          "ruta": "docs/PENDIENTES.md"
+        }
+      ]
+    },
+    {
+      "id": "t_demo",
+      "tipo": "pendiente",
+      "grupo": "pendientes",
+      "etiqueta": "Demo y textos en inglés",
+      "texto": "Vídeo de 30 segundos o 7 diapositivas, y los campos de la página del proyecto.",
+      "estado": "pendiente",
+      "fuentes": [
+        {
+          "titulo": "Reglas oficiales",
+          "ruta": "docs/REGLAS_OFICIALES.md"
+        }
+      ]
+    },
+    {
+      "id": "t_textos",
+      "tipo": "pendiente",
+      "grupo": "pendientes",
+      "etiqueta": "Revisar los textos de la demo",
+      "texto": "El equipo eligió el caso del agua. Falta que revise los borradores en inglés y explique el diferenciador con sus palabras.",
+      "estado": "pendiente",
+      "fuentes": [
+        {
+          "titulo": "Pendientes",
+          "ruta": "docs/PENDIENTES.md"
+        }
+      ]
+    },
+    {
+      "id": "t_lluvia_cv",
+      "tipo": "pendiente",
+      "grupo": "pendientes",
+      "etiqueta": "Completar la lluvia del Valle Central",
+      "texto": "Los datos regionales de IMERG y CHIRPS para California faltan en el repositorio. El caso allí dispone de GRACE.",
+      "estado": "pendiente",
+      "fuentes": [
+        {
+          "titulo": "Diagnóstico",
+          "ruta": "docs/DIAGNOSTICO_AGUA.md"
+        }
+      ]
+    },
+    {
+      "id": "t_fuente",
+      "tipo": "pendiente",
+      "grupo": "pendientes",
+      "etiqueta": "Fuente independiente",
+      "texto": "La regla 1 pide contrastar el cambio de Monterrey con un artículo o un informe externo.",
+      "estado": "pendiente",
+      "fuentes": [
+        {
+          "titulo": "Validación",
+          "ruta": "docs/VALIDACION.md"
+        }
+      ]
+    },
+    {
+      "id": "t_giovanni",
+      "tipo": "pendiente",
+      "grupo": "pendientes",
+      "etiqueta": "Decidir sobre Giovanni",
+      "texto": "Si se usa como herramienta de la solución, más allá de las siete descargas autorizadas.",
+      "estado": "pendiente",
+      "fuentes": [
+        {
+          "titulo": "Decisión",
+          "ruta": "docs/decisiones/GIOVANNI.md"
+        }
+      ]
+    },
+    {
+      "id": "t_cita",
+      "tipo": "pendiente",
+      "grupo": "pendientes",
+      "etiqueta": "Verificar una cita",
+      "texto": "La página atribuye el cálculo a Weatherhead et al. (1998). La revisión de la fórmula frente al artículo figura pendiente en la nota de ideas.",
+      "estado": "pendiente",
+      "fuentes": [
+        {
+          "titulo": "Ideas",
+          "ruta": "docs/IDEAS.md"
+        }
+      ]
+    },
+    {
+      "id": "g_reglas",
+      "tipo": "grupo",
+      "grupo": "reglas",
+      "etiqueta": "Reglas · 5 criterios oficiales y 4 reglas del equipo",
+      "texto": "Cómo se evalúa el proyecto y qué exige el equipo a cada propuesta.",
+      "estado": "resumen",
+      "fuentes": []
+    },
+    {
+      "id": "g_preguntas",
+      "tipo": "pregunta",
+      "grupo": "preguntas",
+      "etiqueta": "Preguntas de Fran y propuestas documentadas",
+      "texto": "Qué se quiere averiguar y con qué enfoque.",
+      "estado": "resumen",
+      "fuentes": []
+    },
+    {
+      "id": "g_recursos",
+      "tipo": "recurso",
+      "grupo": "recursos",
+      "etiqueta": "Recursos · 13 oficiales y fuentes justificadas",
+      "texto": "De dónde se pueden sacar datos y métodos.",
+      "estado": "resumen",
+      "fuentes": []
+    },
+    {
+      "id": "g_mty",
+      "tipo": "dato",
+      "grupo": "monterrey",
+      "etiqueta": "Datos de Monterrey 5 series, 2001–2025",
+      "texto": "Lluvia, temperatura del aire, humedad de las raíces, temperatura superficial y verdor.",
+      "estado": "resumen",
+      "fuentes": []
+    },
+    {
+      "id": "g_nl",
+      "tipo": "dato",
+      "grupo": "nuevo_leon",
+      "etiqueta": "Datos de Nuevo León series regionales",
+      "texto": "GLDAS, GRACE, lluvia regional, cuencas y presas.",
+      "estado": "resumen",
+      "fuentes": []
+    },
+    {
+      "id": "g_metodo",
+      "tipo": "metodo",
+      "grupo": "metodo",
+      "etiqueta": "Método · ritmo, 3 pruebas y coartadas",
+      "texto": "Cómo se pasa de una serie a un veredicto.",
+      "estado": "resumen",
+      "fuentes": []
+    },
+    {
+      "id": "g_hallazgos",
+      "tipo": "hallazgo",
+      "grupo": "hallazgos",
+      "etiqueta": "Señales de Monterrey calor, lluvia y verdor",
+      "texto": "Lo que dicen los datos de Monterrey.",
+      "estado": "resumen",
+      "fuentes": []
+    },
+    {
+      "id": "g_limites",
+      "tipo": "limite",
+      "grupo": "limites",
+      "etiqueta": "Límites conocidos",
+      "texto": "Lo que acompaña a cada resultado para no leerlo de más.",
+      "estado": "resumen",
+      "fuentes": []
+    },
+    {
+      "id": "g_pendientes",
+      "tipo": "pendiente",
+      "grupo": "pendientes",
+      "etiqueta": "Entrega de la demo y revisión del equipo",
+      "texto": "Lo que falta antes de la entrega.",
+      "estado": "resumen",
+      "fuentes": []
+    },
+    {
+      "id": "p_agua",
+      "tipo": "pagina",
+      "grupo": "agua",
+      "etiqueta": "Caso 001 · ¿Adónde fue el agua?",
+      "texto": "El caso elegido por el equipo contrasta lluvia, calor, demanda evaporativa, humedad del suelo, escurrimiento, agua almacenada y posibles extracciones. La extracción se examina de forma indirecta.",
+      "estado": "implementado",
+      "fuentes": [
+        {
+          "titulo": "Página y autoría",
+          "ruta": "app/README.md"
+        },
+        {
+          "titulo": "Reglas del caso",
+          "ruta": "app/src/lib/water/case.ts"
+        }
+      ]
+    },
+    {
+      "id": "m_agua",
+      "tipo": "metodo",
+      "grupo": "agua",
+      "etiqueta": "Dos pruebas del caso del agua",
+      "texto": "Sobre medias o totales anuales se calcula la pendiente de Sen por año natural, la prueba Mann–Kendall corregida por Hamed–Rao y el intervalo al 95 % de mínimos cuadrados con errores Newey–West. La etiqueta «confirmada» requiere p < 0,05 e intervalo que excluye cero.",
+      "estado": "en la página",
+      "fuentes": [
+        {
+          "titulo": "Motor",
+          "ruta": "app/src/lib/water/engine.ts"
+        },
+        {
+          "titulo": "Verificación del caso",
+          "ruta": "docs/DIAGNOSTICO_AGUA.md"
+        }
+      ]
+    },
+    {
+      "id": "h_almacen",
+      "tipo": "hallazgo",
+      "grupo": "agua",
+      "etiqueta": "Nuevo León · GRACE −7,1 cm por década",
+      "texto": "El almacenamiento total de agua desciende entre 2003 y 2026. Hay 21 años con suficiente cobertura. Los huecos se conservan al calcular la pendiente.",
+      "estado": "calculado desde la referencia",
+      "fuentes": [
+        {
+          "titulo": "Series y resultados de referencia",
+          "ruta": "app/public/data/water.json"
+        },
+        {
+          "titulo": "Verificación del caso",
+          "ruta": "docs/DIAGNOSTICO_AGUA.md"
+        }
+      ]
+    },
+    {
+      "id": "h_residuo",
+      "tipo": "hallazgo",
+      "grupo": "agua",
+      "etiqueta": "Pérdida tras ajustar por lluvia",
+      "texto": "La lluvia del año y del anterior explican una fracción R² = 0,44 de la variación anual de GRACE en 19 años comunes. El residuo tiene una pendiente de Sen de −4,1 cm por década. Otros procesos pueden contribuir.",
+      "estado": "calculado desde la referencia",
+      "fuentes": [
+        {
+          "titulo": "Series y resultados de referencia",
+          "ruta": "app/public/data/water.json"
+        },
+        {
+          "titulo": "Verificación del caso",
+          "ruta": "docs/DIAGNOSTICO_AGUA.md"
+        }
+      ]
+    },
+    {
+      "id": "d_acuiferos",
+      "tipo": "dato",
+      "grupo": "agua",
+      "etiqueta": "13 de 23 acuíferos con disponibilidad negativa",
+      "texto": "El balance administrativo publicado por el DOF el 9 de noviembre de 2023 registra 13 acuíferos con disponibilidad negativa. Sus déficits suman −381,1 hm³ al año. El balance ofrece un contraste independiente con la señal del satélite.",
+      "estado": "dato oficial contrastado",
+      "fuentes": [
+        {
+          "titulo": "Tabla de acuíferos",
+          "ruta": "recursos/archivos/nuevo-leon/acuiferos/acuiferos_nuevo_leon_DOF_2023-11-09.csv"
+        },
+        {
+          "titulo": "Verificación del caso",
+          "ruta": "docs/DIAGNOSTICO_AGUA.md"
+        }
+      ]
+    },
+    {
+      "id": "h_huella",
+      "tipo": "hallazgo",
+      "grupo": "agua",
+      "etiqueta": "Huella humana compatible",
+      "texto": "La pérdida persistente tras ajustar por precipitación y el déficit oficial son compatibles con presión humana en Nuevo León. La contribución de las extracciones queda sin cuantificar. El Valle Central sólo dispone de almacenamiento para esta comparación.",
+      "estado": "interpretación del equipo",
+      "fuentes": [
+        {
+          "titulo": "Verificación del caso",
+          "ruta": "docs/DIAGNOSTICO_AGUA.md"
+        },
+        {
+          "titulo": "Pruebas del veredicto",
+          "ruta": "app/src/lib/water/case.test.ts"
+        }
+      ]
+    },
+    {
+      "id": "p_mundo",
+      "tipo": "pagina",
+      "grupo": "mundo",
+      "etiqueta": "Paso 9 · llevar el caso a otro país",
+      "texto": "Propuesta de Fran. Nuevo León tiene las diez capas cargadas. Italia tiene siete listas y Finlandia cinco. Para otro país cuentan las capas cargadas y las abiertas que cubren su punto. La tabla de cobertura documenta 151 países y territorios con 7 de 10 y 29 con 6 de 10. Allí se puede consultar la distribución completa.",
+      "estado": "implementado",
+      "fuentes": [
+        {
+          "titulo": "Cobertura y validación",
+          "ruta": "docs/ESCALABILIDAD.md"
+        },
+        {
+          "titulo": "Pruebas de las cuentas por país",
+          "ruta": "app/src/lib/world/world.test.ts"
+        }
+      ]
+    },
+    {
+      "id": "m_capas",
+      "tipo": "metodo",
+      "grupo": "mundo",
+      "etiqueta": "Diez capas de siete fuentes",
+      "texto": "IMERG y CHIRPS aportan lluvia. GLDAS aporta temperatura, demanda evaporativa, humedad del suelo y escurrimiento. GRACE aporta agua total. Las tres fuentes locales son la estación, las presas y el balance de acuíferos. En la regla del globo CHIRPS cubre hasta 50° de latitud e IMERG es completo hasta 60°. Una capa con cobertura parcial queda fuera de la cuenta.",
+      "estado": "reglas del globo",
+      "fuentes": [
+        {
+          "titulo": "Reglas por capa",
+          "ruta": "app/src/lib/world/layers.ts"
+        },
+        {
+          "titulo": "Cobertura y validación",
+          "ruta": "docs/ESCALABILIDAD.md"
+        }
+      ]
+    },
+    {
+      "id": "h_mundo",
+      "tipo": "preliminar",
+      "grupo": "mundo",
+      "etiqueta": "GRACE · serie bajo 189 de 243 puntos",
+      "texto": "De los 243 países y territorios, 189 tienen serie terrestre o costera en su mascon. Las dos pruebas dan descenso en 70 puntos y ascenso en 53. Hay indicio en 18 y falta evidencia de tendencia en 48. Los otros 54 carecen de serie.",
+      "estado": "preliminar por punto",
+      "fuentes": [
+        {
+          "titulo": "Puntos y resultados de referencia",
+          "ruta": "app/public/data/world.json"
+        },
+        {
+          "titulo": "Muestreo del mascon",
+          "ruta": "app/scripts/build_world.py"
+        }
+      ]
+    },
+    {
+      "id": "l_punto",
+      "tipo": "limite",
+      "grupo": "mundo",
+      "etiqueta": "Un punto por país o territorio",
+      "texto": "El mascon mide unos 3° de ancho. Los recuentos describen señales en puntos de referencia o su parte terrestre costera. En islas pequeñas la señal puede corresponder a una región mucho más extensa. Falta un testigo independiente para atribuir el cambio en cada país.",
+      "estado": "alcance geográfico",
+      "fuentes": [
+        {
+          "titulo": "Cobertura y validación",
+          "ruta": "docs/ESCALABILIDAD.md"
+        },
+        {
+          "titulo": "GRACE",
+          "ruta": "recursos/archivos/nuevo-leon/grace/README.md"
+        }
+      ]
+    }
+  ],
+  "aristas": [
+    {
+      "origen": "reto",
+      "destino": "g_reglas",
+      "relacion": "se evalúa con",
+      "pendiente": false
+    },
+    {
+      "origen": "reto",
+      "destino": "g_recursos",
+      "relacion": "ofrece",
+      "pendiente": false
+    },
+    {
+      "origen": "reto",
+      "destino": "g_preguntas",
+      "relacion": "motiva",
+      "pendiente": false
+    },
+    {
+      "origen": "g_recursos",
+      "destino": "g_mty",
+      "relacion": "entregan",
+      "pendiente": false
+    },
+    {
+      "origen": "g_recursos",
+      "destino": "g_nl",
+      "relacion": "entregan",
+      "pendiente": false
+    },
+    {
+      "origen": "g_mty",
+      "destino": "g_metodo",
+      "relacion": "se analizan con",
+      "pendiente": false
+    },
+    {
+      "origen": "g_metodo",
+      "destino": "g_hallazgos",
+      "relacion": "da",
+      "pendiente": false
+    },
+    {
+      "origen": "g_limites",
+      "destino": "g_hallazgos",
+      "relacion": "matizan",
+      "pendiente": false
+    },
+    {
+      "origen": "g_preguntas",
+      "destino": "p_pagina",
+      "relacion": "dan forma a",
+      "pendiente": false
+    },
+    {
+      "origen": "g_hallazgos",
+      "destino": "p_pagina",
+      "relacion": "se muestran en",
+      "pendiente": false
+    },
+    {
+      "origen": "g_reglas",
+      "destino": "p_pagina",
+      "relacion": "condicionan",
+      "pendiente": false
+    },
+    {
+      "origen": "p_pagina",
+      "destino": "g_pendientes",
+      "relacion": "falta",
+      "pendiente": true
+    },
+    {
+      "origen": "g_nl",
+      "destino": "p_agua",
+      "relacion": "alimenta",
+      "pendiente": false
+    },
+    {
+      "origen": "p_agua",
+      "destino": "p_pagina",
+      "relacion": "forma parte de",
+      "pendiente": false
+    },
+    {
+      "origen": "p_agua",
+      "destino": "p_mundo",
+      "relacion": "se amplía con",
+      "pendiente": false
+    },
+    {
+      "origen": "d_grace",
+      "destino": "h_almacen",
+      "relacion": "mide",
+      "pendiente": false
+    },
+    {
+      "origen": "d_gldas",
+      "destino": "p_agua",
+      "relacion": "aporta variables modeladas",
+      "pendiente": false
+    },
+    {
+      "origen": "d_lluvia_nl",
+      "destino": "h_residuo",
+      "relacion": "aporta precipitación",
+      "pendiente": false
+    },
+    {
+      "origen": "h_almacen",
+      "destino": "h_residuo",
+      "relacion": "se ajusta por lluvia",
+      "pendiente": false
+    },
+    {
+      "origen": "m_agua",
+      "destino": "h_almacen",
+      "relacion": "calcula la tendencia",
+      "pendiente": false
+    },
+    {
+      "origen": "h_residuo",
+      "destino": "h_huella",
+      "relacion": "apoya",
+      "pendiente": false
+    },
+    {
+      "origen": "d_acuiferos",
+      "destino": "h_huella",
+      "relacion": "aporta un testigo",
+      "pendiente": false
+    },
+    {
+      "origen": "h_huella",
+      "destino": "p_agua",
+      "relacion": "se interpreta en",
+      "pendiente": false
+    },
+    {
+      "origen": "l_grace",
+      "destino": "h_almacen",
+      "relacion": "acota la escala",
+      "pendiente": false
+    },
+    {
+      "origen": "d_agua_nl",
+      "destino": "p_agua",
+      "relacion": "aporta series de presas",
+      "pendiente": false
+    },
+    {
+      "origen": "p_agua",
+      "destino": "m_capas",
+      "relacion": "define las capas de referencia",
+      "pendiente": false
+    },
+    {
+      "origen": "m_capas",
+      "destino": "p_mundo",
+      "relacion": "determina la cuenta",
+      "pendiente": false
+    },
+    {
+      "origen": "d_grace",
+      "destino": "h_mundo",
+      "relacion": "permite el muestreo",
+      "pendiente": false
+    },
+    {
+      "origen": "m_agua",
+      "destino": "h_mundo",
+      "relacion": "clasifica cada serie",
+      "pendiente": false
+    },
+    {
+      "origen": "l_punto",
+      "destino": "h_mundo",
+      "relacion": "limita la interpretación",
+      "pendiente": false
+    },
+    {
+      "origen": "h_mundo",
+      "destino": "p_mundo",
+      "relacion": "ofrece un primer vistazo",
+      "pendiente": false
+    },
+    {
+      "origen": "p_agua",
+      "destino": "t_lluvia_cv",
+      "relacion": "requiere un contraste en California",
+      "pendiente": true
+    },
+    {
+      "origen": "reto",
+      "destino": "criterios",
+      "relacion": "se evalúa con",
+      "pendiente": false
+    },
+    {
+      "origen": "reto",
+      "destino": "entrega",
+      "relacion": "exige",
+      "pendiente": false
+    },
+    {
+      "origen": "reto",
+      "destino": "consideraciones",
+      "relacion": "sugiere",
+      "pendiente": false
+    },
+    {
+      "origen": "consideraciones",
+      "destino": "ideas13",
+      "relacion": "inspiran",
+      "pendiente": false
+    },
+    {
+      "origen": "validacion",
+      "destino": "fran1",
+      "relacion": "filtra",
+      "pendiente": false
+    },
+    {
+      "origen": "validacion",
+      "destino": "fran2",
+      "relacion": "filtra",
+      "pendiente": false
+    },
+    {
+      "origen": "validacion",
+      "destino": "ideas13",
+      "relacion": "filtra",
+      "pendiente": false
+    },
+    {
+      "origen": "regla_ia",
+      "destino": "ideas13",
+      "relacion": "deja en propuesta",
+      "pendiente": false
+    },
+    {
+      "origen": "regla_ia",
+      "destino": "t_textos",
+      "relacion": "exige",
+      "pendiente": true
+    },
+    {
+      "origen": "fran1",
+      "destino": "p_caso",
+      "relacion": "se ve en",
+      "pendiente": false
+    },
+    {
+      "origen": "fran2",
+      "destino": "p_caso",
+      "relacion": "se pone a prueba en",
+      "pendiente": false
+    },
+    {
+      "origen": "ideas13",
+      "destino": "p_lab",
+      "relacion": "dan forma a",
+      "pendiente": false
+    },
+    {
+      "origen": "recursos",
+      "destino": "r_appeears",
+      "relacion": "incluye",
+      "pendiente": false
+    },
+    {
+      "origen": "recursos",
+      "destino": "r_hydro",
+      "relacion": "incluye",
+      "pendiente": false
+    },
+    {
+      "origen": "recursos",
+      "destino": "r_giovanni",
+      "relacion": "incluye",
+      "pendiente": false
+    },
+    {
+      "origen": "recursos",
+      "destino": "r_otros",
+      "relacion": "incluye",
+      "pendiente": false
+    },
+    {
+      "origen": "r_appeears",
+      "destino": "d_lst",
+      "relacion": "entregó",
+      "pendiente": false
+    },
+    {
+      "origen": "r_appeears",
+      "destino": "d_ndvi",
+      "relacion": "entregó",
+      "pendiente": false
+    },
+    {
+      "origen": "r_externos",
+      "destino": "d_imerg",
+      "relacion": "NASA POWER",
+      "pendiente": false
+    },
+    {
+      "origen": "r_externos",
+      "destino": "d_merra",
+      "relacion": "NASA POWER",
+      "pendiente": false
+    },
+    {
+      "origen": "r_externos",
+      "destino": "d_smn",
+      "relacion": "SMN",
+      "pendiente": false
+    },
+    {
+      "origen": "r_hydro",
+      "destino": "d_gldas",
+      "relacion": "permite explorar el producto",
+      "pendiente": false
+    },
+    {
+      "origen": "r_giovanni",
+      "destino": "d_gldas",
+      "relacion": "vía autorizada",
+      "pendiente": false
+    },
+    {
+      "origen": "r_giovanni",
+      "destino": "t_giovanni",
+      "relacion": "falta decidir",
+      "pendiente": true
+    },
+    {
+      "origen": "r_externos",
+      "destino": "d_grace",
+      "relacion": "PO.DAAC",
+      "pendiente": false
+    },
+    {
+      "origen": "r_externos",
+      "destino": "d_lluvia_nl",
+      "relacion": "USF, NOAA y UCSB",
+      "pendiente": false
+    },
+    {
+      "origen": "r_externos",
+      "destino": "d_agua_nl",
+      "relacion": "INEGI y CONAGUA",
+      "pendiente": false
+    },
+    {
+      "origen": "r_otros",
+      "destino": "l_noaa",
+      "relacion": "tiene",
+      "pendiente": false
+    },
+    {
+      "origen": "l_noaa",
+      "destino": "d_smn",
+      "relacion": "por eso se usa",
+      "pendiente": false
+    },
+    {
+      "origen": "d_imerg",
+      "destino": "s_series",
+      "relacion": "alimenta",
+      "pendiente": false
+    },
+    {
+      "origen": "d_merra",
+      "destino": "s_series",
+      "relacion": "alimenta",
+      "pendiente": false
+    },
+    {
+      "origen": "d_lst",
+      "destino": "s_series",
+      "relacion": "alimenta",
+      "pendiente": false
+    },
+    {
+      "origen": "d_ndvi",
+      "destino": "s_series",
+      "relacion": "alimenta",
+      "pendiente": false
+    },
+    {
+      "origen": "d_smn",
+      "destino": "s_series",
+      "relacion": "alimenta",
+      "pendiente": false
+    },
+    {
+      "origen": "d_imerg",
+      "destino": "s_anual",
+      "relacion": "se resume en",
+      "pendiente": false
+    },
+    {
+      "origen": "d_smn",
+      "destino": "s_anual",
+      "relacion": "se resume en",
+      "pendiente": false
+    },
+    {
+      "origen": "s_series",
+      "destino": "p_pagina",
+      "relacion": "alimenta",
+      "pendiente": false
+    },
+    {
+      "origen": "s_series",
+      "destino": "manifiesto",
+      "relacion": "originales en",
+      "pendiente": false
+    },
+    {
+      "origen": "d_gldas",
+      "destino": "manifiesto",
+      "relacion": "registrado en",
+      "pendiente": false
+    },
+    {
+      "origen": "d_grace",
+      "destino": "manifiesto",
+      "relacion": "registrado en",
+      "pendiente": false
+    },
+    {
+      "origen": "d_lluvia_nl",
+      "destino": "manifiesto",
+      "relacion": "registrado en",
+      "pendiente": false
+    },
+    {
+      "origen": "d_agua_nl",
+      "destino": "manifiesto",
+      "relacion": "registrado en",
+      "pendiente": false
+    },
+    {
+      "origen": "l_imerg",
+      "destino": "d_lluvia_nl",
+      "relacion": "limita",
+      "pendiente": false
+    },
+    {
+      "origen": "l_grace",
+      "destino": "d_grace",
+      "relacion": "limita",
+      "pendiente": false
+    },
+    {
+      "origen": "l_gldas",
+      "destino": "d_gldas",
+      "relacion": "fija el inicio de",
+      "pendiente": false
+    },
+    {
+      "origen": "d_grace",
+      "destino": "t_lluvia_cv",
+      "relacion": "falta el contraste de lluvia",
+      "pendiente": true
+    },
+    {
+      "origen": "s_series",
+      "destino": "m_calidad",
+      "relacion": "pasa por",
+      "pendiente": false
+    },
+    {
+      "origen": "m_calidad",
+      "destino": "m_anom",
+      "relacion": "después",
+      "pendiente": false
+    },
+    {
+      "origen": "m_anom",
+      "destino": "m_sen",
+      "relacion": "cuánto cambia",
+      "pendiente": false
+    },
+    {
+      "origen": "m_anom",
+      "destino": "m_jurado",
+      "relacion": "si es real",
+      "pendiente": false
+    },
+    {
+      "origen": "m_memoria",
+      "destino": "m_jurado",
+      "relacion": "ensancha",
+      "pendiente": false
+    },
+    {
+      "origen": "m_sen",
+      "destino": "m_veredicto",
+      "relacion": "ritmo",
+      "pendiente": false
+    },
+    {
+      "origen": "m_jurado",
+      "destino": "m_veredicto",
+      "relacion": "votos",
+      "pendiente": false
+    },
+    {
+      "origen": "m_regla",
+      "destino": "m_veredicto",
+      "relacion": "condiciona",
+      "pendiente": false
+    },
+    {
+      "origen": "m_veredicto",
+      "destino": "m_coartadas",
+      "relacion": "se somete a",
+      "pendiente": false
+    },
+    {
+      "origen": "m_veredicto",
+      "destino": "m_anios",
+      "relacion": "si no hay pruebas",
+      "pendiente": false
+    },
+    {
+      "origen": "m_anios",
+      "destino": "t_cita",
+      "relacion": "falta",
+      "pendiente": true
+    },
+    {
+      "origen": "fran1",
+      "destino": "m_pistas",
+      "relacion": "se mide con",
+      "pendiente": false
+    },
+    {
+      "origen": "fran2",
+      "destino": "m_pistas",
+      "relacion": "se mide con",
+      "pendiente": false
+    },
+    {
+      "origen": "m_pistas",
+      "destino": "s_anual",
+      "relacion": "produce",
+      "pendiente": false
+    },
+    {
+      "origen": "s_anual",
+      "destino": "m_jurado",
+      "relacion": "una pista por año",
+      "pendiente": false
+    },
+    {
+      "origen": "d_lst",
+      "destino": "h_noches",
+      "relacion": "sostiene",
+      "pendiente": false
+    },
+    {
+      "origen": "d_lst",
+      "destino": "h_lugares",
+      "relacion": "sostiene",
+      "pendiente": false
+    },
+    {
+      "origen": "d_lst",
+      "destino": "h_dia",
+      "relacion": "sostiene",
+      "pendiente": false
+    },
+    {
+      "origen": "h_noches",
+      "destino": "h_deriva",
+      "relacion": "se pone a prueba",
+      "pendiente": false
+    },
+    {
+      "origen": "l_terra",
+      "destino": "h_deriva",
+      "relacion": "motiva",
+      "pendiente": false
+    },
+    {
+      "origen": "l_terra",
+      "destino": "h_dia",
+      "relacion": "matiza",
+      "pendiente": false
+    },
+    {
+      "origen": "l_calidad",
+      "destino": "h_noches",
+      "relacion": "obliga al filtro estándar",
+      "pendiente": false
+    },
+    {
+      "origen": "l_causa",
+      "destino": "h_noches",
+      "relacion": "matiza",
+      "pendiente": false
+    },
+    {
+      "origen": "d_smn",
+      "destino": "h_aire",
+      "relacion": "sostiene",
+      "pendiente": false
+    },
+    {
+      "origen": "h_aire",
+      "destino": "h_noches",
+      "relacion": "respalda",
+      "pendiente": false
+    },
+    {
+      "origen": "d_imerg",
+      "destino": "h_lluvia",
+      "relacion": "sostiene",
+      "pendiente": false
+    },
+    {
+      "origen": "d_imerg",
+      "destino": "h_gemelos",
+      "relacion": "sostiene",
+      "pendiente": false
+    },
+    {
+      "origen": "d_imerg",
+      "destino": "h_episodios",
+      "relacion": "sostiene",
+      "pendiente": false
+    },
+    {
+      "origen": "d_merra",
+      "destino": "h_episodios",
+      "relacion": "segunda señal",
+      "pendiente": false
+    },
+    {
+      "origen": "d_imerg",
+      "destino": "h_testigo",
+      "relacion": "sostiene",
+      "pendiente": false
+    },
+    {
+      "origen": "d_smn",
+      "destino": "h_testigo",
+      "relacion": "sostiene",
+      "pendiente": false
+    },
+    {
+      "origen": "h_testigo",
+      "destino": "h_lluvia",
+      "relacion": "respalda",
+      "pendiente": false
+    },
+    {
+      "origen": "l_multiples",
+      "destino": "h_lluvia",
+      "relacion": "matiza",
+      "pendiente": false
+    },
+    {
+      "origen": "l_celda",
+      "destino": "h_lluvia",
+      "relacion": "matiza",
+      "pendiente": false
+    },
+    {
+      "origen": "d_ndvi",
+      "destino": "h_verdor",
+      "relacion": "sostiene",
+      "pendiente": false
+    },
+    {
+      "origen": "l_calidad",
+      "destino": "h_verdor",
+      "relacion": "deja fuera al centro",
+      "pendiente": false
+    },
+    {
+      "origen": "d_merra",
+      "destino": "h_suelo",
+      "relacion": "sostiene",
+      "pendiente": false
+    },
+    {
+      "origen": "l_celda",
+      "destino": "h_suelo",
+      "relacion": "matiza",
+      "pendiente": false
+    },
+    {
+      "origen": "l_gldas",
+      "destino": "h_gldas",
+      "relacion": "matiza",
+      "pendiente": false
+    },
+    {
+      "origen": "l_horas",
+      "destino": "h_gldas",
+      "relacion": "matiza",
+      "pendiente": false
+    },
+    {
+      "origen": "h_gldas",
+      "destino": "d_gldas",
+      "relacion": "se contrasta con series posteriores",
+      "pendiente": false
+    },
+    {
+      "origen": "h_noches",
+      "destino": "t_fuente",
+      "relacion": "falta contraste externo",
+      "pendiente": true
+    },
+    {
+      "origen": "p_pagina",
+      "destino": "p_caso",
+      "relacion": "contiene",
+      "pendiente": false
+    },
+    {
+      "origen": "p_pagina",
+      "destino": "p_lab",
+      "relacion": "contiene",
+      "pendiente": false
+    },
+    {
+      "origen": "p_pagina",
+      "destino": "p_expediente",
+      "relacion": "contiene",
+      "pendiente": false
+    },
+    {
+      "origen": "h_vacio",
+      "destino": "p_pagina",
+      "relacion": "justifica",
+      "pendiente": false
+    },
+    {
+      "origen": "h_gemelos",
+      "destino": "p_caso",
+      "relacion": "se muestra en",
+      "pendiente": false
+    },
+    {
+      "origen": "h_lluvia",
+      "destino": "p_caso",
+      "relacion": "se muestra en",
+      "pendiente": false
+    },
+    {
+      "origen": "h_noches",
+      "destino": "p_lab",
+      "relacion": "se muestra en",
+      "pendiente": false
+    },
+    {
+      "origen": "h_lugares",
+      "destino": "p_lab",
+      "relacion": "se muestra en",
+      "pendiente": false
+    },
+    {
+      "origen": "h_verdor",
+      "destino": "p_lab",
+      "relacion": "se muestra en",
+      "pendiente": false
+    },
+    {
+      "origen": "h_aire",
+      "destino": "p_lab",
+      "relacion": "segundo testigo en",
+      "pendiente": false
+    },
+    {
+      "origen": "m_jurado",
+      "destino": "p_lab",
+      "relacion": "decide en",
+      "pendiente": false
+    },
+    {
+      "origen": "m_coartadas",
+      "destino": "p_lab",
+      "relacion": "pone a prueba en",
+      "pendiente": false
+    },
+    {
+      "origen": "p_pagina",
+      "destino": "criterios",
+      "relacion": "se juzga con",
+      "pendiente": false
+    },
+    {
+      "origen": "p_expediente",
+      "destino": "entrega",
+      "relacion": "declara IA y fuentes",
+      "pendiente": false
+    },
+    {
+      "origen": "p_pagina",
+      "destino": "t_entrega",
+      "relacion": "se enlaza en",
+      "pendiente": true
+    },
+    {
+      "origen": "p_mundo",
+      "destino": "t_texturas",
+      "relacion": "requiere para la entrega",
+      "pendiente": true
+    },
+    {
+      "origen": "entrega",
+      "destino": "t_demo",
+      "relacion": "falta",
+      "pendiente": true
+    },
+    {
+      "origen": "p_pagina",
+      "destino": "t_textos",
+      "relacion": "requiere revisión",
+      "pendiente": true
+    }
+  ],
+  "vistas": [
+    {
+      "id": "general",
+      "titulo": "Mapa general",
+      "nodos": [
+        "reto",
+        "g_reglas",
+        "g_preguntas",
+        "g_recursos",
+        "g_mty",
+        "g_nl",
+        "g_metodo",
+        "g_hallazgos",
+        "g_limites",
+        "p_agua",
+        "p_mundo",
+        "p_pagina",
+        "g_pendientes"
+      ]
+    },
+    {
+      "id": "reto",
+      "titulo": "1 · Reto, reglas e ideas",
+      "nodos": [
+        "reto",
+        "criterios",
+        "entrega",
+        "consideraciones",
+        "validacion",
+        "regla_ia",
+        "fran1",
+        "fran2",
+        "ideas13",
+        "p_caso",
+        "p_lab",
+        "t_textos"
+      ]
+    },
+    {
+      "id": "datos",
+      "titulo": "2 · De dónde sale cada dato",
+      "nodos": [
+        "recursos",
+        "r_appeears",
+        "r_hydro",
+        "r_giovanni",
+        "r_otros",
+        "r_externos",
+        "d_imerg",
+        "d_merra",
+        "d_lst",
+        "d_ndvi",
+        "d_smn",
+        "s_series",
+        "s_anual",
+        "d_gldas",
+        "d_grace",
+        "d_lluvia_nl",
+        "d_agua_nl",
+        "manifiesto",
+        "p_pagina",
+        "l_noaa",
+        "l_imerg",
+        "l_grace",
+        "l_gldas",
+        "t_giovanni",
+        "t_lluvia_cv"
+      ]
+    },
+    {
+      "id": "metodo",
+      "titulo": "3 · Del dato al veredicto",
+      "nodos": [
+        "s_series",
+        "m_calidad",
+        "m_anom",
+        "m_sen",
+        "m_jurado",
+        "m_memoria",
+        "m_regla",
+        "m_veredicto",
+        "m_coartadas",
+        "m_anios",
+        "t_cita",
+        "fran1",
+        "fran2",
+        "m_pistas",
+        "s_anual"
+      ]
+    },
+    {
+      "id": "hallazgos",
+      "titulo": "4 · Qué sabemos de Monterrey",
+      "nodos": [
+        "d_lst",
+        "d_smn",
+        "d_imerg",
+        "d_ndvi",
+        "d_merra",
+        "h_noches",
+        "h_lugares",
+        "h_deriva",
+        "h_aire",
+        "h_dia",
+        "h_lluvia",
+        "h_gemelos",
+        "h_episodios",
+        "h_testigo",
+        "h_verdor",
+        "h_suelo",
+        "h_gldas",
+        "l_terra",
+        "l_calidad",
+        "l_celda",
+        "l_multiples",
+        "l_causa",
+        "l_gldas",
+        "l_horas",
+        "d_gldas",
+        "t_fuente"
+      ]
+    },
+    {
+      "id": "agua",
+      "titulo": "5 · Caso del agua en Nuevo León y el Valle Central",
+      "nodos": [
+        "d_grace",
+        "d_lluvia_nl",
+        "m_agua",
+        "h_almacen",
+        "h_residuo",
+        "d_acuiferos",
+        "h_huella",
+        "p_agua",
+        "t_lluvia_cv"
+      ]
+    },
+    {
+      "id": "mundo",
+      "titulo": "6 · Del caso de Nuevo León al globo",
+      "nodos": [
+        "p_agua",
+        "m_capas",
+        "m_agua",
+        "d_grace",
+        "h_mundo",
+        "l_punto",
+        "p_mundo"
+      ]
+    },
+    {
+      "id": "pagina",
+      "titulo": "7 · La página y la entrega",
+      "nodos": [
+        "h_vacio",
+        "h_gemelos",
+        "h_lluvia",
+        "h_noches",
+        "h_lugares",
+        "h_verdor",
+        "h_aire",
+        "m_jurado",
+        "m_coartadas",
+        "p_pagina",
+        "p_caso",
+        "p_lab",
+        "p_expediente",
+        "criterios",
+        "entrega",
+        "p_agua",
+        "p_mundo",
+        "t_entrega",
+        "t_demo",
+        "t_textos",
+        "t_texturas"
+      ]
+    }
+  ]
+}

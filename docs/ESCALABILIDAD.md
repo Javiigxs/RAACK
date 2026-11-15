@@ -1,13 +1,13 @@
 ---
 tags: [raack, escalabilidad, países, agua]
 fecha: 2026-11-15
-estado: en local, pendiente de revisión del equipo
+estado: en GitHub, pendiente de revisión del equipo
 ---
 # Escalabilidad · llevar el caso a cualquier país
 
 [Índice](../INDICE.md) · [Página web](../app/README.md) · [Ideas](IDEAS.md) · [Validación](VALIDACION.md) · [Verificación del caso del agua](DIAGNOSTICO_AGUA.md) · [Pendientes](PENDIENTES.md)
 
-Paso 9 del Caso 001 de la [página web](../app/README.md), en inglés «Take the case to any country». Construido el 15 de noviembre de 2026. Funciona en local; no está publicado y el equipo aún no ha revisado los textos.
+Paso 9 del Caso 001 de la [página web](../app/README.md), en inglés «Take the case to any country». Construido el 15 de noviembre de 2026. El código, los datos y el sitio generado están en GitHub. Quedan el despliegue en GitHub Pages y la revisión de los textos por el equipo.
 
 ## De quién es la idea
 
