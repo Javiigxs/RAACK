@@ -3,6 +3,7 @@
   // media del mismo mes en el periodo; cuanto más cálido, más rojo (una sola tonalidad, de claro a
   // oscuro). Es la pareja del calendario de lluvia: azul para la lluvia, rojo para el calor.
   // Código escrito con ayuda de IA (Claude) para el equipo RAACK.
+  import type { Snippet } from 'svelte';
   import { HEAT_BINS, fmt, fmtSigned, monthName } from '../catalog';
   import { t } from '../i18n';
   import { ui } from '../state.svelte';
@@ -12,7 +13,9 @@
     monthly,
     clim,
     name,
-    compact = false
+    compact = false,
+    year = null,
+    children
   }: {
     /** Valores mensuales (°C) desde enero de `monthly.y0`. */
     monthly: Monthly;
@@ -21,6 +24,10 @@
     /** Nombre de la variable, para la descripción accesible. */
     name: string;
     compact?: boolean;
+    /** Año que se marca con un recuadro (el del selector de la tarjeta), si hay uno. */
+    year?: number | null;
+    /** Lo que se lee justo debajo de la leyenda, antes de la tabla (los textos de la tarjeta). */
+    children?: Snippet;
   } = $props();
 
   let width = $state(520);
@@ -57,11 +64,14 @@
     for (const th of HEAT_BINS) if (d >= th) b++;
     return b;
   }
+  /** Column of the marked year, or -1. */
+  const pickCol = $derived(year !== null && year >= monthly.y0 && year <= y1 ? year - monthly.y0 : -1);
   const yearTicks = $derived.by(() => {
     const step = pitch >= 30 ? 2 : pitch >= 13 ? 5 : 10;
     const out: number[] = [];
     for (let y = monthly.y0; y <= y1; y++) if (y % step === 0) out.push(y);
-    return out;
+    // The marked year gets its own label: the ticks that would touch it step aside.
+    return pickCol < 0 ? out : out.filter((y) => y !== year && Math.abs(y - (year as number)) * pitch >= 30);
   });
 
   let hover = $state<Cell | null>(null);
@@ -102,6 +112,20 @@
         <rect x={labelW + c.col * pitch} y={top + c.m * pitch} width={cell} height={cell} rx="2" fill="var(--heat-{bin(c.diff)})" />
       {/if}
     {/each}
+    {#if pickCol >= 0}
+      <text class="tick-pick" x={labelW + pickCol * pitch + cell / 2} y={11} text-anchor="middle">{year}</text>
+      <rect
+        x={labelW + pickCol * pitch - 2}
+        y={top - 2}
+        width={cell + 4}
+        height={12 * pitch - gap + 4}
+        rx="4"
+        fill="none"
+        stroke="var(--ink)"
+        stroke-width="2"
+        pointer-events="none"
+      />
+    {/if}
     {#if hover}
       <rect
         x={labelW + hover.col * pitch - 1}
@@ -142,6 +166,8 @@
   <span class="item"><span class="key-box none"></span>{t('sq.heat.missing')}</span>
 </div>
 
+{@render children?.()}
+
 <details class="table-view">
   <summary>{t('chart.tableToggle')}</summary>
   <div class="scroll">
@@ -172,6 +198,12 @@
   .tick-month {
     font-size: 11px;
     fill: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .tick-pick {
+    font-size: 11.5px;
+    font-weight: 750;
+    fill: var(--ink);
     font-variant-numeric: tabular-nums;
   }
   .heat-legend {

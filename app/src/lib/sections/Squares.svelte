@@ -5,7 +5,7 @@
   // Las cifras salen de las mismas funciones que usa el caso de Monterrey (analysis.ts).
   // Código escrito con ayuda de IA (Claude).
   import { analyzeSeries } from '../analysis';
-  import { VARS, fmt, productOf } from '../catalog';
+  import { VARS, fmt, fmtSigned, productOf } from '../catalog';
   import HeatGrid from '../charts/HeatGrid.svelte';
   import RainCalendar from '../charts/RainCalendar.svelte';
   import { ciText, rateText } from '../format';
@@ -38,6 +38,35 @@
     const p = { subject: t(`var.${HEAT.varId}.subject`), rate: rateText(HEAT.varId, heat.perDecade), ci: ciText(HEAT.varId, heat.ci) };
     if (level === 'none' || level === 'weak') return t('sq.heat.caption.none', p);
     return t(heat.verdict.direction > 0 ? 'sq.heat.caption.up' : 'sq.heat.caption.down', p);
+  });
+
+  // ---- temperatura: el año elegido, marcado en la cuadrícula (pedido de Fran, 15 de noviembre de 2026)
+  const heatYears = $derived(heat ? Array.from({ length: Math.floor(heat.monthly.values.length / 12) }, (_, i) => heat.monthly.y0 + i) : []);
+  /** Abre en el mismo año que la lluvia. */
+  let heatPicked = $state(2020);
+  const heatYear = $derived(heatYears.includes(heatPicked) ? heatPicked : (heatYears[heatYears.length - 1] ?? null));
+  const heatAt = $derived(heatYear === null ? -1 : heatYears.indexOf(heatYear));
+  const heatStep = (d: number) => {
+    const next = heatYears[heatAt + d];
+    if (next !== undefined) heatPicked = next;
+  };
+  const longMonth = (m: number) =>
+    new Intl.DateTimeFormat(ui.lang === 'es' ? 'es-MX' : 'en-US', { month: 'long', timeZone: 'UTC' }).format(new Date(Date.UTC(2001, m, 15)));
+  /** Cuántos meses del año elegido fueron más cálidos que su media, y cuál se pasó más. */
+  const heatYearCaption = $derived.by(() => {
+    if (!heat || heatYear === null) return '';
+    const base = (heatYear - heat.monthly.y0) * 12;
+    const diffs: { m: number; d: number }[] = [];
+    for (let m = 0; m < 12; m++) {
+      const v = heat.monthly.values[base + m];
+      const c = heat.clim[m];
+      if (v !== null && v !== undefined && c !== null && c !== undefined) diffs.push({ m, d: v - c });
+    }
+    if (!diffs.length) return t('sq.heat.year.nodata', { year: heatYear });
+    const warm = diffs.filter((x) => x.d > 0);
+    if (!warm.length) return t('sq.heat.year.none', { year: heatYear, n: diffs.length });
+    const top = warm.reduce((a, b) => (b.d > a.d ? b : a));
+    return t('sq.heat.year.some', { year: heatYear, warm: warm.length, n: diffs.length, month: longMonth(top.m), diff: fmtSigned(top.d, 1, ui.lang) });
   });
 
   function open(target: 'case' | 'step-look') {
@@ -94,8 +123,17 @@
       <article class="card box heat">
         <div class="box-head">
           <h3><span class="swatch" aria-hidden="true"></span>{t('sq.heat.title')}</h3>
-          <VerdictChip verdict={heat.verdict} compact />
+          {#if heatYear !== null}
+            <div class="stepper" role="group" aria-label={t('sq.rain.year')}>
+              <button class="round" onclick={() => heatStep(-1)} disabled={heatAt <= 0} aria-label={t('sq.rain.prev')}>‹</button>
+              <select aria-label={t('sq.rain.year')} bind:value={heatPicked}>
+                {#each heatYears as y (y)}<option value={y}>{y}</option>{/each}
+              </select>
+              <button class="round" onclick={() => heatStep(1)} disabled={heatAt >= heatYears.length - 1} aria-label={t('sq.rain.next')}>›</button>
+            </div>
+          {/if}
         </div>
+        <VerdictChip verdict={heat.verdict} compact />
         <p class="small">
           {t('sq.heat.sub', {
             name: t(`var.${HEAT.varId}.name`),
@@ -105,8 +143,10 @@
             y1: heat.y1
           })}
         </p>
-        <HeatGrid monthly={heat.monthly} clim={heat.clim} name={t(`var.${HEAT.varId}.name`)} />
-        <p class="caption">{heatCaption}</p>
+        <HeatGrid monthly={heat.monthly} clim={heat.clim} name={t(`var.${HEAT.varId}.name`)} year={heatYear}>
+          <p class="caption" aria-live="polite">{heatYearCaption}</p>
+          <p class="caption">{heatCaption}</p>
+        </HeatGrid>
         <button class="btn" onclick={() => open('step-look')}>{t('sq.heat.cta')} <span aria-hidden="true">→</span></button>
       </article>
     </div>
@@ -139,9 +179,16 @@
   .box {
     padding: clamp(16px, 2.4vw, 24px);
     display: grid;
+    /* One column that never grows past the card: without it, the open table of temperatures widened
+       the card and pushed it out of the page on the right (playbook pb157). */
+    grid-template-columns: minmax(0, 1fr);
     gap: 12px;
     justify-items: start;
     min-width: 0;
+  }
+  /* The verdict chip of the temperature card keeps its own width. */
+  .box > :global(.chip) {
+    width: auto;
   }
   .box > :global(*) {
     width: 100%;
@@ -161,6 +208,9 @@
     align-items: center;
     gap: 10px;
     font-size: clamp(18px, 2.1vw, 21px);
+    /* A long title breaks onto two lines before the year selector leaves the top right corner. */
+    flex: 1 1 0;
+    min-width: 13ch;
   }
   .swatch {
     flex: none;
