@@ -70,16 +70,23 @@
       {/if}
     </nav>
     <div class="tools">
-      <!-- DE-T, the case assistant: only when its server answers (not on a static copy of the site). -->
-      {#if dete.status === 'on'}
-        <button class="ask" onclick={() => openDete()} aria-label={t('dete.openAria')} aria-expanded={dete.open} title={t('dete.openAria')}>
-          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
-            <path d="M4 5.5h16v10H9.5L5.5 19v-3.5H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" />
-            <path d="M8.5 10.5h7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
-          </svg>
-          <span class="ask-label">{t('dete.open')}</span>
-        </button>
-      {/if}
+      <!-- DE-T, the case assistant: always here. While its server does not answer (a static copy of
+           the site, or the team has it off), a word says so and the panel explains it. -->
+      <button
+        class="ask"
+        class:off={dete.status === 'off'}
+        onclick={() => openDete()}
+        aria-label={dete.status === 'off' ? t('dete.offAria') : t('dete.openAria')}
+        aria-expanded={dete.open}
+        title={dete.status === 'off' ? t('dete.offnow.title') : t('dete.openAria')}
+      >
+        <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+          <path d="M4 5.5h16v10H9.5L5.5 19v-3.5H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" />
+          <path d="M8.5 10.5h7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
+        </svg>
+        <span class="ask-label">{t('dete.open')}</span>
+        {#if dete.status === 'off'}<span class="ask-state">{t('dete.tag.off')}</span>{/if}
+      </button>
       <div class="seg" role="group" aria-label={t('header.lang')}>
         <button aria-pressed={ui.lang === 'en'} onclick={() => setLang('en')} lang="en">EN</button>
         <button aria-pressed={ui.lang === 'es'} onclick={() => setLang('es')} lang="es">ES</button>
@@ -224,6 +231,17 @@
   }
   .ask:hover {
     border-color: var(--ink);
+  }
+  /* Off: the button steps back and a word says it; it still opens the panel, which explains why. */
+  .ask.off {
+    color: var(--ink-2);
+    border-color: var(--border);
+  }
+  .ask-state {
+    padding-left: 8px;
+    border-left: 1px solid var(--border-strong);
+    font-size: var(--fs-micro);
+    color: var(--muted);
   }
   /* Below the full width of the page there is no room for it: it would push the name onto two lines.
      DE-T's round button in the corner of the screen (dete/Dete.svelte) takes its place. */

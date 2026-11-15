@@ -1,12 +1,14 @@
 <script lang="ts">
   // DE-T, the case assistant: a panel at the side of the page (the whole screen on a phone). It opens
   // from the header, from the verdict, from «Not clear? Ask DE-T» under the explanation of a number, or
-  // from the question asked under the country finder, and the page stays where the reader left it. The assistant itself is the team's design (server,
-  // tools, figure checker); this panel was written with AI assistance (Claude) for team RAACK.
+  // from the question asked under the country finder, and the page stays where the reader left it.
+  // DE-T is always on the page (Fran, 15 November 2026): while its server is off the panel opens the
+  // same, says that DE-T is off and lets the reader check again. The assistant itself is the team's
+  // design (server, tools, figure checker); this panel was written with AI assistance (Claude) for team RAACK.
   import { tick } from 'svelte';
   import { t } from '../i18n';
   import { blocks } from './answer';
-  import { clearChat, closeDete, dete, openDete, send, setSector, SECTORS, type Sector } from './dete.svelte';
+  import { clearChat, closeDete, dete, openDete, recheck, send, setSector, SECTORS, type Sector } from './dete.svelte';
 
   let draft = $state('');
   let input = $state<HTMLTextAreaElement | null>(null);
@@ -14,6 +16,9 @@
   let log = $state<HTMLDivElement | null>(null);
 
   const SUGGESTIONS = ['dete.s1', 'dete.s2', 'dete.s3'];
+  const on = $derived(dete.status === 'on');
+  /** The page does not know yet, or is asking again, whether DE-T is on. */
+  const waiting = $derived(dete.status === 'unknown' || dete.checking);
 
   // When the panel opens, the focus goes into it: to the question box when the reader is about to
   // write (not on a touch screen, where the keyboard would cover the panel), to the panel otherwise.
@@ -60,15 +65,23 @@
 
 <svelte:window onkeydown={onKeyAnywhere} />
 
-{#if dete.status === 'on'}
-  <!-- Below the full width of the page the header has no room for DE-T: it waits in the corner. -->
-  <button class="fab" class:away={dete.open} onclick={() => openDete()} aria-label={t('dete.openAria')} title={t('dete.openAria')}>
-    <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true">
-      <path d="M4 5.5h16v10H9.5L5.5 19v-3.5H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" />
-      <path d="M8.5 10.5h7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
-    </svg>
-    <span class="fab-label">{t('dete.name')}</span>
-  </button>
+<!-- Below the full width of the page the header has no room for DE-T: it waits in the corner.
+     Filled while DE-T is on; an outline, with the word, while it is off. -->
+<button
+  class="fab"
+  class:away={dete.open}
+  class:off={dete.status === 'off'}
+  onclick={() => openDete()}
+  aria-label={dete.status === 'off' ? t('dete.offAria') : t('dete.openAria')}
+  title={dete.status === 'off' ? t('dete.offnow.title') : t('dete.openAria')}
+>
+  <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true">
+    <path d="M4 5.5h16v10H9.5L5.5 19v-3.5H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" />
+    <path d="M8.5 10.5h7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
+  </svg>
+  <span class="fab-label">{t('dete.name')}{#if dete.status === 'off'}<span class="fab-state">{t('dete.tag.off')}</span>{/if}</span>
+</button>
+<div class="shell">
   <aside bind:this={panel} tabindex="-1" class="dete" class:open={dete.open} aria-labelledby="dete-title" aria-hidden={!dete.open} inert={!dete.open}>
     <header class="head">
       <span class="mark" aria-hidden="true">
@@ -84,22 +97,34 @@
       <button class="icon-btn" onclick={closeDete} aria-label={t('dete.close')} title={t('dete.close')}>×</button>
     </header>
 
-    <div class="setup">
-      <label>
-        <span>{t('dete.sector')}</span>
-        <select value={dete.sector} onchange={(e) => setSector((e.currentTarget as HTMLSelectElement).value as Sector)}>
-          {#each SECTORS as s (s)}
-            <option value={s}>{t(`dete.sector.${s}`)}</option>
-          {/each}
-        </select>
-      </label>
-      {#if dete.messages.length}
-        <button class="link" onclick={clearChat} disabled={dete.busy}>{t('dete.clear')}</button>
-      {/if}
-    </div>
+    <!-- Who asks, and a fresh start: only while there is somebody to ask or something to clear. -->
+    {#if on || dete.messages.length}
+      <div class="setup">
+        <label>
+          <span>{t('dete.sector')}</span>
+          <select value={dete.sector} disabled={!on} onchange={(e) => setSector((e.currentTarget as HTMLSelectElement).value as Sector)}>
+            {#each SECTORS as s (s)}
+              <option value={s}>{t(`dete.sector.${s}`)}</option>
+            {/each}
+          </select>
+        </label>
+        {#if dete.messages.length}
+          <button class="link" onclick={clearChat} disabled={dete.busy}>{t('dete.clear')}</button>
+        {/if}
+      </div>
+    {/if}
 
     <div class="log" bind:this={log} aria-live="polite" aria-busy={dete.busy}>
-      {#if !dete.messages.length}
+      {#if !on}
+        <!-- Off, or not known yet: what the reader sees instead of the invitation to ask. -->
+        <div class="offnote">
+          <p class="off-title"><span class="ring" aria-hidden="true"></span>{t(waiting ? 'dete.checking' : 'dete.offnow.title')}</p>
+          {#if !waiting}
+            <p>{t('dete.offnow.text')}</p>
+            <button class="link" onclick={() => recheck(true)}>{t('dete.offnow.retry')}</button>
+          {/if}
+        </div>
+      {:else if !dete.messages.length}
         <div class="hello">
           <p>{t('dete.hello')}</p>
           <p class="try">{t('dete.try')}</p>
@@ -146,15 +171,24 @@
 
     <form class="ask" onsubmit={submit}>
       <label class="sr" for="dete-q">{t('dete.input')}</label>
-      <textarea id="dete-q" bind:this={input} bind:value={draft} rows="2" maxlength="500" placeholder={dete.place ? t('dete.place.placeholder', { name: dete.place.name }) : t('dete.placeholder')} onkeydown={onKey}></textarea>
-      <button class="btn primary" type="submit" disabled={dete.busy || !draft.trim()}>{t('dete.send')}</button>
+      <textarea
+        id="dete-q"
+        bind:this={input}
+        bind:value={draft}
+        rows="2"
+        maxlength="500"
+        disabled={!on}
+        placeholder={!on ? t('dete.offnow.title') : dete.place ? t('dete.place.placeholder', { name: dete.place.name }) : t('dete.placeholder')}
+        onkeydown={onKey}
+      ></textarea>
+      <button class="btn primary" type="submit" disabled={!on || dete.busy || !draft.trim()}>{t('dete.send')}</button>
     </form>
     <footer class="foot">
       <p class="mem"><span class="i" aria-hidden="true">i</span>{t('dete.memory')}</p>
       <p>{t('dete.disclosure')}</p>
     </footer>
   </aside>
-{/if}
+</div>
 
 <style>
   .dete {
@@ -287,6 +321,58 @@
   .link:disabled {
     opacity: 0.5;
     cursor: default;
+  }
+  /* The panel is the only child that shows: the wrapper adds nothing to the page. */
+  .shell {
+    display: contents;
+  }
+  /* Each part keeps its row of the panel, also when the row of «who are you» is not drawn. */
+  .head {
+    grid-row: 1;
+  }
+  .setup {
+    grid-row: 2;
+  }
+  .log {
+    grid-row: 3;
+  }
+  .ask {
+    grid-row: 4;
+  }
+  .foot {
+    grid-row: 5;
+  }
+  /* DE-T is off: said once, in plain words, where the invitation to ask would be. */
+  .offnote {
+    display: grid;
+    gap: 8px;
+    justify-items: start;
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .off-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    color: var(--ink);
+  }
+  /* An empty ring: the same mark the page uses for «nothing found». */
+  .ring {
+    flex: none;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 1.6px solid var(--ink-2);
+  }
+  .ask textarea:disabled {
+    background: transparent;
+    border-color: var(--border);
+  }
+  .setup select:disabled {
+    opacity: 0.5;
   }
 
   .log {
@@ -500,6 +586,22 @@
   }
   .fab:hover {
     background: color-mix(in srgb, var(--ink) 84%, var(--page));
+  }
+  /* Off: an outline on the page instead of the filled button. */
+  .fab.off {
+    background: var(--page);
+    color: var(--ink-2);
+    border-color: var(--border-strong);
+  }
+  .fab.off:hover {
+    background: var(--surface-2);
+  }
+  .fab-state {
+    margin-left: 8px;
+    padding-left: 8px;
+    border-left: 1px solid var(--border-strong);
+    font-size: var(--fs-micro);
+    font-weight: 400;
   }
   /* Not over the opening Earth, and not while the panel is open. */
   :global(html[data-intro='on']) .fab,

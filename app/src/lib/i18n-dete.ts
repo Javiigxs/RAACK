@@ -55,7 +55,15 @@ export const deteEn: Dict = {
   'dete.place.q2': 'What is still missing to open the case in {name}?',
   'dete.place.q3': 'How does {name} compare with Nuevo León?',
 
-  // Only while developing: why DE-T is not on the page
+  // DE-T is always on the page; these say that it is off right now
+  'dete.tag.off': 'Off',
+  'dete.offAria': 'DE-T, the case assistant, is off right now',
+  'dete.offnow.title': 'DE-T is off right now',
+  'dete.offnow.text': 'DE-T runs on a computer of the team and is switched on for live sessions. Everything else on this page works without it.',
+  'dete.offnow.retry': 'Check again',
+  'dete.checking': 'Checking whether DE-T is on…',
+
+  // Only while developing: why DE-T is off
   'dete.off.noserver': 'DE-T is off: its server is not running. Start it with npm run dete (the Kimi key goes in app/dete/.env).',
   'dete.off.nokey': 'DE-T is off: its server has no Kimi key. Put it in app/dete/.env and start npm run dete again.'
 };
@@ -107,6 +115,13 @@ export const deteEs: Dict = {
   'dete.place.q1': '¿{name} está perdiendo agua almacenada?',
   'dete.place.q2': '¿Qué falta para abrir el caso en {name}?',
   'dete.place.q3': '¿Cómo se compara {name} con Nuevo León?',
+
+  'dete.tag.off': 'Apagado',
+  'dete.offAria': 'DE-T, el asistente del caso, está apagado en este momento',
+  'dete.offnow.title': 'DE-T está apagado en este momento',
+  'dete.offnow.text': 'DE-T corre en un equipo del propio equipo y se enciende para las sesiones en vivo. Todo lo demás de la página funciona sin él.',
+  'dete.offnow.retry': 'Comprobar de nuevo',
+  'dete.checking': 'Comprobando si DE-T está encendido…',
 
   'dete.off.noserver': 'DE-T está apagado: su servidor no está encendido. Arráncalo con npm run dete (la clave de Kimi va en app/dete/.env).',
   'dete.off.nokey': 'DE-T está apagado: su servidor no tiene la clave de Kimi. Ponla en app/dete/.env y vuelve a arrancar npm run dete.'

@@ -1,6 +1,7 @@
 // DE-T, the case assistant: whether it is reachable, whether its panel is open, and the conversation.
-// The page asks the DE-T server (app/dete/server.mjs) once whether it is ready; if it is not there,
-// as on a static copy of the site, none of DE-T's buttons appear and the page works as before.
+// The page asks the DE-T server (app/dete/server.mjs) whether it is ready. DE-T is always on the page
+// (Fran, 15 November 2026: «always visible, but off»): when its server is not there, as on a static
+// copy of the site, its buttons stay and say that it is off, and the page works as before.
 // The public copy of the site first reads a switch that says whether the team has DE-T on right now
 // and where it answers (switch.ts).
 // Code written with AI assistance (Claude) for team RAACK.
@@ -50,6 +51,8 @@ export const dete = $state({
   status: 'unknown' as 'unknown' | 'on' | 'off',
   /** Why DE-T is off, when the page can tell: its server does not answer, or it has no Kimi key. */
   why: '' as '' | 'noserver' | 'nokey',
+  /** The page is asking again whether DE-T is on: the reader pressed «Check again» or opened it while off. */
+  checking: false,
   open: false,
   /** The place this conversation is about: the server adds what the tool knows of it to each question. */
   place: null as Place | null,
@@ -67,25 +70,26 @@ export const dete = $state({
 let nextId = 1;
 let opener: HTMLElement | null = null;
 
+/** While DE-T is off, opening it asks again at most this often (the switch allows few requests an hour). */
+const RECHECK_MS = 20_000;
+let pending: Promise<void> | null = null;
+let lastCheck = 0;
+
 /**
- * Asks the server once whether DE-T is ready. Anything but a clear yes keeps DE-T hidden. The DE-T
- * server marks the pages it serves (<meta name="dete">); a static copy of the site has no mark and
- * asks nothing, so it leaves no failed request behind. The public copy is the exception: it reads its
- * switch, and asks DE-T only when the switch names an address. In development, Vite passes the question on.
+ * Asks whether DE-T is ready and where. Anything but a clear yes leaves DE-T off: still on the page,
+ * shown as off. The DE-T server marks the pages it serves (<meta name="dete">); a static copy of the
+ * site has no mark and asks nothing, so it leaves no failed request behind. The public copy is the
+ * exception: it reads its switch, and asks DE-T only when the switch names an address. In
+ * development, Vite passes the question on.
  */
-export async function probe(): Promise<void> {
-  try {
-    const saved = localStorage.getItem(SECTOR_KEY);
-    if (saved && (SECTORS as string[]).includes(saved)) dete.sector = saved as Sector;
-  } catch {
-    // no local storage: DE-T starts as for a citizen
-  }
+async function look(): Promise<void> {
   const served = !!document.querySelector('meta[name="dete"]');
   if (!served && !import.meta.env.DEV && !import.meta.env.VITE_DETE_URL) {
     // A static copy. The public one reads the switch: with DE-T off, as almost always, nothing else is asked.
     const remote = isPublicCopy(location.origin) ? await readSwitch() : null;
     if (!remote) {
       dete.status = 'off';
+      dete.why = '';
       return;
     }
     endpoint = remote;
@@ -103,6 +107,41 @@ export async function probe(): Promise<void> {
     dete.why = 'noserver';
   } finally {
     clearTimeout(timer);
+  }
+}
+
+/** One question at a time: whoever asks while another is on its way waits for the same answer. */
+function check(): Promise<void> {
+  pending ??= look().finally(() => {
+    pending = null;
+    lastCheck = Date.now();
+  });
+  return pending;
+}
+
+/** When the page opens: who the reader said they are, and whether DE-T is on. */
+export async function probe(): Promise<void> {
+  try {
+    const saved = localStorage.getItem(SECTOR_KEY);
+    if (saved && (SECTORS as string[]).includes(saved)) dete.sector = saved as Sector;
+  } catch {
+    // no local storage: DE-T starts as for a citizen
+  }
+  await check();
+}
+
+/**
+ * Asks again whether DE-T is on. The reader pressed «Check again» (force), or opened DE-T while it was
+ * off: the team may have turned it on since the page was opened.
+ */
+export async function recheck(force = false): Promise<void> {
+  if (pending) return pending;
+  if (!force && Date.now() - lastCheck < RECHECK_MS) return;
+  dete.checking = true;
+  try {
+    await check();
+  } finally {
+    dete.checking = false;
   }
 }
 
@@ -125,11 +164,20 @@ export function setGlobe(place: Place | null): void {
   dete.globe = place;
 }
 
-/** Opens the panel; with a question, asks it at once. */
+/** Opens the panel; with a question, asks it at once. While DE-T is off, the panel opens and says so. */
 export function openDete(ask?: Ask): void {
-  if (dete.status !== 'on') return;
   if (!dete.open && document.activeElement instanceof HTMLElement && !document.activeElement.closest('.dete')) opener = document.activeElement;
   dete.open = true;
+  if (dete.status !== 'on') {
+    // Off, or not known yet. The page asks once more, and the question that came with the press is
+    // asked if DE-T turns out to be on.
+    dete.focusOn = 'panel';
+    dete.focus++;
+    void recheck().then(() => {
+      if (ask && dete.status === 'on') void send(ask.question, ask);
+    });
+    return;
+  }
   dete.focusOn = ask ? 'panel' : 'input';
   dete.focus++;
   if (ask) void send(ask.question, ask);
@@ -159,7 +207,7 @@ export function history(messages: Msg[], question: string): { role: 'user' | 'as
 
 export async function send(question: string, extra: Omit<Ask, 'question'> = {}): Promise<void> {
   const text = question.trim().slice(0, 500);
-  if (!text || dete.busy) return;
+  if (!text || dete.busy || dete.status !== 'on') return;
   // A question asked from the globe is about its place, and so are the ones typed after it; a question
   // about a number of the page is about the case again, unless that number belongs to a place.
   if (extra.place) dete.place = extra.place;
@@ -167,19 +215,33 @@ export async function send(question: string, extra: Omit<Ask, 'question'> = {}):
   const past = dete.messages;
   dete.messages = [...past, { id: nextId++, role: 'user', text, about: extra.about ?? dete.place?.name }];
   dete.busy = true;
+  const body = JSON.stringify({
+    sector: dete.sector,
+    region: 'nuevo-leon',
+    messages: history(past, text),
+    ...(dete.place ? { lugar: dete.place.id } : {}),
+    ...(extra.page ? { pagina: compact(extra.page) } : {})
+  });
+  /** One try at the address DE-T answers at right now. A server error may mean nobody is behind it any more. */
+  const post = async () => {
+    const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
+    if (r.status >= 500) throw new Error(`HTTP ${r.status}`);
+    return r;
+  };
   let reply: Msg;
   try {
-    const r = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        sector: dete.sector,
-        region: 'nuevo-leon',
-        messages: history(past, text),
-        ...(dete.place ? { lugar: dete.place.id } : {}),
-        ...(extra.page ? { pagina: compact(extra.page) } : {})
-      })
-    });
+    let r: Response;
+    try {
+      r = await post();
+    } catch (e) {
+      // The address stopped answering. The page asks again whether DE-T is on, so that its buttons say
+      // the truth. On the public copy the tunnel of DE-T changes its address now and then: if the
+      // switch names another one and DE-T answers there, the question is asked there, once.
+      const before = endpoint;
+      await check();
+      if (dete.status !== 'on' || endpoint === before) throw e;
+      r = await post();
+    }
     const data = (await r.json().catch(() => ({}))) as { answer?: string; verificado?: boolean };
     if (r.status === 429) reply = { id: nextId++, role: 'assistant', text: '', note: 'busy' };
     else if (r.ok && data.answer?.trim()) reply = { id: nextId++, role: 'assistant', text: data.answer.trim(), verified: data.verificado === true };

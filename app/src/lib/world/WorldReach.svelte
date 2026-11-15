@@ -326,9 +326,7 @@
         {/each}
       </div>
       <!-- DE-T answers questions about the chosen place: the line to write them is under the result. -->
-      {#if dete.status === 'on'}
-        <button class="textlink ask-jump" onclick={toAsk}>{t('dete.place.title', { name })} <span aria-hidden="true">↓</span></button>
-      {/if}
+      <button class="textlink ask-jump" onclick={toAsk}>{t('dete.place.title', { name })} <span aria-hidden="true">↓</span></button>
     </div>
 
     <article class="result" aria-live="polite">

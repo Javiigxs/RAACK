@@ -371,13 +371,13 @@
       <p class="small">{t('w.rule.legend')}</p>
     </details>
 
-    <!-- DE-T, the case assistant: only when its server answers. -->
-    {#if dete.status === 'on'}
-      <div class="dete-cta">
-        <p>{t('dete.verdict.text')}</p>
-        <button class="btn small-btn" onclick={() => { setPlace(null); openDete(); }}>{t('dete.open')} <span aria-hidden="true">→</span></button>
-      </div>
-    {/if}
+    <!-- DE-T, the case assistant: always here; while it is off, its panel opens and says so. -->
+    <div class="dete-cta">
+      <p>{t('dete.verdict.text')}</p>
+      <button class="btn small-btn" onclick={() => { setPlace(null); openDete(); }}>
+        {t('dete.open')}{#if dete.status === 'off'}<span class="dete-off">{t('dete.tag.off')}</span>{/if} <span aria-hidden="true">→</span>
+      </button>
+    </div>
   </div>
 
   <!-- 3 · Suspects -->
@@ -887,6 +887,14 @@
   }
   .dete-cta p {
     max-width: 64ch;
+  }
+  .dete-off {
+    margin-left: 8px;
+    padding-left: 8px;
+    border-left: 1px solid var(--border-strong);
+    font-size: var(--fs-micro);
+    font-weight: 400;
+    color: var(--muted);
   }
   .rtable {
     margin: 18px 0 12px;
